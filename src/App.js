@@ -7,7 +7,7 @@ function App() {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
-          branch dev<code>src/App.js</code> and save to reload.
+          branch dev Sananffjsdksdfkj <code>src/App.js</code> and save to reload.
         </p>
         <a
           className="App-link"
@@ -23,3 +23,5 @@ function App() {
 }
 
 export default App;
+
+//crear un branch con nuestro nombre, guardar los cambios y hacer el push 
