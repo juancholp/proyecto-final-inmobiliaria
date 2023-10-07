@@ -1,10 +1,27 @@
-.carousel {
-  max-width: 800px;
-  margin: 0 auto;
-  display: flex;
+.card-body {
+  height: 440px;
 }
-#imagen {
-  width: 100%;
-  height: 400px;
-  background-size: cover;
+.d-block {
+  border-radius: 10px;
+}
+
+.btn.btn-primary {
+  background-color: rgb(255, 149, 0);
+  color: white;
+  font-size: 18px;
+  margin-left: 450px;
+}
+
+.card-title {
+  margin-right: 400px;
+}
+.card-title2 {
+  margin-right: 400px;
+  border-inline-start-width: 20px;
+}
+
+.card-text {
+  color: grey;
+  font-size: 18px;
+  text-align: left;
 }
