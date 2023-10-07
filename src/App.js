@@ -1,9 +1,11 @@
 import "./App.css";
-import SearchResult from "./Components/Results/SearchResult";
 import Navbar from "./componentes/Navbar";
+import { BrowserRouter as Router, Outlet } from 'react-router-dom';
+
 
 function App() {
   return (
+    <Router>
     <div className="App">
 
       <header className="App-header">
@@ -20,11 +22,19 @@ function App() {
           Learn React
         </a>
       </header>
-=======
       <Navbar />
+
       <SearchResult />
 
+=======
+      
+      <div className="content">
+        <Outlet />
+        
+      </div>
     </div>
+    
+    </Router>
   );
 }
 
