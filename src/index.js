@@ -13,9 +13,11 @@ import Venta from "./pages/Venta"
 import NoPage from "./pages/NoPage";
 import Layout from "./pages/Layout";
 import Home from "./pages/Home";
+import App from "./App";
 
 export default function Router() {
   return (
+ 
     <BrowserRouter>
       <Routes>
         <Route exact path="/" element={<Layout />}>
@@ -34,6 +36,7 @@ export default function Router() {
         </Route>
       </Routes>
     </BrowserRouter>
+    
   );
 }
 

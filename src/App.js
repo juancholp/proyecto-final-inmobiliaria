@@ -1,15 +1,16 @@
 import "./App.css";
 import Navbar from "./componentes/Navbar";
 import { BrowserRouter as Router, Outlet } from 'react-router-dom';
-
+import CardProperty from "./componentes/CardProperty";
 
 function App() {
   return (
+    
+
     <Router>
     <div className="App">
-
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+        
         <p>
           branch dev<code>src/App.js</code> and save toasa reload.
         </p>
@@ -23,19 +24,14 @@ function App() {
         </a>
       </header>
       <Navbar />
-
-      <SearchResult />
-
+     
 =======
-      
       <div className="content">
         <Outlet />
         
       </div>
     </div>
-    
     </Router>
   );
 }
-
 export default App;

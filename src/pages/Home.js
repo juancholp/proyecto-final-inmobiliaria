@@ -1,8 +1,10 @@
 import React from 'react'
-
+import CardProperty from '../componentes/CardProperty'
 const Home = () => {
   return (
-    <div>Home</div>
+    <div>Home
+      <CardProperty />
+    </div>
   )
 }
 
