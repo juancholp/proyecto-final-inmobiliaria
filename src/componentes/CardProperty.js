@@ -7,22 +7,43 @@ import CardMedia from '@mui/material/CardMedia';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import { Button, Stack } from '@mui/material';
+import Carrousel from './Carrousel';
 export default function CardProperty() {
   const theme = useTheme();
 
+  const imagenes = [
+    {
+      label: 'San Francisco – Oakland Bay Bridge, United States',
+      imgPath:
+        'https://images.unsplash.com/photo-1537944434965-cf4679d1a598?auto=format&fit=crop&w=400&h=250&q=60',
+    },
+    {
+      label: 'Bird',
+      imgPath:
+        'https://images.unsplash.com/photo-1538032746644-0212e812a9e7?auto=format&fit=crop&w=400&h=250&q=60',
+    },
+    {
+      label: 'Bali, Indonesia',
+      imgPath:
+        'https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&w=400&h=250',
+    },
+    {
+      label: 'Goč, Serbia',
+      imgPath:
+        'https://images.unsplash.com/photo-1512341689857-198e7e2f3ca8?auto=format&fit=crop&w=400&h=250&q=60',
+    },
+  ];
+ 
   return (
-    <Card sx={{ display: 'flex',
+    <Card sx={
+        { display: 'flex',
     justifyContent : "center",
     alignItems : "center",
     width : "80%",
     height : "250px" }}>
-        <CardMedia
-        component="img"
-        sx={{ width: 200,
-        height : 200 }}
-        image="https://www.elcato.org/sites/default/files/images/stories/51.jpg"
-        alt="Propiedad"
-      />
+        
+         <Carrousel lista={imagenes} />
+        
       <Box sx={{ display: 'flex', flexDirection: 'column' }}>
         <CardContent sx={{ flex: '1 0 auto' }}>
           <Typography component="div" variant="h5">
