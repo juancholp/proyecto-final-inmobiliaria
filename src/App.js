@@ -1,12 +1,10 @@
 import "./App.css";
+import Filters from "./Filters";
 import Navbar from "./componentes/Navbar";
 import { BrowserRouter as Router, Outlet } from 'react-router-dom';
-import CardProperty from "./componentes/CardProperty";
 
 function App() {
   return (
-    
-
     <Router>
     <div className="App">
       <header className="App-header">
@@ -25,7 +23,6 @@ function App() {
       </header>
       <Navbar />
      
-=======
       <div className="content">
         <Outlet />
         
