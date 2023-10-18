@@ -1,9 +1,9 @@
 import React from 'react'
 import '../App.css'
-import MainPage from '../Components/MainPage'
+import FormAsAdmin from './FormAsAdmin'
 
 const Home = () => {
-  return <MainPage />
+  return <FormAsAdmin />
 }
 
 export default Home

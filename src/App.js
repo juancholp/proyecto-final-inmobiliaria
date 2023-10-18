@@ -1,18 +1,8 @@
 import './App.css'
-import Navbar from './Components/Navbar'
-import { BrowserRouter as Router, Outlet } from 'react-router-dom'
+import FormAsAdmin from './Pages/FormAsAdmin'
 
 function App() {
-  return (
-    <Router>
-      <div className='App'>
-        <Navbar />
-        <div className='content'>
-          <Outlet />
-        </div>
-      </div>
-    </Router>
-  )
+  return <FormAsAdmin />
 }
 
 export default App
