@@ -1,16 +1,13 @@
+import logo from "./logo.svg";
 import "./App.css";
-import Filters from "./Filters";
-import Navbar from "./componentes/Navbar";
-import { BrowserRouter as Router, Outlet } from 'react-router-dom';
 
 function App() {
   return (
-    <Router>
     <div className="App">
       <header className="App-header">
-        
+        <img src={logo} className="App-logo" alt="logo" />
         <p>
-          branch dev<code>src/App.js</code> and save toasa reload.
+          Edit <code>src/App.js</code> and save to reload.
         </p>
         <a
           className="App-link"
@@ -21,14 +18,8 @@ function App() {
           Learn React
         </a>
       </header>
-      <Navbar />
-     
-      <div className="content">
-        <Outlet />
-        
-      </div>
     </div>
-    </Router>
   );
 }
+
 export default App;
