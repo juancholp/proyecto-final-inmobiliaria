@@ -8,8 +8,29 @@ import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider'
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
 import { DateCalendar } from '@mui/x-date-pickers/DateCalendar'
 
+let filtros = {
+  tipo: '',
+  direccion: '',
+  departamento: '',
+  descripcion: '',
+  foto: null,
+  telefono: 0,
+  precio: 0,
+  metrosConstruidos: 0,
+  metrosTerreno: 0,
+  cochera: false,
+  amenities: false,
+  fecha: null,
+}
+
 function FormAsAdmin() {
   const [selectedImage, setSelectedImage] = useState(null)
+  const [filtro, setFiltro] = useState(filtros)
+  const [selectedDate, setSelectedDate] = useState(null)
+
+  const handleDateChange = (newDate) => {
+    setSelectedDate(newDate)
+  }
 
   const handleImageChange = (event) => {
     const file = event.target.files[0]
@@ -65,15 +86,31 @@ function FormAsAdmin() {
         <label>Metros cuadrados del terreno:</label>
         <input type='number' id='m2terrain' />
         <label>¿Tiene cochera?</label>
-        <input type='checkbox' name='boolCochera' />
+        <input type='checkbox' id='boolCochera' />
         <label>¿Tiene amenities?</label>
-        <input type='checkbox' name='boolAmenities' />
+        <input type='checkbox' id='boolAmenities' />
         <LocalizationProvider dateAdapter={AdapterDayjs}>
-          <DateCalendar />
+          <DateCalendar value={selectedDate} onChange={handleDateChange} />
         </LocalizationProvider>
         <Button
           variant='contained'
           onClick={() => {
+            filtros.tipo = document.getElementById('type').value
+            filtros.direccion = document.getElementById('dir').value
+            filtros.departamento = document.getElementById('dep').value
+            filtros.descripcion = document.getElementById('descr').value
+            filtros.foto = selectedImage
+            filtros.telefono = document.getElementById('num').value
+            filtros.precio = document.getElementById('price').value
+            filtros.metrosConstruidos =
+              document.getElementById('m2constructed').value
+            filtros.metrosTerreno = document.getElementById('m2terrain').value
+            let checkboxCochera = document.getElementById('boolCochera')
+            filtros.cochera = checkboxCochera.checked
+            let checkboxAmenities = document.getElementById('boolAmenities')
+            filtros.amenities = checkboxAmenities.checked
+            filtros.fecha = selectedDate
+            setFiltro(filtros)
             alert('Formulario enviado')
           }}
         >
