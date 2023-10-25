@@ -11,38 +11,18 @@ import SelectList from './Elemetos_De_Formulario/SelectListFormulario';
 import Button from '@mui/material/Button';
 import TextFieldImagenes from './Elemetos_De_Formulario/TextFieldImagenes';
 import dataCampos from '../Components/Elemetos_De_Formulario/dataCampos';
-import Snackbar from '@mui/material/Snackbar';
-import MuiAlert from '@mui/material/Alert';
-import ChipComodides from "./Elemetos_De_Formulario/ChipComodides"
 
 export default function FormPropsTextFields() {
   const [formData, setFormData] = useState({
-    id: 1,
-    title: "",
-    tipoMoneda: "",
-    precio: "",
-    disposicion: "",
-    tipoVenta: "",
-    ubicacion: [""],
-    comodidades: [],
-    descripcion: "",
-    aceptaMascotasOptions: "",
-    zona: "",
-    garaje: "",
-    m2Edificados: "",
-    m2Terreno: "",
-    tipoDePropiedad: "",
-    banos: "",
-    dormitorio: "",
-    anioConstruccion: "",
-    estado: "",
-    imgsrc: [""],
+    tipoPublicacion: '',
+    tipoPropiedad: '',
+    tipoPrecio: '',
+    GastosComunes: '',
+    Precio: '',
+    aceptaMascotas: '',
   });
 
   const [textFieldImagenesData, setTextFieldImagenesData] = useState([]);
-
-  const [snackbarOpen, setSnackbarOpen] = useState(false);
-  const [snackbarMessage, setSnackbarMessage] = useState('');
 
   const handleInputChange = (e, fieldName) => {
     const value = e.target.value;
@@ -59,16 +39,14 @@ export default function FormPropsTextFields() {
     });
   };
 
-  const openSnackbar = (message) => {
-    setSnackbarMessage(message);
-    setSnackbarOpen(true);
+  const handleSave = () => {
+    const combinedData = { ...formData, textFieldImagenesData };
+    console.log(combinedData);
   };
 
-  const handleSave = () => {
-    const combinedData = { ...formData, imgsrc: textFieldImagenesData.map(item => item.value) };
-    console.log(combinedData);
-    openSnackbar('Datos guardados');
-  };
+  const camposTexto = ["Nombre", "Zona", "Ubicacion", "Estado", "Disposicion"];
+  const camposNumero = ["Piso", "Dormitorios", "Baños", "Garages", "Año de Construccion", "M² edificados", "M² del terreno"];
+  const camposMonetarios = ["Precio", "Gastos Comunes"];
 
   return (
     <div className="publicarFormContainer">
@@ -85,113 +63,87 @@ export default function FormPropsTextFields() {
       >
         <div>
           <div className="Select">
-
             <SelectList
               className="selectList"
-              tipo={dataCampos.tipoDePublicacion}
+              tipo={dataCampos.tipoDePublicacion} // Usa los datos importados
               titulo={"Tipo De Publicacion"}
-              onChange={(value) => handleSelectChange(value, "tipoVenta")}
+              onChange={(value) => handleSelectChange(value, "tipoPublicacion")}
             />
             <SelectList
               className="selectList"
-              tipo={dataCampos.tipoDePropiedad}
+              tipo={dataCampos.tipoDePropiedad} // Usa los datos importados
               titulo={"Tipo De Propiedad"}
-              onChange={(value) => handleSelectChange(value, "tipoDePropiedad")}
+              onChange={(value) => handleSelectChange(value, "tipoPropiedad")}
             />
             <SelectList
               className="selectList"
-              tipo={dataCampos.tipoPrecio}
+              tipo={dataCampos.tipoPrecio} // Usa los datos importados
               titulo={"Tipo De Precio"}
-              onChange={(value) => handleSelectChange(value, "tipoMoneda")}
+              onChange={(value) => handleSelectChange(value, "tipoPrecio")}
             />
-            <SelectList
-              className="selectList"
-              tipo={dataCampos.estadosPropiedad}
-              titulo={"Estados de Propiedad"}
-              onChange={(value) => handleSelectChange(value, "estado")}
-            />
-
           </div>
-          {dataCampos.datosNecesario.map((item, index) => (
+          {camposTexto.map((item, index) => (
             <TextField
-              id={item.value}
+              id={item}
               key={index}
-              type={item.type}
-              label={item.label}
+              label={item}
               variant="standard"
-              onChange={(e) => handleInputChange(e, item.value)}
+              onChange={(e) => handleInputChange(e, item)}
+            />
+          ))}
+          {camposNumero.map((item, index) => (
+            <TextField
+              id={item}
+              key={index}
+              label={item}
+              type="number"
+              variant="standard"
+              onChange={(e) => handleInputChange(e, item)}
             />
           ))}
           <div>
-            {dataCampos.camposMonetarios.map((item, index) => (
+            {camposMonetarios.map((item, index) => (
               <FormControl sx={{ m: 1, width: '20ch' }} variant="standard" key={index}>
-                <InputLabel htmlFor={`standard-adornment-amount-${index}`}>{item.label}</InputLabel>
+                <InputLabel htmlFor={`standard-adornment-amount-${index}`}>{item}</InputLabel>
                 <Input
                   id={`standard-adornment-amount-${index}`}
                   startAdornment={
                     <InputAdornment position="start">
-                      {formData.tipoMoneda === '$' ? '$' : 'u$'}
+                      {formData.tipoPrecio === '$' ? '$' : 'u$'}
                     </InputAdornment>
                   }
-                  onChange={(e) => handleInputChange(e, item.value)}
+                  onChange={(e) => handleInputChange(e, item)}
                 />
               </FormControl>
-            ))}
+            ))
+          }
           </div>
           <SelectList
             className="selectList"
-            tipo={dataCampos.aceptaOptions}
+            tipo={dataCampos.aceptaMascotasOptions} // Usa los datos importados
             titulo={"Acepta Mascotas"}
-            onChange={(value) => handleSelectChange(value, "aceptaMascotasOptions")}
-          /><SelectList
-          className="selectList"
-          tipo={dataCampos.aceptaOptions}
-          titulo={"Garage"}
-          onChange={(value) => handleSelectChange(value, "garage")}
-        />
-        </div>
-
-        <div>
-          <Typography mb="1rem" variant="h6" fontFamily="Lato">
-            Comodidades
-          </Typography>
-          <div><ChipComodides informacion={dataCampos.comodidadesOptions} formData={formData} /></div>
-          <Typography mb="1rem" variant="h6" fontFamily="Lato">
-            Imagenes
-          </Typography>
-          <TextFieldImagenes
-            textFieldImagenesData={textFieldImagenesData}
-            setTextFieldImagenesData={setTextFieldImagenesData}
+            onChange={(value) => handleSelectChange(value, "aceptaMascotas")}
           />
         </div>
-        <div className='bobyboton'>
-          <TextField
-            id="standard-multiline"
-            label="Descripcion"
-            multiline
-            rows={6}
-            variant="standard"
-            sx={{ width: "60%" }}
-            onChange={(e) => handleInputChange(e, "descripcion")}
-          />
-          <Button variant="contained" className='boton' onClick={handleSave} color="success">
-            Guardar
-          </Button>
-        </div>
-        <Snackbar
-          open={snackbarOpen}
-          autoHideDuration={3000}
-          onClose={() => setSnackbarOpen(false)}
-        >
-          <MuiAlert
-            elevation={6}
-            variant="filled"
-            severity="success"
-          >
-            {snackbarMessage}
-          </MuiAlert>
-        </Snackbar>
       </Box>
+      <TextFieldImagenes
+        textFieldImagenesData={textFieldImagenesData}
+        setTextFieldImagenesData={setTextFieldImagenesData}
+      />
+      <div className='bobyboton'>
+        <TextField
+          id="standard-multiline"
+          label="Descripcion"
+          multiline
+          rows={6}
+          variant="standard"
+          sx={{ width: "60%" }}
+          onChange={(e) => handleInputChange(e, "Descripcion")}
+        />
+        <Button variant="contained" className='boton' onClick={handleSave} color="success">
+          Guardar
+        </Button>
+      </div>
     </div>
   );
 }
