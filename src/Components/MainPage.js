@@ -2,13 +2,11 @@ import * as React from "react";
 import Box from "@mui/material/Box";
 import ToggleButton from "@mui/material/ToggleButton";
 import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
-import TextField from "@mui/material/TextField";
 import CustomSelectCheckmarks from "./CustomSelectCheckmarks";
 import Carrousel from "./Carrousel";
 import Footer from "./Footer";
 import Button from "@mui/material/Button";
 import Autocomp from './Autocomp'
-import { FaFacebook, FaTwitter, FaYoutube } from "react-icons/fa6";
 import "./MainPage.css";
 
 
@@ -57,7 +55,6 @@ function MainPage() {
         </div>
       </div>
       <div className='carrousel-container'>
-        
         <Carrousel />
       </div>
       <div>
