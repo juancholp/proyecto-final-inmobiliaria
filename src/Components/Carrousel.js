@@ -7,13 +7,11 @@ import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import KeyboardArrowLeft from '@mui/icons-material/KeyboardArrowLeft';
 import KeyboardArrowRight from '@mui/icons-material/KeyboardArrowRight';
-import SwipeableViews from 'react-swipeable-views';
-import { autoPlay } from 'react-swipeable-views-utils';
+import SwipeableViews from 'react-swipeable-views-react-18-fix';
 import { storeContext } from "../Store/StoreProvider"
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 
-const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
 
 function Carrousel() {
   const [store, dispatch] = React.useContext(storeContext);
@@ -48,14 +46,14 @@ function Carrousel() {
     setActiveStep(step);
   }
 
+  setTimeout(() => {
+    setActiveStep(
+      activeStep === store.length - 1 ? 0 : activeStep + 1
+    );
+  }, 2000);
+
   return (
     <Box sx={{ maxWidth: 800, flexGrow: 1, position: 'relative' }}>
-      <AutoPlaySwipeableViews
-        axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
-        index={activeStep}
-        onChangeIndex={handleStepChange}
-        enableMouseEvents
-      >
         {datosDelCarrousel.map((step, index) => (
           <div key={index}>
             {Math.abs(activeStep - index) <= 2 ? (
@@ -96,7 +94,6 @@ function Carrousel() {
             ) : null}
           </div>
         ))}
-      </AutoPlaySwipeableViews>
 
       {/* Botones fuera del contenedor de la imagen */}
       <MobileStepper
