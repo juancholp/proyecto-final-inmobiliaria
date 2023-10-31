@@ -1,0 +1,77 @@
+/* Estilos generales */
+.App {
+    text-align: center;
+    font-family: Arial, sans-serif;
+  }
+  
+  .slider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 600px;
+    margin: 0 auto;
+    position: relative;
+  }
+  
+  /* Estilos para las diapositivas */
+  .slide-content {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+  }
+  
+  .slide {
+    flex: 0 0 100%;
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #333;
+    color: white;
+    font-size: 24px;
+    transition: opacity 0.5s;
+  }
+  
+  .slide.active {
+    opacity: 1;
+  }
+  
+  /* Estilos para los botones de navegación */
+  .prev-button,
+  .next-button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin: 0 10px;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 5px;
+  }
+  
+  .prev-button:hover,
+  .next-button:hover {
+    background-color: #0056b3;
+  }
+
+  .slide-content {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+    overflow: hidden; /* Agrega esta línea para ocultar las diapositivas fuera de la vista */
+  }
+  
+  .slide {
+    flex: 0 0 100%;
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #333;
+    color: white;
+    font-size: 24px;
+    transition: opacity 0.5s;
+  }
+  
+  /* Estilo para las diapositivas que no están en la vista */
+  .slide.hidden {
+    display: none;
+  }
