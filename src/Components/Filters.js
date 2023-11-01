@@ -12,7 +12,6 @@ import Stack from "@mui/material/Stack";
 import { storeContext } from "../Store/StoreProvider";
 import { useContext } from "react";
 
-
 let filtros = {
   localidades: [],
   estado: [],
@@ -61,7 +60,21 @@ function Filters() {
   //   setFiltro(filtros);
   // }, [localidades]);
   // [localidades, estado, tipo, dormitorios, precio, extraFilters];
-  const handleChangeLocalidades2 = async (event) => {
+  const handleChangeLocalidades = async (event) => {
+    const {
+      target: { value },
+    } = event;
+    await setSelected(value);
+    console.log(selected);
+  };
+  const handleChangeTipo = async (event) => {
+    const {
+      target: { value },
+    } = event;
+    await setSelected(value);
+    console.log(selected);
+  };
+  const handleChangeDormitorios = async (event) => {
     const {
       target: { value },
     } = event;
@@ -124,8 +137,8 @@ function Filters() {
 
   return (
     <div>
-      <div className="filtritos">
-        {/* {filtro.localidades.map((item) => {
+      {/*    <div className="filtritos">
+        {filtro.localidades.map((item) => {
           return <Chip label={item} />;
         })}
         {filtro.estado.map((item) => {
@@ -143,10 +156,10 @@ function Filters() {
         {filtro.extraFilters.map((item) => {
           return <Chip label={item} />;
         })} */}
-        {/* <Button variant="outlined" onClick={resetFilters}>
+      {/* <Button variant="outlined" onClick={resetFilters}>
           Borrar Filtros
-        </Button> */}
-      </div>
+        </Button>
+      </div> */}
       <div className="selects">
         <FormControl className="selects">
           <Stack direction="row" spacing={2}>
@@ -154,7 +167,7 @@ function Filters() {
               <Select
                 multiple
                 displayEmpty
-                onChange={handleChangeLocalidades2}
+                onChange={handleChangeLocalidades}
                 value={store.localidades}
                 key={store.localidades}
                 input={<OutlinedInput />}
@@ -204,7 +217,7 @@ function Filters() {
                   </MenuItem>
                 ))}
               </Select>
-            </FormControl>
+            </FormControl>*/}
             <FormControl>
               <Select
                 multiple
@@ -221,7 +234,7 @@ function Filters() {
                 <MenuItem disabled value="">
                   <em>Tipo</em>
                 </MenuItem>
-                {Data.tipo.map((name) => (
+                {store.tipoPropiedad.map((name) => (
                   <MenuItem
                     key={name}
                     value={name}
@@ -248,7 +261,7 @@ function Filters() {
                 <MenuItem disabled value="">
                   <em>Dormitorios</em>
                 </MenuItem>
-                {Data.dormitorios.map((name) => (
+                {store.dormitorios.map((name) => (
                   <MenuItem
                     key={name}
                     value={name}
@@ -259,6 +272,7 @@ function Filters() {
                 ))}
               </Select>
             </FormControl>
+            {/* 
             <FormControl>
               <Select
                 multiple
