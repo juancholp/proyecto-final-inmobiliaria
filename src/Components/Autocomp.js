@@ -1,8 +1,14 @@
 import * as React from 'react';
 import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
+import storeReducer from '../Store/StoreReducer';
 
 export default function ComboBox() {
+ const [store, dispacht] = React.useContext(storeReducer)
+
+ console.log(store.localidades)
+
+ 
   return (
     <Autocomplete
       disablePortal

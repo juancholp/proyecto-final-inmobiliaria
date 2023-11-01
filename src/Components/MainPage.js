@@ -6,6 +6,7 @@ import TextField from '@mui/material/TextField'
 import CustomSelectCheckmarks from './CustomSelectCheckmarks'
 import Carrousel from './Carrousel'
 import Button from '@mui/material/Button'
+import Autocomp from './Autocomp'
 import './MainPage.css'
 
 function MainPage() {
@@ -43,10 +44,11 @@ function MainPage() {
                 Alquiler Temporal
               </ToggleButton>
             </ToggleButtonGroup>
-
+            
             <div className='contenedorBusqueda'>
               <CustomSelectCheckmarks options={options_default} />
               <TextField id='search' label='Localidad' variant='outlined' />
+              <Autocomp />
               <Button variant='contained'>Buscar</Button>
             </div>
           </Box>
