@@ -21,8 +21,6 @@ export const ListadoPropiedades = [
         estado: "Excelente estado",
         imgsrc: [
           "https://img.freepik.com/vector-gratis/hermosa-casa_24877-50819.jpg",
-          "https://example.com/image2.jpg",
-          "https://example.com/image3.jpg"
         ]
       },
       {

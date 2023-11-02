@@ -3,7 +3,7 @@ import Box from "@mui/material/Box";
 import ToggleButton from "@mui/material/ToggleButton";
 import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
 import CustomSelectCheckmarks from "./CustomSelectCheckmarks";
-import Carrousel from "./Carrousel";
+import CarrouselV5 from "./CarrouselV5";
 import Footer from "./Footer";
 import Button from "@mui/material/Button";
 import Autocomp from './Autocomp'
@@ -55,7 +55,7 @@ function MainPage() {
         </div>
       </div>
       <div className='carrousel-container'>
-        <Carrousel />
+        <CarrouselV5 />
       </div>
       <div>
         <Footer />

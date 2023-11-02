@@ -8,11 +8,9 @@ import DPropiedad from "./Descripcion.js";
 import Propiedades from "./Propiedades.js";
 import React from 'react';
 import './Styles/imagen.css'
-import Carrousel from "../Carrousel.js"
+import Carrousel from "../CarrouselV5.js"
 import data from "../feature_propertyDetails/Database/DataPropiedades.js";
 import PropertyDetails from "./Database/DataTablaDePropiedades.js"
-
-
 
 function DetallePropiedad(props) {
   const [casa, setCasa] = useState([]);

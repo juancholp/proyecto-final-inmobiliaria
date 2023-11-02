@@ -16,6 +16,7 @@
     "react-dom": "^18.2.0",
     "react-icons": "^4.11.0",
     "react-leaflet": "^4.2.1",
+    "react-material-ui-carousel": "^3.4.2",
     "react-scripts": "^5.0.1",
     "react-slick": "^0.29.0",
     "react-swipeable-views-react-18-fix": "^0.14.1",
