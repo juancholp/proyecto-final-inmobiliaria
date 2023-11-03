@@ -221,6 +221,7 @@ export default function PublicarForm() {
             elevation={6}
             variant="filled"
             severity="success"
+    
           >
             {snackbarMessage}
           </MuiAlert>
