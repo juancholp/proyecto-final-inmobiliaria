@@ -12,11 +12,8 @@ export default function TextFieldImagenes({
   const [imgsrc, setImgsrc] = useState([]);
 
   const addTextField = () => {
-    setTextFieldImagenesData([
-      ...textFieldImagenesData,
-      { id: Date.now(), value: "" },
-    ]);
-    setImgsrc([...imgsrc, ""]);
+    setTextFieldImagenesData([...textFieldImagenesData, { id: Date.now(), value: '' }]);
+    setImgsrc([...imgsrc, '']);
   };
 
   const removeTextField = (id) => {
@@ -26,7 +23,6 @@ export default function TextFieldImagenes({
     setTextFieldImagenesData(updatedTextFields);
 
     const updatedImgsrc = [...imgsrc];
-    updatedImgsrc.splice(id, 1);
     updatedImgsrc.splice(id, 1);
     setImgsrc(updatedImgsrc);
   };
@@ -58,8 +54,8 @@ export default function TextFieldImagenes({
             onChange={(e) => handleTextFieldChange(field.id, e.target.value)}
           />
          <IconButton color="secondary" onClick={() => removeTextField(field.id)}>
-            <DeleteIcon />
-          </IconButton>
+          <DeleteIcon style={{marginTop:22}}/>
+        </IconButton>
         </div>
       ))}
       <Box>
