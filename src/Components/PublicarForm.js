@@ -67,12 +67,8 @@ export default function PublicarForm() {
   };
 
   const handleSave = () => {
-    const combinedData = {
-      ...formData,
-      imgsrc: textFieldImagenesData.map((item) => item.value),
-    };
-    console.log(combinedData);
-    openSnackbar("Datos guardados");
+    const combinedData = { ...formData, imgsrc: textFieldImagenesData.map(item => item.value) };
+    openSnackbar('Datos guardados');
   };
 
   return (
@@ -149,6 +145,7 @@ export default function PublicarForm() {
                 <InputAdornment position="start">$</InputAdornment>
               }
               label="Amount"
+              type='number'
               onChange={(e) => handleInputChange(e, "precio")}
             />
           </FormControl>
@@ -162,6 +159,7 @@ export default function PublicarForm() {
                 <InputAdornment position="start">$</InputAdornment>
               }
               label="Amount"
+              type='number'
               onChange={(e) => handleInputChange(e, "gastoscomunes")}
             />
           </FormControl>

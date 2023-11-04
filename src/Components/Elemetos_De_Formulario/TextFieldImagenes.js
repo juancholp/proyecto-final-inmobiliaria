@@ -27,6 +27,7 @@ export default function TextFieldImagenes({
 
     const updatedImgsrc = [...imgsrc];
     updatedImgsrc.splice(id, 1);
+    updatedImgsrc.splice(id, 1);
     setImgsrc(updatedImgsrc);
   };
 
@@ -66,6 +67,7 @@ export default function TextFieldImagenes({
         <IconButton color="primary" onClick={addTextField}>
           <AddIcon />
         </IconButton>
+        
       </Box>
     </div>
   );
