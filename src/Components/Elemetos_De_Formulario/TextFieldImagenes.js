@@ -57,10 +57,9 @@ export default function TextFieldImagenes({
             value={field.value}
             onChange={(e) => handleTextFieldChange(field.id, e.target.value)}
           />
-          <IconButton
-            color="secondary"
-            onClick={() => removeTextField(field.id)}
-          ></IconButton>
+         <IconButton color="secondary" onClick={() => removeTextField(field.id)}>
+            <DeleteIcon />
+          </IconButton>
         </div>
       ))}
       <Box>
