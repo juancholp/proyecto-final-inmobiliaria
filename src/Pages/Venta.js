@@ -1,11 +1,7 @@
-import React from 'react'
-import DataTable from '../Components/DataTable'
+import React from "react";
 
 const Venta = () => {
-  return (
+  return <div>Venta</div>;
+};
 
-    <DataTable/>
-  )
-}
-
-export default Venta
+export default Venta;
