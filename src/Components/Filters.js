@@ -64,21 +64,22 @@ function Filters() {
     const {
       target: { value },
     } = event;
-    await setSelected(value);
+
+    await setSelected({ localidades: value });
     console.log(selected);
   };
   const handleChangeTipo = async (event) => {
     const {
       target: { value },
     } = event;
-    await setSelected(value);
+    await setSelected({ tipo: value });
     console.log(selected);
   };
   const handleChangeDormitorios = async (event) => {
     const {
       target: { value },
     } = event;
-    await setSelected(value);
+    await setSelected({ dormitorios: value });
     console.log(selected);
   };
   // const handleChangeLocalidades = (event) => {
