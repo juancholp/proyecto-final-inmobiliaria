@@ -22,14 +22,14 @@ const RenderResults = (props) => {
               <Grid key={result.id} item xs={12}>
                 <Paper elevation={3}>
                   <Box display="flex" alignItems="center" p={2}>
-                    <div style={{width: "200px", height: "200px"}}>
+                    <div style={{width: "200px", height: "200px", marginRight: "10px"}}>
                     <img
                       src={result.imgsrc}
                       alt="Inmueble"
                       style={{ width: "200px", height: "200px", marginRight: "20px" }}
                     />
                     </div>
-                    <div style={{ flex: 3 }}> 
+                    <div style={{ flex: 2 }}> 
                       <Typography variant="h5">USD {result.precio}</Typography>
                       <Typography variant="subtitle1" color="textSecondary">
                         {result.ubicacion[0] + ", " + result.ubicacion[1]}
