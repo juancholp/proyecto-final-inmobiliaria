@@ -1,160 +1,161 @@
-import * as React from "react";
-import AppBar from "@mui/material/AppBar";
-import Box from "@mui/material/Box";
-import Toolbar from "@mui/material/Toolbar";
-import IconButton from "@mui/material/IconButton";
-import Typography from "@mui/material/Typography";
-import Menu from "@mui/material/Menu";
-import MenuIcon from "@mui/icons-material/Menu";
-import Container from "@mui/material/Container";
-import Avatar from "@mui/material/Avatar";
-import Button from "@mui/material/Button";
-import Tooltip from "@mui/material/Tooltip";
-import MenuItem from "@mui/material/MenuItem";
-import AdbIcon from "@mui/icons-material/Adb";
-import { Link } from "react-router-dom";
+import * as React from 'react'
+import AppBar from '@mui/material/AppBar'
+import Box from '@mui/material/Box'
+import Toolbar from '@mui/material/Toolbar'
+import IconButton from '@mui/material/IconButton'
+import Typography from '@mui/material/Typography'
+import Menu from '@mui/material/Menu'
+import MenuIcon from '@mui/icons-material/Menu'
+import Container from '@mui/material/Container'
+import Avatar from '@mui/material/Avatar'
+import Button from '@mui/material/Button'
+import Tooltip from '@mui/material/Tooltip'
+import MenuItem from '@mui/material/MenuItem'
+import AdbIcon from '@mui/icons-material/Adb'
+import { Link } from 'react-router-dom'
+import AccountBalanceIcon from '@mui/icons-material/AccountBalance'
 
-const pages = ["Venta", "Alquiler", "Proyectos", "Inmobiliarias", "Noticias"];
+const pages = ['Venta', 'Alquiler']
 const settings = [
-  "Ingresar",
-  "Perfil",
-  "Configuracion",
-  "Favoritos",
-  "Log out",
-];
+  'Ingresar',
+  'Perfil',
+  'Configuracion',
+  'Favoritos',
+  'Cerrar sesión',
+]
 
 function Navbar() {
-  const [anchorElNav, setAnchorElNav] = React.useState(null);
-  const [anchorElUser, setAnchorElUser] = React.useState(null);
+  const [anchorElNav, setAnchorElNav] = React.useState(null)
+  const [anchorElUser, setAnchorElUser] = React.useState(null)
 
   const handleOpenNavMenu = (event) => {
-    setAnchorElNav(event.currentTarget);
-  };
+    setAnchorElNav(event.currentTarget)
+  }
   const handleOpenUserMenu = (event) => {
-    setAnchorElUser(event.currentTarget);
-  };
+    setAnchorElUser(event.currentTarget)
+  }
 
   const handleCloseNavMenu = () => {
-    setAnchorElNav(null);
-  };
+    setAnchorElNav(null)
+  }
 
   const handleCloseUserMenu = () => {
-    setAnchorElUser(null);
-  };
+    setAnchorElUser(null)
+  }
 
   return (
-    <AppBar position="sticky">
-      <Container maxWidth="xl">
+    <AppBar position='sticky'>
+      <Container maxWidth='xl'>
         <Toolbar disableGutters>
-          <AdbIcon sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} />
+          <AccountBalanceIcon
+            sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }}
+          />
           <Typography
-            variant="h6"
+            variant='h6'
             noWrap
-            component="a"
-            href="/home"
+            component='a'
+            href='/home'
             sx={{
               mr: 2,
-              display: { xs: "none", md: "flex" },
-              fontFamily: "Lato",
+              display: { xs: 'none', md: 'flex' },
+              fontFamily: 'Lato',
               fontWeight: 300,
-              letterSpacing: ".3rem",
-              color: "inherit",
-              textDecoration: "none",
+              letterSpacing: '.3rem',
+              color: 'inherit',
+              textDecoration: 'none',
             }}
           >
-            LOGO
+            Sea Real State
           </Typography>
-
-          <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
+          <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
             <IconButton
-              size="large"
-              aria-label="account of current user"
-              aria-controls="menu-appbar"
-              aria-haspopup="true"
+              size='large'
+              aria-label='account of current user'
+              aria-controls='menu-appbar'
+              aria-haspopup='true'
               onClick={handleOpenNavMenu}
-              color="inherit"
+              color='inherit'
             >
               <MenuIcon />
             </IconButton>
             <Menu
-              id="menu-appbar"
+              id='menu-appbar'
               anchorEl={anchorElNav}
               anchorOrigin={{
-                vertical: "bottom",
-                horizontal: "left",
+                vertical: 'bottom',
+                horizontal: 'left',
               }}
               keepMounted
               transformOrigin={{
-                vertical: "top",
-                horizontal: "left",
+                vertical: 'top',
+                horizontal: 'left',
               }}
               open={Boolean(anchorElNav)}
               onClose={handleCloseNavMenu}
               sx={{
-                display: { xs: "block", md: "none" },
+                display: { xs: 'block', md: 'none' },
               }}
             >
               {pages.map((page) => (
                 <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{page}</Typography>
+                  <Typography textAlign='center'>{page}</Typography>
                 </MenuItem>
               ))}
             </Menu>
           </Box>
-          <AdbIcon sx={{ display: { xs: "flex", md: "none" }, mr: 1 }} />
+          <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
           <Typography
-            variant="h5"
+            variant='h5'
             noWrap
-            component="a"
-            href="#app-bar-with-responsive-menu"
+            component='a'
+            href='#app-bar-with-responsive-menu'
             sx={{
               mr: 2,
-              display: { xs: "flex", md: "none" },
+              display: { xs: 'flex', md: 'none' },
               flexGrow: 1,
-              fontFamily: "Lato",
+              fontFamily: 'Lato',
               fontWeight: 300,
-              letterSpacing: ".3rem",
-              color: "inherit",
-              textDecoration: "none",
+              letterSpacing: '.3rem',
+              color: 'inherit',
+              textDecoration: 'none',
             }}
           >
-            LOGO
+            Sea Real State
           </Typography>
-          <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
+          <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {pages.map((page) => (
               <Button
                 key={page}
                 onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: "white", display: "block" }}
+                sx={{ my: 2, color: 'white', display: 'block' }}
               >
                 <Link
                   to={`/` + page}
-                  style={{ color: "white", textDecoration: "none" }}
+                  style={{ color: 'white', textDecoration: 'none' }}
                 >
                   {page}
                 </Link>
               </Button>
             ))}
           </Box>
-
-          <Box sx={{ flexGrow: 0, mr: "35px" }}>
-            <Tooltip title="Open settings">
+          <Box sx={{ flexGrow: 0, mr: '35px' }}>
+            <Tooltip title='Open settings'>
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+                <Avatar alt='Remy Sharp' src='/static/images/avatar/2.jpg' />
               </IconButton>
             </Tooltip>
             <Menu
-              sx={{ mt: "45px" }}
-              id="menu-appbar"
+              sx={{ mt: '45px' }}
+              id='menu-appbar'
               anchorEl={anchorElUser}
               anchorOrigin={{
-                vertical: "top",
-                horizontal: "right",
+                vertical: 'top',
+                horizontal: 'right',
               }}
               keepMounted
               transformOrigin={{
-                vertical: "top",
-                horizontal: "right",
+                vertical: 'top',
+                horizontal: 'right',
               }}
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
@@ -163,7 +164,7 @@ function Navbar() {
                 <MenuItem key={setting} onClick={handleCloseUserMenu}>
                   <Link
                     to={`/` + setting}
-                    style={{ color: "black", textDecoration: "none" }}
+                    style={{ color: 'black', textDecoration: 'none' }}
                   >
                     {setting}
                   </Link>
@@ -174,6 +175,6 @@ function Navbar() {
         </Toolbar>
       </Container>
     </AppBar>
-  );
+  )
 }
-export default Navbar;
+export default Navbar
