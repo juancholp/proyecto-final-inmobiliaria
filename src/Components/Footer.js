@@ -1,45 +1,63 @@
 import * as React from "react";
 import { styled } from "@mui/material/styles";
 import Box from "@mui/material/Box";
-import Paper from "@mui/material/Paper";
 import Grid from "@mui/material/Grid";
+import FacebookIcon from "@mui/icons-material/Facebook";
+import YouTubeIcon from "@mui/icons-material/YouTube";
+import TwitterIcon from "@mui/icons-material/Twitter";
+import { responsiveFontSizes } from "@material-ui/core";
+import { Typography } from "@mui/material";
 
-const Item = styled(Paper)(({ theme }) => ({
+const Item = styled("div")(({ theme }) => ({
   textAlign: "center",
+  padding: theme.spacing(2),
+  backgroundColor: "transparent",
+  color: "white",
+  border: "none",
+  fontFamily: "Lato",
+  letterSpacing: ".1rem",
+  borderRadius: 0,
+  "& a": {
+    color: "inherit",
+    textDecoration: "none",
+  },
 }));
 
 export default function StickyFooter() {
   return (
-    <Box className="footer" sx={{ flexGrow: 1 }}>
-      <Grid container spacing={3}>
-        <Grid item xs>
-          <Item id="footer">
-            <a href="#">Sobre Nosotros</a>
-          </Item>
-          <Item id="footer">
-            <a href="#">Terminos y condiciones</a>
-          </Item>
-        </Grid>
-        <Grid item xs={6}>
-          <Item id="footer">
-            <a href="#">Ventas</a>
-          </Item>
-          <Item id="footer">
-            <a href="#">Alquiler</a>
-          </Item>
-          <Item id="footer">
-            <a href="#">Alquiler Temporal</a>
+    <Box className="footer" >
+      <Grid container spacing={2}>
+        <Grid item xs={6} sx={{fontSize: "1.2rem", position: "relative",  left: "-2rem", top: "0.3rem"}}>
+          <Item>
+            <Typography sx={{fontFamily: "Lato", letterSpacing: ".1rem"}}>
+            © 2023 Blue Paradise
+            </Typography>
           </Item>
         </Grid>
-        <Grid item xs>
-          <Item id="footer">
-            <a href="#">YouTube</a>
+      </Grid>
+      <Grid container spacing={2} sx={{ justifyContent: "flex-end" }}>
+        <Grid item xs={3}>
+          <Item sx={{position: "relative", right: "-4rem", top: "-0.3rem"}}>
+            <a href="#">
+              <FacebookIcon sx={{ marginRight: "3px", position: "relative", top: "5px" }} />
+              Facebook
+            </a>
           </Item>
-          <Item id="footer">
-            <a href="#">Facebook</a>
+        </Grid>
+        <Grid item xs={3}>
+          <Item sx={{position: "relative", right: "-4rem", top: "-0.3rem"}}>
+            <a href="#">
+              <YouTubeIcon sx={{ marginRight: "3px", position: "relative", top: "5px" }} />
+              YouTube
+            </a>
           </Item>
-          <Item id="footer">
-            <a href="#">Twitter</a>
+        </Grid>
+        <Grid item xs={3} sx={{marginRight: "0"}}>
+          <Item sx={{position: "relative", right: "-2rem", top: "-0.3rem"}}>
+            <a href="#">
+              <TwitterIcon sx={{ marginRight: "3px", position: "relative", top: "5px" }} />
+              Twitter
+            </a>
           </Item>
         </Grid>
       </Grid>

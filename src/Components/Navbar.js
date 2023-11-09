@@ -14,7 +14,7 @@ import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
 import { Link } from "react-router-dom";
 
-const pages = ["Venta", "Alquiler", "Proyectos", "Inmobiliarias", "Noticias"];
+const pages = ["Venta", "Alquiler",];
 const settings = [
   "Ingresar",
   "Perfil",
@@ -62,7 +62,7 @@ function Navbar() {
               textDecoration: "none",
             }}
           >
-            LOGO
+            Blue Paradise
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
