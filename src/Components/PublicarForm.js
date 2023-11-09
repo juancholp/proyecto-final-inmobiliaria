@@ -1,21 +1,19 @@
-import React, { useState } from 'react';
-import Box from '@mui/material/Box';
-import TextField from '@mui/material/TextField';
+import React, { useState } from "react";
+import Box from "@mui/material/Box";
+import TextField from "@mui/material/TextField";
 import "./PublicarForm.css";
-import { Typography } from '@mui/material';
-import FormControl from '@mui/material/FormControl';
-import InputLabel from '@mui/material/InputLabel';
-import InputAdornment from '@mui/material/InputAdornment';
-import SelectList from './Elemetos_De_Formulario/SelectListFormulario';
-import Button from '@mui/material/Button';
-import TextFieldImagenes from './Elemetos_De_Formulario/TextFieldImagenes';
-import Snackbar from '@mui/material/Snackbar';
-import MuiAlert from '@mui/material/Alert';
-import ChipComodides from "./Elemetos_De_Formulario/ChipComodides"
-import { storeContext } from "../Store/StoreProvider"
-import OutlinedInput from '@mui/material/OutlinedInput';
-
-
+import { Typography } from "@mui/material";
+import FormControl from "@mui/material/FormControl";
+import InputLabel from "@mui/material/InputLabel";
+import InputAdornment from "@mui/material/InputAdornment";
+import SelectList from "./Elemetos_De_Formulario/SelectListFormulario";
+import Button from "@mui/material/Button";
+import TextFieldImagenes from "./Elemetos_De_Formulario/TextFieldImagenes";
+import Snackbar from "@mui/material/Snackbar";
+import MuiAlert from "@mui/material/Alert";
+import ChipComodides from "./Elemetos_De_Formulario/ChipComodides";
+import { storeContext } from "../Store/StoreProvider";
+import OutlinedInput from "@mui/material/OutlinedInput";
 
 export default function PublicarForm() {
   const [formData, setFormData] = useState({
@@ -46,7 +44,7 @@ export default function PublicarForm() {
   const [textFieldImagenesData, setTextFieldImagenesData] = useState([]);
 
   const [snackbarOpen, setSnackbarOpen] = useState(false);
-  const [snackbarMessage, setSnackbarMessage] = useState('');
+  const [snackbarMessage, setSnackbarMessage] = useState("");
 
   const handleInputChange = (e, fieldName) => {
     const value = e.target.value;
@@ -70,7 +68,7 @@ export default function PublicarForm() {
 
   const handleSave = () => {
     const combinedData = { ...formData, imgsrc: textFieldImagenesData.map(item => item.value) };
-   
+    console.log(combinedData);
     openSnackbar('Datos guardados');
   };
 
@@ -82,14 +80,13 @@ export default function PublicarForm() {
       <Box
         component="form"
         sx={{
-          '& .MuiTextField-root': { m: 1, width: '20ch' },
+          "& .MuiTextField-root": { m: 1, width: "20ch" },
         }}
         noValidate
         autoComplete="off"
       >
-
         <div>
-          <div className="Select" >
+          <div className="Select">
             {/* Select List de tipo de publicacion */}
             <SelectList
               className="selectList"
@@ -145,17 +142,23 @@ export default function PublicarForm() {
             <InputLabel htmlFor="outlined-adornment-amount">Precio</InputLabel>
             <OutlinedInput
               id="outlined-adornment-amount"
-              startAdornment={<InputAdornment position="start">$</InputAdornment>}
+              startAdornment={
+                <InputAdornment position="start">$</InputAdornment>
+              }
               label="Amount"
               type='number'
               onChange={(e) => handleInputChange(e, "precio")}
             />
           </FormControl>
           <FormControl sx={{ m: 1 }}>
-            <InputLabel htmlFor="outlined-adornment-amount">Gastos Comunes</InputLabel>
+            <InputLabel htmlFor="outlined-adornment-amount">
+              Gastos Comunes
+            </InputLabel>
             <OutlinedInput
               id="outlined-adornment-amount"
-              startAdornment={<InputAdornment position="start">$</InputAdornment>}
+              startAdornment={
+                <InputAdornment position="start">$</InputAdornment>
+              }
               label="Amount"
               type='number'
               onChange={(e) => handleInputChange(e, "gastoscomunes")}
@@ -168,7 +171,9 @@ export default function PublicarForm() {
               type={store.typesAtributos[index]}
               label={item}
               variant="standard"
-              onChange={(e) => handleInputChange(e, store?.nombreAtributosGuardado[index])}
+              onChange={(e) =>
+                handleInputChange(e, store?.nombreAtributosGuardado[index])
+              }
             />
           ))}
           <div className="Select">
@@ -176,7 +181,10 @@ export default function PublicarForm() {
               className="selectList"
               tipo={store?.opcion}
               titulo={"Acepta Mascotas"}
-              onChange={(value) => handleSelectChange(value, "aceptaMascotasOptions")} />
+              onChange={(value) =>
+                handleSelectChange(value, "aceptaMascotasOptions")
+              }
+            />
 
             <SelectList
               className="selectList"
@@ -191,7 +199,9 @@ export default function PublicarForm() {
           <Typography mb="1rem" variant="h6" fontFamily="Lato">
             Comodidades
           </Typography>
-          <div><ChipComodides informacion={store?.comodidad} formData={formData} /></div>
+          <div>
+            <ChipComodides informacion={store?.comodidad} formData={formData} />
+          </div>
           <Typography mb="1rem" variant="h6" fontFamily="Lato">
             Imagenes
           </Typography>
@@ -200,7 +210,7 @@ export default function PublicarForm() {
             setTextFieldImagenesData={setTextFieldImagenesData}
           />
         </div>
-        <div className='bobyboton'>
+        <div className="bobyboton">
           <TextField
             id="standard-multiline"
             label="Descripcion"
@@ -210,7 +220,12 @@ export default function PublicarForm() {
             sx={{ width: "60%" }}
             onChange={(e) => handleInputChange(e, "descripcion")}
           />
-          <Button variant="contained" className='boton' onClick={handleSave} color="success">
+          <Button
+            variant="contained"
+            className="boton"
+            onClick={handleSave}
+            color="success"
+          >
             Guardar
           </Button>
         </div>
@@ -219,12 +234,7 @@ export default function PublicarForm() {
           autoHideDuration={3000}
           onClose={() => setSnackbarOpen(false)}
         >
-          <MuiAlert
-            elevation={6}
-            variant="filled"
-            severity="success"
-    
-          >
+          <MuiAlert elevation={6} variant="filled" severity="success">
             {snackbarMessage}
           </MuiAlert>
         </Snackbar>
