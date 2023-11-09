@@ -11,7 +11,7 @@ import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
-import AdbIcon from "@mui/icons-material/Adb";
+import ApartmentIcon from '@mui/icons-material/Apartment';
 import { Link } from "react-router-dom";
 
 const pages = ["Venta", "Alquiler",];
@@ -46,7 +46,9 @@ function Navbar() {
     <AppBar position="sticky">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <AdbIcon sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} />
+          <ApartmentIcon sx={{ display: { xs: "none", md: "flex" }, mr: 1,  }}>
+            <Link></Link>
+          </ApartmentIcon>
           <Typography
             variant="h6"
             noWrap
@@ -57,14 +59,14 @@ function Navbar() {
               display: { xs: "none", md: "flex" },
               fontFamily: "Lato",
               fontWeight: 300,
-              letterSpacing: ".3rem",
+              letterSpacing: ".2rem",
               color: "inherit",
               textDecoration: "none",
             }}
           >
             Blue Paradise
           </Typography>
-
+          <Typography sx={{fontSize: "3rem", fontWeight: "100"}}>|</Typography>
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
             <IconButton
               size="large"
@@ -101,31 +103,12 @@ function Navbar() {
               ))}
             </Menu>
           </Box>
-          <AdbIcon sx={{ display: { xs: "flex", md: "none" }, mr: 1 }} />
-          <Typography
-            variant="h5"
-            noWrap
-            component="a"
-            href="#app-bar-with-responsive-menu"
-            sx={{
-              mr: 2,
-              display: { xs: "flex", md: "none" },
-              flexGrow: 1,
-              fontFamily: "Lato",
-              fontWeight: 300,
-              letterSpacing: ".3rem",
-              color: "inherit",
-              textDecoration: "none",
-            }}
-          >
-            LOGO
-          </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
             {pages.map((page) => (
               <Button
                 key={page}
                 onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: "white", display: "block" }}
+                sx={{ my: 2, color: "white", display: "block", fontFamily: "Lato", fontWeight: "300", position: "relative", top: "0.11rem", fontSize: ".9rem", letterSpacing: ".1rem", left: "1rem" }}
               >
                 <Link
                   to={`/` + page}
