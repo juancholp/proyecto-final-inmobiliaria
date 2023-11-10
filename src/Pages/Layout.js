@@ -1,6 +1,7 @@
 import { Outlet, useNavigate } from "react-router-dom";
 import Navbar from "../Components/Navbar";
 import StoreProvider from "../Store/StoreProvider";
+import Footer from "../Components/Footer"
 import { useEffect } from "react";
 
 const Layout = () => {
@@ -12,6 +13,8 @@ const Layout = () => {
       {!showNavBar && <Navbar />}
 
       <Outlet />
+      
+      {!showNavBar && <Footer/>}
     </StoreProvider>
     </>
   );

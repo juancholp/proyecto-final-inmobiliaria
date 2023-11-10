@@ -64,9 +64,6 @@ function MainPage() {
       <div className="carrousel-container">
         <Carrousel />
       </div>
-      <div>
-        <Footer />
-      </div>
     </div>
   );
 }

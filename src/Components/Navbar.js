@@ -14,7 +14,7 @@ import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
 import { Link } from "react-router-dom";
 
-const pages = ["Venta", "Alquiler", "Proyectos", "Inmobiliarias", "Noticias"];
+const pages = ["Propiedades", "Proyectos", "Inmobiliarias", "Noticias"];
 const settings = [
   "Ingresar",
   "Perfil",

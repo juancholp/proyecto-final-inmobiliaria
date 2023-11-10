@@ -6,7 +6,7 @@ import Estadisticas from "./componentes/dashboard/Estadisticas";
 import PerfilDashboard from "./componentes/dashboard/PerfilDashboard";
 import ReactDOM from "react-dom/client";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Alquiler from "./Pages/Alquiler";
+import Propiedad from "./Pages/Propiedades";
 import Configuracion from "./Pages/Configuracion";
 import Favoritos from "./Pages/Favoritos";
 import Ingresar from "./Pages/Ingresar";
@@ -15,7 +15,6 @@ import Logout from "./Pages/Logout";
 import Noticias from "./Pages/Noticias";
 import Perfil from "./Pages/Perfil";
 import Proyectos from "./Pages/Proyectos";
-import Venta from "./Pages/Venta";
 import NoPage from "./Pages/NoPage";
 import Layout from "./Pages/Layout";
 import Home from "./Pages/Home";
@@ -43,7 +42,7 @@ export default function Router() {
           <Route path="/dashboard/perfil" element={<PerfilDashboard />}></Route>
           <Route path="/home" element={<Home />} />
           <Route path="" element={<Home />} />
-          <Route path="/alquiler" element={<Alquiler />} />
+          <Route path="/Propiedades" element={<Propiedad />} />
           <Route path="/configuracion" element={<Configuracion />} />
           <Route path="/favoritos" element={<Favoritos />} />
           <Route path="/ingresar" element={<Ingresar />} />
@@ -59,7 +58,6 @@ export default function Router() {
           </Route>
           <Route path="/proyectos" element={<Proyectos />} />
           <Route path="/publicarpropiedad" element={<PublicarPropiedad />} />
-          <Route path="/venta" element={<Venta />} />
           <Route path="*" element={<NoPage />} />
           <Route path="/resultados" element={<Resultados />} />
         

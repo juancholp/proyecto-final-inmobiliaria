@@ -1,6 +1,4 @@
-import { useEffect } from "react";
-import { useState } from "react";
-import { useContext } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import RenderResults from "./RenderResults";
 import {
   Box,
@@ -14,20 +12,14 @@ import {
 import MapIcon from "@mui/icons-material/Map";
 import { FilterAlt } from "@mui/icons-material";
 import "./SearchResult.css";
-import {
-  storeContext,
-  filterResults,
-  filterParams,
-} from "../../Store/StoreProvider";
+import { storeContext, filterResults, filterParams } from "../../Store/StoreProvider";
 import Filters from "../Filters";
 const SearchResult = () => {
   const [numOfResults, setNumOfResults] = useState(0);
   const [loading, setLoading] = useState(true);
   const [results, setResults] = useState([]);
-
   const [filteredResults, setFilteredResults] = useState([]);
-  const [store, dispatch] = useContext(storeContext);
-
+  const [store] = useContext(storeContext);
   useEffect(() => {
     const filteredResults = filterResults(results);
     setFilteredResults(filteredResults);
@@ -39,19 +31,13 @@ const SearchResult = () => {
     setTimeout(() => {
       setLoading(false);
     }, 1000);
-    setTimeout(() => {}, 1500);
   }, []);
-
   useEffect(() => {
-    if (filteredResults.length > 0) {
-      setNumOfResults(filteredResults.length);
-    } else {
-      setNumOfResults(0);
-    }
+    setNumOfResults(filteredResults.length > 0 ? filteredResults.length : 0);
   }, [filteredResults]);
-
   return (
     <div className="SearchResult">
+      <Filters />
       <Container maxWidth="md">
         <Box boxShadow={2}>
           <div className="info">
@@ -68,11 +54,7 @@ const SearchResult = () => {
                 divider={<Divider orientation="horizontal" flexItem />}
                 spacing={1}
               >
-                <Typography
-                  component={"h1"}
-                  variant="body1"
-                  color="text.primary"
-                >
+                <Typography component={"h1"} variant="body1" color="text.primary">
                   Venta de casas y apartamentos en {filterParams.localidad}.
                 </Typography>
                 <Typography variant="body2" color="text.secondary">
@@ -92,11 +74,7 @@ const SearchResult = () => {
                 <Button variant="outlined" size="small" startIcon={<MapIcon />}>
                   Ver mapa
                 </Button>
-                <Button
-                  variant="outlined"
-                  size="small"
-                  startIcon={<FilterAlt />}
-                >
+                <Button variant="outlined" size="small" startIcon={<FilterAlt />}>
                   Popularidad
                 </Button>
               </Stack>
@@ -104,7 +82,6 @@ const SearchResult = () => {
           </div>
         </Box>
       </Container>
-      <Filters />
       <Container className="resultados" maxWidth="lg">
         <Box
           boxShadow={2}
@@ -121,19 +98,18 @@ const SearchResult = () => {
           }}
         >
           <main className="results">
-            {loading && <p>Cargando...</p>}
+            {loading && <RenderResults results={filteredResults}/>}
             {!loading && (
               <div>
                 {filteredResults.length > 0 && (
                   <RenderResults results={filteredResults} />
                 )}
               </div>
-            )}{" "}
+            )}
           </main>
         </Box>
       </Container>
     </div>
   );
 };
-
 export default SearchResult;
