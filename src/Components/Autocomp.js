@@ -3,8 +3,8 @@ import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
 import { filterParams } from "../Store/StoreProvider";
 export default function ComboBox() {
-  const [selectedDepartment, setSelectedDepartment] = React.useState(null);
-
+  const [selectedDepartment, setSelectedDepartment] = React.useState("");
+React.useEffect(()=>())
   const handleDepartmentChange = (value) => {
     console.log("valor = ", value);
     const newValue = value;
