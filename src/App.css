@@ -28,9 +28,10 @@ a {
 }
 
 .SearchBackground {
-  background-image: url("https://source.unsplash.com/random");
-  background-repeat: round;
-  background-size: 100%;
+  background-image: url("https://source.unsplash.com/random/?real,state");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
   image-rendering: optimizeQuality;
   width: auto;
   height: auto;
