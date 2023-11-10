@@ -14,20 +14,13 @@ import PropertyDetails from "./Database/DataTablaDePropiedades.js";
 
 function DetallePropiedad(props) {
   const [casa, setCasa] = useState([]);
-  const hilos = [
-    "MarcketPlace inmobiliario",
-    "Alquiler",
-    "Maldonado",
-    "Punta Del Este",
-    "Arquiler de monoambiente",
-  ];
+  
   useEffect(() => {
     setCasa(Dato[0]);
   }, []);
   return (
     <div className="DetallePropiedad">
       <header className="main">
-        <Breadcrumb Seguimiento={hilos} />
 
         <div className="DetallePropiedadImagen">
           <Carrousel />
