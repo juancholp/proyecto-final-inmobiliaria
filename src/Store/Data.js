@@ -6,7 +6,7 @@ export const ListadoPropiedades = [
     precio: 1200,
     disposicion: 'Frente al mar',
     tipoVenta: 'Venta',
-    ubicacion: ['Punta del Este', 'Maldonado'],
+    ubicacion: ['Punta del Este, ', 'Maldonado'],
     comodidades: ['Piscina', 'Cocina Equipada', 'Vista al mar', 'Jardín'],
     descripcion: 'Espectacular casa frente al mar en Punta del Este',
     aceptaMascotasOptions: 'Sí',
@@ -20,9 +20,9 @@ export const ListadoPropiedades = [
     anioConstruccion: 2015,
     estado: 'Excelente estado',
     imgsrc: [
-      'https://img.freepik.com/vector-gratis/hermosa-casa_24877-50819.jpg',
-      'https://example.com/image2.jpg',
-      'https://example.com/image3.jpg',
+      'https://cdn2.infocasas.com.uy/repo/img/th.outside654x405.9a5cfceec57b2724d2b8a9cf59acd2096fd7a575.jpg',
+      'https://cdn2.infocasas.com.uy/repo/img/th.outside500x1.45517f6aae00596c9e3060effc876f127f3bc96a.jpg',
+      'https://cdn2.infocasas.com.uy/repo/img/th.outside500x1.1c8b9c02a32b9ebcbd39925a6936329780169cb0.jpg',
     ],
   },
   {
@@ -32,7 +32,7 @@ export const ListadoPropiedades = [
     precio: 900,
     disposicion: 'Interno',
     tipoVenta: 'Alquiler',
-    ubicacion: ['Centro', 'Montevideo'],
+    ubicacion: ['Centro, ', 'Montevideo '],
     comodidades: ['Aire Acondicionado', 'Terraza', 'Cocina Equipada'],
     descripcion: 'Acogedor apartamento en pleno centro de Montevideo',
     aceptaMascotasOptions: 'No',
@@ -46,9 +46,9 @@ export const ListadoPropiedades = [
     anioConstruccion: 2000,
     estado: 'Buen estado',
     imgsrc: [
-      'https://example.com/image4.jpg',
-      'https://example.com/image5.jpg',
-      'https://example.com/image6.jpg',
+      'https://cdn2.infocasas.com.uy/repo/img/th.outside500x1.0b681f1664248bbd6cfd5f6992728b9c7b855d16.jpeg',
+      'https://cdn2.infocasas.com.uy/repo/img/th.outside500x1.77001b037aa0d2285bd2dc7ab09a98bff04bcfbe.jpeg',
+      'https://cdn2.infocasas.com.uy/repo/img/th.outside500x1.9558376e8a856b8af8d9714e4a84d79fd3a01c6f.jpeg',
     ],
   },
   {
@@ -58,7 +58,7 @@ export const ListadoPropiedades = [
     precio: 1500,
     disposicion: 'Bosque',
     tipoVenta: 'Venta',
-    ubicacion: ['Sierras de Minas', 'Lavalleja'],
+    ubicacion: ['Sierras de Minas ', 'Lavalleja '],
     comodidades: ['Piscina', 'Vista al bosque', 'Parque amplio'],
     descripcion:
       'Encantador chalet rodeado de naturaleza en las Sierras de Minas',
@@ -73,9 +73,9 @@ export const ListadoPropiedades = [
     anioConstruccion: 1990,
     estado: 'Muy buen estado',
     imgsrc: [
-      'https://example.com/image7.jpg',
-      'https://example.com/image8.jpg',
-      'https://example.com/image9.jpg',
+      'https://cdn2.infocasas.com.uy/repo/img/th.outside500x1.e19d690e3722610e2e6908507e62e2bb521f77b4.jpg',
+      'https://cdn2.infocasas.com.uy/repo/img/th.outside500x1.6bb326564735cc812b593623b5d1fe33092733fa.jpg',
+      'https://cdn2.infocasas.com.uy/repo/img/th.outside500x1.5664db6f8b9866ba3257ed03e98b0abcf72ef751.jpg',
     ],
   },
   {
@@ -85,7 +85,7 @@ export const ListadoPropiedades = [
     precio: 1100,
     disposicion: 'Exterior',
     tipoVenta: 'Alquiler',
-    ubicacion: ['Ciudad Vieja', 'Montevideo'],
+    ubicacion: ['Ciudad Vieja, ', 'Montevideo '],
     comodidades: ['Vista al casco antiguo', 'Terraza', 'Cocina moderna'],
     descripcion: 'Elegante piso con vistas en el corazón de la Ciudad Vieja',
     aceptaMascotasOptions: 'No',
@@ -99,9 +99,9 @@ export const ListadoPropiedades = [
     anioConstruccion: 2012,
     estado: 'Excelente estado',
     imgsrc: [
-      'https://example.com/image10.jpg',
-      'https://example.com/image11.jpg',
-      'https://example.com/image12.jpg',
+      'https://cdn2.infocasas.com.uy/repo/img/th.outside654x400.c0901d12831fe2b92638bcbeac69dbb591c0a8bb.jpg',
+      'https://cdn2.infocasas.com.uy/repo/img/th.outside213x210.ab734190f8835f2f3eec1999a5a6f20e6587d15a.jpg',
+      'https://cdn2.infocasas.com.uy/repo/img/th.outside500x1.fe064b0d98b67eae8c51ef6feb13dc452c9fd7a0.jpg',
     ],
   },
   {
@@ -111,7 +111,7 @@ export const ListadoPropiedades = [
     precio: 500,
     disposicion: 'Rural',
     tipoVenta: 'Venta',
-    ubicacion: ['San Ramón', 'Canelones'],
+    ubicacion: ['San Ramón, ', 'Canelones '],
     comodidades: ['Terreno amplio', 'Vistas al campo'],
     descripcion: 'Amplio terreno rural para construir tu casa de ensueño',
     aceptaMascotasOptions: 'Sí',
@@ -125,9 +125,9 @@ export const ListadoPropiedades = [
     anioConstruccion: null,
     estado: 'Sin construcción',
     imgsrc: [
-      'https://example.com/image13.jpg',
-      'https://example.com/image14.jpg',
-      'https://example.com/image15.jpg',
+      'https://cdn2.infocasas.com.uy/repo/img/th.outside500x1.148805_PBI-2979-TRA_327.jpg',
+      'https://cdn2.infocasas.com.uy/repo/img/th.outside500x1.148805_PBI-2979-TRA_769.jpg',
+      'https://cdn2.infocasas.com.uy/repo/img/th.outside500x1.148805_PBI-2979-TRA_363.jpg',
     ],
   },
   {
@@ -137,7 +137,7 @@ export const ListadoPropiedades = [
     precio: 950,
     disposicion: 'Frente al mar',
     tipoVenta: 'Alquiler',
-    ubicacion: ['Atlántida', 'Canelones'],
+    ubicacion: ['Atlántida, ', 'Canelones '],
     comodidades: [
       'Balcón con vistas',
       'Cocina Equipada',
@@ -155,9 +155,9 @@ export const ListadoPropiedades = [
     anioConstruccion: 2005,
     estado: 'Buen estado',
     imgsrc: [
-      'https://example.com/image16.jpg',
-      'https://example.com/image17.jpg',
-      'https://example.com/image18.jpg',
+      'https://cdn2.infocasas.com.uy/repo/img/th.outside654x400.d68df1eab758e790a8540133dbe67c0ec834afc4.jpeg',
+      'https://cdn2.infocasas.com.uy/repo/img/th.outside500x1.806c65c309b88ea6bf61f0a4aba6c86933cf423e.jpeg',
+      'https://cdn2.infocasas.com.uy/repo/img/th.outside500x1.fa0aea5c8ac33e1f21e2b9c9f5936d3522e58e1e.jpeg',
     ],
   },
   {
@@ -167,7 +167,7 @@ export const ListadoPropiedades = [
     precio: 850,
     disposicion: 'Campo',
     tipoVenta: 'Venta',
-    ubicacion: ['Tacuarembó', 'Tacuarembó'],
+    ubicacion: ['Tacuarembó, ', 'Tacuarembó'],
     comodidades: ['Terreno amplio', 'Piscina', 'Parque con árboles'],
     descripcion: 'Tranquila casa de campo en Tacuarembó',
     aceptaMascotasOptions: 'Sí',
@@ -181,9 +181,9 @@ export const ListadoPropiedades = [
     anioConstruccion: 1995,
     estado: 'Buen estado',
     imgsrc: [
-      'https://example.com/image19.jpg',
-      'https://example.com/image20.jpg',
-      'https://example.com/image21.jpg',
+      'https://cdn2.infocasas.com.uy/repo/img/th.outside654x400.37_CBR-CBR-863_353.jpg',
+      'https://cdn2.infocasas.com.uy/repo/img/th.outside500x1.37_CBR-CBR-863_149.jpg',
+      'https://cdn2.infocasas.com.uy/repo/img/th.outside500x1.37_CBR-CBR-863_221.jpg',
     ],
   },
   {
@@ -193,7 +193,7 @@ export const ListadoPropiedades = [
     precio: 1000,
     disposicion: 'Contrafrente',
     tipoVenta: 'Alquiler',
-    ubicacion: ['Malvín Norte', 'Montevideo'],
+    ubicacion: ['Malvín Norte, ', 'Montevideo'],
     comodidades: ['Balcón', 'Cocina Equipada', 'Aire Acondicionado'],
     descripcion: 'Amplio apartamento en Malvín Norte, cerca de la playa',
     aceptaMascotasOptions: 'Sí',
@@ -207,9 +207,9 @@ export const ListadoPropiedades = [
     anioConstruccion: 2008,
     estado: 'Excelente estado',
     imgsrc: [
-      'https://example.com/image22.jpg',
-      'https://example.com/image23.jpg',
-      'https://example.com/image24.jpg',
+      'https://cdn2.infocasas.com.uy/repo/img/th.outside654x400.29cc696813c5080938b51fa11289a7b8af140471.jpeg#HASTH',
+      'https://cdn2.infocasas.com.uy/repo/img/th.outside500x1.832e1c9851819d306fd43e6f968a2a07d90c17ca.jpeg',
+      'https://cdn2.infocasas.com.uy/repo/img/th.outside500x1.6b4322cc72b1b82d70f9fa6540d405c0ed7aa357.jpeg',
     ],
   },
   {
@@ -219,7 +219,7 @@ export const ListadoPropiedades = [
     precio: 1300,
     disposicion: 'Frente al mar',
     tipoVenta: 'Venta',
-    ubicacion: ['La Paloma', 'Rocha'],
+    ubicacion: ['La Paloma, ', 'Rocha'],
     comodidades: ['Piscina', 'Vista al mar', 'Jardín amplio'],
     descripcion: 'Hermosa casa de playa en La Paloma, frente al mar',
     aceptaMascotasOptions: 'Sí',
@@ -233,9 +233,9 @@ export const ListadoPropiedades = [
     anioConstruccion: 2013,
     estado: 'Excelente estado',
     imgsrc: [
-      'https://example.com/image25.jpg',
-      'https://example.com/image26.jpg',
-      'https://example.com/image27.jpg',
+      'https://cdn2.infocasas.com.uy/repo/img/th.outside654x400.62f0ea87cfc8ca0be0bc0bab4c758645eb535903.jpg',
+      'https://cdn2.infocasas.com.uy/repo/img/th.outside500x1.1d6f5c6e48852dd57546d8d77760d6f7b2376c99.jpg',
+      'https://cdn2.infocasas.com.uy/repo/img/th.outside500x1.f8995f7548f9d7f0483963cdf008c59001802fd6.jpg',
     ],
   },
   {
@@ -245,7 +245,7 @@ export const ListadoPropiedades = [
     precio: 1500,
     disposicion: 'Frente al río',
     tipoVenta: 'Alquiler',
-    ubicacion: ['Carrasco', 'Montevideo'],
+    ubicacion: ['Carrasco, ', 'Montevideo'],
     comodidades: [
       'Balcón con vistas al río',
       'Cocina moderna',
@@ -263,9 +263,9 @@ export const ListadoPropiedades = [
     anioConstruccion: 2017,
     estado: 'Excelente estado',
     imgsrc: [
-      'https://example.com/image28.jpg',
-      'https://example.com/image29.jpg',
-      'https://example.com/image30.jpg',
+      'https://cdn2.infocasas.com.uy/repo/img/th.outside500x1.89056_CW206866_266.jpg',
+      'https://cdn2.infocasas.com.uy/repo/img/th.outside500x1.89056_CW206866_769.jpg',
+      'https://cdn2.infocasas.com.uy/repo/img/th.outside500x1.89056_CW206866_181.jpg',
     ],
   },
   {
@@ -275,7 +275,7 @@ export const ListadoPropiedades = [
     precio: 950,
     disposicion: 'Sierra',
     tipoVenta: 'Venta',
-    ubicacion: ['Sierras de Rocha', 'Rocha'],
+    ubicacion: ['Sierras de Rocha, ', 'Rocha'],
     comodidades: [
       'Terreno amplio',
       'Vistas a las sierras',
@@ -294,9 +294,9 @@ export const ListadoPropiedades = [
     anioConstruccion: 2005,
     estado: 'Buen estado',
     imgsrc: [
-      'https://example.com/image31.jpg',
-      'https://example.com/image32.jpg',
-      'https://example.com/image33.jpg',
+      'https://cdn2.infocasas.com.uy/repo/img/th.outside654x400.122103_CW204827_364.jpg',
+      'https://cdn2.infocasas.com.uy/repo/img/th.outside500x1.122103_CW204827_189.jpg',
+      'https://cdn2.infocasas.com.uy/repo/img/th.outside500x1.122103_CW204827_75.jpg',
     ],
   },
   {
@@ -306,7 +306,7 @@ export const ListadoPropiedades = [
     precio: 850,
     disposicion: 'Frente al parque',
     tipoVenta: 'Alquiler',
-    ubicacion: ['Prado', 'Montevideo'],
+    ubicacion: ['Prado, ', 'Montevideo'],
     comodidades: [
       'Balcón con vistas al parque',
       'Cocina Equipada',
@@ -324,9 +324,9 @@ export const ListadoPropiedades = [
     anioConstruccion: 2010,
     estado: 'Excelente estado',
     imgsrc: [
-      'https://example.com/image34.jpg',
-      'https://example.com/image35.jpg',
-      'https://example.com/image36.jpg',
+      'https://cdn2.infocasas.com.uy/repo/img/th.outside654x400.173160210_9248_19.jpg',
+      'https://cdn2.infocasas.com.uy/repo/img/th.outside500x1.173160210_9248_188.jpg',
+      'https://cdn2.infocasas.com.uy/repo/img/th.outside500x1.173160210_9248_874.jpg',
     ],
   },
   {
@@ -336,7 +336,7 @@ export const ListadoPropiedades = [
     precio: 1100,
     disposicion: 'Frente al mar',
     tipoVenta: 'Venta',
-    ubicacion: ['Rocha', 'Rocha'],
+    ubicacion: ['Rocha, ', 'Rocha'],
     comodidades: ['Piscina', 'Vista al mar', 'Jardín con palmeras'],
     descripcion: 'Espectacular casa frente al mar en la costa de Rocha',
     aceptaMascotasOptions: 'Sí',
@@ -350,9 +350,9 @@ export const ListadoPropiedades = [
     anioConstruccion: 2014,
     estado: 'Excelente estado',
     imgsrc: [
-      'https://example.com/image37.jpg',
-      'https://example.com/image38.jpg',
-      'https://example.com/image39.jpg',
+      'https://cdn2.infocasas.com.uy/repo/img/th.outside500x1.f41a6c00955153cfff2b9c9050f7e788e451e0cd.jpg',
+      'https://cdn2.infocasas.com.uy/repo/img/th.outside500x1.017cdef22fad0eb811cd143a2f015755b0727b84.jpg',
+      'https://cdn2.infocasas.com.uy/repo/img/th.outside500x1.accacd3227df9edfa2cec4ad66d1bf1e2d008d62.jpg',
     ],
   },
   {
@@ -362,7 +362,7 @@ export const ListadoPropiedades = [
     precio: 950,
     disposicion: 'Contrafrente',
     tipoVenta: 'Alquiler',
-    ubicacion: ['Malvín Sur', 'Montevideo'],
+    ubicacion: ['Malvín Sur, ', 'Montevideo'],
     comodidades: [
       'Balcón con vistas al mar',
       'Cocina Equipada',
@@ -380,9 +380,9 @@ export const ListadoPropiedades = [
     anioConstruccion: 2011,
     estado: 'Excelente estado',
     imgsrc: [
-      'https://example.com/image40.jpg',
-      'https://example.com/image41.jpg',
-      'https://example.com/image42.jpg',
+      'https://cdn2.infocasas.com.uy/repo/img/th.outside671x413.cedc394241e2f346c8a54bedc06a6664e555bf43.jpg',
+      'https://cdn2.infocasas.com.uy/repo/img/th.outside500x1.ba32d1bfe6aa02b7f0a6978c7199f74c31cb04f9.jpg',
+      'https://cdn2.infocasas.com.uy/repo/img/th.outside500x1.d0e647c2c3977889ab900a3f8370e3b78903b8b8.jpg',
     ],
   },
   {
@@ -392,7 +392,7 @@ export const ListadoPropiedades = [
     precio: 1000,
     disposicion: 'Sierra',
     tipoVenta: 'Venta',
-    ubicacion: ['Sierras de Lavalleja', 'Lavalleja'],
+    ubicacion: ['Sierras de Lavalleja, ', 'Lavalleja'],
     comodidades: ['Terreno amplio', 'Vistas a las sierras', 'Piscina'],
     descripcion:
       'Hermosa casa en las Sierras de Lavalleja, rodeada de paz y naturaleza',
@@ -407,9 +407,9 @@ export const ListadoPropiedades = [
     anioConstruccion: 2007,
     estado: 'Excelente estado',
     imgsrc: [
-      'https://example.com/image43.jpg',
-      'https://example.com/image44.jpg',
-      'https://example.com/image45.jpg',
+      'https://cdn2.infocasas.com.uy/repo/img/th.outside500x1.37_CBR-CBR-1009_41.jpg',
+      'https://cdn2.infocasas.com.uy/repo/img/th.outside500x1.37_CBR-CBR-1009_141.jpg',
+      'https://cdn2.infocasas.com.uy/repo/img/th.outside500x1.37_CBR-CBR-1009_32.jpg',
     ],
   },
   {
@@ -419,7 +419,7 @@ export const ListadoPropiedades = [
     precio: 1200,
     disposicion: 'Frente al mar',
     tipoVenta: 'Alquiler',
-    ubicacion: ['Punta Carretas', 'Montevideo'],
+    ubicacion: ['Punta Carretas, ', 'Montevideo'],
     comodidades: [
       'Balcón con vistas al mar',
       'Cocina moderna',
@@ -437,9 +437,9 @@ export const ListadoPropiedades = [
     anioConstruccion: 2018,
     estado: 'Excelente estado',
     imgsrc: [
-      'https://example.com/image46.jpg',
-      'https://example.com/image47.jpg',
-      'https://example.com/image48.jpg',
+      'https://cdn2.infocasas.com.uy/repo/img/th.outside500x1.e4224723df4cee089e6a86b41f3137883f8233a2.jpg',
+      'https://cdn2.infocasas.com.uy/repo/img/th.outside500x1.6dc31347a986adf799b1535bc6a91b1471073dbc.jpg',
+      'https://cdn2.infocasas.com.uy/repo/img/th.outside500x1.53b375395cee64224b60a873fe58791a33dc1c0b.jpg',
     ],
   },
   {
@@ -449,7 +449,7 @@ export const ListadoPropiedades = [
     precio: 1100,
     disposicion: 'Frente al mar',
     tipoVenta: 'Venta',
-    ubicacion: ['Canelones', 'Canelones'],
+    ubicacion: ['Canelones, ', 'Canelones'],
     comodidades: ['Piscina', 'Vista al mar', 'Parque con palmeras'],
     descripcion:
       'Casa frente al mar en la costa de Canelones, ideal para relajarse',
@@ -464,9 +464,9 @@ export const ListadoPropiedades = [
     anioConstruccion: 2015,
     estado: 'Excelente estado',
     imgsrc: [
-      'https://example.com/image49.jpg',
-      'https://example.com/image50.jpg',
-      'https://example.com/image51.jpg',
+      'https://cdn2.infocasas.com.uy/repo/img/th.outside500x1.ca33ce8343c7ae26fad657fde78eb344f8bf552f.jpg',
+      'https://cdn2.infocasas.com.uy/repo/img/th.outside500x1.7c8d08037304ea7ac323ddc161e03803ec06b032.jpg',
+      'https://cdn2.infocasas.com.uy/repo/img/th.outside500x1.eefafa1fc18e4f47d5aa087f2afa7d0fe79b52ee.jpg',
     ],
   },
   {
@@ -476,7 +476,7 @@ export const ListadoPropiedades = [
     precio: 950,
     disposicion: 'Frente al río',
     tipoVenta: 'Alquiler',
-    ubicacion: ['Buceo', 'Montevideo'],
+    ubicacion: ['Buceo, ', 'Montevideo'],
     comodidades: [
       'Balcón con vistas al río',
       'Cocina Equipada',
@@ -494,9 +494,9 @@ export const ListadoPropiedades = [
     anioConstruccion: 2010,
     estado: 'Excelente estado',
     imgsrc: [
-      'https://example.com/image52.jpg',
-      'https://example.com/image53.jpg',
-      'https://example.com/image54.jpg',
+      'https://cdn2.infocasas.com.uy/repo/img/th.outside654x400.c30657c4f71f8178298caf41e55037b714767b99.jpg',
+      'https://cdn2.infocasas.com.uy/repo/img/th.outside2487x1161.655eb6a99f706ddcced0ea336f48bb0fdeb3d635.jpg',
+      'https://cdn2.infocasas.com.uy/repo/img/th.outside500x1.2ff0ad8494c4b3587b275bdda9c4ad6621cd9ef6.jpg',
     ],
   },
   {
@@ -506,7 +506,7 @@ export const ListadoPropiedades = [
     precio: 1300,
     disposicion: 'Frente al mar',
     tipoVenta: 'Venta',
-    ubicacion: ['La Pedrera', 'Rocha'],
+    ubicacion: ['La Pedrera, ', 'Rocha'],
     comodidades: ['Piscina', 'Vista al mar', 'Amplio jardín con palmeras'],
     descripcion:
       'Casa de playa en La Pedrera, con vistas al mar y mucha privacidad',
@@ -521,9 +521,9 @@ export const ListadoPropiedades = [
     anioConstruccion: 2013,
     estado: 'Excelente estado',
     imgsrc: [
-      'https://example.com/image55.jpg',
-      'https://example.com/image56.jpg',
-      'https://example.com/image57.jpg',
+      'https://cdn2.infocasas.com.uy/repo/img/th.outside654x400.b0df65e98b7c75737eac873192f00b0cc4acc38e.jpg',
+      'https://cdn2.infocasas.com.uy/repo/img/th.outside500x1.4940d47bb35a3ebcdddbcc3661aff27b1bd64937.jpg',
+      'https://cdn2.infocasas.com.uy/repo/img/th.outside500x1.5ad3f452525a70f4e97c4a5aa8ce41e0e281ce95.jpg',
     ],
   },
   {
@@ -533,7 +533,7 @@ export const ListadoPropiedades = [
     precio: 1000,
     disposicion: 'Frente al río',
     tipoVenta: 'Alquiler',
-    ubicacion: ['Ciudad de la Costa', 'Canelones'],
+    ubicacion: ['Ciudad de la Costa ', 'Canelones'],
     comodidades: [
       'Balcón con vistas al río',
       'Cocina moderna',
@@ -551,9 +551,9 @@ export const ListadoPropiedades = [
     anioConstruccion: 2017,
     estado: 'Excelente estado',
     imgsrc: [
-      'https://example.com/image58.jpg',
-      'https://example.com/image59.jpg',
-      'https://example.com/image60.jpg',
+      'https://cdn2.infocasas.com.uy/repo/img/th.outside500x1.cdc1eb71c8e02f0c9301d92f0c3909294771f887.jpg',
+      'https://cdn2.infocasas.com.uy/repo/img/th.outside500x1.72cfc7551dac430758cf38c168e08c7b811fd5aa.jpg',
+      'https://cdn2.infocasas.com.uy/repo/img/th.outside500x1.f64a326f1c3c4fc8af80b92c4e956b95a87f0802.jpg',
     ],
   },
 ]

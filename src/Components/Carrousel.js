@@ -102,7 +102,7 @@ function Carrousel() {
                       marginBottom: "10px",
                     }}
                   >
-                    Precio: {step.precio}
+                    Precio: {step.tipoMoneda} {step.precio}
                   </p>
                   <p
                     style={{
@@ -113,7 +113,7 @@ function Carrousel() {
                   >
                     Descripción: {step.descripcion}
                   </p>
-                  <p style={{ fontSize: "18px" }}>Dep: {step.ubicacion}</p>
+                  <p style={{ fontSize: "18px" }}>Dep: {step.ubicacion} </p>
                   <a
                     href={step.link}
                     target="_blank"

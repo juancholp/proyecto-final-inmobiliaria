@@ -20,6 +20,8 @@ import {
   filterParams,
 } from "../../Store/StoreProvider";
 import Filters from "../Filters";
+
+
 const SearchResult = () => {
   const [numOfResults, setNumOfResults] = useState(0);
   const [loading, setLoading] = useState(true);
@@ -52,7 +54,7 @@ const SearchResult = () => {
 
   return (
     <div className="SearchResult">
-      <Container maxWidth="md">
+      <Container maxWidth="xl">
         <Box boxShadow={2}>
           <div className="info">
             <Grid
@@ -75,10 +77,7 @@ const SearchResult = () => {
                 >
                   Venta de casas y apartamentos en {filterParams.localidad}.
                 </Typography>
-                <Typography variant="body2" color="text.secondary">
-                  Estás en: {filterParams.tipodepropiedad},{" "}
-                  {filterParams.tipoDeVenta}
-                </Typography>
+                
                 <Typography variant="body2" color="text.primary">
                   Mostrando {numOfResults} resultados.
                 </Typography>
@@ -100,11 +99,19 @@ const SearchResult = () => {
                   Popularidad
                 </Button>
               </Stack>
+              <Box>
+                <Filters />
+              </Box>
+             
             </Grid>
           </div>
         </Box>
+        
       </Container>
-      <Filters />
+      
+      
+      
+      
       <Container className="resultados" maxWidth="lg">
         <Box
           boxShadow={2}
@@ -131,6 +138,7 @@ const SearchResult = () => {
             )}{" "}
           </main>
         </Box>
+        
       </Container>
     </div>
   );
