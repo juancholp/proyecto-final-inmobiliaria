@@ -6,7 +6,7 @@ export const ListadoPropiedades = [
     precio: 1200,
     disposicion: 'Frente al mar',
     tipoVenta: 'Venta',
-    ubicacion: ['Punta del Este', 'Maldonado'],
+    ubicacion: ['Punta del Este', 'Artigas'],
     comodidades: ['Piscina', 'Cocina Equipada', 'Vista al mar', 'Jardín'],
     descripcion: 'Espectacular casa frente al mar en Punta del Este',
     aceptaMascotasOptions: 'Sí',

@@ -8,21 +8,17 @@ import Button from "@mui/material/Button";
 import "./MainPage.css";
 import Autocomp from "./Autocomp";
 import { Link } from "react-router-dom";
-import { filterParams } from "../Store/StoreProvider";
+import { filterParams,storeContext } from "../Store/StoreProvider";
+
 
 
 function MainPage() {
   const [seleccion, setSeleccion] = React.useState("venta");
-  const options_default = [
-    "Casa",
-    "Apartamento",
-    "Terreno",
-    "Local Comercial",
-    "Oficina",
-    "Chacra o Campo",
-    "Garage o Cochera",
-  ];
-
+  const [optionsTipoDePropiedad,setOptionsTiposDePropiedad] = React.useState([])
+  const [store] = React.useContext(storeContext);
+  React.useEffect(() => {
+    setOptionsTiposDePropiedad(store.tipoPropiedad);
+  }, [store.tipoPropiedad]);
   const handleChange = (event, value) => {
     setSeleccion(value);
     filterParams.tipodeventa = value;
@@ -49,7 +45,7 @@ function MainPage() {
             </ToggleButtonGroup>
 
             <div className="contenedorBusqueda">
-              <CustomSelectCheckmarks options={options_default} />
+              <CustomSelectCheckmarks options={optionsTipoDePropiedad} />
               <Autocomp />
               <Link to={"/resultados"}>
                 <Button type="submit" variant="contained">

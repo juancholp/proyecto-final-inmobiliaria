@@ -21,13 +21,13 @@ const MenuProps = {
 };
 
 const options_default = [
-  "Casa",
+  "Casaa",
   "Apartamento",
   "Terreno",
   "Local Comercial",
   "Oficina",
   "Chacra o Campo",
-  "Garage o Cochera",
+  "Garage o Cocheraa",
 ];
 
 function getStyles(option, optionName, theme) {

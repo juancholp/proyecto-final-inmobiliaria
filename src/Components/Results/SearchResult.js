@@ -14,6 +14,8 @@ import { FilterAlt } from "@mui/icons-material";
 import "./SearchResult.css";
 import { storeContext, filterResults, filterParams } from "../../Store/StoreProvider";
 import Filters from "../Filters";
+
+
 const SearchResult = () => {
   const [numOfResults, setNumOfResults] = useState(0);
   const [loading, setLoading] = useState(true);
