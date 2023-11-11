@@ -22,10 +22,12 @@ const SearchResult = () => {
   const [results, setResults] = useState([]);
   const [filteredResults, setFilteredResults] = useState([]);
   const [store] = useContext(storeContext);
+
   useEffect(() => {
     const filteredResults = filterResults(results);
     setFilteredResults(filteredResults);
   }, [results]);
+
   useEffect(() => {
     setResults(store.propiedades);
   }, [store.propiedades]);
@@ -34,6 +36,8 @@ const SearchResult = () => {
       setLoading(false);
     }, 1000);
   }, []);
+
+ 
   useEffect(() => {
     setNumOfResults(filteredResults.length > 0 ? filteredResults.length : 0);
   }, [filteredResults]);
@@ -100,11 +104,11 @@ const SearchResult = () => {
           }}
         >
           <main className="results">
-            {loading && <RenderResults results={filteredResults}/>}
+            {loading && <RenderResults results={store.Filters}/>}
             {!loading && (
               <div>
                 {filteredResults.length > 0 && (
-                  <RenderResults results={filteredResults} />
+                  <RenderResults results={store.Filters} />
                 )}
               </div>
             )}

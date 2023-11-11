@@ -112,6 +112,7 @@ function Filters() {
 
   const saveFilters = () => {
     dispatch({ type: 'setFilters', payload: filtro })
+    
   }
 
   const resetFilters = () => {

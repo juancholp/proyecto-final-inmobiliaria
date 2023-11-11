@@ -48,7 +48,7 @@ function MainPage() {
               <CustomSelectCheckmarks options={optionsTipoDePropiedad} />
               <Autocomp />
               <Link to={"/resultados"}>
-                <Button type="submit" variant="contained">
+                <Button type="submit"  variant="contained">
                   Buscar
                 </Button>
               </Link>
