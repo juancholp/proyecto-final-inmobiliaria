@@ -1,20 +1,22 @@
-import { Outlet, useNavigate } from "react-router-dom";
-import Navbar from "../Components/Navbar";
-import StoreProvider from "../Store/StoreProvider";
-import { useEffect } from "react";
+import { Outlet } from 'react-router-dom'
+import Navbar from '../Components/Navbar'
+import Footer from '../Components/Footer'
+import StoreProvider from '../Store/StoreProvider'
 
 const Layout = () => {
-  
   const showNavBar = window.location.href.includes('dashboard')
+  const showFooter = window.location.href.includes('dashboard')
   return (
     <>
-    <StoreProvider>
-      {!showNavBar && <Navbar />}
+      <StoreProvider>
+        {!showNavBar && <Navbar />}
 
-      <Outlet />
-    </StoreProvider>
+        <Outlet />
+
+        {!showFooter && <Footer />}
+      </StoreProvider>
     </>
-  );
-};
+  )
+}
 
-export default Layout;
+export default Layout
