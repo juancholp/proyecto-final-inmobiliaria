@@ -52,7 +52,7 @@ const SearchResult = () => {
 
   return (
     <div className="SearchResult">
-      <Container maxWidth="md">
+      <Container maxWidth="md" direction="column">
         <Box boxShadow={2}>
           <div className="info">
             <Grid
@@ -122,13 +122,7 @@ const SearchResult = () => {
         >
           <main className="results">
             {loading && <p>Cargando...</p>}
-            {!loading && (
-              <div>
-                {filteredResults.length > 0 && (
-                  <RenderResults results={filteredResults} />
-                )}
-              </div>
-            )}{" "}
+            {!loading && <RenderResults results={filteredResults} />}
           </main>
         </Box>
       </Container>
