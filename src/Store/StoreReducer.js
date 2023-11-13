@@ -38,7 +38,7 @@ const initialStore = () => {
       comodidad: [],
       TipoDePublicacion: [],
     },
-  }
+  };
   return store
 }
 

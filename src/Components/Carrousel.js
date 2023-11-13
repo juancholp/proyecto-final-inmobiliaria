@@ -49,7 +49,7 @@ function Carrousel() {
   };
 
   return (
-    <Box sx={{ maxWidth: 800, flexGrow: 1, position: "relative" }}>
+    <Box sx={{ maxWidth: "100vw", flexGrow: 1, position: "relative" }}>
       <AutoPlaySwipeableViews
         axis={theme.direction === "rtl" ? "x-reverse" : "x"}
         index={activeStep}
@@ -70,7 +70,7 @@ function Carrousel() {
                   style={{
                     height: 600,
                     display: "block",
-                    maxWidth: 800,
+                    maxWidth: "100vw",
                     width: "100%",
                     position: "relative",
                     zIndex: 0,

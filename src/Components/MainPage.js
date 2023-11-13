@@ -9,11 +9,15 @@ import "./MainPage.css";
 import Autocomp from "./Autocomp";
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { filterParams } from "../Store/StoreProvider";
+import { storeContext } from "../Store/StoreProvider";
 import Footer from "./Footer";
+import { useEffect, useContext } from "react";
 
 function MainPage() {
-  const [seleccion, setSeleccion] = React.useState("venta");
+  const [seleccion, setSeleccion] = useState({
+    TipoDePublicacion: "Venta",
+  });
+  const [store, dispatch] = useContext(storeContext);
   const options_default = [
     "Casa",
     "Apartamento",
@@ -25,10 +29,14 @@ function MainPage() {
   ];
 
   const handleChange = (event, value) => {
-    setSeleccion(value);
-    filterParams.tipodeventa = value;
+    setSeleccion({ TipoDePublicacion: value });
   };
-
+  const saveFilters = () => {
+    dispatch({ type: "setFilters", payload: seleccion });
+  };
+  useEffect(() => {
+    saveFilters();
+  }, [seleccion]);
   return (
     <div className="App">
       <div className="SearchBackground">

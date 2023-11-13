@@ -14,12 +14,9 @@ import {
 import MapIcon from "@mui/icons-material/Map";
 import { FilterAlt } from "@mui/icons-material";
 import "./SearchResult.css";
-import {
-  storeContext,
-  filterResults,
-  filterParams,
-} from "../../Store/StoreProvider";
+import { storeContext } from "../../Store/StoreProvider";
 import Filters from "../Filters";
+import { filterResultados } from "../../Hooks/useFilter";
 const SearchResult = () => {
   const [numOfResults, setNumOfResults] = useState(0);
   const [loading, setLoading] = useState(true);
@@ -29,12 +26,14 @@ const SearchResult = () => {
   const [store, dispatch] = useContext(storeContext);
 
   useEffect(() => {
-    const filteredResults = filterResults(results);
-    setFilteredResults(filteredResults);
-  }, [results]);
-  useEffect(() => {
     setResults(store.propiedades);
   }, [store.propiedades]);
+  useEffect(() => {
+    console.log(store.filters);
+    const filteredResult = filterResultados(results, store.filters);
+    console.log(filteredResult);
+    setFilteredResults(filteredResult);
+  }, [results, store.filters]);
   useEffect(() => {
     setTimeout(() => {
       setLoading(false);
@@ -73,11 +72,11 @@ const SearchResult = () => {
                   variant="body1"
                   color="text.primary"
                 >
-                  Venta de casas y apartamentos en {filterParams.localidad}.
+                  Venta de casas y apartamentos en {store.filters.localidad}.
                 </Typography>
                 <Typography variant="body2" color="text.secondary">
-                  Estás en: {filterParams.tipodepropiedad},{" "}
-                  {filterParams.tipoDeVenta}
+                  Estás en: {store.filters.tipo},{" "}
+                  {store.filters.tipoDePublicacion}
                 </Typography>
                 <Typography variant="body2" color="text.primary">
                   Mostrando {numOfResults} resultados.

@@ -1,16 +1,35 @@
 import * as React from 'react';
 import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
-import { filterParams } from "../Store/StoreProvider";
+import { storeContext } from "../Store/StoreProvider";
+import { useState } from "react";
 export default function ComboBox() {
   const [selectedDepartment, setSelectedDepartment] = React.useState(null);
 
   const handleDepartmentChange = (value) => {
     console.log("valor = ", value);
     const newValue = value;
-    filterParams.localidad = newValue;
+    setSelectedDepartment(newValue);
+    setFiltros({ ...filtros, localidad: newValue });
   };
+  const [filtros, setFiltros] = useState({
+    localidad: [],
+    estado: [],
+    tipo: [],
+    dormitorios: [],
+    moneda: [],
+    maxPrice: 0,
+    comodidad: [],
+    TipoDePublicacion: [],
+  });
 
+  const saveFilters = () => {
+    dispatch({ type: "setFilters", payload: filtros });
+  };
+  const [store, dispatch] = React.useContext(storeContext);
+  React.useEffect(() => {
+    saveFilters();
+  }, [selectedDepartment]);
   return (
     <Autocomplete
       style={{ backgroundColor: "white" }}
