@@ -1,99 +1,139 @@
 import * as React from "react";
 import { useEffect } from "react";
-import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
-
+import DetallePropiedad from "../feature_propertyDetails/IndexDetallesPropiedad";
 import { experimentalStyled as styled } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import Paper from "@mui/material/Paper";
 import Grid from "@mui/material/Grid";
-const RenderResults = (props) => {
+import { Container } from "@mui/material";
+import FormMessage from "../FormMessage";
+import { Button } from "@mui/material";
+import { Link } from "react-router-dom";
 
+const RenderResults = (props) => {
   const Item = styled(Paper)(({ theme }) => ({
     backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
     ...theme.typography.body2,
     padding: theme.spacing(2),
     textAlign: "center",
     color: theme.palette.text.secondary,
+    margin: 20,
+    minWidth: 300,
+    border: "1px solid #ccc",
+    boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
+    display: "flex", 
+    flexDirection: "row",
+    alignItems: "center", 
   }));
+
   const [results, setResults] = React.useState([]);
   useEffect(() => {
     setResults(props.results);
   }, [props.results]);
 
+  const handleClickOpen = () => {
+    return <DetallePropiedad />;
+  };
+
   return (
     <div>
-      {" "}
       {!results ? (
         <p>No hay resultados</p>
       ) : (
-        <Box
-          sx={{
-            flexGrow: 1,
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            justifyContent: "center",
-          }}
-        >
-          <Grid
-            container
-            spacing={{ xs: 2, md: 3 }}
-            columns={{ xs: 4, sm: 8, md: 12 }}
-            direction="column"
-            justifyContent="flex-start"
-            alignItems="stretch"
-          >
-            {results &&
-              results.map((result) => (
-                <Grid key={result.id} item xs={8}>
-                  <Item>
-                    <Card sx={{ display: "flex" }}>
-                      <CardMedia
-                        component="img"
-                        sx={{ width: 151 }}
-                        image={null}
-                        alt="Inmueble"
-                      />
+        <Container maxWidth="xxl">
+          {results &&
+            results.map((result) => (
+              <Grid
+                key={result.id}
+                item
+                xs={8}
+                sx={{
+                  flex: "1 0 auto",
+                  flexWrap: "wrap",
+                }}
+              >
+                <Item sx={{boxShadow: "rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px",}}>
+                  <CardMedia
+                    component="img"
+                    sx={{
+                      width: "20vw",
+                      height: "25vh",
+                      justifyContent: "center",
+                      textAlign: "center",
+                      alignItems: "center",
+                      boxShadow: "rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px",
+                    }}
+                    image={null}
+                    alt="Inmueble"
+                    src={result.imgsrc[0]}
+                  />
+
+                  <CardContent
+                    sx={{
+                      flex: "1 0 auto",
+                      margin: "2",
+                      textAlign: "center",
+                      width: "35vw",
+                    }}
+                  >
+                    <Typography component="div" variant="h5">
+                      USD {result.precio}
+                    </Typography>
+                    <Typography
+                      variant="subtitle1"
+                      color="text.secondary"
+                      component="div"
+                    >
+                      {result.ubicacion[0] + result.ubicacion[1]}
+                    </Typography>
+                    <Typography variant="body2" color="text.secondary">
+                      {result.disposicion} - {result.dormitorios} dormitorios -{" "}
+                      {result.banos > 1 ? "baños" : "baño"} - {result.m2terreno} m2
+                    </Typography>
+                    <Typography variant="body2" color="text.secondary">
+                      Tipo de venta: {result.tipoVenta}
+                    </Typography>
+                    <br />
+                    <Typography variant="body2" color="text.secondary">
+                      {result.descripcion}
+                    </Typography>
+                  </CardContent>
+
+                  <CardContent
+                    sx={{
+                      flex: "1 0 auto",
+                      justifyContent: "center",
+                      textAlign: "center",
+                      width: "20vw",
+                    }}
+                  >
+                    
+                    <Box
+                      sx={{
+                        marginTop: 3,
+                      }}
+                    >
+                      <Box>
+                      <FormMessage />
+                      </Box>
                       <Box
                         sx={{
-                          display: "flex",
-                          flexDirection: "row",
-                          justifyContent: "space-between",
+                          marginTop: 3,
                         }}
                       >
-                        <CardContent sx={{ flex: "1 0 auto" }}>
-                          <Typography component="div" variant="h5">
-                            USD {result.precio}
-                          </Typography>
-                          <Typography
-                            variant="subtitle1"
-                            color="text.secondary"
-                            component="div"
-                          >
-                            {result.ubicacion[0] + ", " + result.ubicacion[1]}
-                          </Typography>
-                          <Typography variant="body2" color="text.secondary">
-                            {result.disposicion} - {result.dormitorios}{" "}
-                            dormitorios - {result.banos > 1 ? "baños" : "baño"}{" "}
-                            - {result.m2terreno} m2
-                          </Typography>
-                          <Typography variant="body2" color="text.secondary">
-                            Tipo de venta : {result.tipoVenta}
-                          </Typography>
-                        </CardContent>
-                        <Typography variant="body2" color="text.secondary">
-                          {result.descripcion}
-                        </Typography>
+                        <Link to={`/PublicarPropiedad`}>
+                          <Button variant="outlined" sx={{boxShadow: "rgba(0, 0, 0, 0.19) 0px 5px 10px, rgba(0, 0, 0, 0.23) 0px 3px 3px"}}>Ver Inmueble</Button>
+                        </Link>
                       </Box>
-                    </Card>
-                  </Item>
-                </Grid>
-              ))}
-          </Grid>
-        </Box>
+                    </Box>
+                  </CardContent>
+                </Item>
+              </Grid>
+            ))}
+        </Container>
       )}
     </div>
   );

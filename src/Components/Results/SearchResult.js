@@ -104,12 +104,15 @@ const SearchResult = () => {
           }}
         >
           <main className="results">
-            {loading && <RenderResults results={store.Filters}/>}
+            {loading && <RenderResults results={filteredResults}/>}
             {!loading && (
               <div>
                 {filteredResults.length > 0 && (
-                  <RenderResults results={store.Filters} />
-                )}
+                  <RenderResults results={filteredResults} />
+                )
+                }{
+                  console.log(filteredResults)
+                }
               </div>
             )}
           </main>

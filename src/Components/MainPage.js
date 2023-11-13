@@ -5,23 +5,35 @@ import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
 import CustomSelectCheckmarks from "./CustomSelectCheckmarks";
 import Carrousel from "./Carrousel";
 import Button from "@mui/material/Button";
-import "./MainPage.css";
-import Autocomp from "./Autocomp";
+import { useState, useEffect, useContext } from "react";
+import Autocomp from "../Components/Autocomp"
+import { storeContext,filterParams } from "../Store/StoreProvider";
 import { Link } from "react-router-dom";
-import { filterParams,storeContext } from "../Store/StoreProvider";
-
-
+import { Typography } from "@mui/material";
+import SearchResult from "./Results/SearchResult";
 
 function MainPage() {
-  const [seleccion, setSeleccion] = React.useState("venta");
-  const [optionsTipoDePropiedad,setOptionsTiposDePropiedad] = React.useState([])
-  const [store] = React.useContext(storeContext);
-  React.useEffect(() => {
+  const [optionsTipoDePropiedad, setOptionsTiposDePropiedad] =useState([])
+  const [seleccion, setSeleccion] = useState("venta");
+  const [store, dispatch] = useContext(storeContext);
+  const [localidades, setLocalidades] = useState();
+  const [tipopublicacion, setTipopublicacion] = useState();
+  const [tipo, setTipo] = useState();
+  useEffect(() => {
     setOptionsTiposDePropiedad(store.tipoPropiedad);
   }, [store.tipoPropiedad]);
   const handleChange = (event, value) => {
     setSeleccion(value);
     filterParams.tipodeventa = value;
+  };
+  const filtros = {
+    localidad: localidades,
+    TipoDePublicacion: tipopublicacion,
+    tipo: tipo,
+  }; 
+  const handleclick = () => {
+    dispatch({ type: "setFilters", payload: filtros });
+    <SearchResult />;
   };
 
   return (
@@ -39,16 +51,13 @@ function MainPage() {
             >
               <ToggleButton value="Venta">Venta</ToggleButton>
               <ToggleButton value="Alquiler">Alquiler</ToggleButton>
-              <ToggleButton value="Alquiler temporal">
-                Alquiler Temporal
-              </ToggleButton>
             </ToggleButtonGroup>
 
             <div className="contenedorBusqueda">
               <CustomSelectCheckmarks options={optionsTipoDePropiedad} />
               <Autocomp />
               <Link to={"/resultados"}>
-                <Button type="submit"  variant="contained">
+                <Button type="submit" onClick={handleclick} variant="contained">
                   Buscar
                 </Button>
               </Link>
