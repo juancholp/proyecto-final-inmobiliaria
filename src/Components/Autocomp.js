@@ -1,14 +1,18 @@
-import * as React from 'react';
-import TextField from '@mui/material/TextField';
-import Autocomplete from '@mui/material/Autocomplete';
-import { filterParams } from "../Store/StoreProvider";
-export default function ComboBox() {
+import * as React from "react";
+import TextField from "@mui/material/TextField";
+import Autocomplete from "@mui/material/Autocomplete";
+import { useContext } from "react";
+import { storeContext } from "../Store/StoreProvider";
+
+
+
+export default function CustomAutoComplete(props) {
   const [selectedDepartment, setSelectedDepartment] = React.useState(null);
+  const [store, dispatch] = useContext(storeContext);
 
   const handleDepartmentChange = (value) => {
-    console.log("valor = ", value);
     const newValue = value;
-    filterParams.localidad = newValue;
+    props.options(value)
   };
 
   return (
@@ -17,7 +21,7 @@ export default function ComboBox() {
       disablePortal
       id="combo-box-demo"
       options={Departamentos}
-      sx={{ width: 300 }}
+      sx={{ width: "20vw" }}
       value={selectedDepartment}
       onChange={(e) => handleDepartmentChange(e.target.textContent)}
       getOptionLabel={(option) => option.label}
@@ -25,6 +29,7 @@ export default function ComboBox() {
     />
   );
 }
+
 
 const Departamentos = [
   { label: "Maldonado" },

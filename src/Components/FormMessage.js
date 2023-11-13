@@ -4,10 +4,8 @@ import { styled } from "@mui/material/styles";
 import Dialog from "@mui/material/Dialog";
 import DialogTitle from "@mui/material/DialogTitle";
 import DialogContent from "@mui/material/DialogContent";
-// import DialogActions from "@mui/material/DialogActions";
 import IconButton from "@mui/material/IconButton";
 import CloseIcon from "@mui/icons-material/Close";
-// import Typography from "@mui/material/Typography";
 import TextField from "@material-ui/core/TextField";
 import Box from "@mui/material/Box";
 import Stack from "@mui/material/Stack";
@@ -15,6 +13,10 @@ import { TextareaAutosize } from "@mui/base/TextareaAutosize";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import PersonPinIcon from "@mui/icons-material/PersonPin";
+
+
+
+
 const blue = {
   100: "#DAECFF",
   200: "#b6daff",
@@ -91,7 +93,7 @@ export default function FormMessage() {
   return (
     <>
       <div>
-        <Button variant="outlined" onClick={handleClickOpen}>
+        <Button variant="outlined" onClick={handleClickOpen} sx={{boxShadow: "rgba(0, 0, 0, 0.19) 0px 5px 10px, rgba(0, 0, 0, 0.23) 0px 3px 3px"}}>
           Consultar
         </Button>
         <BootstrapDialog

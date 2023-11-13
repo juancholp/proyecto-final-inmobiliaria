@@ -1,80 +1,41 @@
 import * as React from "react";
-import { useState, useContext } from "react";
 import Box from "@mui/material/Box";
 import ToggleButton from "@mui/material/ToggleButton";
 import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
 import CustomSelectCheckmarks from "./CustomSelectCheckmarks";
 import Carrousel from "./Carrousel";
 import Button from "@mui/material/Button";
-import "./MainPage.css";
-import Autocomp from "./Autocomp";
-import { Link } from "react-router-dom";
-import { filterParams } from "../Store/StoreProvider";
-import { Typography } from "@mui/material";
+import { useState, useContext } from "react";
+import Autocomp from "../Components/Autocomp"
 import { storeContext } from "../Store/StoreProvider";
+import { Link } from "react-router-dom";
+import { Typography } from "@mui/material";
+import SearchResult from "./Results/SearchResult";
+import "./MainPage.css"
+
 
 function MainPage() {
   const [seleccion, setSeleccion] = React.useState("venta");
-  const options_default = [
-    "Casa",
-    "Apartamento",
-    "Terreno",
-    "Local Comercial",
-    "Oficina",
-    "Chacra o Campo",
-    "Garage o Cochera",
-  ];
+  const [store, dispatch] = React.useContext(storeContext);
+  const [localidades, setLocalidades] = useState();
+  const [tipopublicacion, setTipopublicacion] = useState();
+  const [tipo, setTipo] = useState();
+  const filtros = {
+    localidad: localidades,
+    TipoDePublicacion: tipopublicacion,
+    tipo: tipo,
+  };
+  
 
   const handleChange = (event, value) => {
     setSeleccion(value);
-    filterParams.tipodeventa = value;
+    setTipopublicacion(value);
   };
-
-  const initFilters = {
-    localidad: [],
-    tipo: [],
-    TipoDePublicacion: [],
-  }
-
-  function Filters() {
-
-    const [store, dispatch] = useContext(storeContext);
-
-    const [filtro, setFiltro] = useContext(initFilters);
-
-    const [localidades, setLocalidades] = useState([]);
-    const [tipo, setTipo] = useState([]);
-    const [ListadoTipoDePublicacion, setListadoTipoDePublicacion] = useState([]);
-
-    const handleChangeListadoTipoDePublicacion = (event) => {
-      const {
-        target: { value },
-      } = event
-      setListadoTipoDePublicacion(value)
-      setFiltro({ ...filtro, ListadoTipoDePublicacion: value })
-    }
-
-    const handleChangeTipo = (event) => {
-      const {
-        target: { value },
-      } = event
-      setTipo(value)
-      setFiltro({ ...filtro, tipo: value })
-    }
-
-    const handleChangeLocalidades = (event) => {
-      const {
-        target: { value },
-      } = event
-      setLocalidades(value)
-      setFiltro({ ...filtro, localidad: value })
-    }
-
-    const saveFilters = () => {
-      dispatch({ type: 'setFilters', payload: filtro })
-    }
-
-  }
+  
+  const handleclick = () => {
+    dispatch({ type: "setFilters", payload: filtros });
+    <SearchResult />;
+  };
 
   
 
@@ -82,7 +43,7 @@ function MainPage() {
     <div className="App">
       <div className="SearchBackground">
         <div className="Search">
-          <Box>
+          <Box >
             <ToggleButtonGroup
               color="primary"
               value={seleccion}
@@ -93,16 +54,13 @@ function MainPage() {
             >
               <ToggleButton value="Venta">Venta</ToggleButton>
               <ToggleButton value="Alquiler">Alquiler</ToggleButton>
-              <ToggleButton value="Alquiler temporal">
-                Alquiler Temporal
-              </ToggleButton>
             </ToggleButtonGroup>
 
             <div className="contenedorBusqueda">
-              <CustomSelectCheckmarks options={options_default} />
-              <Autocomp />
+              <CustomSelectCheckmarks options={setTipo} />
+              <Autocomp options={setLocalidades} />
               <Link to={"/resultados"}>
-                <Button type="submit" variant="contained" onClick={saveFilters}>
+                <Button type="submit" variant="contained" onClick={handleclick}>
                   Buscar
                 </Button>
               </Link>

@@ -8,19 +8,13 @@ import {
   Divider,
   Button,
   Container,
-  Grid,
   Typography,
 } from "@mui/material";
 import MapIcon from "@mui/icons-material/Map";
 import { FilterAlt } from "@mui/icons-material";
-import "./SearchResult.css";
-import {
-  storeContext,
-  filterResults,
-  filterParams,
-} from "../../Store/StoreProvider";
-import Filters from "../Filters";
 
+import { storeContext } from "../../Store/StoreProvider";
+import Filters from "../Filters";
 
 const SearchResult = () => {
   const [numOfResults, setNumOfResults] = useState(0);
@@ -29,10 +23,80 @@ const SearchResult = () => {
 
   const [filteredResults, setFilteredResults] = useState([]);
   const [store, dispatch] = useContext(storeContext);
+  console.log(store.filters);
+
+  // const filterToApply = store.filters.map((filter) => {
+  //   if (filter) {
+  //     return filter;
+  //   }
+  // });
+
+  // console.log("filter =>", filter);
+  const filter = (results) => {
+    const filterResults = results.filter((result) => {
+      if (store.filters.localidad) {
+        // store.filters.localidad.map((ubic) => {
+        //   if (result.ubicacion.includes(ubic)) {
+        //     return true;
+        //   }
+        // });
+        console.log(store.filters.localidad);
+
+        if (store.filters.localidad === result.ubicacion) {
+          return true;
+        }
+      }
+      if (store.filters.estado) {
+        store.filters.estado.map((estado) => {
+          if (result.estado == estado) {
+            return true;
+          }
+        });
+      }
+      if (store.filters.TipoDePublicacion) {
+        // store.filters.TipoDePublicacion.map((tipo) => {
+        //   if (result.tipoVenta === tipo) {
+        //     return true;
+        //   }
+        // });
+        if (store.filters.TipoDePublicacion === result.tipoVenta) {
+          return true;
+        }
+      }
+      if (store.filters.tipo) {
+        store.filters.tipo.map((tipo) => {
+          if (result.tipoDePropiedad === tipo) {
+            return true;
+          }
+        });
+      }
+      if (store.filters.dormitorios) {
+        store.filters.dormitorios.map((dormitorio) => {
+          if (result.dormitorio === dormitorio) {
+            return true;
+          }
+        });
+      }
+      if (store.filters.moneda) {
+        store.filters.moneda.map((moneda) => {
+          if (result.tipoMoneda === moneda) {
+            return true;
+          }
+        });
+      }
+      // result.ubicacion?.includes(store.filters.ubicacion) ||
+      // store.filters.estado?.includes(result.estado) ||
+      // store.filters.TipoDePublicacion === result.tipoVenta ||
+      // store.filters.dormitorios?.includes(result.dormitorio) ||
+      // store.filters.moneda?.includes(result.tipoMoneda)
+    });
+    console.log(filterResults);
+    return filterResults;
+  };
 
   useEffect(() => {
-    const filteredResults = filterResults(results);
-    setFilteredResults(filteredResults);
+    const filterResults = filter(results);
+    setFilteredResults(filterResults);
   }, [results]);
   useEffect(() => {
     setResults(store.propiedades);
@@ -54,73 +118,61 @@ const SearchResult = () => {
 
   return (
     <div className="SearchResult">
-      <Container maxWidth="xl">
-        <Box boxShadow={2}>
-          <div className="info">
-            <Grid
-              container
-              direction="row"
-              justifyContent="space-between"
-              alignItems="stretch"
+      <Container maxWidth="xxl">
+        <div className="info">
+          <Stack
+            direction="column"
+            divider={<Divider orientation="horizontal" flexItem />}
+            spacing={1}
+            textAlign={"center"}
+            justifyContent={"center"}
+            marginTop={4}
+          >
+            <Typography
+              component={"h1"}
+              variant="body1"
+              color="text.primary"
+              alignContent={"center"}
+              textAlign={"center"}
             >
-              <Stack
-                direction="column"
-                justifyContent="flex-start"
-                alignItems="flex-start"
-                divider={<Divider orientation="horizontal" flexItem />}
-                spacing={1}
-              >
-                <Typography
-                  component={"h1"}
-                  variant="body1"
-                  color="text.primary"
-                >
-                  Venta de casas y apartamentos en {filterParams.localidad}.
-                </Typography>
-                
-                <Typography variant="body2" color="text.primary">
-                  Mostrando {numOfResults} resultados.
-                </Typography>
-              </Stack>
-              <Stack
-                direction="row"
-                justifyContent="flex-start"
-                alignItems="flex-start"
-                spacing={2}
-              >
-                <Button variant="outlined" size="small" startIcon={<MapIcon />}>
-                  Ver mapa
-                </Button>
-                <Button
-                  variant="outlined"
-                  size="small"
-                  startIcon={<FilterAlt />}
-                >
-                  Popularidad
-                </Button>
-              </Stack>
-              <Box>
-                <Filters />
-              </Box>
-             
-            </Grid>
-          </div>
-        </Box>
-        
+              Venta de casas y apartamentos en {store.filters.localidad}.
+            </Typography>
+            <Typography variant="body2" color="text.primary">
+              Mostrando {numOfResults} resultados.
+            </Typography>
+          </Stack>
+          <Stack
+            direction="row"
+            spacing={{ xs: 1, sm: 1 }}
+            gap={{ xs: 1, sm: 1 }}
+            columns={{ xs: 1, sm: 1, md: 1 }}
+            textAlign={"center"}
+            justifyContent={"center"}
+            display={"Flex"}
+            flexWrap={"wrap"}
+            alignItems="flex-start"
+          >
+            <Button variant="outlined" size="small" startIcon={<MapIcon />}>
+              Ver mapa
+            </Button>
+            <Button variant="outlined" size="small" startIcon={<FilterAlt />}>
+              Popularidad
+            </Button>
+          </Stack>
+        </div>
       </Container>
-      
-      
-      
-      
-      <Container className="resultados" maxWidth="lg">
+      <Box marginTop={4}>
+        <Filters />
+      </Box>
+      <Container maxWidth="xxl">
         <Box
           boxShadow={2}
           padding={2}
           sx={{
-            width: "70%",
+            width: "100%",
             height: "fit-content",
             margin: "auto",
-            padding: "10px",
+
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
@@ -138,7 +190,6 @@ const SearchResult = () => {
             )}{" "}
           </main>
         </Box>
-        
       </Container>
     </div>
   );

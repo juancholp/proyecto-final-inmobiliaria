@@ -26,7 +26,7 @@ export default function StickyFooter() {
   return (
     <Box className="footer" >
       <Grid container spacing={2}>
-        <Grid item xs={6} sx={{fontSize: "1.2rem", position: "relative",  left: "-2rem", top: "0.3rem"}}>
+        <Grid item xs={6} sx={{fontSize: "1.2rem", position: "relative",  left: "-2rem", top: "0.1rem"}}>
           <Item>
             <Typography sx={{fontFamily: "Lato", letterSpacing: ".1rem"}}>
             © 2023 Blue Paradise
