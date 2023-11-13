@@ -21,7 +21,7 @@ export default function CustomAutoComplete(props) {
       disablePortal
       id="combo-box-demo"
       options={Departamentos}
-      sx={{ width: "20vw" }}
+      sx={{ width: "15vw", borderRadius:"10px", overflow: "hidden" }}
       value={selectedDepartment}
       onChange={(e) => handleDepartmentChange(e.target.textContent)}
       getOptionLabel={(option) => option.label}

@@ -14,7 +14,7 @@ import MenuItem from "@mui/material/MenuItem";
 import ApartmentIcon from '@mui/icons-material/Apartment';
 import { Link } from "react-router-dom";
 
-const pages = ["Venta", "Alquiler",];
+const pages = ["Venta", "Alquiler", "Alquier Temporal"];
 const settings = [
   "Ingresar",
   "Perfil",

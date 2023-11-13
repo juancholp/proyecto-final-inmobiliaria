@@ -43,7 +43,7 @@ function MainPage() {
     <div className="App">
       <div className="SearchBackground">
         <div className="Search">
-          <Box >
+          <Box>
             <ToggleButtonGroup
               color="primary"
               value={seleccion}
@@ -51,16 +51,21 @@ function MainPage() {
               onChange={handleChange}
               aria-label="Platform"
               id="opciones"
+              sx={{
+                borderRadius: "15px", 
+                overflow: "hidden",
+              }}   
             >
-              <ToggleButton value="Venta">Venta</ToggleButton>
-              <ToggleButton value="Alquiler">Alquiler</ToggleButton>
+              <ToggleButton value="Venta" sx={{ width: "7vw", fontFamily: "Lato", fontSize: "1.2rem"}}>Venta</ToggleButton>
+              <ToggleButton value="Alquiler" sx={{ width: "7vw", fontFamily: "Lato", fontSize: "1.2rem"}}>Alquiler</ToggleButton>
+              <ToggleButton value="AlquierTemp" sx={{ width: "10vw", fontFamily: "Lato", fontSize: "1.2rem"}}>Alquiler Temporal</ToggleButton>
             </ToggleButtonGroup>
 
             <div className="contenedorBusqueda">
               <CustomSelectCheckmarks options={setTipo} />
               <Autocomp options={setLocalidades} />
               <Link to={"/resultados"}>
-                <Button type="submit" variant="contained" onClick={handleclick}>
+                <Button type="submit" variant="contained" onClick={handleclick} sx={{width: "4vw", height: "3.5vh", fontFamily:"Lato", fontSize: "1.2rem", borderRadius: "10px"}}>
                   Buscar
                 </Button>
               </Link>
@@ -69,14 +74,14 @@ function MainPage() {
         </div>
       </div>
       <Box sx={{
-        backgroundColor: "rgba(25,113,194, 1)",
-        borderRadius: "30px",
-        width: "35vw",
-        margin: "8vh 31vw",
+        backgroundColor: "rgba(25,118,210, 1)",
+        borderRadius: "25px",
+        width: "30vw",
+        margin: "8vh 35vw",
         textAlign: "center",
-        boxShadow: "7px 7px lightblue"
+        boxShadow: "rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px"
         }}>
-      <Typography sx={{fontSize: "3vw", fontFamily: "Lato", color: "white"}}>
+      <Typography sx={{fontSize: "2vw", fontFamily: "Lato", color: "white"}}>
         Propiedades Destacadas
       </Typography>
       </Box>

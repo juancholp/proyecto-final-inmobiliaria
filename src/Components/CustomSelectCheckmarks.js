@@ -36,7 +36,7 @@ export default function CustomSelectCheckmarks(props) {
 
   return (
     <div>
-      <FormControl sx={{ width: "20vw" }}>
+      <FormControl sx={{ width: "15vw" }}>
         <InputLabel id="checkmarks">Tipo de Propiedad</InputLabel>
         <Select
           labelId="checkmarks"
@@ -47,6 +47,7 @@ export default function CustomSelectCheckmarks(props) {
           input={<OutlinedInput label="Tipo de Propiedad" />}
           renderValue={(selected) => selected.join(", ")}
           MenuProps={MenuProps}
+          sx={{borderRadius:"10px", overflow: "hidden"}}
         >
           {store.tipoPropiedad.map((option) => (
             <MenuItem key={option} value={option}>
