@@ -17,3 +17,8 @@
   margin-bottom: 20px;
   width: 100%;
 }
+
+#opciones > button.MuiButtonBase-root.MuiToggleButton-root.MuiToggleButton-sizeMedium.MuiToggleButton-primary.MuiToggleButtonGroup-grouped.MuiToggleButtonGroup-groupedHorizontal.css-1v2b451-MuiButtonBase-root-MuiToggleButton-root {
+  padding: 0 !important;
+}
+

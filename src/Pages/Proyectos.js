@@ -3,7 +3,6 @@ import { storeContext } from "../Store/StoreProvider";
 
 const Proyectos = () => {
   const [store, dispatch] = useContext(storeContext);
-  console.log("store", store);
   return <div>Proyectos</div>;
 };
 

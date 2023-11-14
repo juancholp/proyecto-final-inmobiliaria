@@ -71,7 +71,6 @@ export default function PublicarForm() {
       ...formData,
       imgsrc: textFieldImagenesData.map((item) => item.value),
     };
-    console.log(combinedData);
     openSnackbar("Datos guardados");
   };
 

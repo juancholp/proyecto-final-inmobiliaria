@@ -12,25 +12,21 @@ import {
 } from "@mui/material";
 import MapIcon from "@mui/icons-material/Map";
 import { FilterAlt } from "@mui/icons-material";
-
 import { storeContext } from "../../Store/StoreProvider";
 import Filters from "../Filters";
+
 
 const SearchResult = () => {
   const [numOfResults, setNumOfResults] = useState(0);
   const [loading, setLoading] = useState(true);
   const [results, setResults] = useState([]);
-
   const [filteredResults, setFilteredResults] = useState([]);
   const [store, dispatch] = useContext(storeContext);
-  console.log(store.filters);
 
+  
   const filter = (results) => {
     const filterResults = results.filter((result) => {
       if (store.filters.localidad) {
-        
-        console.log(store.filters.localidad);
-
         if (store.filters.localidad === result.ubicacion) {
           return true;
         }
@@ -43,7 +39,6 @@ const SearchResult = () => {
         });
       }
       if (store.filters.TipoDePublicacion) {
-        
         if (store.filters.TipoDePublicacion === result.tipoVenta) {
           return true;
         }
@@ -70,7 +65,6 @@ const SearchResult = () => {
         });
       }
     });
-    console.log(filterResults);
     return filterResults;
   };
 
@@ -84,8 +78,8 @@ const SearchResult = () => {
   useEffect(() => {
     setTimeout(() => {
       setLoading(false);
-    }, 1000);
-    setTimeout(() => {}, 1500);
+    }, 1500);
+    setTimeout(() => {}, 2000);
   }, []);
 
   useEffect(() => {

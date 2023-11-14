@@ -28,7 +28,7 @@ function DetallePropiedad(props) {
         <div className="carta">
           <div className="subCarta">
             <div className="encabezado">
-              <h1 className="ttitle">{casa.title}</h1>
+              <h1 className="title">{casa.title}</h1>
               <IconDetalle
                 className="icono"
                 bano={casa.banos}

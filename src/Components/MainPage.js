@@ -2,17 +2,16 @@ import * as React from "react";
 import Box from "@mui/material/Box";
 import ToggleButton from "@mui/material/ToggleButton";
 import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
-import CustomSelectCheckmarks from "./CustomSelectCheckmarks";
+import TipoDePropiedad from "./TipoDePropiedad";
 import Carrousel from "./Carrousel";
 import Button from "@mui/material/Button";
 import { useState, useContext } from "react";
-import Autocomp from "../Components/Autocomp"
+import Departamentos from "./Departamentos";
 import { storeContext } from "../Store/StoreProvider";
 import { Link } from "react-router-dom";
 import { Typography } from "@mui/material";
 import SearchResult from "./Results/SearchResult";
-import "./MainPage.css"
-
+import "./MainPage.css";
 
 function MainPage() {
   const [seleccion, setSeleccion] = React.useState("venta");
@@ -25,19 +24,16 @@ function MainPage() {
     TipoDePublicacion: tipopublicacion,
     tipo: tipo,
   };
-  
 
   const handleChange = (event, value) => {
     setSeleccion(value);
     setTipopublicacion(value);
   };
-  
+
   const handleclick = () => {
     dispatch({ type: "setFilters", payload: filtros });
     <SearchResult />;
   };
-
-  
 
   return (
     <div className="App">
@@ -52,20 +48,55 @@ function MainPage() {
               aria-label="Platform"
               id="opciones"
               sx={{
-                borderRadius: "15px", 
+                borderRadius: "15px",
                 overflow: "hidden",
-              }}   
+                margin: 0,
+                "& .MuiToggleButton-root": {
+                  padding: "0.7rem 1.5rem",
+                  minWidth: 0,
+                  width: "auto",
+                  "& .MuiButton-label": {
+                    width: "100%",
+                  },
+                },
+              }}
             >
-              <ToggleButton value="Venta" sx={{ width: "7vw", fontFamily: "Lato", fontSize: "1.2rem"}}>Venta</ToggleButton>
-              <ToggleButton value="Alquiler" sx={{ width: "10vw", fontFamily: "Lato", fontSize: "1.2rem"}}>Alquiler</ToggleButton>
-              <ToggleButton value="AlquierTemp" sx={{ width: "17vw", fontFamily: "Lato", fontSize: "1.2rem"}}>Alquiler Temporal</ToggleButton>
+              <ToggleButton
+                value="Venta"
+                sx={{ fontFamily: "Lato", fontSize: "1.2rem" }}
+              >
+                Venta
+              </ToggleButton>
+              <ToggleButton
+                value="Alquiler"
+                sx={{ fontFamily: "Lato", fontSize: "1.2rem" }}
+              >
+                Alquiler
+              </ToggleButton>
+              <ToggleButton
+                value="AlquierTemp"
+                sx={{ fontFamily: "Lato", fontSize: "1.2rem" }}
+              >
+                Alquiler Temporal
+              </ToggleButton>
             </ToggleButtonGroup>
 
             <div className="contenedorBusqueda">
-              <CustomSelectCheckmarks options={setTipo} />
-              <Autocomp options={setLocalidades} />
+              <TipoDePropiedad options={setTipo} />
+              <Departamentos options={setLocalidades} />
               <Link to={"/resultados"}>
-                <Button type="submit" variant="contained" onClick={handleclick} sx={{width: "5vw", height: "4vh", fontFamily:"Lato", fontSize: "1.2rem", borderRadius: "10px"}}>
+                <Button
+                  type="submit"
+                  variant="contained"
+                  onClick={handleclick}
+                  sx={{
+                    width: "5vw",
+                    height: "4vh",
+                    fontFamily: "Lato",
+                    fontSize: "1.2rem",
+                    borderRadius: "10px",
+                  }}
+                >
                   <Typography>Buscar</Typography>
                 </Button>
               </Link>
@@ -73,22 +104,28 @@ function MainPage() {
           </Box>
         </div>
       </div>
-      <Box sx={{
-        backgroundColor: "rgba(25,118,210, 1)",
-        borderRadius: "25px",
-        width: "30vw",
-        margin: "8vh 35vw",
-        textAlign: "center",
-        boxShadow: "rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px"
-        }}>
-      <Typography sx={{fontSize: "2vw", fontFamily: "Lato", color: "white"}}>
-        Propiedades Destacadas
-      </Typography>
+      <div className="contenedorSecundario">
+      <Box
+        sx={{
+          backgroundColor: "rgba(25,118,210, 1)",
+          borderRadius: "25px",
+          width: "30vw",
+          margin: "8vh 35vw",
+          textAlign: "center",
+          boxShadow:
+            "rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px",
+        }}
+      >
+        <Typography
+          sx={{ fontSize: "2vw", fontFamily: "Lato", color: "white" }}
+        >
+          Propiedades Destacadas
+        </Typography>
       </Box>
       <div className="carrousel-container">
         <Carrousel />
       </div>
-      
+      </div>
     </div>
   );
 }

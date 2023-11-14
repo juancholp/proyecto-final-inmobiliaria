@@ -9,6 +9,7 @@ import { autoPlay } from "react-swipeable-views-utils";
 import { storeContext } from "../Store/StoreProvider";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
+import { Link } from "react-router-dom";
 
 const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
 
@@ -82,9 +83,8 @@ function Carrousel() {
                     justifyContent: "flex-end",
                     flexDirection: "column",
                     alignItems: "flex-start",
-                    top: 0,
-                    left: 0,
-                    right: 0,
+                    height: "15vh",
+                    width: "99%",
                     bottom: 0,
                     backgroundColor: "rgba(0, 0, 0, 0.4)",
                     color: "#fff",
@@ -92,31 +92,38 @@ function Carrousel() {
                     zIndex: 1,
                   }}
                 >
+                  <p 
+                    style={{
+                      fontSize: "3rem",
+                      margin: 0,
+                    }}>
+                    {step.tipoVenta}
+                  </p>
                   <p
                     style={{
-                      fontSize: "50px",
+                      fontSize: "3rem",
                       marginTop: "0px",
                       marginBottom: "10px",
                     }}
                   >
-                    Precio: {step.tipoMoneda} {step.precio}
+                    {step.tipoMoneda} {step.precio}
                   </p>
                   <p
                     style={{
-                      fontSize: "18px",
+                      fontSize: "1.5rem",
                       marginBottom: "0px",
                       marginTop: "0px",
                     }}
                   >
-                    Descripción: {step.descripcion}
+                    {step.descripcion}
                   </p>
-                  <p style={{ fontSize: "18px" }}>Dep: {step.ubicacion} </p>
-                  <a
+                  <p style={{ fontSize: "1.5rem", margin: "0.5rem 0"}}>{step.ubicacion} </p>
+                  <Link
                     href={step.link}
                     target="_blank"
                     rel="noopener noreferrer"
                     style={{
-                      fontSize: "18px",
+                      fontSize: "1.5rem",
                       position: "absolute",
                       right: "10px",
                       bottom: "10px",
@@ -125,7 +132,7 @@ function Carrousel() {
                     }}
                   >
                     Más información
-                  </a>
+                  </Link>
                 </div>
               </div>
             ) : null}

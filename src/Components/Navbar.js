@@ -7,7 +7,7 @@ import Typography from "@mui/material/Typography";
 import Menu from "@mui/material/Menu";
 import MenuIcon from "@mui/icons-material/Menu";
 import Container from "@mui/material/Container";
-import Avatar from "@mui/material/Avatar";
+import ListRoundedIcon from '@mui/icons-material/ListRounded';
 import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
@@ -43,9 +43,9 @@ function Navbar() {
   };
 
   return (
-    <AppBar position="sticky">
-      <Container maxWidth="xl">
-        <Toolbar disableGutters>
+    <AppBar  position="sticky">
+      <Container maxWidth="xxl" >
+        <Toolbar disableGutters sx={{margin:"0 2rem"}}>
           <ApartmentIcon sx={{ display: { xs: "none", md: "flex" }, mr: 1,  }}>
             <Link></Link>
           </ApartmentIcon>
@@ -106,24 +106,25 @@ function Navbar() {
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
             {pages.map((page) => (
               <Button
+                href={"/" + page}
                 key={page}
                 onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: "white", display: "block", fontFamily: "Lato", fontWeight: "300", position: "relative", top: "0.11rem", fontSize: ".9rem", letterSpacing: ".1rem", left: "1rem" }}
+                sx={{ my: 2, color: "white", display: "block", fontFamily: "Lato", fontWeight: "300", position: "relative", top: "0.06rem", fontSize: ".9rem", letterSpacing: ".1rem", left: "1rem" }}
               >
                 <Link
                   to={`/` + page}
                   style={{ color: "white", textDecoration: "none" }}
                 >
-                  {page}
+                  {page + "   |"}
                 </Link>
               </Button>
             ))}
           </Box>
 
           <Box sx={{ flexGrow: 0, mr: "35px" }}>
-            <Tooltip title="Open settings">
+            <Tooltip title="Usuario">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+              <ListRoundedIcon sx={{fontSize:"3rem", color: "white"}}/>
               </IconButton>
             </Tooltip>
             <Menu
@@ -143,13 +144,19 @@ function Navbar() {
               onClose={handleCloseUserMenu}
             >
               {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
+                <MenuItem sx={{margin: 0, padding: 0}} key={setting} onClick={handleCloseUserMenu}>
+                  <Button href={`/` + setting} key={setting} 
+                  sx={{
+                    width:"100%",
+                    padding: "0.5rem 1rem"
+                    }}>
                   <Link
                     to={`/` + setting}
                     style={{ color: "black", textDecoration: "none" }}
                   >
                     {setting}
                   </Link>
+                  </Button>
                 </MenuItem>
               ))}
             </Menu>

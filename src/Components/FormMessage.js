@@ -14,9 +14,6 @@ import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import PersonPinIcon from "@mui/icons-material/PersonPin";
 
-
-
-
 const blue = {
   100: "#DAECFF",
   200: "#b6daff",
@@ -93,7 +90,18 @@ export default function FormMessage() {
   return (
     <>
       <div>
-        <Button variant="outlined" onClick={handleClickOpen} sx={{boxShadow: "rgba(0, 0, 0, 0.19) 0px 5px 10px, rgba(0, 0, 0, 0.23) 0px 3px 3px"}}>
+        <Button
+          variant="outlined"
+          onClick={handleClickOpen}
+          sx={{
+            boxShadow:
+              "rgba(0, 0, 0, 0.19) 0px 5px 10px, rgba(0, 0, 0, 0.23) 0px 3px 3px",
+            "&:hover": {
+              backgroundColor: "#1976d2",
+              color: "white",
+            },
+          }}
+        >
           Consultar
         </Button>
         <BootstrapDialog
@@ -155,13 +163,17 @@ export default function FormMessage() {
 
                 <Stack direction="row">
                   <StyledTextarea
-                    style={{ width: "100%" }}
+                    style={{
+                      width: "100%",
+                      fontSize: "1.3rem",
+                      fontFamily: "Lato",
+                    }}
                     variant="outlined"
                     id="outlined-multiline-flexible"
                     label="Mensaje"
-                    defaultValue="Hola, vi esta propiedad en la web y quiero que me contacten. Gracias."
+                    placeholder="Ingrese su consulta y sera respuesta a la brevedad."
                     aria-label="minimum height"
-                    minRows={8}
+                    minRows={5}
                   />
                 </Stack>
 

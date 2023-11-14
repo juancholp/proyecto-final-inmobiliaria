@@ -12,8 +12,7 @@ import { Container } from "@mui/material";
 import FormMessage from "../FormMessage";
 import { Button } from "@mui/material";
 import { Link } from "react-router-dom";
-import "./SearchResult.css"
-
+import "./SearchResult.css";
 
 const RenderResults = (props) => {
   const Item = styled(Paper)(({ theme }) => ({
@@ -26,9 +25,9 @@ const RenderResults = (props) => {
     minWidth: 300,
     border: "1px solid #ccc",
     boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
-    display: "flex", 
+    display: "flex",
     flexDirection: "row",
-    alignItems: "center", 
+    alignItems: "center",
   }));
 
   const [results, setResults] = React.useState([]);
@@ -55,10 +54,14 @@ const RenderResults = (props) => {
                 sx={{
                   flex: "1 0 auto",
                   flexWrap: "wrap",
-                  
                 }}
               >
-                <Item sx={{boxShadow: "rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px",}}>
+                <Item
+                  sx={{
+                    boxShadow:
+                      "rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px",
+                  }}
+                >
                   <CardMedia
                     component="img"
                     sx={{
@@ -67,7 +70,8 @@ const RenderResults = (props) => {
                       justifyContent: "center",
                       textAlign: "center",
                       alignItems: "center",
-                      boxShadow: "rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px",
+                      boxShadow:
+                        "rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px",
                     }}
                     image={null}
                     alt="Inmueble"
@@ -82,25 +86,29 @@ const RenderResults = (props) => {
                       width: "35vw",
                     }}
                   >
-                    <Typography component="div" variant="h5">
+                    <Typography component="div" variant="h3">
                       USD {result.precio}
                     </Typography>
                     <Typography
-                      variant="subtitle1"
+                      sx={{ fontSize: "1.7rem" }}
+                      variant="h4"
                       color="text.secondary"
-                      component="div"
                     >
                       {result.ubicacion[0] + result.ubicacion[1]}
                     </Typography>
-                    <Typography variant="body2" color="text.secondary">
-                      {result.disposicion} - {result.dormitorios} dormitorios -{" "}
-                      {result.banos > 1 ? "baños" : "baño"} - {result.m2terreno} m2
+                    <Typography
+                      sx={{ fontSize: "1.3rem" }}
+                      variant="subtitle1"
+                      color="text.secondary"
+                    >
+                      {result.disposicion} - {result.dormitorio} dormitorios -{" "}
+                      {result.banos} baños - {result.m2Edificados} m²
                     </Typography>
-                    <Typography variant="body2" color="text.secondary">
-                      Tipo de venta: {result.tipoVenta}
+                    <Typography variant="subtitle1" color="text.secondary">
+                      Tipo de Publicacion: {result.tipoVenta}
                     </Typography>
                     <br />
-                    <Typography variant="body2" color="text.secondary">
+                    <Typography variant="subtitle1" color="text.secondary">
                       {result.descripcion}
                     </Typography>
                   </CardContent>
@@ -113,14 +121,13 @@ const RenderResults = (props) => {
                       width: "20vw",
                     }}
                   >
-                    
                     <Box
                       sx={{
                         marginTop: 3,
                       }}
                     >
                       <Box>
-                      <FormMessage />
+                        <FormMessage />
                       </Box>
                       <Box
                         sx={{
@@ -128,7 +135,19 @@ const RenderResults = (props) => {
                         }}
                       >
                         <Link to={`/PublicarPropiedad`}>
-                          <Button variant="outlined" sx={{boxShadow: "rgba(0, 0, 0, 0.19) 0px 5px 10px, rgba(0, 0, 0, 0.23) 0px 3px 3px"}}>Ver Inmueble</Button>
+                          <Button
+                            variant="outlined"
+                            sx={{
+                              boxShadow:
+                                "rgba(0, 0, 0, 0.19) 0px 5px 10px, rgba(0, 0, 0, 0.23) 0px 3px 3px",
+                              "&:hover": {
+                                backgroundColor: "#1976d2",
+                                color: "white",
+                              },
+                            }}
+                          >
+                            Ver Inmueble
+                          </Button>
                         </Link>
                       </Box>
                     </Box>

@@ -8,8 +8,7 @@ import TwitterIcon from "@mui/icons-material/Twitter";
 import { Typography } from "@mui/material";
 
 const Item = styled("div")(({ theme }) => ({
-  textAlign: "center",
-  padding: theme.spacing(2),
+  textAlign: "left",
   backgroundColor: "transparent",
   color: "white",
   border: "none",
@@ -24,44 +23,40 @@ const Item = styled("div")(({ theme }) => ({
 
 export default function StickyFooter() {
   return (
-    <Box className="footer" sx={{
-      position: "fixed",
-      bottom: 0,
-      width: "100%",
-    }}>
+    <Box className="footer" sx={{ position: "fixed", bottom: 0, width: "100%", padding: 0, height: "5vh", alignContent: "center" }}>
       <Grid container spacing={2}>
-        <Grid item xs={6} sx={{ fontSize: "1.2rem", position: "relative", left: "0", margin:"auto 0" }}>
+        <Grid item xs={6} sx={{ paddingLeft: 0 }}>
           <Item>
-            <Typography sx={{ fontFamily: "Lato", letterSpacing: ".1rem" }}>
+            <Typography sx={{ fontFamily: "Lato", letterSpacing: ".1rem", margin: "0 2rem" }}>
               © 2023 Blue Paradise
             </Typography>
           </Item>
         </Grid>
-      </Grid>
-      <Grid container spacing={2} sx={{ justifyContent: "flex-end" }}>
-        <Grid item xs={3}>
-          <Item sx={{ position: "relative", right: "-5vw", margin:"auto 0" }}>
-            <a href="www.facebook.com">
-              <FacebookIcon sx={{ marginRight: "3px", position: "relative", top: "5px" }} />
-              Facebook
-            </a>
-          </Item>
-        </Grid>
-        <Grid item xs={3}>
-          <Item sx={{ position: "relative", right: "0", margin:"auto 0" }}>
-            <a href="www.youtube.com">
-              <YouTubeIcon sx={{ marginRight: "3px", position: "relative", top: "5px" }} />
-              YouTube
-            </a>
-          </Item>
-        </Grid>
-        <Grid item xs={3} sx={{ marginRight: "0" }}>
-          <Item sx={{ position: "relative", right: "5vw", margin:"auto 0" }}>
-            <a href="www.twitter.com">
-              <TwitterIcon sx={{ marginRight: "3px", position: "relative", top: "5px" }} />
-              Twitter
-            </a>
-          </Item>
+        <Grid item container xs={6} justifyContent="flex-end" spacing={3}>
+          <Grid item>
+            <Item>
+              <a href="www.facebook.com">
+                <FacebookIcon sx={{ marginRight: "3px", position: "relative", top: "5px" }} />
+                Facebook
+              </a>
+            </Item>
+          </Grid>
+          <Grid item>
+            <Item>
+              <a href="www.youtube.com">
+                <YouTubeIcon sx={{ marginRight: "3px", position: "relative", top: "5px" }} />
+                YouTube
+              </a>
+            </Item>
+          </Grid>
+          <Grid item>
+            <Item sx={{ marginRight: "2rem"}}>
+              <a href="www.twitter.com">
+                <TwitterIcon sx={{ marginRight: "3px", position: "relative", top: "5px" }} />
+                Twitter
+              </a>
+            </Item>
+          </Grid>
         </Grid>
       </Grid>
     </Box>
