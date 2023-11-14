@@ -130,7 +130,7 @@ function Filters() {
 
   return (
     <div>
-      <div className='filtritos'>
+      <div className='filtros'>
         {localidades?.map((item) => {
           return <Chip label={item} key={item} />
         })}

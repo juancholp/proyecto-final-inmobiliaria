@@ -5,7 +5,7 @@ import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
 import TipoDePropiedad from "./TipoDePropiedad";
 import Carrousel from "./Carrousel";
 import Button from "@mui/material/Button";
-import { useState, useContext } from "react";
+import { useState } from "react";
 import Departamentos from "./Departamentos";
 import { storeContext } from "../Store/StoreProvider";
 import { Link } from "react-router-dom";
