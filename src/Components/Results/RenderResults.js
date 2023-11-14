@@ -12,6 +12,8 @@ import { Container } from "@mui/material";
 import FormMessage from "../FormMessage";
 import { Button } from "@mui/material";
 import { Link } from "react-router-dom";
+import "./SearchResult.css"
+
 
 const RenderResults = (props) => {
   const Item = styled(Paper)(({ theme }) => ({
@@ -39,7 +41,7 @@ const RenderResults = (props) => {
   };
 
   return (
-    <div>
+    <div id="resultContainer">
       {!results ? (
         <p>No hay resultados</p>
       ) : (
@@ -53,6 +55,7 @@ const RenderResults = (props) => {
                 sx={{
                   flex: "1 0 auto",
                   flexWrap: "wrap",
+                  
                 }}
               >
                 <Item sx={{boxShadow: "rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px",}}>
