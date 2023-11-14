@@ -6,13 +6,11 @@ import CustomSelectCheckmarks from "./CustomSelectCheckmarks";
 import CarrouselV5 from "./CarrouselV5";
 import Footer from "./Footer";
 import Button from "@mui/material/Button";
-import Autocomp from './Autocomp'
 import "./MainPage.css";
 import Autocomp from "./Autocomp";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { filterParams } from "../Store/StoreProvider";
-import Footer from "./Footer";
 
 function MainPage() {
   const [seleccion, setSeleccion] = React.useState("venta");

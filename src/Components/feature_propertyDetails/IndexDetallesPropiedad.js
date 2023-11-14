@@ -11,7 +11,6 @@ import "./Styles/imagen.css";
 import Carrousel from "../CarrouselV5.js";
 import data from "../feature_propertyDetails/Database/DataPropiedades.js";
 import PropertyDetails from "./Database/DataTablaDePropiedades.js"
-import PropertyDetails from "./Database/DataTablaDePropiedades.js";
 
 function DetallePropiedad(props) {
   const [casa, setCasa] = useState([]);
