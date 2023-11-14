@@ -14,11 +14,11 @@ import {
 let theme = createTheme();
 theme = responsiveFontSizes(theme);
 
-const Alquiler = () => {
+const AlquilerTemp = () => {
   const [store, dispatch] = useContext(storeContext);
 
   let filtered = store.propiedades.filter((prop) => {
-    return prop.tipoVenta === "Alquiler";
+    return prop.tipoVenta === "Alquiler Temporal";
   });
 
   return (
@@ -27,7 +27,7 @@ const Alquiler = () => {
         <Box m={2} pt={3}>
           <ThemeProvider theme={theme}>
             <Typography textAlign="center" mb={6} fontSize={"2.5rem"} color="#1976d2" fontFamily={"Lato"} fontWeight={"600"}>
-              Alquiler de Propiedades
+              Alquileres Temporales
             </Typography>
 
             <RenderResults results={filtered} />
@@ -38,4 +38,4 @@ const Alquiler = () => {
   );
 };
 
-export default Alquiler;
+export default AlquilerTemp;

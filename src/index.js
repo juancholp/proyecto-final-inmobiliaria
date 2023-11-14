@@ -7,6 +7,7 @@ import PerfilDashboard from "./componentes/dashboard/PerfilDashboard";
 import ReactDOM from "react-dom/client";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Alquiler from "./Pages/Alquiler";
+import AlquilerTemp from "./Pages/AlquilerTemp";
 import Configuracion from "./Pages/Configuracion";
 import Favoritos from "./Pages/Favoritos";
 import Ingresar from "./Pages/Ingresar";
@@ -44,6 +45,7 @@ export default function Router() {
           <Route path="/home" element={<Home />} />
           <Route path="" element={<Home />} />
           <Route path="/alquiler" element={<Alquiler />} />
+          <Route path="/temporal" element={<AlquilerTemp />} />
           <Route path="/configuracion" element={<Configuracion />} />
           <Route path="/favoritos" element={<Favoritos />} />
           <Route path="/ingresar" element={<Ingresar />} />

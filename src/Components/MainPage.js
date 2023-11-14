@@ -57,16 +57,16 @@ function MainPage() {
               }}   
             >
               <ToggleButton value="Venta" sx={{ width: "7vw", fontFamily: "Lato", fontSize: "1.2rem"}}>Venta</ToggleButton>
-              <ToggleButton value="Alquiler" sx={{ width: "7vw", fontFamily: "Lato", fontSize: "1.2rem"}}>Alquiler</ToggleButton>
-              <ToggleButton value="AlquierTemp" sx={{ width: "10vw", fontFamily: "Lato", fontSize: "1.2rem"}}>Alquiler Temporal</ToggleButton>
+              <ToggleButton value="Alquiler" sx={{ width: "10vw", fontFamily: "Lato", fontSize: "1.2rem"}}>Alquiler</ToggleButton>
+              <ToggleButton value="AlquierTemp" sx={{ width: "17vw", fontFamily: "Lato", fontSize: "1.2rem"}}>Alquiler Temporal</ToggleButton>
             </ToggleButtonGroup>
 
             <div className="contenedorBusqueda">
               <CustomSelectCheckmarks options={setTipo} />
               <Autocomp options={setLocalidades} />
               <Link to={"/resultados"}>
-                <Button type="submit" variant="contained" onClick={handleclick} sx={{width: "4vw", height: "3.5vh", fontFamily:"Lato", fontSize: "1.2rem", borderRadius: "10px"}}>
-                  Buscar
+                <Button type="submit" variant="contained" onClick={handleclick} sx={{width: "6vw", height: "5vh", fontFamily:"Lato", fontSize: "1.2rem", borderRadius: "10px"}}>
+                  <Typography>Buscar</Typography>
                 </Button>
               </Link>
             </div>
