@@ -27,7 +27,6 @@ export default function CustomSelectCheckmarks(props) {
       target: { value },
     } = event;
     setOptionName(
-      // On autofill we get a stringified value.
       typeof value === "string" ? value.split(",") : value
     );
     filterParams.tipoDePropiedad = value;

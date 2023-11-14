@@ -14,26 +14,26 @@ import SearchResult from "./Results/SearchResult";
 
 function MainPage() {
   const [optionsTipoDePropiedad, setOptionsTiposDePropiedad] =useState([])
-  const [seleccion, setSeleccion] = useState("venta");
+  const [seleccion, setSeleccion] = useState("");
   const [store, dispatch] = useContext(storeContext);
   const [localidades, setLocalidades] = useState();
   const [tipopublicacion, setTipopublicacion] = useState();
-  const [tipo, setTipo] = useState();
   useEffect(() => {
     setOptionsTiposDePropiedad(store.tipoPropiedad);
   }, [store.tipoPropiedad]);
   const handleChange = (event, value) => {
     setSeleccion(value);
-    filterParams.tipodeventa = value;
+    
   };
   const filtros = {
     localidad: localidades,
     TipoDePublicacion: tipopublicacion,
-    tipo: tipo,
+    tipo: seleccion,
   }; 
   const handleclick = () => {
     dispatch({ type: "setFilters", payload: filtros });
     <SearchResult />;
+    
   };
 
   return (
@@ -55,7 +55,7 @@ function MainPage() {
 
             <div className="contenedorBusqueda">
               <CustomSelectCheckmarks options={optionsTipoDePropiedad} />
-              <Autocomp />
+              <Autocomp setLocalidades={setLocalidades}/>
               <Link to={"/resultados"}>
                 <Button type="submit" onClick={handleclick} variant="contained">
                   Buscar
