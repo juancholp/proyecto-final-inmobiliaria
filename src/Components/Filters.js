@@ -43,8 +43,8 @@ function Filters() {
 
   const [store, dispatch] = useContext(storeContext);
 
-  const [filtro, setFiltro] = useState(initFilters);
-
+  const [filtro, setFiltro] = useState();
+  const [initFilter, setInitFilter] = useState();
   const [localidades, setLocalidades] = useState([]);
   const [estado, setEstado] = useState([]);
   const [tipo, setTipo] = useState([]);
@@ -61,7 +61,9 @@ function Filters() {
     setLocalidades(value);
     setFiltro({ ...filtro, localidad: value });
   };
-
+  useEffect(() => {
+    setInitFilter(store.filters);
+  }, []);
   const handleChangeEstado = (event) => {
     const {
       target: { value },
@@ -128,8 +130,7 @@ function Filters() {
     setComodidad([]);
     setListadoTipoDePublicacion([]);
 
-    setFiltro(initFilters);
-    dispatch({ type: "setFilters", payload: initFilters });
+    setFiltro(initFilter);
   };
 
   return (
@@ -374,9 +375,6 @@ function Filters() {
             </FormControl>
           </Stack>
         </FormControl>
-        <Button variant="outlined" onClick={saveFilters}>
-          Aplicar Filtros
-        </Button>
       </div>
     </div>
   );

@@ -16,6 +16,7 @@ import { FilterAlt } from "@mui/icons-material";
 import "./SearchResult.css";
 import { storeContext } from "../../Store/StoreProvider";
 import Filters from "../Filters";
+import Filtros from "../Filtros";
 import { filterResultados } from "../../Hooks/useFilter";
 const SearchResult = () => {
   const [numOfResults, setNumOfResults] = useState(0);
@@ -103,7 +104,7 @@ const SearchResult = () => {
           </div>
         </Box>
       </Container>
-      <Filters />
+      <Filtros />
       <Container className="resultados" maxWidth="lg">
         <Box
           boxShadow={2}
