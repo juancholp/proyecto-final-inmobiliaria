@@ -1,5 +1,5 @@
 import {
-  ListadoPropiedades,
+
   ListadoLocalidades,
   ListadoTipoPropiedad,
   ListadoCantidadDormitorios,
@@ -13,7 +13,7 @@ import {
   ListadotypesDeAtributos,
   nombreDeGuardadoDeLosAtributos,
 } from './Data.js'
-
+import {    ListadoPropiedades} from "./DataPropiedades.js"
 const initialStore = () => {
   const store = {
     propiedades: ListadoPropiedades,

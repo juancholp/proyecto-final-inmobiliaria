@@ -66,7 +66,6 @@ const RenderResults = (props) => {
                       alignItems: "center",
                       boxShadow: "rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px",
                     }}
-                    image={null}
                     alt="Inmueble"
                     src={result.imgsrc[0]}
                   />
@@ -108,6 +107,7 @@ const RenderResults = (props) => {
                       justifyContent: "center",
                       textAlign: "center",
                       width: "20vw",
+                      
                     }}
                   >
                     
@@ -124,7 +124,7 @@ const RenderResults = (props) => {
                           marginTop: 3,
                         }}
                       >
-                        <Link to={`/PublicarPropiedad`}>
+                        <Link to={`/publicarpropiedad`}>
                           <Button variant="outlined" sx={{boxShadow: "rgba(0, 0, 0, 0.19) 0px 5px 10px, rgba(0, 0, 0, 0.23) 0px 3px 3px"}}>Ver Inmueble</Button>
                         </Link>
                       </Box>
