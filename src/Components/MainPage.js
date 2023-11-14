@@ -65,7 +65,7 @@ function MainPage() {
               <CustomSelectCheckmarks options={setTipo} />
               <Autocomp options={setLocalidades} />
               <Link to={"/resultados"}>
-                <Button type="submit" variant="contained" onClick={handleclick} sx={{width: "6vw", height: "5vh", fontFamily:"Lato", fontSize: "1.2rem", borderRadius: "10px"}}>
+                <Button type="submit" variant="contained" onClick={handleclick} sx={{width: "5vw", height: "4vh", fontFamily:"Lato", fontSize: "1.2rem", borderRadius: "10px"}}>
                   <Typography>Buscar</Typography>
                 </Button>
               </Link>

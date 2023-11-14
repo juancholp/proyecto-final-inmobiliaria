@@ -46,7 +46,7 @@ function Carrousel() {
   };
 
   return (
-    <Box sx={{ maxWidth: 1000, flexGrow: 1, position: "relative", margin: "3vh 20vw" }}>
+    <Box sx={{ maxHeight: "40vh", maxWidth: "50vw", flexGrow: 1, position: "relative", margin: "0 20vw 25vh 20vw" }}>
       <AutoPlaySwipeableViews
         axis={theme.direction === "rtl" ? "x-reverse" : "x"}
         index={activeStep}
@@ -65,9 +65,9 @@ function Carrousel() {
               >
                 <div
                   style={{
-                    height: 600,
+                    height: "60vh",
                     display: "block",
-                    maxWidth: 1000,
+                    maxWidth: "50vw",
                     width: "100%",
                     position: "relative",
                     zIndex: 0,
@@ -140,7 +140,7 @@ function Carrousel() {
         activeStep={activeStep}
         nextButton={
           <Button
-            size="small"
+            size="large"
             onClick={handleNext}
             disabled={activeStep === maxSteps - 1}
             style={{
@@ -148,18 +148,19 @@ function Carrousel() {
               top: "50%",
               right: "10px",
               zIndex: 2,
+              
             }}
           >
             {theme.direction === "rtl" ? (
-              <ArrowBackIosIcon />
+              <ArrowBackIosIcon style={{ fontSize: 50 }} />
             ) : (
-              <ArrowForwardIosIcon />
+              <ArrowForwardIosIcon style={{ fontSize: 50 }} />
             )}
           </Button>
         }
         backButton={
           <Button
-            size="small"
+            size="large"
             onClick={handleBack}
             disabled={activeStep === 0}
             style={{
@@ -170,9 +171,9 @@ function Carrousel() {
             }}
           >
             {theme.direction === "rtl" ? (
-              <KeyboardArrowRight />
+              <KeyboardArrowRight style={{ fontSize: 50 }} />
             ) : (
-              <ArrowBackIosIcon />
+              <ArrowBackIosIcon style={{ fontSize: 50 }} />
             )}
           </Button>
         }
