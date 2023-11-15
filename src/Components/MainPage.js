@@ -12,30 +12,30 @@ import { Link } from "react-router-dom";
 import { Typography } from "@mui/material";
 import SearchResult from "./Results/SearchResult";
 
+
 function MainPage() {
-  const [optionsTipoDePropiedad, setOptionsTiposDePropiedad] =useState([])
-  const [seleccion, setSeleccion] = useState("venta");
-  const [store, dispatch] = useContext(storeContext);
+  const [seleccion, setSeleccion] = React.useState("venta");
+  const [store, dispatch] = React.useContext(storeContext);
   const [localidades, setLocalidades] = useState();
   const [tipopublicacion, setTipopublicacion] = useState();
   const [tipo, setTipo] = useState();
-  useEffect(() => {
-    setOptionsTiposDePropiedad(store.tipoPropiedad);
-  }, [store.tipoPropiedad]);
-  const handleChange = (event, value) => {
-    setSeleccion(value);
-    filterParams.tipodeventa = value;
-  };
   const filtros = {
     localidad: localidades,
     TipoDePublicacion: tipopublicacion,
     tipo: tipo,
-  }; 
+  };
+  const handleChange = (event, value) => {
+    setSeleccion(value);
+    setTipopublicacion(value);
+    console.log("hola",store.propiedades[1])
+  };
+  
   const handleclick = () => {
+    console.log("mainpage",filtros)
     dispatch({ type: "setFilters", payload: filtros });
+  
     <SearchResult />;
   };
-
   return (
     <div className="App">
       <div className="SearchBackground">
@@ -54,8 +54,8 @@ function MainPage() {
             </ToggleButtonGroup>
 
             <div className="contenedorBusqueda">
-              <CustomSelectCheckmarks options={optionsTipoDePropiedad} />
-              <Autocomp />
+              <CustomSelectCheckmarks options={setTipo} />
+              <Autocomp setLocalidades={setLocalidades}/>
               <Link to={"/resultados"}>
                 <Button type="submit" onClick={handleclick} variant="contained">
                   Buscar

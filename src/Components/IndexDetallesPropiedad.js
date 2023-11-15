@@ -1,19 +1,18 @@
-import Dato from "./Database/Data.js";
-import Breadcrumb from "./Breadcrumbs.js";
+import Breadcrumb from "./feature_propertyDetails/Breadcrumbs.js";
 import { useEffect, useState } from "react";
-import IconDetalle from "./IconDetalle.js";
-import MapView from "./MapView.js";
-import "./Styles/DestalleDePropiedad.css";
-import DPropiedad from "./Descripcion.js";
-import Propiedades from "./Propiedades.js";
+import IconDetalle from "./feature_propertyDetails/IconDetalle.js";
+import MapView from "./feature_propertyDetails/MapView.js";
+import "./feature_propertyDetails/Styles/DestalleDePropiedad.css";
+import DPropiedad from "./feature_propertyDetails/Descripcion.js";
+import Propiedades from "./feature_propertyDetails/Propiedades.js";
 import React from "react";
-import "./Styles/imagen.css";
-import Carrousel from "../Carrousel.js";
-import data from "../feature_propertyDetails/Database/DataPropiedades.js";
-import PropertyDetails from "./Database/DataTablaDePropiedades.js";
+import "./feature_propertyDetails/Styles/imagen.css";
+import Carrousel from "./Carrousel.js";
+import { storeContext} from "../Store/StoreProvider";
 
 function DetallePropiedad(props) {
-  const [casa, setCasa] = useState([]);
+  const [casa, setCasa] = useState(store.propiedades[1]);
+  const [store, dispatch] = React.useContext(storeContext);
   const hilos = [
     "MarcketPlace inmobiliario",
     "Alquiler",
@@ -21,9 +20,6 @@ function DetallePropiedad(props) {
     "Punta Del Este",
     "Arquiler de monoambiente",
   ];
-  useEffect(() => {
-    setCasa(Dato[0]);
-  }, []);
   return (
     <div className="DetallePropiedad">
       <header className="main">
@@ -56,10 +52,9 @@ function DetallePropiedad(props) {
           <MapView />
         </div>
         <div>
-          <Propiedades datosDeTabla={PropertyDetails} />
         </div>
         <div className="dPropiedad">
-          <DPropiedad texto={data} />
+          <DPropiedad texto={casa.descripcion} />
         </div>
       </header>
     </div>

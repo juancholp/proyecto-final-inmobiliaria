@@ -43,9 +43,9 @@ const initialStore = () => {
 }
 
 const types = {
-  setProperty: 'setProperty',
-  setFilters: 'setFilters',
-}
+  setProperty: "setProperty",
+  setFilters: "setFilters",
+};
 
 const storeReducer = (state, action) => {
   switch (action.type) {
@@ -53,18 +53,18 @@ const storeReducer = (state, action) => {
       return {
         ...state,
         propiedades: state.propiedades.push(...action.payload),
-      }
+      };
     case types.setFilters:
       return {
         ...state,
-        filters: { ...state.filters, ...action.payload },
-      }
+        filters: {  ...action.payload },
+      };
 
     default:
-      return state
+      return state;
   }
-}
+};
 
-export { types }
-export { initialStore }
-export default storeReducer
+export { types };
+export { initialStore };
+export default storeReducer;
