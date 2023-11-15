@@ -10,24 +10,11 @@ import "./MainPage.css";
 import Autocomp from "./Autocomp";
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { filterParams } from "../Store/StoreProvider";
+import { storeContext } from "../Store/StoreProvider";
 
 function MainPage() {
   const [seleccion, setSeleccion] = React.useState("venta");
-  const options_default = [
-    "Casa",
-    "Apartamento",
-    "Terreno",
-    "Local Comercial",
-    "Oficina",
-    "Chacra o Campo",
-    "Garage o Cochera",
-  ];
-
-  const handleChange = (event, value) => {
-    setSeleccion(value);
-    filterParams.tipodeventa = value;
-  };
+  const [store, dispatch] = React.useContext(storeContext);
 
   return (
     <div className="App">
@@ -35,12 +22,12 @@ function MainPage() {
         <div className="Search">
           <Box>
             <ToggleButtonGroup
-              color="primary"
-              value={seleccion}
-              exclusive
-              onChange={handleChange}
-              aria-label="Platform"
-              id="opciones"
+              // color="primary"
+              // value={seleccion}
+              // exclusive
+              // onChange={handleChange}
+              // aria-label="Platform"
+              // id="opciones"
             >
               <ToggleButton value="Venta">Venta</ToggleButton>
               <ToggleButton value="Alquiler">Alquiler</ToggleButton>
@@ -50,7 +37,7 @@ function MainPage() {
             </ToggleButtonGroup>
 
             <div className="contenedorBusqueda">
-              <CustomSelectCheckmarks options={options_default} />
+              <CustomSelectCheckmarks options={store.tipoPropiedad.map()} />
               <Autocomp />
               <Link to={"/resultados"}>
                 <Button type="submit" variant="contained">

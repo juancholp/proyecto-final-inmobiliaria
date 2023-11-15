@@ -8,7 +8,7 @@ import Button from '@mui/material/Button'
 import './Filters.css'
 import Chip from '@mui/material/Chip'
 import Stack from '@mui/material/Stack'
-import { storeContext, filterParams } from '../Store/StoreProvider'
+import { storeContext } from '../Store/StoreProvider'
 import TextField from '@mui/material/TextField'
 
 const ITEM_HEIGHT = 44

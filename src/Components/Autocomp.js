@@ -1,14 +1,15 @@
 import * as React from 'react';
 import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
-import { filterParams } from "../Store/StoreProvider";
+import { storeContext } from "../Store/StoreProvider";
 export default function ComboBox() {
   const [selectedDepartment, setSelectedDepartment] = React.useState(null);
+  const [store, dispatch] = React.useContext(storeContext)
 
   const handleDepartmentChange = (value) => {
     console.log("valor = ", value);
     const newValue = value;
-    filterParams.localidad = newValue;
+    store.localidad = newValue;
   };
 
   return (

@@ -14,11 +14,7 @@ import {
 import MapIcon from "@mui/icons-material/Map";
 import { FilterAlt } from "@mui/icons-material";
 import "./SearchResult.css";
-import {
-  storeContext,
-  filterResults,
-  filterParams,
-} from "../../Store/StoreProvider";
+import { storeContext } from "../../Store/StoreProvider";
 import Filters from "../Filters";
 const SearchResult = () => {
   const [numOfResults, setNumOfResults] = useState(0);
@@ -29,7 +25,7 @@ const SearchResult = () => {
   const [store, dispatch] = useContext(storeContext);
 
   useEffect(() => {
-    const filteredResults = filterResults(results);
+    const filteredResults = Filters(results);
     setFilteredResults(filteredResults);
   }, [results]);
   useEffect(() => {
@@ -73,11 +69,11 @@ const SearchResult = () => {
                   variant="body1"
                   color="text.primary"
                 >
-                  Venta de casas y apartamentos en {filterParams.localidad}.
+                  Venta de casas y apartamentos en {store.localidades}.
                 </Typography>
                 <Typography variant="body2" color="text.secondary">
-                  Estás en: {filterParams.tipodepropiedad},{" "}
-                  {filterParams.tipoDeVenta}
+                  Estás en: {store.tipoPropiedad},{" "}
+                  {store.tipoDeVenta}
                 </Typography>
                 <Typography variant="body2" color="text.primary">
                   Mostrando {numOfResults} resultados.

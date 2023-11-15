@@ -59,7 +59,6 @@ const storeReducer = (state, action) => {
         ...state,
         filters: { ...state.filters, ...action.payload },
       }
-
     default:
       return state
   }

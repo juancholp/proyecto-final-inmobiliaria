@@ -6,7 +6,7 @@ import FormControl from "@mui/material/FormControl";
 import ListItemText from "@mui/material/ListItemText";
 import Select from "@mui/material/Select";
 import Checkbox from "@mui/material/Checkbox";
-import { filterParams } from "../Store/StoreProvider";
+import { storeContext } from "../Store/StoreProvider";
 
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
@@ -21,6 +21,7 @@ const MenuProps = {
 
 export default function CustomSelectCheckmarks(props) {
   const [optionName, setOptionName] = React.useState([]);
+  const [store, dispatch] = React.useContext(storeContext)
 
   const handleChange = (event) => {
     const {
@@ -30,8 +31,8 @@ export default function CustomSelectCheckmarks(props) {
       // On autofill we get a stringified value.
       typeof value === "string" ? value.split(",") : value
     );
-    filterParams.tipoDePropiedad = value;
-    console.log(filterParams.tipoDePropiedad);
+    store.tipoPropiedad = value;
+    console.log(store.tipoPropiedad);
   };
 
   return (
