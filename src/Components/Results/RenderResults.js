@@ -104,11 +104,11 @@ const RenderResults = (props) => {
                       {result.disposicion} - {result.dormitorio} dormitorios -{" "}
                       {result.banos} baños - {result.m2Edificados} m²
                     </Typography>
-                    <Typography variant="subtitle1" color="text.secondary">
-                      Tipo de Publicacion: {result.tipoVenta}
+                    <Typography sx={{ fontSize: "1.3rem" }} variant="subtitle1" color="text.secondary">
+                      {result.tipoVenta}
                     </Typography>
                     <br />
-                    <Typography variant="subtitle1" color="text.secondary">
+                    <Typography sx={{ fontSize: "1.2rem" }} variant="subtitle1" color="text.secondary">
                       {result.descripcion}
                     </Typography>
                   </CardContent>

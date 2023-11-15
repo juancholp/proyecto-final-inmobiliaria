@@ -14,7 +14,7 @@ import SearchResult from "./Results/SearchResult";
 import "./MainPage.css";
 
 function MainPage() {
-  const [seleccion, setSeleccion] = React.useState("venta");
+  const [seleccion, setSeleccion] = React.useState();
   const [store, dispatch] = React.useContext(storeContext);
   const [localidades, setLocalidades] = useState();
   const [tipopublicacion, setTipopublicacion] = useState();
