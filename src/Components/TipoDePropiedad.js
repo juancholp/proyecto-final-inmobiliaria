@@ -24,14 +24,13 @@ export default function CustomSelectCheckmarks(props) {
   const [optionName, setOptionName] = React.useState([]);
   const [store, dispatch] = useContext(storeContext);
   const handleChange = (event) => {
-    const {
-      target: { value },
-    } = event;
+    const value = event.target.value
+
     setOptionName(
       typeof value === "string" ? value.split(",") : value
     );
 
-    props.options(value);
+    props.actionOnClick(value);
   };
 
   return (

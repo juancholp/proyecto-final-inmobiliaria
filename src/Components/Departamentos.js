@@ -12,7 +12,7 @@ export default function CustomAutoComplete(props) {
 
   const handleDepartmentChange = (value) => {
     const newValue = value;
-    props.options(value)
+    props.actionOnClick(value)
   };
 
   return (

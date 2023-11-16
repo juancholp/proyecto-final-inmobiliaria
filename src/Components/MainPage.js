@@ -10,29 +10,28 @@ import Departamentos from "./Departamentos";
 import { storeContext } from "../Store/StoreProvider";
 import { Link } from "react-router-dom";
 import { Typography } from "@mui/material";
-import SearchResult from "./Results/SearchResult";
+import { SearchResult } from "./Results/SearchResult";
 import "./MainPage.css";
+import { types } from "../Store/StoreReducer";
 
 function MainPage() {
-  const [seleccion, setSeleccion] = React.useState();
   const [store, dispatch] = React.useContext(storeContext);
   const [localidades, setLocalidades] = useState();
   const [tipopublicacion, setTipopublicacion] = useState();
-  const [tipo, setTipo] = useState();
+  const [tipoDePropiedad, setTipoDePropiedad] = useState();
   const filtros = {
     localidad: localidades,
-    TipoDePublicacion: tipopublicacion,
-    tipo: tipo,
+    tipoDePublicacion: tipopublicacion,
+    tipo: tipoDePropiedad,
   };
 
   const handleChange = (event, value) => {
-    setSeleccion(value);
     setTipopublicacion(value);
   };
 
   const handleclick = () => {
-    dispatch({ type: "setFilters", payload: filtros });
-    <SearchResult />;
+    dispatch({ type: types.setFilters, payload: filtros });
+    console.log("filtros", filtros)
   };
 
   return (
@@ -42,7 +41,7 @@ function MainPage() {
           <Box>
             <ToggleButtonGroup
               color="primary"
-              value={seleccion}
+              value={tipopublicacion}
               exclusive
               onChange={handleChange}
               aria-label="Platform"
@@ -63,27 +62,27 @@ function MainPage() {
             >
               <ToggleButton
                 value="Venta"
-                sx={{ fontFamily: "Lato", fontSize: "1.2rem" }}
+                sx={{ fontFamily: "Lato", fontSize: "1rem" }}
               >
                 Venta
               </ToggleButton>
               <ToggleButton
                 value="Alquiler"
-                sx={{ fontFamily: "Lato", fontSize: "1.2rem" }}
+                sx={{ fontFamily: "Lato", fontSize: "1rem" }}
               >
                 Alquiler
               </ToggleButton>
               <ToggleButton
                 value="AlquierTemp"
-                sx={{ fontFamily: "Lato", fontSize: "1.2rem" }}
+                sx={{ fontFamily: "Lato", fontSize: "1rem" }}
               >
                 Alquiler Temporal
               </ToggleButton>
             </ToggleButtonGroup>
 
             <div className="contenedorBusqueda">
-              <TipoDePropiedad options={setTipo} />
-              <Departamentos options={setLocalidades} />
+              <TipoDePropiedad actionOnClick={setTipoDePropiedad} />
+              <Departamentos actionOnClick={setLocalidades} />
               <Link to={"/resultados"}>
                 <Button
                   type="submit"
