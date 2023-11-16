@@ -19,6 +19,7 @@ const initialStore = () => {
     propiedades: ListadoPropiedades,
     localidades: ListadoLocalidades,
     tipoPropiedad: ListadoTipoPropiedad,
+    typesAtributos:ListadotypesDeAtributos,
     dormitorios: ListadoCantidadDormitorios,
     baños: ListadoBaños,
     opcion: ListadoOpciones,
@@ -52,7 +53,7 @@ const storeReducer = (state, action) => {
     case types.setProperty:
       return {
         ...state,
-        propiedades: state.propiedades.push(...action.payload),
+        propiedades: state.propiedades.push(action.payload),
       };
     case types.setFilters:
       return {

@@ -13,6 +13,7 @@ import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
 import { Link } from "react-router-dom";
+import { storeContext } from "../Store/StoreProvider";
 
 const pages = ["Propiedades", "Proyectos", "Inmobiliarias", "Noticias"];
 const settings = [
@@ -26,6 +27,8 @@ const settings = [
 function Navbar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
+  const [filtroVacio, setFiltroVacio]= React.useState(null)
+  const [store, dispatch] = React.useContext(storeContext);
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -36,6 +39,7 @@ function Navbar() {
 
   const handleCloseNavMenu = () => {
     setAnchorElNav(null);
+    dispatch({ type: "setFilters", payload: filtroVacio });
   };
 
   const handleCloseUserMenu = () => {

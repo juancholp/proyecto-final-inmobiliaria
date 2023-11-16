@@ -19,17 +19,24 @@ const SearchResult = () => {
   const [results, setResults] = useState([]);
   const [filteredResults, setFilteredResults] = useState([]);
   const [store, dispatch] = useContext(storeContext);
+const consola=()=>{
+  console.log("filtered",filteredResults)
+  console.log("resultas",results)
+ console.log("mainpage",store.filters);
 
-  useEffect(() => {
-    setResults(store.propiedades);
-  }, [store.propiedades]);
-
+}
   useEffect(() => {
     const filterResults = filter();
-    setFilteredResults(filterResults);
-  }, [results, store.filters]);
+    if (filterResults.length > 0) {
+      setFilteredResults(filterResults);
+    }else{
+      setFilteredResults(results);
+    }
+    
+  }, [store.filters]);
 
   useEffect(() => {
+    console.log("store propiedades",store.propiedades)
     setTimeout(() => {
       setLoading(false);
     }, 1000);
@@ -44,7 +51,7 @@ const SearchResult = () => {
   }, [filteredResults]);
 
   const filter = () => {
-    return results.filter((result) => {
+    return store.propiedades.filter((result) => {
       const {
         localidad,
         estado,
@@ -129,15 +136,20 @@ const SearchResult = () => {
         >
           <main className="results">
             {loading && <p>Cargando...</p>}
+  
+            <button onClick={consola}>consola</button>
             {!loading && (
               <div>
                 {filteredResults.length > 0 && (
-                  <RenderResults results={filteredResults} />
+                  <RenderResults results={filteredResults}/>
+                  
                 )}
               </div>
+              
             )}{" "}
           </main>
         </Box>
+        
       </Container>
     </div>
   );

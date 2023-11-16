@@ -17,7 +17,6 @@ import OutlinedInput from "@mui/material/OutlinedInput";
 
 export default function PublicarForm() {
   const [formData, setFormData] = useState({
-    id: 1,
     title: "",
     tipoMoneda: "",
     precio: "",
@@ -39,7 +38,33 @@ export default function PublicarForm() {
     gastoscomunes: "",
     imgsrc: [""],
   });
-  const [store] = React.useContext(storeContext);
+  const casa = {
+    id: 21,
+    title: 'prueba de',
+    tipoMoneda: 'U$D',
+    precio: 1200,
+    disposicion: 'Frente al mar',
+    tipoVenta: 'Alquiler',
+    ubicacion: ['Punta del Este', 'Artigas'],
+    comodidades: ['Piscina', 'Cocina Equipada', 'Vista al mar', 'Jardín'],
+    descripcion: 'Espectacular casa frente al mar en Punta del Este',
+    aceptaMascotasOptions: 'Sí',
+    zona: 'Punta Ballena',
+    garaje: 'Sí',
+    m2Edificados: 400,
+    m2Terreno: 1000,
+    tipoDePropiedad: 'Casa',
+    banos: 4,
+    dormitorio: 5,
+    anioConstruccion: 2015,
+    estado: 'Excelente estado',
+    imgsrc: [
+      'https://th.bing.com/th/id/OIP.4LrWM2SoZ_6mUiEsJUv4aQHaEK?pid=ImgDet&rs=1',
+      'https://th.bing.com/th/id/OIP.4LrWM2SoZ_6mUiEsJUv4aQHaEK?pid=ImgDet&rs=1',
+      'https://th.bing.com/th/id/OIP.4LrWM2SoZ_6mUiEsJUv4aQHaEK?pid=ImgDet&rs=1',
+    ],
+  }
+  const [store,dispatch] = React.useContext(storeContext);
 
   const [textFieldImagenesData, setTextFieldImagenesData] = useState([]);
 
@@ -68,7 +93,9 @@ export default function PublicarForm() {
 
   const handleSave = () => {
     const combinedData = { ...formData, imgsrc: textFieldImagenesData.map(item => item.value) };
+    console.log(combinedData);
     openSnackbar('Datos guardados');
+    dispatch({ type: "setProperty", payload: casa });
   };
 
   return (
@@ -114,6 +141,8 @@ export default function PublicarForm() {
               titulo={"Estados de Propiedad"}
               onChange={(value) => handleSelectChange(value, "estado")}
             />
+             
+            
           </div>
           <div className="Select">
             {/* Select List de baños */}
@@ -135,6 +164,12 @@ export default function PublicarForm() {
               tipo={store?.localidades}
               titulo={"Localidad"}
               onChange={(value) => handleSelectChange(value, "zona")}
+            />
+            <SelectList
+              className="selectList"
+              tipo={store?.localidades}
+              titulo={"Ubicacion"}
+              onChange={(value) => handleSelectChange(value, "ubicacion")}
             />
           </div>
           <FormControl sx={{ m: 1 }}>

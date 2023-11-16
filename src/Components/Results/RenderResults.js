@@ -12,6 +12,8 @@ import { Container } from "@mui/material";
 import FormMessage from "../FormMessage";
 import { Button } from "@mui/material";
 import { Link } from "react-router-dom";
+import { storeContext } from "../../Store/StoreProvider";
+
 
 const RenderResults = (props) => {
   const Item = styled(Paper)(({ theme }) => ({
@@ -83,6 +85,9 @@ const RenderResults = (props) => {
                     width: "35vw",
                   }}
                 >
+                  <Typography component="div" variant="h5">
+                 {result.title}
+                </Typography>
                   <Typography component="div" variant="h5">
                     USD {result.precio}
                   </Typography>

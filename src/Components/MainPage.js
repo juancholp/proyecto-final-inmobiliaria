@@ -7,7 +7,7 @@ import Carrousel from "./Carrousel";
 import Button from "@mui/material/Button";
 import { useState, useEffect, useContext } from "react";
 import Autocomp from "../Components/Autocomp"
-import { storeContext,filterParams } from "../Store/StoreProvider";
+import { storeContext } from "../Store/StoreProvider";
 import { Link } from "react-router-dom";
 import { Typography } from "@mui/material";
 import SearchResult from "./Results/SearchResult";
@@ -27,13 +27,12 @@ function MainPage() {
   const handleChange = (event, value) => {
     setSeleccion(value);
     setTipopublicacion(value);
-    console.log("hola",store.propiedades[1])
+    console.log("hola",seleccion)
   };
   
   const handleclick = () => {
-    console.log("mainpage",filtros)
+    
     dispatch({ type: "setFilters", payload: filtros });
-  
     <SearchResult />;
   };
   return (

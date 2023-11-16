@@ -53,7 +53,7 @@ export const ListadoAtributos = [
 ]
 export const nombreDeGuardadoDeLosAtributos = [
   'title',
-  'ubicacion',
+  
   'disposicion',
   'anioConstruccion',
   'm2Edificados',
@@ -61,7 +61,7 @@ export const nombreDeGuardadoDeLosAtributos = [
 ]
 export const ListadotypesDeAtributos = [
   'text',
-  'text',
+ 
   'text',
   'number',
   'number',
