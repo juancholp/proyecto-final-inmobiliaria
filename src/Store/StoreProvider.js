@@ -4,11 +4,11 @@ import React from "react";
 
 const storeContext = createContext();
 
-const intialData = initialStore();
+const initialData = initialStore();
 
 const StoreProvider = ({ children }) => {
 
-  const [store, dispatch] = useReducer(storeReducer, intialData);
+  const [store, dispatch] = useReducer(storeReducer, initialData);
   
   const [filteredResults, setFilteredResults] = React.useState([]);
   

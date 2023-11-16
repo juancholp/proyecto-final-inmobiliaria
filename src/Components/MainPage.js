@@ -31,7 +31,6 @@ function MainPage() {
 
   const handleclick = () => {
     dispatch({ type: types.setFilters, payload: filtros });
-    console.log("filtros", filtros)
   };
 
   return (
