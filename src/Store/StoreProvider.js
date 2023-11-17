@@ -10,8 +10,6 @@ const StoreProvider = ({ children }) => {
 
   const [store, dispatch] = useReducer(storeReducer, intialData);
   
-  const [filteredResults, setFilteredResults] = React.useState([]);
-  
   return (
     <storeContext.Provider value={[store, dispatch]}>
       {children}

@@ -1,7 +1,7 @@
 import React from "react";
 
 const Ingresar = () => {
-  return <div>Ingresar</div>;
+  return <div></div>;
 };
 
 export default Ingresar;

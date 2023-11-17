@@ -13,7 +13,7 @@ import {
   ListadotypesDeAtributos,
   nombreDeGuardadoDeLosAtributos,
 } from './Data.js'
-import {    ListadoPropiedades} from "./DataPropiedades.js"
+import { ListadoPropiedades} from "./DataPropiedades.js"
 const initialStore = () => {
   const store = {
     propiedades: ListadoPropiedades,
@@ -53,7 +53,7 @@ const storeReducer = (state, action) => {
     case types.setProperty:
       return {
         ...state,
-        propiedades: state.propiedades.push(action.payload),
+        propiedades: state.propiedades.concat( action.payload),
       };
     case types.setFilters:
       return {

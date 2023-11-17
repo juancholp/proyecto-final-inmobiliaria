@@ -16,27 +16,30 @@ import Filters from "../Filters";
 const SearchResult = () => {
   const [numOfResults, setNumOfResults] = useState(0);
   const [loading, setLoading] = useState(true);
-  const [results, setResults] = useState([]);
   const [filteredResults, setFilteredResults] = useState([]);
   const [store, dispatch] = useContext(storeContext);
-const consola=()=>{
-  console.log("filtered",filteredResults)
-  console.log("resultas",results)
- console.log("mainpage",store.filters);
+  const consola = () => {
+    console.log("filtered", filteredResults)
 
-}
+    console.log("mainpage", store.filters);
+
+  }
+useEffect(()=>{
+
+
+})
   useEffect(() => {
     const filterResults = filter();
     if (filterResults.length > 0) {
       setFilteredResults(filterResults);
-    }else{
-      setFilteredResults(results);
+    } else {
+      setFilteredResults(store.propiedades);
     }
-    
-  }, [store.filters]);
+
+  }, [store.filters,store.propiedades]);
 
   useEffect(() => {
-    console.log("store propiedades",store.propiedades)
+    console.log("store propiedades", store.propiedades)
     setTimeout(() => {
       setLoading(false);
     }, 1000);
@@ -51,7 +54,10 @@ const consola=()=>{
   }, [filteredResults]);
 
   const filter = () => {
+
+    console.log("filter aaa ", store.propiedades)
     return store.propiedades.filter((result) => {
+
       const {
         localidad,
         estado,
@@ -117,9 +123,9 @@ const consola=()=>{
           </Stack>
         </div>
       </Container>
-      <Box marginTop={4}>
+      {/* <Box marginTop={4}>
         <Filters />
-      </Box>
+      </Box> */}
       <Container maxWidth="xxl">
         <Box
           boxShadow={2}
@@ -136,20 +142,20 @@ const consola=()=>{
         >
           <main className="results">
             {loading && <p>Cargando...</p>}
-  
+
             <button onClick={consola}>consola</button>
             {!loading && (
               <div>
                 {filteredResults.length > 0 && (
-                  <RenderResults results={filteredResults}/>
-                  
+                  <RenderResults results={filteredResults} />
+
                 )}
               </div>
-              
+
             )}{" "}
           </main>
         </Box>
-        
+
       </Container>
     </div>
   );

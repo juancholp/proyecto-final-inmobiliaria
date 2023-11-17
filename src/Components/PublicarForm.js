@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import "./styles/PublicarForm.css";
@@ -17,12 +17,13 @@ import OutlinedInput from "@mui/material/OutlinedInput";
 
 export default function PublicarForm() {
   const [formData, setFormData] = useState({
+    id:22,
     title: "",
     tipoMoneda: "",
     precio: "",
     disposicion: "",
     tipoVenta: "",
-    ubicacion: [""],
+    ubicacion: [],
     comodidad: [],
     descripcion: "",
     aceptaMascotasOptions: "",
@@ -38,34 +39,8 @@ export default function PublicarForm() {
     gastoscomunes: "",
     imgsrc: [""],
   });
-  const casa = {
-    id: 21,
-    title: 'prueba de',
-    tipoMoneda: 'U$D',
-    precio: 1200,
-    disposicion: 'Frente al mar',
-    tipoVenta: 'Alquiler',
-    ubicacion: ['Punta del Este', 'Artigas'],
-    comodidades: ['Piscina', 'Cocina Equipada', 'Vista al mar', 'Jardín'],
-    descripcion: 'Espectacular casa frente al mar en Punta del Este',
-    aceptaMascotasOptions: 'Sí',
-    zona: 'Punta Ballena',
-    garaje: 'Sí',
-    m2Edificados: 400,
-    m2Terreno: 1000,
-    tipoDePropiedad: 'Casa',
-    banos: 4,
-    dormitorio: 5,
-    anioConstruccion: 2015,
-    estado: 'Excelente estado',
-    imgsrc: [
-      'https://th.bing.com/th/id/OIP.4LrWM2SoZ_6mUiEsJUv4aQHaEK?pid=ImgDet&rs=1',
-      'https://th.bing.com/th/id/OIP.4LrWM2SoZ_6mUiEsJUv4aQHaEK?pid=ImgDet&rs=1',
-      'https://th.bing.com/th/id/OIP.4LrWM2SoZ_6mUiEsJUv4aQHaEK?pid=ImgDet&rs=1',
-    ],
-  }
-  const [store,dispatch] = React.useContext(storeContext);
 
+  const [store, dispatch] = useContext(storeContext);
   const [textFieldImagenesData, setTextFieldImagenesData] = useState([]);
 
   const [snackbarOpen, setSnackbarOpen] = useState(false);
@@ -90,12 +65,17 @@ export default function PublicarForm() {
     setSnackbarMessage(message);
     setSnackbarOpen(true);
   };
+  useEffect(() => {
+    console.log("base de store", store.propiedades)
+  });
+  
 
   const handleSave = () => {
     const combinedData = { ...formData, imgsrc: textFieldImagenesData.map(item => item.value) };
-    console.log(combinedData);
+    console.log("Array de prueba", casa);
     openSnackbar('Datos guardados');
     dispatch({ type: "setProperty", payload: casa });
+    console.log("actualizacion de store", store.propiedades)
   };
 
   return (
@@ -141,8 +121,8 @@ export default function PublicarForm() {
               titulo={"Estados de Propiedad"}
               onChange={(value) => handleSelectChange(value, "estado")}
             />
-             
-            
+
+
           </div>
           <div className="Select">
             {/* Select List de baños */}
@@ -275,4 +255,30 @@ export default function PublicarForm() {
       </Box>
     </div>
   );
+}
+const casa = {
+  id: 22,
+  title: 'prueba',
+  tipoMoneda: 'U$D',
+  precio: 1200,
+  disposicion: 'Frente al mar',
+  tipoVenta: 'Alquiler',
+  ubicacion: ['Punta del Este', 'Artigas'],
+  comodidades: ['Piscina', 'Cocina Equipada', 'Vista al mar', 'Jardín'],
+  descripcion: 'Espectacular casa frente al mar en Punta del Este',
+  aceptaMascotasOptions: 'Sí',
+  zona: 'Punta Ballena',
+  garaje: 'Sí',
+  m2Edificados: 400,
+  m2Terreno: 1000,
+  tipoDePropiedad: 'Casa',
+  banos: 4,
+  dormitorio: 5,
+  anioConstruccion: 2015,
+  estado: 'Excelente estado',
+  imgsrc: [
+    'https://th.bing.com/th/id/OIP.4LrWM2SoZ_6mUiEsJUv4aQHaEK?pid=ImgDet&rs=1',
+    'https://th.bing.com/th/id/OIP.4LrWM2SoZ_6mUiEsJUv4aQHaEK?pid=ImgDet&rs=1',
+    'https://th.bing.com/th/id/OIP.4LrWM2SoZ_6mUiEsJUv4aQHaEK?pid=ImgDet&rs=1',
+  ],
 }
