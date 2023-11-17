@@ -33,7 +33,7 @@ const SearchResult = () => {
       }
       if (store.filters.estado) {
         store.filters.estado.map((estado) => {
-          if (result.estado === estado) {
+          if (result.estado == estado) {
             return true;
           }
         });

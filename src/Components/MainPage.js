@@ -17,16 +17,16 @@ import { types } from "../Store/StoreReducer";
 function MainPage() {
   const [store, dispatch] = React.useContext(storeContext);
   const [localidades, setLocalidades] = useState();
-  const [tipopublicacion, setTipopublicacion] = useState();
+  const [tipoDePublicacion, setTipoDePublicacion] = useState();
   const [tipoDePropiedad, setTipoDePropiedad] = useState();
   const filtros = {
     localidad: localidades,
-    tipoDePublicacion: tipopublicacion,
+    tipoDePublicacion: tipoDePublicacion,
     tipo: tipoDePropiedad,
   };
 
   const handleChange = (event, value) => {
-    setTipopublicacion(value);
+    setTipoDePublicacion(value);
   };
 
   const handleclick = () => {
@@ -40,7 +40,7 @@ function MainPage() {
           <Box>
             <ToggleButtonGroup
               color="primary"
-              value={tipopublicacion}
+              value={tipoDePublicacion}
               exclusive
               onChange={handleChange}
               aria-label="Platform"
