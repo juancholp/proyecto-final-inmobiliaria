@@ -23,7 +23,7 @@ const Item = styled("div")(({ theme }) => ({
 
 export default function StickyFooter() {
   return (
-    <Box className="footer" sx={{ position: "fixed", bottom: 0, width: "100%", padding: 0, height: "5vh", alignContent: "center" }}>
+    <Box className="footer" sx={{ zIndex: "5", position: "fixed", bottom: 0, width: "100%", padding: 0, height: "5vh", alignContent: "center" }}>
       <Grid container spacing={2}>
         <Grid item xs={6} sx={{ paddingLeft: 0 }}>
           <Item>

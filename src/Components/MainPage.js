@@ -74,7 +74,7 @@ function MainPage() {
                 Alquiler
               </ToggleButton>
               <ToggleButton
-                value="AlquierTemp"
+                value="Alquiler Temporal"
                 sx={{ fontFamily: "Lato", fontSize: "1rem" }}
               >
                 Alquiler Temporal

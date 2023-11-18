@@ -14,7 +14,6 @@ import Filters from "../Filters";
 import RenderResults from "./RenderResults";
 
 const SearchResult = () => {
-  const [numOfResults, setNumOfResults] = useState(0);
   const [loading, setLoading] = useState(true);
   const [results, setResults] = useState([]);
   const [store, dispatch] = useContext(storeContext);
@@ -83,7 +82,7 @@ const SearchResult = () => {
 
       if (tipoDePublicacion) {
         dataFiltrada = dataFiltrada.filter((item) =>
-          item.tipoDePublicacion.includes(tipoDePublicacion)
+          item.tipoDePublicacion === tipoDePublicacion
         );
       }
 
