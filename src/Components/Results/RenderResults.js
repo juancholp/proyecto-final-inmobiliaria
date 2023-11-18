@@ -105,7 +105,7 @@ const RenderResults = (props) => {
                       {result.banos} baños - {result.m2Edificados} m²
                     </Typography>
                     <Typography sx={{ fontSize: "1.3rem" }} variant="subtitle1" color="text.secondary">
-                      {result.tipoVenta}
+                      {result.tipoDePublicacion}
                     </Typography>
                     <br />
                     <Typography sx={{ fontSize: "1.2rem" }} variant="subtitle1" color="text.secondary">

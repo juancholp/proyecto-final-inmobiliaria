@@ -23,75 +23,65 @@ const SearchResult = () => {
   const [filteredResults, setFilteredResults] = useState([]);
   const [store, dispatch] = useContext(storeContext);
 
-  
-  const filter = (results) => {
-    const filterResults = results.filter((result) => {
-      if (store.filters.localidad) {
-        if (store.filters.localidad === result.ubicacion) {
-          return true;
-        }
-      }
-      if (store.filters.estado) {
-        store.filters.estado.map((estado) => {
-          if (result.estado == estado) {
-            return true;
-          }
-        });
-      }
-      if (store.filters.TipoDePublicacion) {
-        if (store.filters.TipoDePublicacion === result.tipoVenta) {
-          return true;
-        }
-      }
-      if (store.filters.tipo) {
-        store.filters.tipo.map((tipo) => {
-          if (result.tipoDePropiedad === tipo) {
-            return true;
-          }
-        });
-      }
-      if (store.filters.dormitorios) {
-        store.filters.dormitorios.map((dormitorio) => {
-          if (result.dormitorio === dormitorio) {
-            return true;
-          }
-        });
-      }
-      if (store.filters.moneda) {
-        store.filters.moneda.map((moneda) => {
-          if (result.tipoMoneda === moneda) {
-            return true;
-          }
-        });
-      }
-    });
-    return filterResults;
-  };
+  const filtro = store.filters;
+  const propiedades = store.propiedades;
+
 
   useEffect(() => {
-    const filterResults = filter(results);
-    setFilteredResults(filterResults);
-  }, [results]);
-  useEffect(() => {
-    setResults(store.propiedades);
-  }, [store.propiedades]);
-  useEffect(() => {
+    console.log("filtros", filtro)
+
+    if (filtro == null) {
+      setResults(propiedades)
+    }
+
+    const keys = Object.keys(filtro)
+    if(keys.length > 0){
+     const { 
+    localidad,
+     estado,
+     tipoDePropiedad,
+     dormitorios,
+     moneda,
+     maxPrice,
+     comodidad,
+     tipoDePublicacion} = filtro
+     
+     let dataFiltrada = []
+     if(localidad){
+      dataFiltrada = propiedades.filter(item => item.ubicacion.includes(filtro.localidad))
+     }
+    if(estado){
+      dataFiltrada = propiedades.filter(item => item.estado.includes(filtro.estado))
+    }
+    if(tipoDePropiedad){
+      dataFiltrada = propiedades.filter(item => item.tipoDePropiedad.includes(filtro.tipoDePropiedad))
+    }
+    if(dormitorios){
+      dataFiltrada = propiedades.filter(item => item.dormitorios.includes(filtro.dormitorios))
+    }
+    if(moneda){
+      dataFiltrada = propiedades.filter(item => item.moneda.includes(filtro.moneda))
+    }
+    if(maxPrice){
+      dataFiltrada = propiedades.filter(item => item.maxPrice.includes(filtro.maxPrice))
+    }
+    if(comodidad){
+      dataFiltrada = propiedades.filter(item => item.comodidad.includes(filtro.comodidad))
+    }
+    if(tipoDePublicacion){
+      dataFiltrada = propiedades.filter(item => item.tipoDePublicacion.includes(filtro.tipoDePublicacion))
+    }
+     setResults(dataFiltrada)
+     console.log("data filtrada", dataFiltrada)
+    }
+
     setTimeout(() => {
       setLoading(false);
     }, 1500);
-    setTimeout(() => {}, 2000);
   }, []);
 
-  useEffect(() => {
-    if (filteredResults.length > 0) {
-      setNumOfResults(filteredResults.length);
-    } else {
-      setNumOfResults(0);
-    }
-  }, [filteredResults]);
-
   return (
-    <div className="SearchResult">
+      <div className="SearchResult">
       <Container maxWidth="xxl">
         <div className="info">
           <Stack
@@ -109,10 +99,10 @@ const SearchResult = () => {
               alignContent={"center"}
               textAlign={"center"}
             >
-              Venta de casas y apartamentos en {store.filters.localidad}.
+              Venta de casas y apartamentos en {store.filters?.localidad}.
             </Typography>
             <Typography variant="body2" color="text.primary">
-              Mostrando {numOfResults} resultados.
+              Mostrando {results.length} resultados.
             </Typography>
           </Stack>
           <Stack
@@ -157,8 +147,8 @@ const SearchResult = () => {
             {loading && <p>Cargando...</p>}
             {!loading && (
               <div>
-                {filteredResults.length > 0 && (
-                  <RenderResults results={filteredResults} />
+                {results.length > 0 && (
+                  <RenderResults results={results} />
                 )}
               </div>
             )}{" "}
@@ -166,7 +156,7 @@ const SearchResult = () => {
         </Box>
       </Container>
     </div>
-  );
+    )
 };
 
 export default SearchResult;

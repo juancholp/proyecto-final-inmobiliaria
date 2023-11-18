@@ -22,7 +22,7 @@ function MainPage() {
   const filtros = {
     localidad: localidades,
     tipoDePublicacion: tipoDePublicacion,
-    tipo: tipoDePropiedad,
+    tipoDePropiedad: tipoDePropiedad,
   };
 
   const handleChange = (event, value) => {
@@ -30,7 +30,9 @@ function MainPage() {
   };
 
   const handleclick = () => {
-    dispatch({ type: types.setFilters, payload: filtros });
+    if (filtros.localidad || filtros.tipoDePublicacion || filtros.tipoDePropiedad) {
+      dispatch({ type: types.setFilters, payload: filtros });
+    }
   };
 
   return (

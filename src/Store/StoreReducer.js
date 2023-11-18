@@ -28,16 +28,7 @@ const initialStore = () => {
     comodidad: ListadoComodidades,
     atributos: ListadoAtributos,
     nombreAtributosGuardado: nombreDeGuardadoDeLosAtributos,
-    filters: {
-      localidad: "",
-      estado: "",
-      tipo: "",
-      dormitorios: "",
-      moneda: "",
-      maxPrice: "",
-      comodidad: "",
-      TipoDePublicacion: "",
-    },
+    filters: null
   };
   return store;
 };
