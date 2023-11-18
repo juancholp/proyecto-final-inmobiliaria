@@ -18,7 +18,7 @@ const AlquilerTemp = () => {
   const [store, dispatch] = useContext(storeContext);
 
   let filtered = store.propiedades.filter((prop) => {
-    return prop.tipoVenta === "Alquiler Temporal";
+    return prop.tipoDePublicacion === "Alquiler Temporal";
   });
 
   return (

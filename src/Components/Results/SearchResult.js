@@ -1,7 +1,4 @@
-import { useEffect } from "react";
-import { useState } from "react";
-import { useContext } from "react";
-import RenderResults from "./RenderResults";
+import React, { useEffect, useState, useContext } from "react";
 import {
   Box,
   Stack,
@@ -14,74 +11,93 @@ import MapIcon from "@mui/icons-material/Map";
 import { FilterAlt } from "@mui/icons-material";
 import { storeContext } from "../../Store/StoreProvider";
 import Filters from "../Filters";
-
+import RenderResults from "./RenderResults";
 
 const SearchResult = () => {
   const [numOfResults, setNumOfResults] = useState(0);
   const [loading, setLoading] = useState(true);
   const [results, setResults] = useState([]);
-  const [filteredResults, setFilteredResults] = useState([]);
   const [store, dispatch] = useContext(storeContext);
 
   const filtro = store.filters;
   const propiedades = store.propiedades;
 
-
   useEffect(() => {
-    console.log("filtros", filtro)
-
     if (filtro == null) {
-      setResults(propiedades)
-    }
+      setResults(propiedades);
+    } else {
+      const {
+        localidad,
+        estado,
+        tipoDePropiedad,
+        dormitorios,
+        moneda,
+        maxPrice,
+        comodidad,
+        tipoDePublicacion,
+      } = filtro;
 
-    const keys = Object.keys(filtro)
-    if(keys.length > 0){
-     const { 
-    localidad,
-     estado,
-     tipoDePropiedad,
-     dormitorios,
-     moneda,
-     maxPrice,
-     comodidad,
-     tipoDePublicacion} = filtro
-     
-     let dataFiltrada = []
-     if(localidad){
-      dataFiltrada = propiedades.filter(item => item.ubicacion.includes(filtro.localidad))
-     }
-    if(estado){
-      dataFiltrada = propiedades.filter(item => item.estado.includes(filtro.estado))
-    }
-    if(tipoDePropiedad){
-      dataFiltrada = propiedades.filter(item => item.tipoDePropiedad.includes(filtro.tipoDePropiedad))
-    }
-    if(dormitorios){
-      dataFiltrada = propiedades.filter(item => item.dormitorios.includes(filtro.dormitorios))
-    }
-    if(moneda){
-      dataFiltrada = propiedades.filter(item => item.moneda.includes(filtro.moneda))
-    }
-    if(maxPrice){
-      dataFiltrada = propiedades.filter(item => item.maxPrice.includes(filtro.maxPrice))
-    }
-    if(comodidad){
-      dataFiltrada = propiedades.filter(item => item.comodidad.includes(filtro.comodidad))
-    }
-    if(tipoDePublicacion){
-      dataFiltrada = propiedades.filter(item => item.tipoDePublicacion.includes(filtro.tipoDePublicacion))
-    }
-     setResults(dataFiltrada)
-     console.log("data filtrada", dataFiltrada)
+      let dataFiltrada = propiedades;
+
+      if (localidad) {
+        dataFiltrada = dataFiltrada.filter((item) =>
+          item.ubicacion.includes(localidad)
+        );
+      }
+
+      if (estado) {
+        dataFiltrada = dataFiltrada.filter((item) =>
+          item.estado.includes(estado)
+        );
+      }
+
+      if (tipoDePropiedad) {
+        dataFiltrada = dataFiltrada.filter((item) =>
+          item.tipoDePropiedad.includes(tipoDePropiedad)
+        );
+      }
+
+      if (dormitorios) {
+        dataFiltrada = dataFiltrada.filter((item) =>
+          item.dormitorios.includes(dormitorios)
+        );
+      }
+
+      if (moneda) {
+        dataFiltrada = dataFiltrada.filter((item) =>
+          item.moneda.includes(moneda)
+        );
+      }
+
+      if (maxPrice) {
+        dataFiltrada = dataFiltrada.filter(
+          (item) => parseFloat(item.maxPrice) <= parseFloat(maxPrice)
+        );
+      }
+
+      if (comodidad) {
+        dataFiltrada = dataFiltrada.filter((item) =>
+          item.comodidad.includes(comodidad)
+        );
+      }
+
+      if (tipoDePublicacion) {
+        dataFiltrada = dataFiltrada.filter((item) =>
+          item.tipoDePublicacion.includes(tipoDePublicacion)
+        );
+      }
+
+      setResults(dataFiltrada);
+      
     }
 
     setTimeout(() => {
       setLoading(false);
     }, 1500);
-  }, []);
+  }, [filtro, propiedades]);
 
   return (
-      <div className="SearchResult">
+    <div className="SearchResult">
       <Container maxWidth="xxl">
         <div className="info">
           <Stack
@@ -136,7 +152,6 @@ const SearchResult = () => {
             width: "100%",
             height: "fit-content",
             margin: "auto",
-
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
@@ -147,8 +162,10 @@ const SearchResult = () => {
             {loading && <p>Cargando...</p>}
             {!loading && (
               <div>
-                {results.length > 0 && (
+                {results.length > 0 ? (
                   <RenderResults results={results} />
+                ) : (
+                  <p>No se encontraron resultados para tu busqueda</p>
                 )}
               </div>
             )}{" "}
@@ -156,7 +173,7 @@ const SearchResult = () => {
         </Box>
       </Container>
     </div>
-    )
+  );
 };
 
 export default SearchResult;

@@ -18,7 +18,7 @@ const Venta = () => {
   const [store, dispatch] = useContext(storeContext);
 
   let filtered = store.propiedades.filter((prop) => {
-    return prop.tipoVenta === "Venta";
+    return prop.tipoDePublicacion === "Venta";
   });
 
   return (

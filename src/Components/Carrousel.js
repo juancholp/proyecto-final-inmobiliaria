@@ -83,7 +83,7 @@ function Carrousel() {
                     justifyContent: "flex-end",
                     flexDirection: "column",
                     alignItems: "flex-start",
-                    height: "15vh",
+                    height: "11vh",
                     width: "99%",
                     bottom: 0,
                     backgroundColor: "rgba(0, 0, 0, 0.4)",
@@ -92,6 +92,16 @@ function Carrousel() {
                     zIndex: 1,
                   }}
                 >
+                  <div 
+                    style={{
+                      display: "flex",
+                      justifyContent: "flex-start",
+                      flexDirection: "column",
+                      alignItems: "flex-start",
+                      height: "10vh",
+                      marginBottom: "10px"
+                    }}
+                  >
                   <p 
                     style={{
                       fontSize: "3rem",
@@ -126,13 +136,14 @@ function Carrousel() {
                       fontSize: "1.5rem",
                       position: "absolute",
                       right: "10px",
-                      bottom: "10px",
+                      bottom: "14px",
                       color: "white",
                       textDecoration: "none",
                     }}
                   >
                     Más información
                   </Link>
+                  </div>
                 </div>
               </div>
             ) : null}
