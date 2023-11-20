@@ -48,7 +48,7 @@ export default function CustomSelectCheckmarks(props) {
           MenuProps={MenuProps}
           sx={{borderRadius:"10px", overflow: "hidden"}}
         >
-          {store.tipoPropiedad.map((option) => (
+          {store.tipoDePropiedad.map((option) => (
             <MenuItem key={option} value={option}>
               <Checkbox checked={optionName.indexOf(option) > -1} />
               <ListItemText primary={option} />
