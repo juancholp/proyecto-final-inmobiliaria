@@ -51,7 +51,7 @@ function Filters() {
   const [dormitorios, setDormitorios] = useState([]);
   const [moneda, setMoneda] = useState([]);
   const [maxPrice, setMaxPrice] = useState(0);
-  const [TipoDePublicacion, setTipoDePublicacion] = useState([]);
+  const [tipoDePublicacion, setTipoDePublicacion] = useState([]);
 
   const handleChangeLocalidades = (event) => {
     const { target: { value } } = event;
@@ -125,7 +125,7 @@ function Filters() {
           <Chip label={item} key={item} />
         ))}
         {maxPrice > 0 && <Chip label={'Precio máximo: ' + maxPrice} />}
-        {TipoDePublicacion?.map((item) => (
+        {tipoDePublicacion?.map((item) => (
           <Chip label={item} key={item} />
         ))}
         <Button variant='outlined' onClick={resetFilters}>
@@ -289,7 +289,7 @@ function Filters() {
                 multiple
                 displayEmpty
                 onChange={handleChangeTipoDePublicacion}
-                value={TipoDePublicacion}
+                value={tipoDePublicacion}
                 input={<OutlinedInput />}
                 renderValue={(selected) => (
                   <em>Tipo de publicación</em>
@@ -304,7 +304,7 @@ function Filters() {
                 >
                   <em>Tipo de publicación</em>
                 </MenuItem>
-                {store.ListadoTipoDePublicacion?.map((name) => (
+                {store.tipoDePublicacion?.map((name) => (
                   <MenuItem
                     key={name}
                     value={name}

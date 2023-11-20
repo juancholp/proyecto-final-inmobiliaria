@@ -22,7 +22,7 @@ const initialStore = () => {
     dormitorios: ListadoCantidadDormitorios,
     baños: ListadoBaños,
     opcion: ListadoOpciones,
-    publicacion: ListadoTipoDePublicacion,
+    tipoDePublicacion: ListadoTipoDePublicacion,
     moneda: ListadoMoneda,
     estado: ListadoDeEstado,
     comodidad: ListadoComodidades,
