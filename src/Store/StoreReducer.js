@@ -1,7 +1,7 @@
 import {
   ListadoPropiedades,
   ListadoLocalidades,
-  ListadoTipoPropiedad,
+  ListadoTipoDePropiedad,
   ListadoCantidadDormitorios,
   ListadoBaños,
   ListadoTipoDePublicacion,
@@ -18,7 +18,7 @@ const initialStore = () => {
   const store = {
     propiedades: ListadoPropiedades,
     localidades: ListadoLocalidades,
-    tipoPropiedad: ListadoTipoPropiedad,
+    tipoDePropiedad: ListadoTipoDePropiedad,
     dormitorios: ListadoCantidadDormitorios,
     baños: ListadoBaños,
     opcion: ListadoOpciones,

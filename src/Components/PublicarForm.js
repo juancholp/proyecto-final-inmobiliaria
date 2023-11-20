@@ -32,8 +32,8 @@ export default function PublicarForm() {
     m2Edificados: "",
     m2Terreno: "",
     tipoDePropiedad: "",
-    banos: "",
-    dormitorio: "",
+    baños: "",
+    dormitorios: "",
     anioConstruccion: "",
     estado: "",
     gastoscomunes: "",
@@ -124,14 +124,14 @@ export default function PublicarForm() {
               className="selectList"
               tipo={store?.baños}
               titulo={"Cantidad De Baños"}
-              onChange={(value) => handleSelectChange(value, "banos")}
+              onChange={(value) => handleSelectChange(value, "baños")}
             />
-            {/* Select List de Dormitorio */}
+            {/* Select List de Dormitorios */}
             <SelectList
               className="selectList"
               tipo={store?.dormitorios}
-              titulo={"Cantidad De Dormitorio"}
-              onChange={(value) => handleSelectChange(value, "dormitorio")}
+              titulo={"Cantidad De Dormitorios"}
+              onChange={(value) => handleSelectChange(value, "dormitorios")}
             />
             <SelectList
               className="selectList"

@@ -101,8 +101,8 @@ const RenderResults = (props) => {
                       variant="subtitle1"
                       color="text.secondary"
                     >
-                      {result.disposicion} - {result.dormitorio} dormitorios -{" "}
-                      {result.banos} baños - {result.m2Edificados} m²
+                      {result.disposicion} - {result.dormitorios} dormitorios -{" "}
+                      {result.baños} baños - {result.m2Edificados} m²
                     </Typography>
                     <Typography sx={{ fontSize: "1.3rem" }} variant="subtitle1" color="text.secondary">
                       {result.tipoDePublicacion}
