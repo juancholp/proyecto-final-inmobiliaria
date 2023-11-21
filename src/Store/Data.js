@@ -120,8 +120,8 @@ export const ListadoPropiedades = [
     m2Edificados: 0,
     m2Terreno: 5000,
     tipoDePropiedad: 'Terreno',
-    baños: 0,
-    dormitorios: 0,
+    baños: null,
+    dormitorios: null,
     anioConstruccion: null,
     estado: 'Sin construcción',
     imgsrc: [

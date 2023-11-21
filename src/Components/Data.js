@@ -38,7 +38,7 @@ const tipo = [
 ];
 
 const dormitorios = [
-  "Monoambiente",
+  "0",
   "1",
   "2",
   "3",
