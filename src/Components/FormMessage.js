@@ -102,7 +102,7 @@ export default function FormMessage() {
             },
           }}
         >
-          Consultar
+          Realizar Consulta
         </Button>
         <BootstrapDialog
           onClose={handleClose}
@@ -110,7 +110,7 @@ export default function FormMessage() {
           open={open}
         >
           <DialogTitle sx={{ m: 0, p: 2 }} id="customized-dialog-title">
-            Consulta al anunciante
+            Realizar Consulta
           </DialogTitle>
           <IconButton
             aria-label="close"
@@ -124,13 +124,7 @@ export default function FormMessage() {
           >
             <CloseIcon />
           </IconButton>
-          <Tabs value="Consultar" aria-label="disabled tabs example">
-            <Tab
-              icon={<PersonPinIcon />}
-              iconPosition="start"
-              label="Consultar"
-            />
-          </Tabs>
+          
           <DialogContent dividers>
             <Box
               component="form"
@@ -183,16 +177,11 @@ export default function FormMessage() {
                   fullWidth
                   onClick={handleClose}
                 >
-                  Enviar Consulta
+                  Enviar
                 </Button>
               </Stack>
             </Box>
           </DialogContent>
-          {/* <DialogActions>
-            <Button id="fullWidth" autoFocus onClick={handleClose}>
-              Enviar Consulta
-            </Button>
-          </DialogActions> */}
         </BootstrapDialog>
       </div>
     </>

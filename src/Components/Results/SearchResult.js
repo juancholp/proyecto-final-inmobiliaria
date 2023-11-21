@@ -32,57 +32,62 @@ const SearchResult = () => {
         dormitorios,
         moneda,
         maxPrice,
-        comodidad,
         tipoDePublicacion,
       } = filtro;
 
       let dataFiltrada = propiedades;
 
-      if (localidad) {
+      if (localidad && localidad.length > 0) {
         dataFiltrada = dataFiltrada.filter((item) =>
-          item.ubicacion.includes(localidad)
+          localidad.map((itemLocalidad) => {
+            return item?.ubicacion?.includes(itemLocalidad)
+          })
         );
       }
 
-      if (estado) {
+      if (estado && estado.length > 0) {
+        
         dataFiltrada = dataFiltrada.filter((item) =>
-          item.estado.includes(estado)
+          estado.map((itemEstado) => {
+            return item?.estado?.includes(itemEstado)
+          })
+          
         );
       }
 
-      if (tipoDePropiedad) {
+      if (tipoDePropiedad && tipoDePropiedad.length > 0) {
         dataFiltrada = dataFiltrada.filter((item) =>
-          item.tipoDePropiedad.includes(tipoDePropiedad)
+          tipoDePropiedad.map((itemTipoDePropiedad) =>{
+            return item?.tipoDePropiedad?.includes(itemTipoDePropiedad)
+          })
         );
       }
 
-      if (dormitorios) {
+      if (dormitorios && dormitorios.length > 0) {
         dataFiltrada = dataFiltrada.filter((item) =>
-          item.dormitorios.includes(dormitorios)
+          dormitorios.map((itemDormitorios) => {
+            return item?.dormitorios?.includes(itemDormitorios)
+          })
         );
       }
 
-      if (moneda) {
+      if (moneda && moneda.length > 0) {
         dataFiltrada = dataFiltrada.filter((item) =>
-          item.moneda.includes(moneda)
+          moneda.map((itemMoneda) => {
+            return item?.moneda?.includes(itemMoneda)
+          })
         );
       }
 
-      if (maxPrice) {
+      if (maxPrice && maxPrice.length > 0) {
         dataFiltrada = dataFiltrada.filter(
           (item) => parseFloat(item.maxPrice) <= parseFloat(maxPrice)
         );
       }
 
-      if (comodidad) {
+      if (tipoDePublicacion && tipoDePublicacion.length > 0) {
         dataFiltrada = dataFiltrada.filter((item) =>
-          item.comodidad.includes(comodidad)
-        );
-      }
-
-      if (tipoDePublicacion) {
-        dataFiltrada = dataFiltrada.filter((item) =>
-          item.tipoDePublicacion === tipoDePublicacion
+          item?.tipoDePublicacion === tipoDePublicacion
         );
       }
 
@@ -90,11 +95,12 @@ const SearchResult = () => {
       
     }
 
+    console.log("filtro aplicado", filtro)
     setTimeout(() => {
       setLoading(false);
     }, 1500);
   }, [filtro, propiedades]);
-
+  console.log("resultados", results)
   return (
     <div className="SearchResult">
       <Container maxWidth="xxl">
