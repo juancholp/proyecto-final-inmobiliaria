@@ -6,6 +6,7 @@ import Grid from "@mui/material/Grid";
 
 const Item = styled(Paper)(({ theme }) => ({
   textAlign: "center",
+  boxShadow: "none",
 }));
 
 export default function StickyFooter() {

@@ -2,13 +2,18 @@ import * as React from 'react';
 import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
 import { filterParams } from "../Store/StoreProvider";
-export default function ComboBox() {
+import { useDispatch } from 'react-redux';
+
+
+
+export default function ComboBox(props) {
   const [selectedDepartment, setSelectedDepartment] = React.useState(null);
 
   const handleDepartmentChange = (value) => {
     console.log("valor = ", value);
     const newValue = value;
-    filterParams.localidad = newValue;
+    props.settlocalidad(value)
+    console.log(value);
   };
 
   return (
@@ -25,6 +30,9 @@ export default function ComboBox() {
     />
   );
 }
+
+
+
 
 const Departamentos = [
   { label: "Maldonado" },

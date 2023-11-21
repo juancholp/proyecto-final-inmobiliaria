@@ -30,8 +30,10 @@ export default function CustomSelectCheckmarks(props) {
       // On autofill we get a stringified value.
       typeof value === "string" ? value.split(",") : value
     );
-    filterParams.tipoDePropiedad = value;
+
     console.log(filterParams.tipoDePropiedad);
+    props.TipoDePropiedad(value)
+    console.log(value);
   };
 
   return (

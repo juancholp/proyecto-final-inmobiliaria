@@ -9,11 +9,32 @@ import "./MainPage.css";
 import Autocomp from "./Autocomp";
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { filterParams } from "../Store/StoreProvider";
+import { filterParams, storeContext } from "../Store/StoreProvider";
 import Footer from "./Footer";
+import { useDispatch } from 'react-redux';
+import { types } from "../Store/StoreReducer";
+
+
 
 function MainPage() {
+
+  const [store, dispatch] = React.useContext(storeContext);
+
   const [seleccion, setSeleccion] = React.useState("venta");
+  const[localidades, setLocalidades] = useState({});
+  const[tipo_propiedad, setTipo_propiedad] = useState({});
+
+  const filtros ={
+     TipoDePublicacion: tipo_propiedad,
+     localidad: localidades,
+     tipo: seleccion
+  }
+  dispatch(
+    { 
+      type: types.setFilters, 
+      payload: filtros
+    });
+
   const options_default = [
     "Casa",
     "Apartamento",
@@ -27,6 +48,7 @@ function MainPage() {
   const handleChange = (event, value) => {
     setSeleccion(value);
     filterParams.tipodeventa = value;
+    console.log(value)
   };
 
   return (
@@ -39,6 +61,7 @@ function MainPage() {
               value={seleccion}
               exclusive
               onChange={handleChange}
+              
               aria-label="Platform"
               id="opciones"
             >
@@ -50,8 +73,8 @@ function MainPage() {
             </ToggleButtonGroup>
 
             <div className="contenedorBusqueda">
-              <CustomSelectCheckmarks options={options_default} />
-              <Autocomp />
+              <CustomSelectCheckmarks TipoDePropiedad={setTipo_propiedad} options={options_default} />
+              <Autocomp settlocalidad={setLocalidades} /> 
               <Link to={"/resultados"}>
                 <Button type="submit" variant="contained">
                   Buscar

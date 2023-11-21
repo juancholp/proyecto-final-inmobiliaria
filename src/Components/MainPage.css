@@ -17,3 +17,12 @@
   margin-bottom: 20px;
   width: 100%;
 }
+
+.SearchBackground{
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-position: center; /* Agregado para centrar la imagen */
+  image-rendering: optimizeQuality;
+  width: auto;
+  height: auto;
+}

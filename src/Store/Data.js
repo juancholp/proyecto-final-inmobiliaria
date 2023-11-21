@@ -20,7 +20,7 @@ export const ListadoPropiedades = [
     anioConstruccion: 2015,
     estado: 'Excelente estado',
     imgsrc: [
-      'https://img.freepik.com/vector-gratis/hermosa-casa_24877-50819.jpg',
+      'https://th.bing.com/th/id/R.7f8b414fdc6e22cbfdfc538f1dbe6c97?rik=VVQqim2jaHTplw&riu=http%3a%2f%2fimg10.naventcdn.com%2favisos%2f18%2f00%2f50%2f39%2f26%2f74%2f1200x1200%2f28238885.jpg&ehk=A6%2fj%2fWftJ5fi1oPhttINLr22oxCh9KvLBCgPQ6ZTyWA%3d&risl=&pid=ImgRaw&r=0',
       'https://example.com/image2.jpg',
       'https://example.com/image3.jpg',
     ],
@@ -46,7 +46,7 @@ export const ListadoPropiedades = [
     anioConstruccion: 2000,
     estado: 'Buen estado',
     imgsrc: [
-      'https://example.com/image4.jpg',
+      'https://i.pinimg.com/originals/d5/e9/31/d5e9311c4f9b47129e283c3ddd55cb2b.jpg',
       'https://example.com/image5.jpg',
       'https://example.com/image6.jpg',
     ],
@@ -73,7 +73,7 @@ export const ListadoPropiedades = [
     anioConstruccion: 1990,
     estado: 'Muy buen estado',
     imgsrc: [
-      'https://example.com/image7.jpg',
+      'https://i.pinimg.com/originals/f6/55/39/f655399e2fc6ac8b6a713336fcc21d3f.png',
       'https://example.com/image8.jpg',
       'https://example.com/image9.jpg',
     ],
@@ -99,7 +99,7 @@ export const ListadoPropiedades = [
     anioConstruccion: 2012,
     estado: 'Excelente estado',
     imgsrc: [
-      'https://example.com/image10.jpg',
+      'https://i.pinimg.com/originals/d4/03/0f/d4030fd977bf9d016b71fd1a4c53b2c3.jpg',
       'https://example.com/image11.jpg',
       'https://example.com/image12.jpg',
     ],
@@ -125,7 +125,7 @@ export const ListadoPropiedades = [
     anioConstruccion: null,
     estado: 'Sin construcción',
     imgsrc: [
-      'https://example.com/image13.jpg',
+      'https://celantimoveis.com.br/uploads/imoveis/43/fotos/r1005-jjQN.jpg',
       'https://example.com/image14.jpg',
       'https://example.com/image15.jpg',
     ],
@@ -155,7 +155,7 @@ export const ListadoPropiedades = [
     anioConstruccion: 2005,
     estado: 'Buen estado',
     imgsrc: [
-      'https://example.com/image16.jpg',
+      'https://th.bing.com/th/id/R.9db2f8ea5bdd3fdd2b3c9ff9cc77ec3a?rik=hCxqnaffoC6Yfw&pid=ImgRaw&r=0',
       'https://example.com/image17.jpg',
       'https://example.com/image18.jpg',
     ],
