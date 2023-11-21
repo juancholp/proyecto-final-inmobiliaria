@@ -12,6 +12,7 @@ import {
   ListadoAtributos,
   ListadotypesDeAtributos,
   nombreDeGuardadoDeLosAtributos,
+  Usuarios,
 } from './Data.js'
 import { ListadoPropiedades} from "./DataPropiedades.js"
 const initialStore = () => {
@@ -39,6 +40,15 @@ const initialStore = () => {
       comodidad: [],
       TipoDePublicacion: [],
     },
+    listUsuarios:Usuarios,
+    usuarioIngresado:
+    {
+    nameUser:null,
+    user:null,
+    passwords:null,
+    fotoPerfil:null,
+    },
+
   }
   return store
 }
@@ -46,6 +56,7 @@ const initialStore = () => {
 const types = {
   setProperty: "setProperty",
   setFilters: "setFilters",
+  setUsuario: "setUsuario",
 };
 
 const storeReducer = (state, action) => {
@@ -59,6 +70,11 @@ const storeReducer = (state, action) => {
       return {
         ...state,
         filters: {  ...action.payload },
+      };
+      case types.setUsuario:
+      return {
+        ...state,
+        UsuarioIngresado: {  ...action.payload },
       };
 
     default:

@@ -18,16 +18,25 @@ const SearchResult = () => {
   const [loading, setLoading] = useState(true);
   const [filteredResults, setFilteredResults] = useState([]);
   const [store, dispatch] = useContext(storeContext);
+  const [textoResultado, settextoResultado] = useState([])
+  useEffect(() => {
+
+    if (store.filters.localidad) {
+      settextoResultado(store.filters.TipoDePublicacion+ " de " +  store.filters.tipo+" en " +store.filters.localidad)
+
+    }
+    else (
+      settextoResultado("Mostrando todos Propiedades")
+
+    )
+  })
   const consola = () => {
     console.log("filtered", filteredResults)
 
     console.log("mainpage", store.filters);
 
   }
-useEffect(()=>{
 
-
-})
   useEffect(() => {
     const filterResults = filter();
     if (filterResults.length > 0) {
@@ -36,7 +45,7 @@ useEffect(()=>{
       setFilteredResults(store.propiedades);
     }
 
-  }, [store.filters,store.propiedades]);
+  }, [store.filters, store.propiedades]);
 
   useEffect(() => {
     console.log("store propiedades", store.propiedades)
@@ -97,7 +106,8 @@ useEffect(()=>{
               alignContent={"center"}
               textAlign={"center"}
             >
-              Venta de casas y apartamentos en {store.filters.localidad}.
+              {textoResultado}
+
             </Typography>
             <Typography variant="body2" color="text.primary">
               Mostrando {numOfResults} resultados.

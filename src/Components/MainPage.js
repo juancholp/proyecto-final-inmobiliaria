@@ -11,6 +11,7 @@ import { storeContext } from "../Store/StoreProvider";
 import { Link } from "react-router-dom";
 import { Typography } from "@mui/material";
 import SearchResult from "./Results/SearchResult";
+import "./styles/MainPage.css"
 
 
 function MainPage() {

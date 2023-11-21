@@ -42,7 +42,6 @@ function Filters() {
   const theme = useTheme()
 
   const [store, dispatch] = useContext(storeContext)
-
   const [filtro, setFiltro] = useState(initFilters)
   const [localidades, setLocalidades] = useState([])
   const [estado, setEstado] = useState([])
@@ -110,8 +109,9 @@ function Filters() {
   }
 
   const saveFilters = () => {
-    dispatch({ type: 'setFilters', payload: filtro })
     console.log("filtersguardados",store.filters);
+    dispatch({ type: 'setFilters', payload: filtro })
+    
   }
 
   const resetFilters = () => {

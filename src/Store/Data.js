@@ -53,7 +53,7 @@ export const ListadoAtributos = [
 ]
 export const nombreDeGuardadoDeLosAtributos = [
   'title',
-  
+
   'disposicion',
   'anioConstruccion',
   'm2Edificados',
@@ -61,7 +61,7 @@ export const nombreDeGuardadoDeLosAtributos = [
 ]
 export const ListadotypesDeAtributos = [
   'text',
- 
+
   'text',
   'number',
   'number',
@@ -108,4 +108,20 @@ export const ListadoComodidades = [
   'Suelos de madera',
   'Sistema de riego automático',
   'Zona de barbacoa',
+]
+export const Usuarios = [
+  {
+    nameUser: "Jose",
+    user:"admin",
+    passwords:"admin",
+    fotoPerfil:"https://th.bing.com/th/id/R.c45a7b06675bef8be6900a8964eba422?rik=9ugxfrsV7N3ftA&riu=http%3a%2f%2fi.huffpost.com%2fgen%2f2507856%2fthumbs%2fo-AZUL-KLEIN-facebook.jpg&ehk=5oSqhdl4QrCCmtQp39qn%2bXT0UQJxn4mkLHBQEOdAldU%3d&risl=&pid=ImgRaw&r=0",
+   
+  },
+  {
+    nameUser: "matias",
+    user:"admin1",
+    passwords:"admin",
+    fotoPerfil:"https://th.bing.com/th/id/R.c45a7b06675bef8be6900a8964eba422?rik=9ugxfrsV7N3ftA&riu=http%3a%2f%2fi.huffpost.com%2fgen%2f2507856%2fthumbs%2fo-AZUL-KLEIN-facebook.jpg&ehk=5oSqhdl4QrCCmtQp39qn%2bXT0UQJxn4mkLHBQEOdAldU%3d&risl=&pid=ImgRaw&r=0",
+   
+  }
 ]
