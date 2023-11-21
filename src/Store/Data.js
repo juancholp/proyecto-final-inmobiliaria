@@ -28,7 +28,7 @@ export const ListadoPropiedades = [
   {
     id: 2,
     title: 'Apartamento céntrico',
-    tipoMoneda: 'U$D',
+    tipoMoneda: '$',
     precio: 900,
     disposicion: 'Interno',
     tipoDePublicacion: 'Alquiler',

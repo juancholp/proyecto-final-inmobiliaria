@@ -88,7 +88,7 @@ const RenderResults = (props) => {
                     }}
                   >
                     <Typography component="div" variant="h3">
-                      USD {result.precio}
+                      {result.tipoMoneda} {result.precio}
                     </Typography>
                     <Typography
                       sx={{ fontSize: "1.7rem" }}

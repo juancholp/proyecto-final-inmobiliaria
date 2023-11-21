@@ -36,16 +36,14 @@ const SearchResult = () => {
       } = filtro;
 
       let dataFiltrada = propiedades;
-
-      dataFiltrada = dataFiltrada.filter((item) => {
-        if (localidad && typeof localidad != "string" && localidad.length > 0) {
-        localidad.map((itemLocalidad) => {
-          return item?.ubicacion?.includes(itemLocalidad)
-        })
-        } else if (localidad && typeof localidad == "string") {
-          return item?.ubicacion?.includes(localidad)
-        }
-      });
+      
+      if (localidad && Array.isArray(localidad) && localidad.length > 0) {
+        dataFiltrada = dataFiltrada.filter((item) => localidad.some((itemLocalidad) => 
+          item?.ubicacion?.includes(itemLocalidad)))
+      } else if (localidad && typeof localidad === "string") {
+        dataFiltrada = dataFiltrada.filter((item) => 
+          item?.ubicacion?.includes(localidad))
+      }
       
       if (estado && estado.length > 0) {
         
@@ -73,12 +71,14 @@ const SearchResult = () => {
         );
       }
 
-      if (moneda && moneda.length > 0) {
-        dataFiltrada = dataFiltrada.filter((item) =>
-          moneda.map((itemMoneda) => {
-            return item?.moneda?.includes(itemMoneda)
-          })
-        );
+      if (moneda) {
+        dataFiltrada = dataFiltrada.filter((item) => {
+          if (moneda === "Pesos") {
+            return item?.tipoMoneda === "$"
+          } else if (moneda === "Dolares") {
+            return item?.tipoMoneda === "U$D"
+          }
+        });        
       }
 
       if (maxPrice && maxPrice.length > 0) {
@@ -122,7 +122,7 @@ const SearchResult = () => {
               alignContent={"center"}
               textAlign={"center"}
             >
-              Venta de casas y apartamentos en {store.filters?.localidad}.
+              {store.filters?.tipoDePublicacion} de {store.filters?.tipoDePropiedad} en {store.filters?.localidad}.
             </Typography>
             <Typography variant="body2" color="text.primary">
               Mostrando {results.length} resultados.

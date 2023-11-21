@@ -33,7 +33,7 @@ const initFilters = {
   estado: [],
   tipoDePropiedad: [],
   dormitorios: [],
-  moneda: [],
+  moneda: "",
   maxPrice: [],
   tipoDePublicacion: [],
 };
@@ -49,7 +49,7 @@ function Filters() {
   const [estado, setEstado] = useState([]);
   const [tipoDePropiedad, setTipoDePropiedad] = useState([]);
   const [dormitorios, setDormitorios] = useState([]);
-  const [moneda, setMoneda] = useState([]);
+  const [moneda, setMoneda] = useState("");
   const [maxPrice, setMaxPrice] = useState(0);
   const [tipoDePublicacion, setTipoDePublicacion] = useState([]);
 
@@ -101,7 +101,7 @@ function Filters() {
     setEstado([]);
     setTipoDePropiedad([]);
     setDormitorios([]);
-    setMoneda([]);
+    setMoneda("");
     setMaxPrice(0);
     setTipoDePublicacion([]);
 
@@ -124,9 +124,7 @@ function Filters() {
         {dormitorios?.map((item) => (
           <Chip label={item} key={item} />
         ))}
-        {moneda?.map((item) => (
-          <Chip label={item} key={item} />
-        ))}
+        {moneda !== "" && <Chip label={moneda} key={moneda} />}
         {maxPrice > 0 && <Chip label={'Precio máximo: ' + maxPrice} />}
         {tipoDePublicacion?.map((item) => (
           <Chip label={item} key={item} />
@@ -248,7 +246,6 @@ function Filters() {
             </FormControl>
             <FormControl>
               <Select
-                multiple
                 displayEmpty
                 onChange={handleChangeMoneda}
                 value={moneda}
