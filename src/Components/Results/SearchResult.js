@@ -37,14 +37,16 @@ const SearchResult = () => {
 
       let dataFiltrada = propiedades;
 
-      if (localidad && localidad.length > 0) {
-        dataFiltrada = dataFiltrada.filter((item) =>
-          localidad.map((itemLocalidad) => {
-            return item?.ubicacion?.includes(itemLocalidad)
-          })
-        );
-      }
-
+      dataFiltrada = dataFiltrada.filter((item) => {
+        if (localidad && typeof localidad != "string" && localidad.length > 0) {
+        localidad.map((itemLocalidad) => {
+          return item?.ubicacion?.includes(itemLocalidad)
+        })
+        } else if (localidad && typeof localidad == "string") {
+          return item?.ubicacion?.includes(localidad)
+        }
+      });
+      
       if (estado && estado.length > 0) {
         
         dataFiltrada = dataFiltrada.filter((item) =>
