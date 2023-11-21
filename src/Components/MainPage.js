@@ -11,6 +11,7 @@ import Autocomp from "./Autocomp";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { storeContext } from "../Store/StoreProvider";
+import { SdStorage } from "@mui/icons-material";
 
 function MainPage() {
   const [seleccion, setSeleccion] = React.useState("venta");
@@ -22,12 +23,12 @@ function MainPage() {
         <div className="Search">
           <Box>
             <ToggleButtonGroup
-              // color="primary"
-              // value={seleccion}
-              // exclusive
+              color="primary"
+              value={seleccion}
+              exclusive
               // onChange={handleChange}
-              // aria-label="Platform"
-              // id="opciones"
+              aria-label="Opciones"
+              id="opciones"
             >
               <ToggleButton value="Venta">Venta</ToggleButton>
               <ToggleButton value="Alquiler">Alquiler</ToggleButton>
@@ -37,7 +38,7 @@ function MainPage() {
             </ToggleButtonGroup>
 
             <div className="contenedorBusqueda">
-              <CustomSelectCheckmarks options={store.tipoPropiedad.map()} />
+              <CustomSelectCheckmarks />
               <Autocomp />
               <Link to={"/resultados"}>
                 <Button type="submit" variant="contained">

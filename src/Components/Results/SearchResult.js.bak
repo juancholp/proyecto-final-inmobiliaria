@@ -16,15 +16,18 @@ import { FilterAlt } from "@mui/icons-material";
 import "./SearchResult.css";
 import { storeContext } from "../../Store/StoreProvider";
 import Filters from "../Filters";
-
 const SearchResult = () => {
   const [numOfResults, setNumOfResults] = useState(0);
-
   const [loading, setLoading] = useState(true);
   const [results, setResults] = useState([]);
 
+  const [filteredResults, setFilteredResults] = useState([]);
   const [store, dispatch] = useContext(storeContext);
 
+  useEffect(() => {
+    const filteredResults = Filters(results);
+    setFilteredResults(filteredResults);
+  }, [results]);
   useEffect(() => {
     setResults(store.propiedades);
   }, [store.propiedades]);
@@ -34,13 +37,14 @@ const SearchResult = () => {
     }, 1000);
     setTimeout(() => {}, 1500);
   }, []);
+
   useEffect(() => {
-    if (store.filters.length > 0) {
-      setNumOfResults(store.filters.length);
+    if (filteredResults.length > 0) {
+      setNumOfResults(filteredResults.length);
     } else {
       setNumOfResults(0);
     }
-  }, [results]);
+  }, [filteredResults]);
 
   return (
     <div className="SearchResult">
@@ -65,10 +69,11 @@ const SearchResult = () => {
                   variant="body1"
                   color="text.primary"
                 >
-                  Venta de casas y apartamentos en {store.filters.localidad}.
+                  Venta de casas y apartamentos en {store.localidades}.
                 </Typography>
                 <Typography variant="body2" color="text.secondary">
-                  Estás en: {store.filters.tipo}
+                  Estás en: {store.tipoPropiedad},{" "}
+                  {store.tipoDeVenta}
                 </Typography>
                 <Typography variant="body2" color="text.primary">
                   Mostrando {numOfResults} resultados.
@@ -115,8 +120,8 @@ const SearchResult = () => {
             {loading && <p>Cargando...</p>}
             {!loading && (
               <div>
-                {store.filters.length > 0 && (
-                  <RenderResults results={store.filters} />
+                {filteredResults.length > 0 && (
+                  <RenderResults results={filteredResults} />
                 )}
               </div>
             )}{" "}

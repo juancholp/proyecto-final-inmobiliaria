@@ -21,7 +21,7 @@ const MenuProps = {
 
 export default function CustomSelectCheckmarks(props) {
   const [optionName, setOptionName] = React.useState([]);
-  const [store, dispatch] = React.useContext(storeContext)
+  const [store, dispatch] = React.useContext(storeContext);
 
   const handleChange = (event) => {
     const {
@@ -31,7 +31,6 @@ export default function CustomSelectCheckmarks(props) {
       // On autofill we get a stringified value.
       typeof value === "string" ? value.split(",") : value
     );
-    store.tipoPropiedad = value;
     console.log(store.tipoPropiedad);
   };
 
@@ -49,7 +48,7 @@ export default function CustomSelectCheckmarks(props) {
           renderValue={(selected) => selected.join(", ")}
           MenuProps={MenuProps}
         >
-          {props.options.map((option) => (
+          {store.tipoPropiedad.map((option) => (
             <MenuItem key={option} value={option}>
               <Checkbox checked={optionName.indexOf(option) > -1} />
               <ListItemText primary={option} />
