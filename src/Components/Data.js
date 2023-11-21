@@ -39,11 +39,11 @@ const tipo = [
 
 const dormitorios = [
   "Monoambiente",
-  "1 dormitorio",
-  "2 dormitorios",
-  "3 dormitorios",
-  "4 dormitorios",
-  "5+ dormitorios",
+  "1",
+  "2",
+  "3",
+  "4",
+  "5+",
 ];
 
 const precio = ["Pesos", "Dólares"];

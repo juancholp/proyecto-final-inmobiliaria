@@ -15,10 +15,10 @@ export const ListadoPropiedades = [
     m2Edificados: 400,
     m2Terreno: 1000,
     tipoDePropiedad: 'Casa',
-    baños: 4,
-    dormitorios: 5,
+    baños: 2,
+    dormitorios: 3,
     anioConstruccion: 2015,
-    estado: 'Excelente estado',
+    estado: 'Nuevo',
     imgsrc: [
       'https://cdn2.infocasas.com.uy/repo/img/th.outside654x405.9a5cfceec57b2724d2b8a9cf59acd2096fd7a575.jpg',
       'https://cdn2.infocasas.com.uy/repo/img/th.outside500x1.45517f6aae00596c9e3060effc876f127f3bc96a.jpg',
@@ -955,11 +955,11 @@ export const ListadoTipoDePropiedad = [
 ]
 export const ListadoCantidadDormitorios = [
   'Monoambiente',
-  '1 dormitorio',
-  '2 dormitorios',
-  '3 dormitorios',
-  '4 dormitorios',
-  '5+ dormitorios',
+  '1',
+  '2',
+  '3',
+  '4',
+  '5+',
 ]
 export const ListadoAtributos = [
   'Nombre',

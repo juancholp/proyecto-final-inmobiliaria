@@ -12,6 +12,7 @@ import { FilterAlt } from "@mui/icons-material";
 import { storeContext } from "../../Store/StoreProvider";
 import Filters from "../Filters";
 import RenderResults from "./RenderResults";
+import { type } from "@testing-library/user-event/dist/type";
 
 const SearchResult = () => {
   const [loading, setLoading] = useState(true);
@@ -45,30 +46,28 @@ const SearchResult = () => {
           item?.ubicacion?.includes(localidad))
       }
       
-      if (estado && estado.length > 0) {
-        
-        dataFiltrada = dataFiltrada.filter((item) =>
-          estado.map((itemEstado) => {
-            return item?.estado?.includes(itemEstado)
-          })
-          
-        );
+      if (estado && Array.isArray(estado) && estado.length > 0) {
+        dataFiltrada = dataFiltrada.filter((item) => estado.some((itemEstado) => 
+          item?.estado?.includes(itemEstado)))
+      } else if (estado && typeof estado === "string") {
+        dataFiltrada = dataFiltrada.filter((item) => 
+          item?.estado?.includes(estado))
       }
 
-      if (tipoDePropiedad && tipoDePropiedad.length > 0) {
+      if (tipoDePropiedad && Array.isArray(tipoDePropiedad) && tipoDePropiedad.length > 0) {
+        dataFiltrada = dataFiltrada.filter((item) => tipoDePropiedad.some((itemTipoDePropiedad) =>
+          item?.tipoDePropiedad?.includes(itemTipoDePropiedad)))
+      } else if (tipoDePropiedad && typeof tipoDePropiedad === "string") {
         dataFiltrada = dataFiltrada.filter((item) =>
-          tipoDePropiedad.map((itemTipoDePropiedad) =>{
-            return item?.tipoDePropiedad?.includes(itemTipoDePropiedad)
-          })
-        );
+          item?.tipoDePropiedad?.includes(tipoDePropiedad))
       }
 
       if (dormitorios && dormitorios.length > 0) {
         dataFiltrada = dataFiltrada.filter((item) =>
-          dormitorios.map((itemDormitorios) => {
-            return item?.dormitorios?.includes(itemDormitorios)
-          })
+          dormitorios.includes(item?.dormitorios)
         );
+      } else if (dormitorios && typeof dormitorios === "string") {
+        dataFiltrada = dataFiltrada.filter((item) => item?.dormitorios === dormitorios);
       }
 
       if (moneda) {
@@ -87,10 +86,12 @@ const SearchResult = () => {
         );
       }
 
-      if (tipoDePublicacion && tipoDePublicacion.length > 0) {
-        dataFiltrada = dataFiltrada.filter((item) =>
-          item?.tipoDePublicacion === tipoDePublicacion
-        );
+      if (tipoDePublicacion && Array.isArray(tipoDePublicacion) && tipoDePublicacion.length > 0) {
+        dataFiltrada = dataFiltrada.filter((item) => tipoDePublicacion.some((itemTipoDePublicacion) => 
+          item?.tipoDePublicacion?.includes(itemTipoDePublicacion)))
+      } else if (tipoDePublicacion && typeof tipoDePublicacion === "string") {
+        dataFiltrada = dataFiltrada.filter((item) => 
+        item?.tipoDePublicacion?.includes(tipoDePublicacion))
       }
 
       setResults(dataFiltrada);
