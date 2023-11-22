@@ -15,26 +15,21 @@ import MapIcon from "@mui/icons-material/Map";
 import { FilterAlt } from "@mui/icons-material";
 import "./SearchResult.css";
 import { storeContext } from "../../Store/StoreProvider";
-import Filters from "../Filters";
 import Filtros from "../Filtros";
-import { filterResultados } from "../../Hooks/useFilter";
+import { useFilter } from "../../Hooks/useFilter";
+
 const SearchResult = () => {
   const [numOfResults, setNumOfResults] = useState(0);
   const [loading, setLoading] = useState(true);
-  const [results, setResults] = useState([]);
-
-  const [filteredResults, setFilteredResults] = useState([]);
   const [store, dispatch] = useContext(storeContext);
+  const [filteredResults] = useFilter(store.propiedades, store.filters);
 
   useEffect(() => {
-    setResults(store.propiedades);
-  }, [store.propiedades]);
+    document.title = `Blue Paradiese | ${numOfResults} resultados`;
+  });
   useEffect(() => {
     console.log(store.filters);
-    const filteredResult = filterResultados(results, store.filters);
-    console.log(filteredResult);
-    setFilteredResults(filteredResult);
-  }, [results, store.filters]);
+  }, [store.filters]);
   useEffect(() => {
     setTimeout(() => {
       setLoading(false);
@@ -73,32 +68,17 @@ const SearchResult = () => {
                   variant="body1"
                   color="text.primary"
                 >
-                  Venta de casas y apartamentos en {store.filters.localidad}.
+                  {store.propiedades.length === filteredResults.length
+                    ? "Estas viendo todos los resultados"
+                    : "Viendo resultados en : " +
+                      store.filters.ubicacion +
+                      " - " +
+                      store.filters.tipoVenta}
                 </Typography>
-                <Typography variant="body2" color="text.secondary">
-                  Estás en: {store.filters.tipo},{" "}
-                  {store.filters.tipoDePublicacion}
-                </Typography>
+
                 <Typography variant="body2" color="text.primary">
                   Mostrando {numOfResults} resultados.
                 </Typography>
-              </Stack>
-              <Stack
-                direction="row"
-                justifyContent="flex-start"
-                alignItems="flex-start"
-                spacing={2}
-              >
-                <Button variant="outlined" size="small" startIcon={<MapIcon />}>
-                  Ver mapa
-                </Button>
-                <Button
-                  variant="outlined"
-                  size="small"
-                  startIcon={<FilterAlt />}
-                >
-                  Popularidad
-                </Button>
               </Stack>
             </Grid>
           </div>
@@ -125,7 +105,7 @@ const SearchResult = () => {
             {!loading && <RenderResults results={filteredResults} />}
           </main>
         </Box>
-      </Container>
+      </Container>{" "}
     </div>
   );
 };

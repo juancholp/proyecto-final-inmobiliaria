@@ -1,20 +1,22 @@
-export const filterResultados = (results, filterParams) => {
-  const filters = filterParams;
-  const filteredResults = results.filter((result) => {
-    if (filters.localidad.length > 0) {
-      return filters.localidad.includes(result.ubicacion[1]);
-    }
-    if (filters.tipo.length > 0) {
-      return filters.tipo.includes(result.tipoDePropiedad);
-    }
-    if (filters.dormitorios.length > 0) {
-      return filters.dormitorios.includes(result.dormitorio);
-    }
-    if (filters.moneda.length > 0) {
-      return filters.moneda.includes(result.tipoMoneda);
-    }
-    return true;
-  });
+import { useContext, useEffect, useState } from "react";
 
-  return filteredResults;
+const useFilter = (results, filters) => {
+  const [filteredResults, setFilteredResults] = useState(results);
+  useEffect(() => {
+    const filteredResults = results.filter((result) => {
+      return Object.keys(filters).every((key) => {
+        if (result[key] === undefined) {
+          return true;
+        }
+        if (filters[key].length === 0) {
+          return true;
+        }
+        return result[key].includes(filters[key]);
+      });
+    });
+    setFilteredResults(filteredResults);
+  }, [results, filters]);
+  return [filteredResults];
 };
+
+export { useFilter };

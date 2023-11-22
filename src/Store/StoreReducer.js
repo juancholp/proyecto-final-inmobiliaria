@@ -29,14 +29,14 @@ const initialStore = () => {
     atributos: ListadoAtributos,
     nombreAtributosGuardado: nombreDeGuardadoDeLosAtributos,
     filters: {
-      localidad: [],
-      estado: [],
-      tipo: [],
-      dormitorios: [],
-      moneda: [],
-      maxPrice: 0,
-      comodidad: [],
-      TipoDePublicacion: [],
+      ubicacion: "",
+      estado: "",
+      tipoDePropiedad: "",
+      dormitorio: "",
+      moneda: "",
+      comodidad: "",
+      tipoVenta: "",
+      banos: "",
     },
   };
   return store

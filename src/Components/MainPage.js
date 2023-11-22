@@ -12,6 +12,7 @@ import { Link } from "react-router-dom";
 import { storeContext } from "../Store/StoreProvider";
 import Footer from "./Footer";
 import { useEffect, useContext } from "react";
+import Filtros from "./Filtros";
 
 function MainPage() {
   const [seleccion, setSeleccion] = useState({
@@ -59,7 +60,7 @@ function MainPage() {
 
             <div className="contenedorBusqueda">
               <CustomSelectCheckmarks options={options_default} />
-              <Autocomp />
+              <Filtros />
               <Link to={"/resultados"}>
                 <Button type="submit" variant="contained">
                   Buscar
