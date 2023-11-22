@@ -15,15 +15,17 @@ import { Link } from "react-router-dom";
 import { storeContext } from "../Store/StoreProvider";
 import WavesIcon from '@mui/icons-material/Waves';
 import Login from "../Components/sign_in_and_sign_up/Login.js";
+import {types} from "../Store/StoreReducer.js"
+
 
 
 const pages = ["Propiedades", "Proyectos", "Inmobiliarias", "Noticias",];
 const settings = [
-  "Ingresar",
+
   "Perfil",
   "Configuracion",
   "Favoritos",
-  "Log out",
+
 ];
 
 function Navbar() {
@@ -31,7 +33,7 @@ function Navbar() {
   const [anchorElUser, setAnchorElUser] = React.useState(null);
   const [filtroVacio, setFiltroVacio] = React.useState(null)
   const [store, dispatch] = React.useContext(storeContext);
-
+  const [usuarioIngresado, setUsuarioIngresado] = React.useState([]);
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -42,12 +44,30 @@ function Navbar() {
 
   const handleCloseNavMenu = () => {
     setAnchorElNav(null);
-    dispatch({ type: "setFilters", payload: filtroVacio });
+    dispatch({ type: types.setFilters, payload: filtroVacio });
   };
 
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
   };
+
+  const handleCloseUsuario = () => {
+    let inicial =
+    {
+      nameUser: null,
+      user: null,
+      passwords: null,
+      fotoPerfil: null,
+    }
+    dispatch({ type: types.setUsuario, payload: inicial });
+  }
+
+
+  React.useEffect(() => {
+    setUsuarioIngresado(store.usuarioIngresado)
+   
+  }, [store.usuarioIngresado])
+
 
   return (
     <AppBar position="sticky">
@@ -128,11 +148,11 @@ function Navbar() {
           </Box>
 
           <Box sx={{ flexGrow: 0, mr: "35px" }}>
-            {store.usuarioIngresado && <Login/>}
-            {!store.usuarioIngresado && <div>
+            {!usuarioIngresado.user && <Login />}
+            {usuarioIngresado.user && <div>
               <Tooltip title="Open settings">
                 <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                  <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+                  <Avatar alt="Remy Sharp" src={usuarioIngresado.fotoPerfil} />
                 </IconButton>
               </Tooltip>
               <Menu
@@ -161,6 +181,7 @@ function Navbar() {
                     </Link>
                   </MenuItem>
                 ))}
+                <MenuItem onClick={handleCloseUsuario}> Log out </MenuItem>
               </Menu>
             </div>}
           </Box>

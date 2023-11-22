@@ -74,7 +74,7 @@ const storeReducer = (state, action) => {
       case types.setUsuario:
       return {
         ...state,
-        UsuarioIngresado: {  ...action.payload },
+        usuarioIngresado: {  ...action.payload },
       };
 
     default:

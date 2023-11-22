@@ -73,25 +73,39 @@ const BootstrapDialog = styled(Dialog)(({ theme }) => ({
 }));
 
 export default function Login() {
+
     const [open, setOpen] = React.useState(false);
     const [store, dispatch] = React.useContext(storeContext);
     const [emailIngresado, setEmailIngresado] = React.useState()
+    const [contraseñaIngresado, setContraseñaIngresado] = React.useState()
+
     const handleClickOpen = () => {
         setOpen(true);
     };
+
+
     const LoginhandleClose = () => {
-        // setOpen(false);
+        setOpen(false);
         store.listUsuarios.forEach(element => {
-            console.log("dato ingresado", emailIngresado)
-            if (element.user == emailIngresado) {
+            console.log("dato ingresado", element.user)
+            if (element.user === emailIngresado) {
+
                 console.log("encontreado")
+                let usuarioIngresado =
+                {
+                    user: emailIngresado,
+                    passwords: contraseñaIngresado,
+                    nameUser: element.nameUser,
+                    fotoPerfil:element.fotoPerfil,
+                }
+                console.log("usuario",usuarioIngresado )
+                dispatch({ type: "setUsuario", payload: usuarioIngresado });
             }
         });
-
-        console.log(" no encontreado")
-
-
     };
+
+
+
     const handleClose = () => {
         setOpen(false);
 
@@ -129,13 +143,15 @@ export default function Login() {
                                     label="Email"
                                     variant="outlined"
                                     id="fullWidth"
-                                    onChange={(e) => setEmailIngresado(e)}
+                                    onChange={(e) => setEmailIngresado(e.target.value)}
                                 />
 
                                 <TextField
                                     id="outlined-basic"
                                     label="Contraseña"
                                     variant="outlined"
+                                    onChange={(e) => setContraseñaIngresado(e.target.value)}
+
                                 />
 
                             </Stack>
