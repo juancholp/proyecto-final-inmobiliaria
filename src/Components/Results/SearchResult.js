@@ -22,7 +22,7 @@ const SearchResult = () => {
   useEffect(() => {
 
     if (store.filters.localidad) {
-      settextoResultado(store.filters.TipoDePublicacion+ " de " +  store.filters.tipo+" en " +store.filters.localidad)
+      settextoResultado(store.filters.TipoDePublicacion + " de " + store.filters.tipo + " en " + store.filters.localidad)
 
     }
     else (
@@ -30,13 +30,6 @@ const SearchResult = () => {
 
     )
   })
-  const consola = () => {
-    console.log("filtered", filteredResults)
-
-    console.log("mainpage", store.filters);
-
-  }
-
   useEffect(() => {
     const filterResults = filter();
     if (filterResults.length > 0) {
@@ -48,7 +41,6 @@ const SearchResult = () => {
   }, [store.filters, store.propiedades]);
 
   useEffect(() => {
-    console.log("store propiedades", store.propiedades)
     setTimeout(() => {
       setLoading(false);
     }, 1000);
@@ -64,7 +56,6 @@ const SearchResult = () => {
 
   const filter = () => {
 
-    console.log("filter aaa ", store.propiedades)
     return store.propiedades.filter((result) => {
 
       const {
@@ -153,7 +144,6 @@ const SearchResult = () => {
           <main className="results">
             {loading && <p>Cargando...</p>}
 
-            <button onClick={consola}>consola</button>
             {!loading && (
               <div>
                 {filteredResults.length > 0 && (
@@ -162,7 +152,7 @@ const SearchResult = () => {
                 )}
               </div>
 
-            )}{" "}
+            )}
           </main>
         </Box>
 

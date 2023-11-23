@@ -15,9 +15,8 @@ import { Link } from "react-router-dom";
 import { storeContext } from "../Store/StoreProvider";
 import WavesIcon from '@mui/icons-material/Waves';
 import Login from "../Components/sign_in_and_sign_up/Login.js";
-import {types} from "../Store/StoreReducer.js"
-
-
+import { types } from "../Store/StoreReducer.js"
+import { ThemeProvider, createTheme } from '@mui/material/styles';
 
 const pages = ["Propiedades", "Proyectos", "Inmobiliarias", "Noticias",];
 const settings = [
@@ -27,7 +26,14 @@ const settings = [
   "Favoritos",
 
 ];
-
+const darkTheme = createTheme({
+  palette: {
+    mode: 'dark',
+    primary: {
+      main: "#1976d2",
+    },
+  },
+});
 function Navbar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
@@ -65,129 +71,131 @@ function Navbar() {
 
   React.useEffect(() => {
     setUsuarioIngresado(store.usuarioIngresado)
-   
+
   }, [store.usuarioIngresado])
 
 
   return (
-    <AppBar position="sticky">
-      <Container maxWidth="xl">
-        <Toolbar disableGutters>
-          <WavesIcon sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} />
-          <Typography
-            variant="h6"
-            noWrap
-            component="a"
-            href="/home"
-            sx={{
-              mr: 2,
-              display: { xs: "none", md: "flex" },
-              fontFamily: "Lato",
-              fontWeight: 300,
-              letterSpacing: ".3rem",
-              color: "inherit",
-              textDecoration: "none",
-            }}
-          >
-            DeepOcean
-          </Typography>
-
-          <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
-            <IconButton
-              size="large"
-              aria-label="account of current user"
-              aria-controls="menu-appbar"
-              aria-haspopup="true"
-              onClick={handleOpenNavMenu}
-              color="inherit"
-            >
-              <MenuIcon />
-            </IconButton>
-            <Menu
-              id="menu-appbar"
-              anchorEl={anchorElNav}
-              anchorOrigin={{
-                vertical: "bottom",
-                horizontal: "left",
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: "top",
-                horizontal: "left",
-              }}
-              open={Boolean(anchorElNav)}
-              onClose={handleCloseNavMenu}
+    <ThemeProvider theme={darkTheme}>
+      <AppBar position="sticky" >
+        <Container maxWidth="xl" >
+          <Toolbar disableGutters>
+            <WavesIcon sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} />
+            <Typography
+              variant="h6"
+              noWrap
+              component="a"
+              href="/home"
               sx={{
-                display: { xs: "block", md: "none" },
+                mr: 2,
+                display: { xs: "none", md: "flex" },
+                fontFamily: "Lato",
+                fontWeight: 300,
+                letterSpacing: ".3rem",
+                color: "inherit",
+                textDecoration: "none",
               }}
             >
-              {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{page}</Typography>
-                </MenuItem>
-              ))}
+              DeepOcean
+            </Typography>
 
-            </Menu>
-          </Box>
-
-          <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
-            {pages.map((page) => (
-              <Button
-                key={page}
-                onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: "white", display: "block" }}
+            <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
+              <IconButton
+                size="large"
+                aria-label="account of current user"
+                aria-controls="menu-appbar"
+                aria-haspopup="true"
+                onClick={handleOpenNavMenu}
+                color="inherit"
               >
-                <Link
-                  to={`/` + page}
-                  style={{ color: "white", textDecoration: "none" }}
-                >
-                  {page}
-                </Link>
-              </Button>
-            ))}
-          </Box>
-
-          <Box sx={{ flexGrow: 0, mr: "35px" }}>
-            {!usuarioIngresado.user && <Login />}
-            {usuarioIngresado.user && <div>
-              <Tooltip title="Open settings">
-                <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                  <Avatar alt="Remy Sharp" src={usuarioIngresado.fotoPerfil} />
-                </IconButton>
-              </Tooltip>
+                <MenuIcon />
+              </IconButton>
               <Menu
-                sx={{ mt: "45px" }}
                 id="menu-appbar"
-                anchorEl={anchorElUser}
+                anchorEl={anchorElNav}
                 anchorOrigin={{
-                  vertical: "top",
-                  horizontal: "right",
+                  vertical: "bottom",
+                  horizontal: "left",
                 }}
                 keepMounted
                 transformOrigin={{
                   vertical: "top",
-                  horizontal: "right",
+                  horizontal: "left",
                 }}
-                open={Boolean(anchorElUser)}
-                onClose={handleCloseUserMenu}
+                open={Boolean(anchorElNav)}
+                onClose={handleCloseNavMenu}
+                sx={{
+                  display: { xs: "block", md: "none" },
+                }}
               >
-                {settings.map((setting) => (
-                  <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                    <Link
-                      to={`/` + setting}
-                      style={{ color: "black", textDecoration: "none" }}
-                    >
-                      {setting}
-                    </Link>
+                {pages.map((page) => (
+                  <MenuItem key={page} onClick={handleCloseNavMenu}>
+                    <Typography textAlign="center">{page}</Typography>
                   </MenuItem>
                 ))}
-                <MenuItem onClick={handleCloseUsuario}> Log out </MenuItem>
+
               </Menu>
-            </div>}
-          </Box>
-        </Toolbar>
-      </Container>
-    </AppBar>
+            </Box>
+
+            <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
+              {pages.map((page) => (
+                <Button
+                  key={page}
+                  onClick={handleCloseNavMenu}
+                  sx={{ my: 2, color: "white", display: "block" }}
+                >
+                  <Link
+                    to={`/` + page}
+                    style={{ color: "white", textDecoration: "none" }}
+                  >
+                    {page}
+                  </Link>
+                </Button>
+              ))}
+            </Box>
+
+            <Box sx={{ flexGrow: 0, mr: "35px" }}>
+              {!usuarioIngresado.user && <Login />}
+              {usuarioIngresado.user && <div>
+                <Tooltip title="Open settings">
+                  <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+                    <Avatar alt="Remy Sharp" src={usuarioIngresado.fotoPerfil} />
+                  </IconButton>
+                </Tooltip>
+                <Menu
+                  sx={{ mt: "45px" }}
+                  id="menu-appbar"
+                  anchorEl={anchorElUser}
+                  anchorOrigin={{
+                    vertical: "top",
+                    horizontal: "right",
+                  }}
+                  keepMounted
+                  transformOrigin={{
+                    vertical: "top",
+                    horizontal: "right",
+                  }}
+                  open={Boolean(anchorElUser)}
+                  onClose={handleCloseUserMenu}
+                >
+                  {settings.map((setting) => (
+                    <MenuItem key={setting} onClick={handleCloseUserMenu}>
+                      <Link
+                        to={`/` + setting}
+                        style={{ color: "black", textDecoration: "none" }}
+                      >
+                        {setting}
+                      </Link>
+                    </MenuItem>
+                  ))}
+                  <MenuItem onClick={handleCloseUsuario}> Log out </MenuItem>
+                </Menu>
+              </div>}
+            </Box>
+          </Toolbar>
+        </Container>
+      </AppBar>
+    </ThemeProvider>
   );
 }
 export default Navbar;

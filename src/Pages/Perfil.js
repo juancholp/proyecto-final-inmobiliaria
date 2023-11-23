@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Container from "@mui/material/Container";
 import Avatar from "@mui/material/Avatar";
 import Grid from "@mui/material/Unstable_Grid2";
@@ -13,10 +13,19 @@ import EditIcon from "@mui/icons-material/Edit";
 import { Link, Outlet } from "react-router-dom";
 import "../App.css";
 import "../index.css";
+import { storeContext } from "../Store/StoreProvider";
 
 const Perfil = () => {
-  const [userName, setUserName] = useState("Guille");
+  const [userName, setUserName] = useState();
   const [isEditing, setIsEditing] = useState(false);
+  const [userFoto,setUserFoto] =useState();
+  const [store, dispatch] = useContext(storeContext)
+
+useEffect(()=>{
+setUserName(store.usuarioIngresado.nameUser)
+setUserFoto(store.usuarioIngresado.fotoPerfil)
+},
+[store.usuarioIngresado])
 
   return (
     <Container maxWidth="lg">
@@ -35,7 +44,7 @@ const Perfil = () => {
                 <Avatar
                   padding={2}
                   alt="Remy Sharp"
-                  src="https://cdn2.infocasas.com.uy/web/default-user-new.png"
+                  src={userFoto}
                   sx={{ width: 100, height: 100 }}
                 />
               </Grid>
