@@ -1,49 +1,29 @@
-import * as React from 'react';
-import TextField from '@mui/material/TextField';
-import Autocomplete from '@mui/material/Autocomplete';
-import { filterParams } from "../Store/StoreProvider";
-export default function ComboBox() {
-  const [selectedDepartment, setSelectedDepartment] = React.useState(null);
+import TextField from '@mui/material/TextField'
+import Autocomplete from '@mui/material/Autocomplete'
+import { useState, useContext } from 'react'
+import { storeContext } from '../Store/StoreProvider'
+
+export default function ComboBox(props) {
+  const [store, dispatch] = useContext(storeContext)
+
+  const [local, setLocal] = useState([])
 
   const handleDepartmentChange = (value) => {
-    console.log("valor = ", value);
-    const newValue = value;
-    filterParams.localidad = newValue;
-  };
+    props.actionOnClick(value)
+    setLocal(value)
+  }
 
   return (
     <Autocomplete
-      style={{ backgroundColor: "white" }}
+      style={{ backgroundColor: 'white' }}
       disablePortal
-      id="combo-box-demo"
-      options={Departamentos}
+      id='combo-box-demo'
+      options={store.localidades}
       sx={{ width: 300 }}
-      value={selectedDepartment}
+      value={local}
       onChange={(e) => handleDepartmentChange(e.target.textContent)}
-      getOptionLabel={(option) => option.label}
-      renderInput={(params) => <TextField {...params} label="Departamento" />}
+      getOptionLabel={(option) => option.toString()}
+      renderInput={(params) => <TextField {...params} label='Departamento' />}
     />
-  );
+  )
 }
-
-const Departamentos = [
-  { label: "Maldonado" },
-  { label: "Rivera" },
-  { label: "Montevideo" },
-  { label: "Durazno" },
-  { label: "Tacuarembó" },
-  { label: "Treinta y Tres" },
-  { label: "Florida" },
-  { label: "Lavalleja" },
-  { label: "Paysandú" },
-  { label: "Canelones" },
-  { label: "San José" },
-  { label: "Rio Negro" },
-  { label: "Colonia" },
-  { label: "Salto" },
-  { label: "Artigas" },
-  { label: "Rocha" },
-  { label: "Soriano" },
-  { label: "Cerro Largo" },
-  { label: "Flores" },
-];

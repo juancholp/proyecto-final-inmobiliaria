@@ -8,7 +8,7 @@ import Button from '@mui/material/Button'
 import './Filters.css'
 import Chip from '@mui/material/Chip'
 import Stack from '@mui/material/Stack'
-import { storeContext, filterParams } from '../Store/StoreProvider'
+import { storeContext } from '../Store/StoreProvider'
 import TextField from '@mui/material/TextField'
 
 const ITEM_HEIGHT = 44
@@ -43,7 +43,7 @@ function Filters() {
 
   const [store, dispatch] = useContext(storeContext)
 
-  const [filtro, setFiltro] = useState(initFilters)
+  const [filtro, setFiltro] = useState(store.filters)
 
   const [localidades, setLocalidades] = useState([])
   const [estado, setEstado] = useState([])
@@ -357,7 +357,7 @@ function Filters() {
                 >
                   <em>Tipo de publicación</em>
                 </MenuItem>
-                {store.tipoPropiedad.map((name) => (
+                {store.publicacion.map((name) => (
                   <MenuItem
                     key={name}
                     value={name}

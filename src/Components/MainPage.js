@@ -1,4 +1,3 @@
-import * as React from 'react'
 import Box from '@mui/material/Box'
 import ToggleButton from '@mui/material/ToggleButton'
 import ToggleButtonGroup from '@mui/material/ToggleButtonGroup'
@@ -8,23 +7,28 @@ import Button from '@mui/material/Button'
 import './MainPage.css'
 import Autocomp from './Autocomp'
 import { Link } from 'react-router-dom'
-import { filterParams } from '../Store/StoreProvider'
+import { useState, useContext } from 'react'
+import { storeContext } from '../Store/StoreProvider'
+import { types } from '../Store/StoreReducer'
 
 function MainPage() {
-  const [seleccion, setSeleccion] = React.useState('venta')
-  const options_default = [
-    'Casa',
-    'Apartamento',
-    'Terreno',
-    'Local Comercial',
-    'Oficina',
-    'Chacra o Campo',
-    'Garage o Cochera',
-  ]
+  const [store, dispatch] = useContext(storeContext)
 
-  const handleChange = (event, value) => {
-    setSeleccion(value)
-    filterParams.tipodeventa = value
+  const [tipo, setTipo] = useState([])
+  const [tipoPropiedad, setTipoPropiedad] = useState([])
+  const [localidad, setLocalidad] = useState([])
+
+  const handleChangeTipo = (event, value) => {
+    setTipo(value)
+  }
+
+  const handleClick = () => {
+    const initFiltersMain = {
+      tipo: tipo,
+      tipoPropiedad: tipoPropiedad,
+      localidad: localidad,
+    }
+    dispatch({ type: types.setFilters, payload: initFiltersMain })
   }
 
   return (
@@ -34,9 +38,9 @@ function MainPage() {
           <Box>
             <ToggleButtonGroup
               color='primary'
-              value={seleccion}
+              value={tipo}
               exclusive
-              onChange={handleChange}
+              onChange={handleChangeTipo}
               aria-label='Platform'
               id='opciones'
             >
@@ -48,13 +52,15 @@ function MainPage() {
             </ToggleButtonGroup>
 
             <div className='contenedorBusqueda'>
-              <CustomSelectCheckmarks options={options_default} />
-              <Autocomp />
-              <Link to={'/resultados'}>
-                <Button type='submit' variant='contained'>
-                  Buscar
-                </Button>
-              </Link>
+              <CustomSelectCheckmarks
+                options={store.ListadoTipoDePublicacion}
+                actionOnClick={setTipoPropiedad}
+              />
+              <Autocomp actionOnClick={setLocalidad} />
+
+              <Button type='submit' variant='contained' onClick={handleClick}>
+                <Link to={'/resultados'}>Buscar</Link>
+              </Button>
             </div>
           </Box>
         </div>

@@ -1,15 +1,15 @@
-import * as React from "react";
-import OutlinedInput from "@mui/material/OutlinedInput";
-import InputLabel from "@mui/material/InputLabel";
-import MenuItem from "@mui/material/MenuItem";
-import FormControl from "@mui/material/FormControl";
-import ListItemText from "@mui/material/ListItemText";
-import Select from "@mui/material/Select";
-import Checkbox from "@mui/material/Checkbox";
-import { filterParams } from "../Store/StoreProvider";
+import OutlinedInput from '@mui/material/OutlinedInput'
+import InputLabel from '@mui/material/InputLabel'
+import MenuItem from '@mui/material/MenuItem'
+import FormControl from '@mui/material/FormControl'
+import ListItemText from '@mui/material/ListItemText'
+import Select from '@mui/material/Select'
+import Checkbox from '@mui/material/Checkbox'
+import { storeContext } from '../Store/StoreProvider'
+import { useState, useContext } from 'react'
 
-const ITEM_HEIGHT = 48;
-const ITEM_PADDING_TOP = 8;
+const ITEM_HEIGHT = 48
+const ITEM_PADDING_TOP = 8
 const MenuProps = {
   PaperProps: {
     style: {
@@ -17,38 +17,39 @@ const MenuProps = {
       width: 250,
     },
   },
-};
+}
 
 export default function CustomSelectCheckmarks(props) {
-  const [optionName, setOptionName] = React.useState([]);
+  const [store, dispatch] = useContext(storeContext)
+
+  const [optionName, setOptionName] = useState([])
 
   const handleChange = (event) => {
     const {
       target: { value },
-    } = event;
+    } = event
     setOptionName(
       // On autofill we get a stringified value.
-      typeof value === "string" ? value.split(",") : value
-    );
-    filterParams.tipoDePropiedad = value;
-    console.log(filterParams.tipoDePropiedad);
-  };
+      typeof value === 'string' ? value.split(',') : value
+    )
+    props.actionOnClick(value)
+  }
 
   return (
     <div>
       <FormControl sx={{ m: 1, width: 300 }}>
-        <InputLabel id="checkmarks">Selección</InputLabel>
+        <InputLabel id='checkmarks'>Selección</InputLabel>
         <Select
-          labelId="checkmarks"
-          id="checkmarks"
+          labelId='checkmarks'
+          id='checkmarks'
           multiple
           value={optionName}
           onChange={handleChange}
-          input={<OutlinedInput label="Selección" />}
-          renderValue={(selected) => selected.join(", ")}
+          input={<OutlinedInput label='Selección' />}
+          renderValue={(selected) => selected.join(', ')}
           MenuProps={MenuProps}
         >
-          {props.options.map((option) => (
+          {store.tipoPropiedad.map((option) => (
             <MenuItem key={option} value={option}>
               <Checkbox checked={optionName.indexOf(option) > -1} />
               <ListItemText primary={option} />
@@ -57,5 +58,5 @@ export default function CustomSelectCheckmarks(props) {
         </Select>
       </FormControl>
     </div>
-  );
+  )
 }

@@ -617,14 +617,6 @@ export const nombreDeGuardadoDeLosAtributos = [
   'm2Edificados',
   'm2Terreno',
 ]
-export const ListadotypesDeAtributos = [
-  'text',
-  'text',
-  'text',
-  'number',
-  'number',
-  'number',
-]
 
 export const ListadoBaños = ['1', '2', '3', '4', '5+']
 export const ListadoOpciones = ['Si', 'No']
