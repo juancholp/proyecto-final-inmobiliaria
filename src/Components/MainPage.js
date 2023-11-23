@@ -24,17 +24,24 @@ function MainPage() {
   const[localidades, setLocalidades] = useState({});
   const[tipo_propiedad, setTipo_propiedad] = useState({});
 
-  const filtros ={
-     TipoDePublicacion: tipo_propiedad,
-     localidad: localidades,
-     tipo: seleccion
+ 
+  /////////////// Al precionar el boton: ////////////////////////////////////////////////////
+  const handleBuscar=()=>{
+    // guarda la informacion en filtros
+    const filtros ={
+      TipoDePublicacion: tipo_propiedad,
+      localidad: localidades,
+      tipo: seleccion
+   }
+   // envia la informacion a traves de un dispatch
+   dispatch(
+     { 
+       type: types.setFilters, 
+       payload: filtros
+     });
+  
   }
-  dispatch(
-    { 
-      type: types.setFilters, 
-      payload: filtros
-    });
-
+////////////////////////////////////////////////////////////////////////////////////////////
   const options_default = [
     "Casa",
     "Apartamento",
@@ -47,8 +54,6 @@ function MainPage() {
 
   const handleChange = (event, value) => {
     setSeleccion(value);
-    filterParams.tipodeventa = value;
-    console.log(value)
   };
 
   return (
@@ -76,7 +81,7 @@ function MainPage() {
               <CustomSelectCheckmarks TipoDePropiedad={setTipo_propiedad} options={options_default} />
               <Autocomp settlocalidad={setLocalidades} /> 
               <Link to={"/resultados"}>
-                <Button type="submit" variant="contained">
+                <Button type="submit" variant="contained" onClick={handleBuscar}>
                   Buscar
                 </Button>
               </Link>

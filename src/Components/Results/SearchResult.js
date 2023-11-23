@@ -16,8 +16,7 @@ import { FilterAlt } from "@mui/icons-material";
 import "./SearchResult.css";
 import {
   storeContext,
-  filterResults,
-  filterParams,
+  
 } from "../../Store/StoreProvider";
 import Filters from "../Filters";
 const SearchResult = () => {
@@ -25,30 +24,61 @@ const SearchResult = () => {
   const [loading, setLoading] = useState(true);
   const [results, setResults] = useState([]);
 
-  const [filteredResults, setFilteredResults] = useState([]);
   const [store, dispatch] = useContext(storeContext);
 
-  useEffect(() => {
-    const filteredResults = filterResults(results);
-    setFilteredResults(filteredResults);
-  }, [results]);
-  useEffect(() => {
-    setResults(store.propiedades);
-  }, [store.propiedades]);
+  const filter = () => {
+    // Obtener los filtros del estado
+    const filters = store.filters;
+
+    // Obtener la lista completa de propiedades desde el estado
+    const allProperties = store.propiedades;
+
+    // Aplicar filtros según las condiciones necesarias
+    const filteredProperties = allProperties.filter((property) => {
+      // Ejemplo de condiciones de filtrado
+      // Puedes ajustar estas condiciones según tus necesidades específicas
+      const tipoDePropiedadMatch = filters.tipoDePropiedad
+        ? property.tipoDePropiedad === filters.tipoDePropiedad
+        : true;
+
+      const tipoDeVentaMatch = filters.tipoDeVenta
+        ? property.tipoDeVenta === filters.tipoDeVenta
+        : true;
+
+      const localidadMatch = filters.localidad
+        ? property.localidad === filters.localidad
+        : true;
+
+      // Combina las condiciones según tus necesidades (AND, OR, etc.)
+      return tipoDePropiedadMatch && tipoDeVentaMatch && localidadMatch;
+    });
+
+    return filteredProperties;
+  };
+
+
+  //const filterResults = filter();
+  const filtro = store.filters
+
+  const propiedades = store.propiedades
+
+
+  const applyFilters=()=>{
+    const filtered = propiedades.filter( x => filtro.localidad.map(item => item === x.ubicacion))
+
+  }
+
+  useEffect(()=>{
+    applyFilters()
+  },[store.filters])
+
+
   useEffect(() => {
     setTimeout(() => {
       setLoading(false);
     }, 1000);
     setTimeout(() => {}, 1500);
   }, []);
-
-  useEffect(() => {
-    if (filteredResults.length > 0) {
-      setNumOfResults(filteredResults.length);
-    } else {
-      setNumOfResults(0);
-    }
-  }, [filteredResults]);
 
   return (
     <div className="SearchResult">
@@ -73,11 +103,11 @@ const SearchResult = () => {
                   variant="body1"
                   color="text.primary"
                 >
-                  Venta de casas y apartamentos en {filterParams.localidad}.
+                  Venta de casas y apartamentos en: {store.filters.localidad}.
                 </Typography>
                 <Typography variant="body2" color="text.secondary">
-                  Estás en: {filterParams.tipodepropiedad},{" "}
-                  {filterParams.tipoDeVenta}
+                  Estás en: {store.filters.tipo}{", "}
+                  {store.filters.TipoDePublicacion}
                 </Typography>
                 <Typography variant="body2" color="text.primary">
                   Mostrando {numOfResults} resultados.
@@ -124,8 +154,11 @@ const SearchResult = () => {
             {loading && <p>Cargando...</p>}
             {!loading && (
               <div>
-                {filteredResults.length > 0 && (
-                  <RenderResults results={filteredResults} />
+                <script>
+                 console.log("resultado2" + filteredResults)
+                 </script>
+                {propiedades.length > 0 && (
+                  <RenderResults results={propiedades} />
                 )}
               </div>
             )}{" "}

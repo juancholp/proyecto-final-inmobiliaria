@@ -6,6 +6,7 @@ const storeContext = createContext()
 const intialData = initialStore()
 
 
+
 const StoreProvider = ({ children }) => {
   const [store, dispatch] = useReducer(storeReducer, intialData)
   

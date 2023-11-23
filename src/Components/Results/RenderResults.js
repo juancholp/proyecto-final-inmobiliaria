@@ -18,10 +18,13 @@ const RenderResults = (props) => {
     textAlign: "center",
     color: theme.palette.text.secondary,
   }));
+
   const [results, setResults] = React.useState([]);
   useEffect(() => {
     setResults(props.results);
   }, [props.results]);
+
+  console.log("resultado:" + props.results)
 
   return (
     <div>
@@ -46,7 +49,7 @@ const RenderResults = (props) => {
             justifyContent="flex-start"
             alignItems="stretch"
           >
-            {results &&
+            {props.results &&
               results.map((result) => (
                 <Grid key={result.id} item xs={8}>
                   <Item>
