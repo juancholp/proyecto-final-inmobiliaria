@@ -39,6 +39,14 @@ const SearchResult = () => {
       let dataFiltrada = propiedades;
       
       // anda
+      if (tipoDePublicacion && Array.isArray(tipoDePublicacion) && tipoDePublicacion.length > 0) {
+        dataFiltrada = dataFiltrada.filter((item) => tipoDePublicacion.some((itemTipoDePublicacion) => 
+          item?.tipoDePublicacion?.includes(itemTipoDePublicacion)))
+      } else if (tipoDePublicacion && typeof tipoDePublicacion === "string") {
+        dataFiltrada = dataFiltrada.filter((item) => 
+        item?.tipoDePublicacion?.includes(tipoDePublicacion))
+      }
+      // anda
       if (localidad && Array.isArray(localidad) && localidad.length > 0) {
         dataFiltrada = dataFiltrada.filter((item) => localidad.some((itemLocalidad) => 
           item?.ubicacion?.includes(itemLocalidad)))
@@ -62,7 +70,7 @@ const SearchResult = () => {
         dataFiltrada = dataFiltrada.filter((item) =>
           item?.tipoDePropiedad?.includes(tipoDePropiedad))
       }
-      // no anda
+      // anda
       if (dormitorios && dormitorios.length > 0) {
         dataFiltrada = dataFiltrada.filter((item) =>
           dormitorios.includes(item?.dormitorios)
@@ -80,19 +88,13 @@ const SearchResult = () => {
           }
         });        
       }
-      // no anda
-      if (maxPrice && maxPrice.length > 0) {
-        dataFiltrada = dataFiltrada.filter((item) =>  
-          parseFloat(item.maxPrice) <= parseFloat(maxPrice));
-      }
       // anda
-      if (tipoDePublicacion && Array.isArray(tipoDePublicacion) && tipoDePublicacion.length > 0) {
-        dataFiltrada = dataFiltrada.filter((item) => tipoDePublicacion.some((itemTipoDePublicacion) => 
-          item?.tipoDePublicacion?.includes(itemTipoDePublicacion)))
-      } else if (tipoDePublicacion && typeof tipoDePublicacion === "string") {
-        dataFiltrada = dataFiltrada.filter((item) => 
-        item?.tipoDePublicacion?.includes(tipoDePublicacion))
+      if (maxPrice && maxPrice.length > 0) {
+        console.log("precio maximo", maxPrice)
+        dataFiltrada = dataFiltrada.filter((item) =>  
+          parseFloat(item?.precio) <= parseFloat(maxPrice));
       }
+      
 
       setResults(dataFiltrada);
       

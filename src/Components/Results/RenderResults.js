@@ -40,6 +40,10 @@ const RenderResults = (props) => {
     return <DetallePropiedad />;
   };
 
+  function formatearPrecio(precio) {
+    return precio.toLocaleString('es-ES');
+  }
+  
   return (
     <div id="resultContainer">
       {!results ? (
@@ -88,7 +92,7 @@ const RenderResults = (props) => {
                     }}
                   >
                     <Typography component="div" variant="h3">
-                      {result.tipoMoneda} {result.precio}
+                      {result.tipoMoneda} {formatearPrecio(result.precio)}
                     </Typography>
                     <Typography
                       sx={{ fontSize: "1.7rem" }}
@@ -139,11 +143,14 @@ const RenderResults = (props) => {
                           <Button
                             variant="outlined"
                             sx={{
+                              minWidth: "10vw",
+                              backgroundColor: "#1976d2",
+                              color: "white",
                               boxShadow:
                                 "rgba(0, 0, 0, 0.19) 0px 5px 10px, rgba(0, 0, 0, 0.23) 0px 3px 3px",
                               "&:hover": {
-                                backgroundColor: "#1976d2",
-                                color: "white",
+                                backgroundColor: "white",
+                                color: "#1976d2",
                               },
                             }}
                           >

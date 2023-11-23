@@ -94,15 +94,18 @@ export default function FormMessage() {
           variant="outlined"
           onClick={handleClickOpen}
           sx={{
+            minWidth: "10vw",
+            backgroundColor: "#1976d2",
+            color: "white",
             boxShadow:
               "rgba(0, 0, 0, 0.19) 0px 5px 10px, rgba(0, 0, 0, 0.23) 0px 3px 3px",
             "&:hover": {
-              backgroundColor: "#1976d2",
-              color: "white",
+              backgroundColor: "white",
+              color: "#1976d2",
             },
           }}
         >
-          Realizar Consulta
+          Consultar
         </Button>
         <BootstrapDialog
           onClose={handleClose}
@@ -110,7 +113,7 @@ export default function FormMessage() {
           open={open}
         >
           <DialogTitle sx={{ m: 0, p: 2 }} id="customized-dialog-title">
-            Realizar Consulta
+            Consultar
           </DialogTitle>
           <IconButton
             aria-label="close"

@@ -129,163 +129,29 @@ function Filters() {
         {tipoDePublicacion?.map((item) => (
           <Chip label={item} key={item} />
         ))}
-        <Button variant='outlined' onClick={resetFilters}>
+        <Button variant='outlined' onClick={resetFilters} sx={{
+            mb: "2vh",
+            backgroundColor: "#1976d2",
+            color: "white",
+            boxShadow: "rgba(0, 0, 0, 0.19) 0px 5px 10px, rgba(0, 0, 0, 0.23) 0px 3px 3px",
+            "&:hover": {
+              backgroundColor: "white",
+              color: "#1976d2",
+            },
+          }}>
           Borrar Filtros
         </Button>
       </div>
       <div className='selects'>
         <FormControl className='selects'>
           <Stack direction='row' spacing={2}>
-            <FormControl>
+          <FormControl>
               <Select
-                multiple
-                displayEmpty
-                onChange={handleChangeLocalidades}
-                value={localidades}
-                input={<OutlinedInput />}
-                renderValue={(selected) => (
-                  <em>Localidades</em>
-                )}
-                MenuProps={MenuProps}
-                inputProps={{ 'aria-label': 'Without label' }}
-              >
-                <MenuItem disabled value='' key='placeholderLocalidades'>
-                  <em>Localidades</em>
-                </MenuItem>
-                {store.localidades?.map((name) => (
-                  <MenuItem
-                    key={name}
-                    value={name}
-                    style={getStyles(name, theme)}
-                  >
-                    {name}
-                  </MenuItem>
-                ))}
-              </Select>
-            </FormControl>
-            <FormControl>
-              <Select
-                multiple
-                displayEmpty
-                onChange={handleChangeEstado}
-                value={estado}
-                input={<OutlinedInput />}
-                renderValue={(selected) => (
-                  <em>Estado</em>
-                )}
-                MenuProps={MenuProps}
-                inputProps={{ 'aria-label': 'Without label' }}
-              >
-                <MenuItem disabled value='' key='placeholderEstado'>
-                  <em>Estado</em>
-                </MenuItem>
-                {store.estado?.map((name) => (
-                  <MenuItem
-                    key={name}
-                    value={name}
-                    style={getStyles(name, theme)}
-                  >
-                    {name}
-                  </MenuItem>
-                ))}
-              </Select>
-            </FormControl>
-            <FormControl>
-              <Select
-                multiple
-                displayEmpty
-                onChange={handleChangeTipoDePropiedad}
-                value={tipoDePropiedad}
-                input={<OutlinedInput />}
-                renderValue={(selected) => (
-                  <em>Tipo de Propiedad</em>
-                )}
-                MenuProps={MenuProps}
-                inputProps={{ 'aria-label': 'Without label' }}
-              >
-                <MenuItem disabled value='' key='placeholderTipo'>
-                  <em>Tipo de Propiedad</em>
-                </MenuItem>
-                {store.tipoDePropiedad?.map((name) => (
-                  <MenuItem
-                    key={name}
-                    value={name}
-                    style={getStyles(name, theme)}
-                  >
-                    {name}
-                  </MenuItem>
-                ))}
-              </Select>
-            </FormControl>
-            <FormControl>
-              <Select
-                multiple
-                displayEmpty
-                onChange={handleChangeDormitorios}
-                value={dormitorios}
-                input={<OutlinedInput />}
-                renderValue={(selected) => (
-                  <em>Dormitorios</em>
-                )}
-                MenuProps={MenuProps}
-                inputProps={{ 'aria-label': 'Without label' }}
-              >
-                <MenuItem disabled value='' key='placeholderDormitorios'>
-                  <em>Dormitorios</em>
-                </MenuItem>
-                {store.dormitorios?.map((name) => (
-                  <MenuItem
-                    key={name}
-                    value={name}
-                    style={getStyles(name, theme)}
-                  >
-                    {name}
-                  </MenuItem>
-                ))}
-              </Select>
-            </FormControl>
-            <FormControl>
-              <Select
-                displayEmpty
-                onChange={handleChangeMoneda}
-                value={moneda}
-                input={<OutlinedInput />}
-                renderValue={(selected) => (
-                  <em>Moneda</em>
-                )}
-                MenuProps={MenuProps}
-                inputProps={{ 'aria-label': 'Without label' }}
-              >
-                <MenuItem disabled value='' key='placeholderMoneda'>
-                  <em>Moneda</em>
-                </MenuItem>
-                {store.moneda?.map((name) => (
-                  <MenuItem
-                    key={name}
-                    value={name}
-                    style={getStyles(name, theme)}
-                  >
-                    {name}
-                  </MenuItem>
-                ))}
-              </Select>
-            </FormControl>
-            <FormControl>
-              <TextField
-                id='maxPrice'
-                label='Precio máximo'
-                variant='outlined'
-                placeholder='Precio máximo'
-                key='placeholderMaxPrice'
-                type='number'
-                onChange={(e) => {
-                  setMaxPrice(e.target.value);
-                  setFiltro({ ...filtro, maxPrice: e.target.value });
+                sx={{
+                  minWidth: "10.5vw",
+                  height: "5vh",
+                  boxShadow: "rgba(0, 0, 0, 0.19) 0px 5px 10px, rgba(0, 0, 0, 0.23) 0px 3px 3px",
                 }}
-              />
-            </FormControl>
-            <FormControl>
-              <Select
                 multiple
                 displayEmpty
                 onChange={handleChangeTipoDePublicacion}
@@ -315,11 +181,201 @@ function Filters() {
                 ))}
               </Select>
             </FormControl>
+            <FormControl>
+              <Select
+                sx={{
+                  minWidth: "10.5vw",
+                  height: "5vh",
+                  boxShadow: "rgba(0, 0, 0, 0.19) 0px 5px 10px, rgba(0, 0, 0, 0.23) 0px 3px 3px",
+                }}
+                multiple
+                displayEmpty
+                onChange={handleChangeTipoDePropiedad}
+                value={tipoDePropiedad}
+                input={<OutlinedInput />}
+                renderValue={(selected) => (
+                  <em>Tipo de Propiedad</em>
+                )}
+                MenuProps={MenuProps}
+                inputProps={{ 'aria-label': 'Without label' }}
+              >
+                <MenuItem disabled value='' key='placeholderTipo'>
+                  <em>Tipo de Propiedad</em>
+                </MenuItem>
+                {store.tipoDePropiedad?.map((name) => (
+                  <MenuItem
+                    key={name}
+                    value={name}
+                    style={getStyles(name, theme)}
+                  >
+                    {name}
+                  </MenuItem>
+                ))}
+              </Select>
+            </FormControl>
+            <FormControl>
+              <Select
+                sx={{
+                  minWidth: "10.5vw",
+                  height: "5vh",
+                  boxShadow: "rgba(0, 0, 0, 0.19) 0px 5px 10px, rgba(0, 0, 0, 0.23) 0px 3px 3px",
+                }}
+                multiple
+                displayEmpty
+                onChange={handleChangeLocalidades}
+                value={localidades}
+                input={<OutlinedInput />}
+                renderValue={(selected) => (
+                  <em>Localidades</em>
+                )}
+                MenuProps={MenuProps}
+                inputProps={{ 'aria-label': 'Without label' }}
+              >
+                <MenuItem disabled value='' key='placeholderLocalidades'>
+                  <em>Localidades</em>
+                </MenuItem>
+                {store.localidades?.map((name) => (
+                  <MenuItem
+                    key={name}
+                    value={name}
+                    style={getStyles(name, theme)}
+                  >
+                    {name}
+                  </MenuItem>
+                ))}
+              </Select>
+            </FormControl>
+            <FormControl>
+              <Select
+                sx={{
+                  minWidth: "10.5vw",
+                  height: "5vh",
+                  boxShadow: "rgba(0, 0, 0, 0.19) 0px 5px 10px, rgba(0, 0, 0, 0.23) 0px 3px 3px",
+                }}
+                multiple
+                displayEmpty
+                onChange={handleChangeEstado}
+                value={estado}
+                input={<OutlinedInput />}
+                renderValue={(selected) => (
+                  <em>Estado</em>
+                )}
+                MenuProps={MenuProps}
+                inputProps={{ 'aria-label': 'Without label' }}
+              >
+                <MenuItem disabled value='' key='placeholderEstado'>
+                  <em>Estado</em>
+                </MenuItem>
+                {store.estado?.map((name) => (
+                  <MenuItem
+                    key={name}
+                    value={name}
+                    style={getStyles(name, theme)}
+                  >
+                    {name}
+                  </MenuItem>
+                ))}
+              </Select>
+            </FormControl>
+            <FormControl>
+              <Select
+                sx={{
+                  minWidth: "10.5vw",
+                  height: "5vh",
+                  boxShadow: "rgba(0, 0, 0, 0.19) 0px 5px 10px, rgba(0, 0, 0, 0.23) 0px 3px 3px",
+                }}
+                multiple
+                displayEmpty
+                onChange={handleChangeDormitorios}
+                value={dormitorios}
+                input={<OutlinedInput />}
+                renderValue={(selected) => (
+                  <em>Dormitorios</em>
+                )}
+                MenuProps={MenuProps}
+                inputProps={{ 'aria-label': 'Without label' }}
+              >
+                <MenuItem disabled value='' key='placeholderDormitorios'>
+                  <em>Dormitorios</em>
+                </MenuItem>
+                {store.dormitorios?.map((name) => (
+                  <MenuItem
+                    key={name}
+                    value={name}
+                    style={getStyles(name, theme)}
+                  >
+                    {name}
+                  </MenuItem>
+                ))}
+              </Select>
+            </FormControl>
+            <FormControl>
+              <Select
+                sx={{
+                  minWidth: "10.5vw",
+                  height: "5vh",
+                  boxShadow: "rgba(0, 0, 0, 0.19) 0px 5px 10px, rgba(0, 0, 0, 0.23) 0px 3px 3px",
+                }}
+                displayEmpty
+                onChange={handleChangeMoneda}
+                value={moneda}
+                input={<OutlinedInput />}
+                renderValue={(selected) => (
+                  <em>Moneda</em>
+                )}
+                MenuProps={MenuProps}
+                inputProps={{ 'aria-label': 'Without label' }}
+              >
+                <MenuItem disabled value='' key='placeholderMoneda'>
+                  <em>Moneda</em>
+                </MenuItem>
+                {store.moneda?.map((name) => (
+                  <MenuItem
+                    key={name}
+                    value={name}
+                    style={getStyles(name, theme)}
+                  >
+                    {name}
+                  </MenuItem>
+                ))}
+              </Select>
+            </FormControl>
+            <FormControl sx={{height: "5vh"}}>
+              <TextField
+                sx={{
+                  minWidth: "10.5vw",
+                  height: "5vh",
+                  boxShadow: "rgba(0, 0, 0, 0.19) 0px 5px 10px, rgba(0, 0, 0, 0.23) 0px 3px 3px",
+                }}
+                id='maxPrice'
+                label='Precio máximo'
+                variant='outlined'
+                placeholder='Precio máximo'
+                key='placeholderMaxPrice'
+                type='number'
+                onChange={(e) => {
+                  setMaxPrice(e.target.value);
+                  setFiltro({ ...filtro, maxPrice: e.target.value });
+                }}
+              />
+            </FormControl>
           </Stack>
-        </FormControl>
-        <Button variant='outlined' onClick={saveFilters}>
+          <Button variant='outlined' onClick={saveFilters} sx={{
+            minWidth: "10.5vw",
+            maxWidth: "10.5vw",
+            margin: "2vh auto",
+            height: "5vh",
+            backgroundColor: "#1976d2",
+            color: "white",
+            boxShadow: "rgba(0, 0, 0, 0.19) 0px 5px 10px, rgba(0, 0, 0, 0.23) 0px 3px 3px",
+            "&:hover": {
+              backgroundColor: "white",
+              color: "#1976d2",
+            },
+          }}>
           Aplicar Filtros
         </Button>
+        </FormControl>
       </div>
     </div>
   );
