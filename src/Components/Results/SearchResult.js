@@ -2,30 +2,24 @@ import { useEffect } from "react";
 import { useState } from "react";
 import { useContext } from "react";
 import RenderResults from "./RenderResults";
-import {
-  Box,
-  Stack,
-  Divider,
-  Button,
-  Container,
-  Grid,
-  Typography,
-} from "@mui/material";
+import {Box,Stack,Divider,Button,Container,Grid,Typography,} from "@mui/material";
 import MapIcon from "@mui/icons-material/Map";
 import { FilterAlt } from "@mui/icons-material";
 import "./SearchResult.css";
-import {
-  storeContext,
-  
-} from "../../Store/StoreProvider";
+import { storeContext, } from "../../Store/StoreProvider";
 import Filters from "../Filters";
+
+// Componente SearchResult para manejar la búsqueda y visualización de resultados
+//COMPONENTE SEARCHRESULT:
 const SearchResult = () => {
+  // Estados para controlar la cantidad de resultados, carga y los resultados
   const [numOfResults, setNumOfResults] = useState(0);
   const [loading, setLoading] = useState(true);
   const [results, setResults] = useState([]);
-
+  // Uso del contexto para acceder a la tienda (store) y dispatch
   const [store, dispatch] = useContext(storeContext);
 
+  
   const filter = () => {
     // Obtener los filtros del estado
     const filters = store.filters;
@@ -56,23 +50,46 @@ const SearchResult = () => {
     return filteredProperties;
   };
 
-
   //const filterResults = filter();
   const filtro = store.filters
-
   const propiedades = store.propiedades
 
+/////MODIFICAR PARA QUE ANDE 
+// Función para aplicar filtros a las propiedades
+// const applyFilters = () => {
+//   // Filtrado de propiedades basado en la ubicación
+//   const filtered = store.propiedades.filter(x => store.filters.localidad.map(item => item === x.ubicacion));
+//   // La lógica de filtrado debe ser completada y ajustada según las necesidades
+// };
 
-  const applyFilters=()=>{
-    const filtered = propiedades.filter( x => filtro.localidad.map(item => item === x.ubicacion))
+// const applyFilters = () => {
+//   // Filtrado de propiedades basado en la ubicación
+//   const filtered = store.propiedades.filter(property => store.filters.localidad.includes(property.ubicacion)
+//   );
 
-  }
+//   // Actualizar los estados con los resultados filtrados y el número de resultados
+//   setResults(filtered);
+//   setNumOfResults(filtered.length);
+// };
 
+const applyFilters = () => {
+  const filtered = store.propiedades.filter(property => 
+    property.ubicacion.some(ubicacion => store.filters.localidad.includes(ubicacion))
+  );
+
+  setResults(filtered);
+  setNumOfResults(filtered.length);
+};
+
+  
+/////////////////////////
+
+// Efecto para aplicar los filtros cuando cambian los filtros en el contexto
   useEffect(()=>{
     applyFilters()
   },[store.filters])
 
-
+ // Efecto para simular la carga de datos
   useEffect(() => {
     setTimeout(() => {
       setLoading(false);
@@ -80,6 +97,7 @@ const SearchResult = () => {
     setTimeout(() => {}, 1500);
   }, []);
 
+  // Renderización del componente
   return (
     <div className="SearchResult">
       <Container maxWidth="md">
