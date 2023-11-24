@@ -29,6 +29,7 @@ import {
   FavoritosPerfil,
 } from "./Pages/subPages/PerfilSubPages";
 import PublicarPropiedad from "./Pages/PublicarPropiedad";
+import ResultadoPublicacion from "./Pages/ResultadoPublicacion"
 
 export default function Router() {
   return (
@@ -64,7 +65,7 @@ export default function Router() {
           <Route path="/venta" element={<Venta />} />
           <Route path="*" element={<NoPage />} />
           <Route path="/resultados" element={<Resultados />} />
-        
+          <Route path="/resultadopublicacion/:id" element={<ResultadoPublicacion />} />
         </Route>
       </Routes>
     </BrowserRouter>

@@ -139,7 +139,7 @@ const RenderResults = (props) => {
                           marginTop: 3,
                         }}
                       >
-                        <Link to={`/PublicarPropiedad`}>
+                        <Link to={`/ResultadoPublicacion/${result.id}`}>
                           <Button
                             variant="outlined"
                             sx={{
