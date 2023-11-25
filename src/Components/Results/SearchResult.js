@@ -8,6 +8,7 @@ import { FilterAlt } from "@mui/icons-material";
 import "./SearchResult.css";
 import { storeContext, } from "../../Store/StoreProvider";
 import Filters from "../Filters";
+import { keys } from "@material-ui/core/styles/createBreakpoints";
 
 // Componente SearchResult para manejar la búsqueda y visualización de resultados
 //COMPONENTE SEARCHRESULT:
@@ -53,7 +54,8 @@ const SearchResult = () => {
   //const filterResults = filter();
   const filtro = store.filters
   const propiedades = store.propiedades
-
+  const ListadoPropiedadess = store.ListadoPropiedades
+  const filtered = [];
 /////MODIFICAR PARA QUE ANDE 
 // Función para aplicar filtros a las propiedades
 // const applyFilters = () => {
@@ -72,10 +74,42 @@ const SearchResult = () => {
 //   setNumOfResults(filtered.length);
 // };
 
+
+// filtro = {
+//   nombre: "sebastian",
+//   edad: "17",
+//   apellido:"cuneo"
+// }
+
+
+
+// 1 Tenemos que ver que valores tenesmo en filtro
+//   Pasamos el objeto a un array de keys
+//   recorremos ese array y verificamos sus valores en el objeto
+
+
+//   keys = [nombre, edad, apellido]
+
 const applyFilters = () => {
-  const filtered = store.propiedades.filter(property => 
-    property.ubicacion.some(ubicacion => store.filters.localidad.includes(ubicacion))
-  );
+  const keys = Object.keys(filtro)
+  
+  keys.forEach(item =>{
+    if(filtro[item] && filtro[item].length > 0){
+      /*
+      //propiedades.filter()
+      const filtered = propiedades.filter(x => propiedades.map(item => item ==x.ubicacion))
+      console.log(filtered);
+      //filtrar un arrray de objetos en linea 97
+      */
+      const filtered = propiedades.filter(x => {
+        // Utilizamos some para verificar si la ubicacion de x coincide con la ubicacion de alguna propiedad
+        return propiedades.some(item => item.ubicacion === x.ubicacion);
+      });
+    }else{
+      console.log("error, no hay filtors aplicados");
+    }
+
+  })
 
   setResults(filtered);
   setNumOfResults(filtered.length);
@@ -86,11 +120,12 @@ const applyFilters = () => {
 
 // Efecto para aplicar los filtros cuando cambian los filtros en el contexto
   useEffect(()=>{
-    applyFilters()
+    //applyFilters()
   },[store.filters])
 
  // Efecto para simular la carga de datos
   useEffect(() => {
+   // applyFilters()
     setTimeout(() => {
       setLoading(false);
     }, 1000);
@@ -125,7 +160,8 @@ const applyFilters = () => {
                 </Typography>
                 <Typography variant="body2" color="text.secondary">
                   Estás en: {store.filters.tipo}{", "}
-                  {store.filters.TipoDePublicacion}
+                   {/* {store.filters.TipoDePublicacion}  */}
+                   {/* No anda la linea anterior */}
                 </Typography>
                 <Typography variant="body2" color="text.primary">
                   Mostrando {numOfResults} resultados.
@@ -168,19 +204,17 @@ const applyFilters = () => {
             justifyContent: "center",
           }}
         >
-          <main className="results">
+          { <main className="results">
             {loading && <p>Cargando...</p>}
             {!loading && (
               <div>
-                <script>
-                 console.log("resultado2" + filteredResults)
-                 </script>
-                {propiedades.length > 0 && (
-                  <RenderResults results={propiedades} />
+                
+                {results.length > 0 && (
+                  <RenderResults results={results} />
                 )}
               </div>
             )}{" "}
-          </main>
+          </main> }
         </Box>
       </Container>
     </div>
