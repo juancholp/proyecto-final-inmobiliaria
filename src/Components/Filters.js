@@ -1,16 +1,16 @@
-import { useState, useContext } from 'react';
-import { useTheme } from '@mui/material/styles';
-import OutlinedInput from '@mui/material/OutlinedInput';
-import MenuItem from '@mui/material/MenuItem';
-import FormControl from '@mui/material/FormControl';
-import Select from '@mui/material/Select';
-import Button from '@mui/material/Button';
-import './Filters.css';
-import Chip from '@mui/material/Chip';
-import Stack from '@mui/material/Stack';
-import { storeContext } from '../Store/StoreProvider';
-import TextField from '@mui/material/TextField';
-import { types } from '../Store/StoreReducer';
+import { useState, useContext } from "react";
+import { useTheme } from "@mui/material/styles";
+import OutlinedInput from "@mui/material/OutlinedInput";
+import MenuItem from "@mui/material/MenuItem";
+import FormControl from "@mui/material/FormControl";
+import Select from "@mui/material/Select";
+import Button from "@mui/material/Button";
+import "./Filters.css";
+import Chip from "@mui/material/Chip";
+import Stack from "@mui/material/Stack";
+import { storeContext } from "../Store/StoreProvider";
+import TextField from "@mui/material/TextField";
+import { types } from "../Store/StoreReducer";
 
 const ITEM_HEIGHT = 44;
 const ITEM_PADDING_TOP = 8;
@@ -54,46 +54,57 @@ function Filters() {
   const [tipoDePublicacion, setTipoDePublicacion] = useState([]);
 
   const handleChangeLocalidades = (event) => {
-    const { target: { value } } = event;
+    const {
+      target: { value },
+    } = event;
     setLocalidades(value);
     setFiltro({ ...filtro, localidad: value });
   };
 
   const handleChangeEstado = (event) => {
-    const { target: { value } } = event;
+    const {
+      target: { value },
+    } = event;
     setEstado(value);
     setFiltro({ ...filtro, estado: value });
   };
 
   const handleChangeTipoDePropiedad = (event) => {
-    const { target: { value } } = event;
+    const {
+      target: { value },
+    } = event;
     setTipoDePropiedad(value);
     setFiltro({ ...filtro, tipoDePropiedad: value });
   };
 
   const handleChangeDormitorios = (event) => {
-    const { target: { value } } = event;
+    const {
+      target: { value },
+    } = event;
     setDormitorios(value);
     setFiltro({ ...filtro, dormitorios: value });
   };
 
   const handleChangeMoneda = (event) => {
-    const { target: { value } } = event;
+    const {
+      target: { value },
+    } = event;
     setMoneda(value);
     setFiltro({ ...filtro, moneda: value });
   };
 
   const handleChangeTipoDePublicacion = (event) => {
-    const { target: { value } } = event;
+    const {
+      target: { value },
+    } = event;
     setTipoDePublicacion(value);
     setFiltro({ ...filtro, tipoDePublicacion: value });
   };
 
   const saveFilters = () => {
-    console.log("filtro", filtro)
-    
-    dispatch({ type: types.setFilters, payload: filtro });
+    console.log("filtro", filtro);
 
+    dispatch({ type: types.setFilters, payload: filtro });
   };
 
   const resetFilters = () => {
@@ -111,7 +122,15 @@ function Filters() {
 
   return (
     <div>
-      <div className='filtros'>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          marginBottom: "2vh",
+          width: "100vw"
+        }}
+      >
         {localidades?.map((item) => (
           <Chip label={item} key={item} />
         ))}
@@ -125,49 +144,32 @@ function Filters() {
           <Chip label={item} key={item} />
         ))}
         {moneda !== "" && <Chip label={moneda} key={moneda} />}
-        {maxPrice > 0 && <Chip label={'Precio máximo: ' + maxPrice} />}
+        {maxPrice > 0 && <Chip label={"Precio máximo: " + maxPrice} />}
         {tipoDePublicacion?.map((item) => (
           <Chip label={item} key={item} />
         ))}
-        <Button variant='outlined' onClick={resetFilters} sx={{
-            mb: "2vh",
-            backgroundColor: "#1976d2",
-            color: "white",
-            boxShadow: "rgba(0, 0, 0, 0.19) 0px 5px 10px, rgba(0, 0, 0, 0.23) 0px 3px 3px",
-            "&:hover": {
-              backgroundColor: "white",
-              color: "#1976d2",
-            },
-          }}>
-          Borrar Filtros
-        </Button>
       </div>
-      <div className='selects'>
-        <FormControl className='selects'>
-          <Stack direction='row' spacing={2}>
-          <FormControl>
+      <div className="selects">
+        <FormControl className="selects">
+          <Stack direction="row" spacing={2}>
+            <FormControl>
               <Select
                 sx={{
-                  minWidth: "10.5vw",
+                  width:"15vw",
                   height: "5vh",
-                  boxShadow: "rgba(0, 0, 0, 0.19) 0px 5px 10px, rgba(0, 0, 0, 0.23) 0px 3px 3px",
+                  boxShadow:
+                    "rgba(0, 0, 0, 0.19) 0px 5px 10px, rgba(0, 0, 0, 0.23) 0px 3px 3px",
                 }}
                 multiple
                 displayEmpty
                 onChange={handleChangeTipoDePublicacion}
                 value={tipoDePublicacion}
                 input={<OutlinedInput />}
-                renderValue={(selected) => (
-                  <em>Tipo de publicación</em>
-                )}
+                renderValue={(selected) => <em>Tipo de publicación</em>}
                 MenuProps={MenuProps}
-                inputProps={{ 'aria-label': 'Without label' }}
+                inputProps={{ "aria-label": "Without label" }}
               >
-                <MenuItem
-                  disabled
-                  value=''
-                  key='placeholderTipoDePublicacion'
-                >
+                <MenuItem disabled value="" key="placeholderTipoDePublicacion">
                   <em>Tipo de publicación</em>
                 </MenuItem>
                 {store.tipoDePublicacion?.map((name) => (
@@ -184,22 +186,21 @@ function Filters() {
             <FormControl>
               <Select
                 sx={{
-                  minWidth: "10.5vw",
+                  width: "14vw",
                   height: "5vh",
-                  boxShadow: "rgba(0, 0, 0, 0.19) 0px 5px 10px, rgba(0, 0, 0, 0.23) 0px 3px 3px",
+                  boxShadow:
+                    "rgba(0, 0, 0, 0.19) 0px 5px 10px, rgba(0, 0, 0, 0.23) 0px 3px 3px",
                 }}
                 multiple
                 displayEmpty
                 onChange={handleChangeTipoDePropiedad}
                 value={tipoDePropiedad}
                 input={<OutlinedInput />}
-                renderValue={(selected) => (
-                  <em>Tipo de Propiedad</em>
-                )}
+                renderValue={(selected) => <em>Tipo de Propiedad</em>}
                 MenuProps={MenuProps}
-                inputProps={{ 'aria-label': 'Without label' }}
+                inputProps={{ "aria-label": "Without label" }}
               >
-                <MenuItem disabled value='' key='placeholderTipo'>
+                <MenuItem disabled value="" key="placeholderTipo">
                   <em>Tipo de Propiedad</em>
                 </MenuItem>
                 {store.tipoDePropiedad?.map((name) => (
@@ -216,22 +217,21 @@ function Filters() {
             <FormControl>
               <Select
                 sx={{
-                  minWidth: "10.5vw",
+                  width: "11vw",
                   height: "5vh",
-                  boxShadow: "rgba(0, 0, 0, 0.19) 0px 5px 10px, rgba(0, 0, 0, 0.23) 0px 3px 3px",
+                  boxShadow:
+                    "rgba(0, 0, 0, 0.19) 0px 5px 10px, rgba(0, 0, 0, 0.23) 0px 3px 3px",
                 }}
                 multiple
                 displayEmpty
                 onChange={handleChangeLocalidades}
                 value={localidades}
                 input={<OutlinedInput />}
-                renderValue={(selected) => (
-                  <em>Localidades</em>
-                )}
+                renderValue={(selected) => <em>Localidades</em>}
                 MenuProps={MenuProps}
-                inputProps={{ 'aria-label': 'Without label' }}
+                inputProps={{ "aria-label": "Without label" }}
               >
-                <MenuItem disabled value='' key='placeholderLocalidades'>
+                <MenuItem disabled value="" key="placeholderLocalidades">
                   <em>Localidades</em>
                 </MenuItem>
                 {store.localidades?.map((name) => (
@@ -248,22 +248,21 @@ function Filters() {
             <FormControl>
               <Select
                 sx={{
-                  minWidth: "10.5vw",
+                  width: "8vw",
                   height: "5vh",
-                  boxShadow: "rgba(0, 0, 0, 0.19) 0px 5px 10px, rgba(0, 0, 0, 0.23) 0px 3px 3px",
+                  boxShadow:
+                    "rgba(0, 0, 0, 0.19) 0px 5px 10px, rgba(0, 0, 0, 0.23) 0px 3px 3px",
                 }}
                 multiple
                 displayEmpty
                 onChange={handleChangeEstado}
                 value={estado}
                 input={<OutlinedInput />}
-                renderValue={(selected) => (
-                  <em>Estado</em>
-                )}
+                renderValue={(selected) => <em>Estado</em>}
                 MenuProps={MenuProps}
-                inputProps={{ 'aria-label': 'Without label' }}
+                inputProps={{ "aria-label": "Without label" }}
               >
-                <MenuItem disabled value='' key='placeholderEstado'>
+                <MenuItem disabled value="" key="placeholderEstado">
                   <em>Estado</em>
                 </MenuItem>
                 {store.estado?.map((name) => (
@@ -280,22 +279,21 @@ function Filters() {
             <FormControl>
               <Select
                 sx={{
-                  minWidth: "10.5vw",
+                  width: "11vw",
                   height: "5vh",
-                  boxShadow: "rgba(0, 0, 0, 0.19) 0px 5px 10px, rgba(0, 0, 0, 0.23) 0px 3px 3px",
+                  boxShadow:
+                    "rgba(0, 0, 0, 0.19) 0px 5px 10px, rgba(0, 0, 0, 0.23) 0px 3px 3px",
                 }}
                 multiple
                 displayEmpty
                 onChange={handleChangeDormitorios}
                 value={dormitorios}
                 input={<OutlinedInput />}
-                renderValue={(selected) => (
-                  <em>Dormitorios</em>
-                )}
+                renderValue={(selected) => <em>Dormitorios</em>}
                 MenuProps={MenuProps}
-                inputProps={{ 'aria-label': 'Without label' }}
+                inputProps={{ "aria-label": "Without label" }}
               >
-                <MenuItem disabled value='' key='placeholderDormitorios'>
+                <MenuItem disabled value="" key="placeholderDormitorios">
                   <em>Dormitorios</em>
                 </MenuItem>
                 {store.dormitorios?.map((name) => (
@@ -312,21 +310,20 @@ function Filters() {
             <FormControl>
               <Select
                 sx={{
-                  minWidth: "10.5vw",
+                  width: "9vw",
                   height: "5vh",
-                  boxShadow: "rgba(0, 0, 0, 0.19) 0px 5px 10px, rgba(0, 0, 0, 0.23) 0px 3px 3px",
+                  boxShadow:
+                    "rgba(0, 0, 0, 0.19) 0px 5px 10px, rgba(0, 0, 0, 0.23) 0px 3px 3px",
                 }}
                 displayEmpty
                 onChange={handleChangeMoneda}
                 value={moneda}
                 input={<OutlinedInput />}
-                renderValue={(selected) => (
-                  <em>Moneda</em>
-                )}
+                renderValue={(selected) => <em>Moneda</em>}
                 MenuProps={MenuProps}
-                inputProps={{ 'aria-label': 'Without label' }}
+                inputProps={{ "aria-label": "Without label" }}
               >
-                <MenuItem disabled value='' key='placeholderMoneda'>
+                <MenuItem disabled value="" key="placeholderMoneda">
                   <em>Moneda</em>
                 </MenuItem>
                 {store.moneda?.map((name) => (
@@ -340,41 +337,83 @@ function Filters() {
                 ))}
               </Select>
             </FormControl>
-            <FormControl sx={{height: "5vh"}}>
-              <TextField
-                sx={{
-                  minWidth: "10.5vw",
+            <TextField
+              id="maxPrice"
+              variant="outlined"
+              placeholder="Precio máximo"
+              type="number"
+              onChange={(e) => {
+                setMaxPrice(e.target.value);
+                setFiltro({ ...filtro, maxPrice: e.target.value });
+              }}
+              style={{
+                width: "10.5vw",
+                height: "5vh",
+                textAlign: "center",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                alignContent: "center",
+              }}
+              inputProps={{
+                style: {
+                  borderRadius: "5px",
                   height: "5vh",
-                  boxShadow: "rgba(0, 0, 0, 0.19) 0px 5px 10px, rgba(0, 0, 0, 0.23) 0px 3px 3px",
-                }}
-                id='maxPrice'
-                label='Precio máximo'
-                variant='outlined'
-                placeholder='Precio máximo'
-                key='placeholderMaxPrice'
-                type='number'
-                onChange={(e) => {
-                  setMaxPrice(e.target.value);
-                  setFiltro({ ...filtro, maxPrice: e.target.value });
-                }}
-              />
-            </FormControl>
+                  boxSizing: "border-box",
+                  boxShadow:
+                    "rgba(0, 0, 0, 0.19) 0px 5px 10px, rgba(0, 0, 0, 0.23) 0px 3px 3px",
+                },
+              }}
+            />
           </Stack>
-          <Button variant='outlined' onClick={saveFilters} sx={{
-            minWidth: "10.5vw",
-            maxWidth: "10.5vw",
-            margin: "2vh auto",
-            height: "5vh",
-            backgroundColor: "#1976d2",
-            color: "white",
-            boxShadow: "rgba(0, 0, 0, 0.19) 0px 5px 10px, rgba(0, 0, 0, 0.23) 0px 3px 3px",
-            "&:hover": {
-              backgroundColor: "white",
-              color: "#1976d2",
-            },
-          }}>
-          Aplicar Filtros
-        </Button>
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              gap: "3vw",
+              marginTop: "30px",
+              width: "50vw",
+              margin: "30px auto 0 auto"
+            }}
+          >
+            <Button
+              variant="outlined"
+              onClick={saveFilters}
+              sx={{
+                width: "151px",
+                height: "4vh",
+                backgroundColor: "#1976d2",
+                color: "white",
+                boxShadow:
+                  "rgba(0, 0, 0, 0.19) 0px 5px 10px, rgba(0, 0, 0, 0.23) 0px 3px 3px",
+                "&:hover": {
+                  backgroundColor: "white",
+                  color: "#1976d2",
+                },
+              }}
+            >
+              Aplicar Filtros
+            </Button>
+            <Button
+              variant="outlined"
+              onClick={resetFilters}
+              sx={{
+                width: "151px",
+                height: "4vh",
+                backgroundColor: "#1976d2",
+                color: "white",
+                boxShadow:
+                  "rgba(0, 0, 0, 0.19) 0px 5px 10px, rgba(0, 0, 0, 0.23) 0px 3px 3px",
+                "&:hover": {
+                  backgroundColor: "white",
+                  color: "#1976d2",
+                },
+              }}
+            >
+              Borrar Filtros
+            </Button>
+          </div>
         </FormControl>
       </div>
     </div>

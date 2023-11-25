@@ -2,14 +2,8 @@
   justify-content: center;
   display: flex;
   flex-wrap: wrap;
-  margin: 5px;
   gap: 5px;
+  width: "100vw";
 }
 
-.filtros {
-  margin: 5px;
-  gap: 5px;
-  padding: 5px;
-  display: flex;
-  justify-content: center;
-}
+

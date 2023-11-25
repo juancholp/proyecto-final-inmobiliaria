@@ -84,13 +84,13 @@ function MainPage() {
             <div className="contenedorBusqueda">
               <TipoDePropiedad actionOnClick={setTipoDePropiedad} />
               <Departamentos actionOnClick={setLocalidades} />
-              <Link to={"/resultados"}>
+              <Link to={"/resultados"} padding="5px">
                 <Button
                   type="submit"
                   variant="contained"
                   onClick={handleclick}
                   sx={{
-                    width: "5vw",
+                    width: "6vw",
                     height: "4vh",
                     fontFamily: "Lato",
                     fontSize: "1.2rem",

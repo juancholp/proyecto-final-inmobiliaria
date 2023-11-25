@@ -29,7 +29,7 @@ export default function StickyFooter() {
         zIndex: "5",
         position: "fixed",
         bottom: 0,
-        width: "100%",
+        width: "100vw",
         padding: 0,
         height: "5vh",
         alignContent: "center",

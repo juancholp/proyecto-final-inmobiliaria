@@ -36,38 +36,60 @@ const SearchResult = () => {
       } = filtro;
 
       let dataFiltrada = propiedades;
-      
+
       // anda
-      if (tipoDePublicacion && Array.isArray(tipoDePublicacion) && tipoDePublicacion.length > 0) {
-        dataFiltrada = dataFiltrada.filter((item) => tipoDePublicacion.some((itemTipoDePublicacion) => 
-          item?.tipoDePublicacion?.includes(itemTipoDePublicacion)))
+      if (
+        tipoDePublicacion &&
+        Array.isArray(tipoDePublicacion) &&
+        tipoDePublicacion.length > 0
+      ) {
+        dataFiltrada = dataFiltrada.filter((item) =>
+          tipoDePublicacion.some((itemTipoDePublicacion) =>
+            item?.tipoDePublicacion?.includes(itemTipoDePublicacion)
+          )
+        );
       } else if (tipoDePublicacion && typeof tipoDePublicacion === "string") {
-        dataFiltrada = dataFiltrada.filter((item) => 
-        item?.tipoDePublicacion?.includes(tipoDePublicacion))
+        dataFiltrada = dataFiltrada.filter((item) =>
+          item?.tipoDePublicacion?.includes(tipoDePublicacion)
+        );
       }
       // anda
       if (localidad && Array.isArray(localidad) && localidad.length > 0) {
-        dataFiltrada = dataFiltrada.filter((item) => localidad.some((itemLocalidad) => 
-          item?.ubicacion?.includes(itemLocalidad)))
+        dataFiltrada = dataFiltrada.filter((item) =>
+          localidad.some((itemLocalidad) =>
+            item?.ubicacion?.includes(itemLocalidad)
+          )
+        );
       } else if (localidad && typeof localidad === "string") {
-        dataFiltrada = dataFiltrada.filter((item) => 
-          item?.ubicacion?.includes(localidad))
+        dataFiltrada = dataFiltrada.filter((item) =>
+          item?.ubicacion?.includes(localidad)
+        );
       }
       // anda
       if (estado && Array.isArray(estado) && estado.length > 0) {
-        dataFiltrada = dataFiltrada.filter((item) => estado.some((itemEstado) => 
-          item?.estado?.includes(itemEstado)))
+        dataFiltrada = dataFiltrada.filter((item) =>
+          estado.some((itemEstado) => item?.estado?.includes(itemEstado))
+        );
       } else if (estado && typeof estado === "string") {
-        dataFiltrada = dataFiltrada.filter((item) => 
-          item?.estado?.includes(estado))
+        dataFiltrada = dataFiltrada.filter((item) =>
+          item?.estado?.includes(estado)
+        );
       }
       // anda
-      if (tipoDePropiedad && Array.isArray(tipoDePropiedad) && tipoDePropiedad.length > 0) {
-        dataFiltrada = dataFiltrada.filter((item) => tipoDePropiedad.some((itemTipoDePropiedad) =>
-          item?.tipoDePropiedad?.includes(itemTipoDePropiedad)))
+      if (
+        tipoDePropiedad &&
+        Array.isArray(tipoDePropiedad) &&
+        tipoDePropiedad.length > 0
+      ) {
+        dataFiltrada = dataFiltrada.filter((item) =>
+          tipoDePropiedad.some((itemTipoDePropiedad) =>
+            item?.tipoDePropiedad?.includes(itemTipoDePropiedad)
+          )
+        );
       } else if (tipoDePropiedad && typeof tipoDePropiedad === "string") {
         dataFiltrada = dataFiltrada.filter((item) =>
-          item?.tipoDePropiedad?.includes(tipoDePropiedad))
+          item?.tipoDePropiedad?.includes(tipoDePropiedad)
+        );
       }
       // anda
       if (dormitorios && dormitorios.length > 0) {
@@ -75,36 +97,37 @@ const SearchResult = () => {
           dormitorios.includes(item?.dormitorios)
         );
       } else if (dormitorios && typeof dormitorios === "string") {
-        dataFiltrada = dataFiltrada.filter((item) => item?.dormitorios === dormitorios);
+        dataFiltrada = dataFiltrada.filter(
+          (item) => item?.dormitorios === dormitorios
+        );
       }
       // anda
       if (moneda) {
         dataFiltrada = dataFiltrada.filter((item) => {
           if (moneda === "Pesos") {
-            return item?.tipoMoneda === "$"
+            return item?.tipoMoneda === "$";
           } else if (moneda === "Dolares") {
-            return item?.tipoMoneda === "U$D"
+            return item?.tipoMoneda === "U$D";
           }
-        });        
+        });
       }
       // anda
       if (maxPrice && maxPrice.length > 0) {
-        console.log("precio maximo", maxPrice)
-        dataFiltrada = dataFiltrada.filter((item) =>  
-          parseFloat(item?.precio) <= parseFloat(maxPrice));
+        console.log("precio maximo", maxPrice);
+        dataFiltrada = dataFiltrada.filter(
+          (item) => parseFloat(item?.precio) <= parseFloat(maxPrice)
+        );
       }
-      
 
       setResults(dataFiltrada);
-      
     }
 
-    console.log("filtro aplicado", filtro)
+    console.log("filtro aplicado", filtro);
     setTimeout(() => {
       setLoading(false);
     }, 1500);
   }, [filtro, propiedades]);
-  console.log("resultados", results)
+  console.log("resultados", results);
   return (
     <div className="SearchResult">
       <Container maxWidth="xxl">
@@ -118,35 +141,18 @@ const SearchResult = () => {
             marginTop={4}
           >
             <Typography
-              component={"h1"}
-              variant="body1"
+              variant="h6"
               color="text.primary"
               alignContent={"center"}
               textAlign={"center"}
             >
-              {store.filters?.tipoDePublicacion} de {store.filters?.tipoDePropiedad} en {store.filters?.localidad}.
+              {store.filters
+                ? `${store.filters.tipoDePublicacion} de ${store.filters.tipoDePropiedad} en ${store.filters.localidad}.`
+                : "Mostrando todos las publicaciones."}
             </Typography>
-            <Typography variant="body2" color="text.primary">
+            <Typography variant="h6" color="text.primary">
               Mostrando {results.length} resultados.
             </Typography>
-          </Stack>
-          <Stack
-            direction="row"
-            spacing={{ xs: 1, sm: 1 }}
-            gap={{ xs: 1, sm: 1 }}
-            columns={{ xs: 1, sm: 1, md: 1 }}
-            textAlign={"center"}
-            justifyContent={"center"}
-            display={"Flex"}
-            flexWrap={"wrap"}
-            alignItems="flex-start"
-          >
-            <Button variant="outlined" size="small" startIcon={<MapIcon />}>
-              Ver mapa
-            </Button>
-            <Button variant="outlined" size="small" startIcon={<FilterAlt />}>
-              Popularidad
-            </Button>
           </Stack>
         </div>
       </Container>
