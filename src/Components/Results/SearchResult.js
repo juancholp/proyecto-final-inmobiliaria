@@ -12,7 +12,6 @@ import { FilterAlt } from "@mui/icons-material";
 import { storeContext } from "../../Store/StoreProvider";
 import Filters from "../Filters";
 import RenderResults from "./RenderResults";
-import { type } from "@testing-library/user-event/dist/type";
 
 const SearchResult = () => {
   const [loading, setLoading] = useState(true);

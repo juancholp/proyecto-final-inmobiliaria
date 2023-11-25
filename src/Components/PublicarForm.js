@@ -168,7 +168,7 @@ export default function PublicarForm() {
             <TextField
               id={item}
               key={index}
-              type={store.typesAtributos[index]}
+              type={store.atributos[index]}
               label={item}
               variant="standard"
               onChange={(e) =>

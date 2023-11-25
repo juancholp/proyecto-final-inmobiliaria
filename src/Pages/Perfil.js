@@ -15,7 +15,7 @@ import "../App.css";
 import "../index.css";
 
 const Perfil = () => {
-  const [userName, setUserName] = useState("Guille");
+  const [userName, setUserName] = useState("Usuario");
   const [isEditing, setIsEditing] = useState(false);
 
   return (
