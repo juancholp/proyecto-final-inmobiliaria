@@ -46,6 +46,9 @@ function Carrousel() {
     setActiveStep(step);
   };
 
+  function formatearPrecio(precio) {
+    return precio.toLocaleString('es-ES');
+  }
   return (
     <Box sx={{ maxHeight: "40vh", maxWidth: "50vw", flexGrow: 1, position: "relative", margin: "0 20vw 25vh 20vw" }}>
       <AutoPlaySwipeableViews
@@ -83,7 +86,7 @@ function Carrousel() {
                     justifyContent: "flex-end",
                     flexDirection: "column",
                     alignItems: "flex-start",
-                    height: "11vh",
+                    height: "15vh",
                     width: "99%",
                     bottom: 0,
                     backgroundColor: "rgba(0, 0, 0, 0.4)",
@@ -98,44 +101,42 @@ function Carrousel() {
                       justifyContent: "flex-start",
                       flexDirection: "column",
                       alignItems: "flex-start",
-                      height: "10vh",
+                      height: "15vh",
                       marginBottom: "10px"
                     }}
                   >
                   <p 
                     style={{
-                      fontSize: "3rem",
+                      fontSize: "1rem",
                       margin: 0,
                     }}>
                     {step.tipoVenta}
                   </p>
                   <p
                     style={{
-                      fontSize: "3rem",
+                      fontSize: "2rem",
                       marginTop: "0px",
                       marginBottom: "10px",
                     }}
                   >
-                    {step.tipoMoneda} {step.precio}
+                    {step.tipoMoneda} {formatearPrecio(step.precio)}
                   </p>
                   <p
                     style={{
-                      fontSize: "1.5rem",
+                      fontSize: "1.2rem",
                       marginBottom: "0px",
                       marginTop: "0px",
                     }}
                   >
                     {step.descripcion}
                   </p>
-                  <p style={{ fontSize: "1.5rem", margin: "0.5rem 0"}}>{step.ubicacion} </p>
+                  <p style={{ fontSize: "1.2rem", margin: "0.5rem 0"}}>{step.ubicacion} </p>
                   <Link
-                    href={step.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
+                    to={`/ResultadoPublicacion/${step.id}`}
                     style={{
                       fontSize: "1.5rem",
                       position: "absolute",
-                      right: "10px",
+                      right: "20px",
                       bottom: "14px",
                       color: "white",
                       textDecoration: "none",

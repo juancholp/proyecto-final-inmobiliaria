@@ -23,11 +23,22 @@ const Item = styled("div")(({ theme }) => ({
 
 export default function StickyFooter() {
   return (
-    <Box className="footer" sx={{ zIndex: "5", position: "fixed", bottom: 0, width: "100%", padding: 0, height: "5vh", alignContent: "center" }}>
-      <Grid container spacing={2}>
+    <Box
+      className="footer"
+      sx={{
+        zIndex: "5",
+        position: "fixed",
+        bottom: 0,
+        width: "100%",
+        padding: 0,
+        height: "5vh",
+        alignContent: "center",
+      }}
+    >
+      <Grid container spacing={2} alignItems="center">
         <Grid item xs={6} sx={{ paddingLeft: 0 }}>
           <Item>
-            <Typography sx={{ fontFamily: "Lato", letterSpacing: ".1rem", margin: "0 2rem" }}>
+            <Typography sx={{ fontFamily: "Lato", letterSpacing: ".1rem", margin: "auto 2rem" }}>
               © 2023 Blue Paradise
             </Typography>
           </Item>
@@ -35,26 +46,26 @@ export default function StickyFooter() {
         <Grid item container xs={6} justifyContent="flex-end" spacing={3}>
           <Grid item>
             <Item>
-              <a href="www.facebook.com">
+            <Typography href="www.facebook.com" sx={{position: "relative", top: "-2px"}}>
                 <FacebookIcon sx={{ marginRight: "3px", position: "relative", top: "5px" }} />
                 Facebook
-              </a>
+              </Typography>
             </Item>
           </Grid>
           <Grid item>
             <Item>
-              <a href="www.youtube.com">
+            <Typography href="www.youtube.com" sx={{position: "relative", top: "-2px"}}>
                 <YouTubeIcon sx={{ marginRight: "3px", position: "relative", top: "5px" }} />
                 YouTube
-              </a>
+              </Typography>
             </Item>
           </Grid>
           <Grid item>
             <Item sx={{ marginRight: "2rem"}}>
-              <a href="www.twitter.com">
+              <Typography href="www.twitter.com" sx={{position: "relative", top: "-2px"}}>
                 <TwitterIcon sx={{ marginRight: "3px", position: "relative", top: "5px" }} />
                 Twitter
-              </a>
+              </Typography>
             </Item>
           </Grid>
         </Grid>
