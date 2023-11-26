@@ -14,6 +14,8 @@ import MuiAlert from "@mui/material/Alert";
 import ChipComodides from "./Elemetos_De_Formulario/ChipComodides";
 import { storeContext } from "../Store/StoreProvider";
 import OutlinedInput from "@mui/material/OutlinedInput";
+import { types } from "../Store/StoreReducer";
+import { ListadoPropiedades } from "../Store/Data";
 
 export default function PublicarForm() {
   const [formData, setFormData] = useState({
@@ -39,12 +41,13 @@ export default function PublicarForm() {
     gastoscomunes: "",
     imgsrc: [""],
   });
-  const [store] = React.useContext(storeContext);
+  const [store, dispatch] = React.useContext(storeContext);
 
   const [textFieldImagenesData, setTextFieldImagenesData] = useState([]);
 
   const [snackbarOpen, setSnackbarOpen] = useState(false);
   const [snackbarMessage, setSnackbarMessage] = useState("");
+
 
   const handleInputChange = (e, fieldName) => {
     const value = e.target.value;
@@ -67,13 +70,19 @@ export default function PublicarForm() {
   };
 
   const handleSave = () => {
-    const combinedData = {
-      ...formData,
-      imgsrc: textFieldImagenesData.map((item) => item.value),
-    };
-    openSnackbar("Datos guardados");
+    try {
+      formData.id = Date.now();
+      formData.imgsrc = Array.isArray(textFieldImagenesData) ? textFieldImagenesData.map((item) => item.value) : "";
+      dispatch({type: types.setProperty, payload: formData });
+      console.log("propiedades", ListadoPropiedades)
+      openSnackbar("Datos guardados");
+    } catch(e) {
+      console.log("error", e);
+      openSnackbar("No se pudo guardar");
+    }
   };
 
+  
   return (
     <div className="publicarFormContainer">
       <Typography mb="1rem" variant="h4" fontFamily="Lato">
@@ -92,14 +101,14 @@ export default function PublicarForm() {
             {/* Select List de tipo de publicacion */}
             <SelectList
               className="selectList"
-              tipo={store?.publicacion}
+              tipo={store?.tipoDePublicacion}
               titulo={"Tipo De Publicacion"}
               onChange={(value) => handleSelectChange(value, "tipoVenta")}
             />
             {/* Select List de tipo de propiedad */}
             <SelectList
               className="selectList"
-              tipo={store?.tipoPropiedad}
+              tipo={store?.tipoDePropiedad}
               titulo={"Tipo De Propiedad"}
               onChange={(value) => handleSelectChange(value, "tipoDePropiedad")}
             />
@@ -194,7 +203,6 @@ export default function PublicarForm() {
             />
           </div>
         </div>
-
         <div>
           <Typography mb="1rem" variant="h6" fontFamily="Lato">
             Comodidades
@@ -228,6 +236,7 @@ export default function PublicarForm() {
           >
             Guardar
           </Button>
+
         </div>
         <Snackbar
           open={snackbarOpen}

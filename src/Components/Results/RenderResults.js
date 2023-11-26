@@ -13,6 +13,7 @@ import FormMessage from "../FormMessage";
 import { Button } from "@mui/material";
 import { Link } from "react-router-dom";
 import "./SearchResult.css";
+import { storeContext } from "../../Store/StoreProvider";
 
 const RenderResults = (props) => {
   const Item = styled(Paper)(({ theme }) => ({
@@ -29,7 +30,7 @@ const RenderResults = (props) => {
     flexDirection: "row",
     alignItems: "center",
   }));
-
+  const [store] = React.useContext(storeContext);
   const [results, setResults] = React.useState([]);
   useEffect(() => {
     console.log("results", props.results)

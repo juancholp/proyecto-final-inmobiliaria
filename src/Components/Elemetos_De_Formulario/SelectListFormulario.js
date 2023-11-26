@@ -9,8 +9,7 @@ export default function SelectTextFields(props) {
 
   useEffect(() => {
     setSelectedValue("");
-  }, [props.tipoDePropiedad]);
-
+  }, [props.tipo]);
   const handleSelectChange = (event) => {
     setSelectedValue(event.target.value);
     if (props.onChange) {
@@ -36,7 +35,7 @@ export default function SelectTextFields(props) {
           variant="standard"
           onChange={handleSelectChange}
         >
-          {props.tipoDePropiedad.map((option) => (
+          {props.tipo.map((option) => (
             <MenuItem key={option} value={option}>
               {option}
             </MenuItem>
