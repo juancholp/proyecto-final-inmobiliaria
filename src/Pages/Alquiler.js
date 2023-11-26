@@ -16,7 +16,7 @@ theme = responsiveFontSizes(theme);
 
 const Alquiler = () => {
   const [store, dispatch] = useContext(storeContext);
-
+  console.log("store prop", store.propiedades)
   let filtered = store.propiedades.filter((prop) => {
     return prop.tipoDePublicacion === "Alquiler";
   });
