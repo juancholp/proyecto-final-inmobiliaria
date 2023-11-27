@@ -20,8 +20,9 @@ export const ListadoPropiedades = [
     anioConstruccion: 2015,
     estado: 'Excelente estado',
     imgsrc: [
-      'https://img.freepik.com/vector-gratis/hermosa-casa_24877-50819.jpg',
+      'https://cdn2.infocasas.com.uy/repo/img/th.outside1504x568.37038_SDR-SDR-3069_731.jpg',
       'https://example.com/image2.jpg',
+      './Img/img1.jpg',
       'https://example.com/image3.jpg',
     ],
   },
@@ -46,8 +47,8 @@ export const ListadoPropiedades = [
     anioConstruccion: 2000,
     estado: 'Buen estado',
     imgsrc: [
-      'https://example.com/image4.jpg',
-      'https://example.com/image5.jpg',
+      'https://cdn2.infocasas.com.uy/repo/img/th.outside1504x568.37038_SDR-SDR-3069_502.jpg',
+      './Img/img2.jpg',
       'https://example.com/image6.jpg',
     ],
   },
@@ -73,7 +74,7 @@ export const ListadoPropiedades = [
     anioConstruccion: 1990,
     estado: 'Muy buen estado',
     imgsrc: [
-      'https://example.com/image7.jpg',
+      'https://cdn2.infocasas.com.uy/repo/img/th.outside1504x568.199481_LMT-1416-TRA_668.jpg',
       'https://example.com/image8.jpg',
       'https://example.com/image9.jpg',
     ],
@@ -99,7 +100,7 @@ export const ListadoPropiedades = [
     anioConstruccion: 2012,
     estado: 'Excelente estado',
     imgsrc: [
-      'https://example.com/image10.jpg',
+      'https://cdn2.infocasas.com.uy/repo/img/th.outside1504x568.199481_LMT-541-TRA_266.jpg',
       'https://example.com/image11.jpg',
       'https://example.com/image12.jpg',
     ],
@@ -125,7 +126,7 @@ export const ListadoPropiedades = [
     anioConstruccion: null,
     estado: 'Sin construcción',
     imgsrc: [
-      'https://example.com/image13.jpg',
+      'https://cdn2.infocasas.com.uy/web/th.outside500x1.652a9ea59832b_infocdn.jpg',
       'https://example.com/image14.jpg',
       'https://example.com/image15.jpg',
     ],
@@ -155,7 +156,7 @@ export const ListadoPropiedades = [
     anioConstruccion: 2005,
     estado: 'Buen estado',
     imgsrc: [
-      'https://example.com/image16.jpg',
+      'https://cdn2.infocasas.com.uy/repo/img/th.outside1504x568.173266105_GSL-4147-TRA_136.jpg',
       'https://example.com/image17.jpg',
       'https://example.com/image18.jpg',
     ],

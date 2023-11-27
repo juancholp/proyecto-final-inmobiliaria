@@ -28,12 +28,12 @@ const SearchResult = () => {
   //falta razonar
   const updateFilters = () => {
     //actualizar results con esos filtros
-    let tempResults = results
+    let tempResults = []
     tempResults = results.filter(() => {
       results.forEach((e) => {
         //pensar, mucho
       })
-      //pensar, mucho
+      return tempResults
     })
     setResults(tempResults)
   }
