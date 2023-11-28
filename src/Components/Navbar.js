@@ -182,7 +182,7 @@ function Navbar() {
                     <MenuItem key={setting} onClick={handleCloseUserMenu}>
                       <Link
                         to={`/` + setting}
-                        style={{ color: "black", textDecoration: "none" }}
+                        style={{ color: "white", textDecoration: "none" }}
                       >
                         {setting}
                       </Link>

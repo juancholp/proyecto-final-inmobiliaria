@@ -33,7 +33,7 @@ a {
   background-size: 100%;
   image-rendering: optimizeQuality;
   width: auto;
-  height: auto;
+  height: 600px;
 }
 
 .Search {
