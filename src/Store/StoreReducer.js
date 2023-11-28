@@ -28,7 +28,16 @@ const initialStore = () => {
     comodidad: ListadoComodidades,
     atributos: ListadoAtributos,
     nombreAtributosGuardado: nombreDeGuardadoDeLosAtributos,
-    filters: null
+    filters:{
+      localidad: [],
+      estado: [],
+      tipo: [],
+      dormitorios: [],
+      moneda: [],
+      maxPrice: 0,
+      comodidad: [],
+      TipoDePublicacion: [],
+    },
   };
   return store;
 };
@@ -43,7 +52,7 @@ const storeReducer = (state, action) => {
     case types.setProperty:
       return {
         ...state,
-        propiedades: state.propiedades.push(action.payload),
+        propiedades: state.propiedades.concat(action.payload),
       };
     case types.setFilters:
       return {

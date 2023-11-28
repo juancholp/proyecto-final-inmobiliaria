@@ -10,7 +10,6 @@ import Departamentos from "./Departamentos";
 import { storeContext } from "../Store/StoreProvider";
 import { Link } from "react-router-dom";
 import { Typography } from "@mui/material";
-import { SearchResult } from "./Results/SearchResult";
 import "./MainPage.css";
 import { types } from "../Store/StoreReducer";
 
@@ -48,7 +47,7 @@ function MainPage() {
               aria-label="Platform"
               id="opciones"
               sx={{
-                borderRadius: "15px",
+                borderRadius: "5px",
                 overflow: "hidden",
                 margin: 0,
                 "& .MuiToggleButton-root": {

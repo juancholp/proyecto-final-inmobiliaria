@@ -46,7 +46,7 @@ export default function CustomSelectCheckmarks(props) {
           input={<OutlinedInput label="Tipo de Propiedad" />}
           renderValue={(selected) => selected.join(", ")}
           MenuProps={MenuProps}
-          sx={{borderRadius:"10px", overflow: "hidden"}}
+          sx={{width: "15vw" ,borderRadius:"5px", overflow: "hidden"}}
         >
           {store.tipoDePropiedad.map((option) => (
             <MenuItem key={option} value={option}>

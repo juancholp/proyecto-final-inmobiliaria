@@ -11,21 +11,19 @@ export default function CustomAutoComplete(props) {
   const [store, dispatch] = useContext(storeContext);
 
   const handleDepartmentChange = (value) => {
-    const newValue = value;
     props.actionOnClick(value)
   };
 
   return (
     <Autocomplete
-      style={{ backgroundColor: "white" }}
       disablePortal
-      id="combo-box-demo"
+      
       options={Departamentos}
-      sx={{ width: "15vw", borderRadius:"10px", overflow: "hidden" }}
+      sx={{ width: "15vw", borderRadius:"5px", overflow: "hidden", backgroundColor: "white" }}
       value={selectedDepartment}
       onChange={(e) => handleDepartmentChange(e.target.textContent)}
       getOptionLabel={(option) => option.label}
-      renderInput={(params) => <TextField {...params} label="Departamento" />}
+      renderInput={(params) => <TextField {...params} label="Departamento"/>}
     />
   );
 }

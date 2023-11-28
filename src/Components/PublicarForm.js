@@ -24,7 +24,7 @@ export default function PublicarForm() {
     tipoMoneda: "",
     precio: "",
     disposicion: "",
-    tipoVenta: "",
+    tipoDePublicacion: "",
     ubicacion: [""],
     comodidad: [],
     descripcion: "",
@@ -103,7 +103,7 @@ export default function PublicarForm() {
               className="selectList"
               tipo={store?.tipoDePublicacion}
               titulo={"Tipo De Publicacion"}
-              onChange={(value) => handleSelectChange(value, "tipoVenta")}
+              onChange={(value) => handleSelectChange(value, "tipoDePublicacion")}
             />
             {/* Select List de tipo de propiedad */}
             <SelectList
@@ -160,20 +160,7 @@ export default function PublicarForm() {
               onChange={(e) => handleInputChange(e, "precio")}
             />
           </FormControl>
-          <FormControl sx={{ m: 1 }}>
-            <InputLabel htmlFor="outlined-adornment-amount">
-              Gastos Comunes
-            </InputLabel>
-            <OutlinedInput
-              id="outlined-adornment-amount"
-              startAdornment={
-                <InputAdornment position="start">$</InputAdornment>
-              }
-              label="Amount"
-              onChange={(e) => handleInputChange(e, "gastoscomunes")}
-            />
-          </FormControl>
-          {store?.atributos.map((item, index) => (
+            {store?.atributos.map((item, index) => (
             <TextField
               id={item}
               key={index}
