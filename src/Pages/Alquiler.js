@@ -1,6 +1,6 @@
 import React from "react";
 import { storeContext } from "../Store/StoreProvider";
-import { useContext } from "react";
+import { useEffect, useState, useContext } from "react";
 import RenderResults from "../Components/Results/RenderResults";
 import Container from "@mui/material/Container";
 import Box from "@mui/material/Box";
@@ -16,10 +16,27 @@ theme = responsiveFontSizes(theme);
 
 const Alquiler = () => {
   const [store, dispatch] = useContext(storeContext);
-  console.log("store prop", store.propiedades)
-  let filtered = store.propiedades.filter((prop) => {
-    return prop.tipoDePublicacion === "Alquiler";
-  });
+  const [filteredResults, setFilteredResults] = useState([]);
+
+  useEffect(() => {
+    const filterResults = filter(store.propiedades);
+    if (filterResults.length > 0) {
+      setFilteredResults(filterResults);
+    } else {
+      setFilteredResults(store.propiedades);
+    }
+
+  },[store.filters,store.propiedades]);
+  
+  const filter = () => {
+
+    return store.propiedades.filter((result) => {
+      console.log("result", result)
+      return (
+        result.tipoDePublicacion === "Alquiler" 
+      );
+    });
+  };
 
   return (
     <>
@@ -30,7 +47,7 @@ const Alquiler = () => {
               Alquiler de Propiedades
             </Typography>
 
-            <RenderResults results={filtered} />
+            <RenderResults results={filteredResults} />
           </ThemeProvider>
         </Box>
       </Container>

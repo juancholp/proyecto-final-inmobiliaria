@@ -1,6 +1,6 @@
 import React from "react";
 import { storeContext } from "../Store/StoreProvider";
-import { useContext } from "react";
+import { useEffect, useState, useContext } from "react";
 import RenderResults from "../Components/Results/RenderResults";
 import Container from "@mui/material/Container";
 import Box from "@mui/material/Box";
@@ -14,12 +14,29 @@ import {
 let theme = createTheme();
 theme = responsiveFontSizes(theme);
 
-const Venta = () => {
+const Alquiler = () => {
   const [store, dispatch] = useContext(storeContext);
+  const [filteredResults, setFilteredResults] = useState([]);
 
-  let filtered = store.propiedades.filter((prop) => {
-    return prop.tipoDePublicacion === "Venta";
-  });
+  useEffect(() => {
+    const filterResults = filter(store.propiedades);
+    if (filterResults.length > 0) {
+      setFilteredResults(filterResults);
+    } else {
+      setFilteredResults(store.propiedades);
+    }
+
+  },[store.filters,store.propiedades]);
+  
+  const filter = () => {
+
+    return store.propiedades.filter((result) => {
+      console.log("result", result)
+      return (
+        result.tipoDePublicacion === "Venta" 
+      );
+    });
+  };
 
   return (
     <>
@@ -27,10 +44,10 @@ const Venta = () => {
         <Box m={2} pt={3}>
           <ThemeProvider theme={theme}>
             <Typography textAlign="center" mb={6} fontSize={"3rem"} color="#1976d2" fontFamily={"Lato"} fontWeight={"400"}>
-              Venta de Propiedades
+              Alquiler de Propiedades
             </Typography>
 
-            <RenderResults results={filtered} />
+            <RenderResults results={filteredResults} />
           </ThemeProvider>
         </Box>
       </Container>
@@ -38,4 +55,4 @@ const Venta = () => {
   );
 };
 
-export default Venta;
+export default Alquiler;

@@ -26,7 +26,7 @@ export default function PublicarForm() {
     disposicion: "",
     tipoDePublicacion: "",
     ubicacion: [""],
-    comodidad: [],
+    comodidades: [],
     descripcion: "",
     aceptaMascotasOptions: "",
     zona: "",
@@ -38,7 +38,6 @@ export default function PublicarForm() {
     dormitorios: "",
     anioConstruccion: "",
     estado: "",
-    gastoscomunes: "",
     imgsrc: [""],
   });
   const [store, dispatch] = React.useContext(storeContext);
