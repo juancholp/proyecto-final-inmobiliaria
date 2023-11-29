@@ -16,11 +16,8 @@ import { Link } from "react-router-dom";
 
 const pages = ["Venta", "Alquiler", "Temporal"];
 const settings = [
-  "Ingresar",
   "Perfil",
-  "Configuracion",
   "Favoritos",
-  "Log out",
 ];
 
 function Navbar() {

@@ -31,7 +31,6 @@ const Alquiler = () => {
   const filter = () => {
 
     return store.propiedades.filter((result) => {
-      console.log("result", result)
       return (
         result.tipoDePublicacion === "Venta" 
       );
