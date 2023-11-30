@@ -16,6 +16,7 @@ import { storeContext } from "../../Store/StoreProvider";
 
 
 const RenderResults = (props) => {
+  const [store,dispatch]=React.useContext(storeContext)
   const Item = styled(Paper)(({ theme }) => ({
     backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
     ...theme.typography.body2,
@@ -38,8 +39,9 @@ const RenderResults = (props) => {
   }, [props.results]);
 
   const handleClickOpen = (value) => {
-    
-    return <DetallePropiedad id={value} />;
+    const id =value
+    console.log("id de lacasa",id )
+    dispatch({ type: "setIdCasa", payload: id });
   };
 
   return (
@@ -49,6 +51,7 @@ const RenderResults = (props) => {
       ) : (
         <Container maxWidth="xxl">
           {results.map((result) => (
+            
             <Grid
               key={result.id}
               item
@@ -120,10 +123,10 @@ const RenderResults = (props) => {
                       <FormMessage />
                     </Box>
                     <Box sx={{ marginTop: 3 }}>
-                      <Link to={`/publicarPropiedad`}>
+                      <Link to={`/Inmobiliarias`}>
                         <Button
                           variant="outlined"
-                          onClick={() => handleClickOpen(result.id)}
+                          onClick={() => handleClickOpen(result)}
                           sx={{
                             boxShadow: "rgba(0, 0, 0, 0.19) 0px 5px 10px, rgba(0, 0, 0, 0.23) 0px 3px 3px",
                           }}

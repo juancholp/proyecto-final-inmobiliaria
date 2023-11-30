@@ -4,15 +4,20 @@ import IconDetalle from "./feature_propertyDetails/IconDetalle.js";
 import MapView from "./feature_propertyDetails/MapView.js";
 import "./feature_propertyDetails/Styles/DestalleDePropiedad.css";
 import DPropiedad from "./feature_propertyDetails/Descripcion.js";
-import Propiedades from "./feature_propertyDetails/Propiedades.js";
 import React from "react";
 import "./feature_propertyDetails/Styles/imagen.css";
 import Carrousel from "./Carrousel.js";
 import { storeContext} from "../Store/StoreProvider";
 
-function DetallePropiedad(props) {
-  const [casa, setCasa] = useState(store.propiedades[1]);
+function DetallePropiedad() {
   const [store, dispatch] = React.useContext(storeContext);
+  const [casa, setCasa] = useState([]);
+
+  useEffect(()=>{
+    setCasa(store.idCasaVisualizar)
+
+  } ,[store.idCasaVisualizar])
+
   const hilos = [
     "MarcketPlace inmobiliario",
     "Alquiler",
@@ -58,6 +63,7 @@ function DetallePropiedad(props) {
         </div>
       </header>
     </div>
+    
   );
 }
 export default DetallePropiedad;

@@ -48,6 +48,7 @@ const initialStore = () => {
     passwords:null,
     fotoPerfil:null,
     },
+    idCasaVisualizar:null,
 
   }
   return store
@@ -57,6 +58,7 @@ const types = {
   setProperty: "setProperty",
   setFilters: "setFilters",
   setUsuario: "setUsuario",
+  setIdCasa: "setIdCasa",
 };
 
 const storeReducer = (state, action) => {
@@ -75,6 +77,11 @@ const storeReducer = (state, action) => {
       return {
         ...state,
         usuarioIngresado: {  ...action.payload },
+      };
+      case types.setIdCasa:
+      return {
+        ...state,
+        idCasaVisualizar: {  ...action.payload },
       };
 
     default:

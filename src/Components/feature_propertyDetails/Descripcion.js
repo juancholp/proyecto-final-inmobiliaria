@@ -5,9 +5,7 @@ function DPropiedad(props) {
         <h2>Descripción</h2>
         <div>
           <span>
-            {props?.texto?.map((parrafo, index) => (
-              <p key={index}>{parrafo}</p>
-            ))}
+            { props?.texto}
           </span>
         </div>
       </div>
