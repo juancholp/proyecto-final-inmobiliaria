@@ -31,7 +31,7 @@ const initialStore = () => {
     filters:{
       localidad: [],
       estado: [],
-      tipo: [],
+      tipoDePropiedad: [],
       dormitorios: [],
       moneda: [],
       maxPrice: 0,

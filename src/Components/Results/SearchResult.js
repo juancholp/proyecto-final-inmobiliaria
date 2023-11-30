@@ -45,12 +45,12 @@ const SearchResult = () => {
       ) {
         dataFiltrada = dataFiltrada.filter((item) =>
           tipoDePublicacion.some((itemTipoDePublicacion) =>
-            item?.tipoDePublicacion === itemTipoDePublicacion
+          item?.tipoDePublicacion?.includes(itemTipoDePublicacion)
           )
         );
       } else if (tipoDePublicacion && typeof tipoDePublicacion === "string") {
         dataFiltrada = dataFiltrada.filter((item) =>
-          item?.tipoDePublicacion === tipoDePublicacion
+        item?.tipoDePublicacion?.includes(tipoDePublicacion)
         );
       }
       // anda
@@ -147,7 +147,12 @@ const SearchResult = () => {
               textAlign={"center"}
             >
               {store.filters
-                ? `${store.filters.tipoDePublicacion} de ${store.filters.tipoDePropiedad} en ${store.filters.localidad}.`
+                ? store.filters.tipoDePublicacion +
+                  " de " +
+                  store.filters.tipoDePropiedad +
+                  " en " +
+                  store.filters.localidad +
+                  "."
                 : "Mostrando todos las publicaciones."}
             </Typography>
             <Typography variant="h6" color="text.primary">

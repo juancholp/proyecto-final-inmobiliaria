@@ -34,7 +34,7 @@ const initFilters = {
   tipoDePropiedad: [],
   dormitorios: [],
   moneda: "",
-  maxPrice: [],
+  maxPrice: 0,
   tipoDePublicacion: [],
 };
 
