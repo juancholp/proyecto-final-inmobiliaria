@@ -55,42 +55,46 @@ const SearchResult = () => {
   const filtro = store.filters
   const propiedades = store.propiedades
   const ListadoPropiedadess = store.ListadoPropiedades
-  const filtered = [];
+  let filtered = [];
+
 /////MODIFICAR PARA QUE ANDE 
 // Función para aplicar filtros a las propiedades
-// const applyFilters = () => {
-//   // Filtrado de propiedades basado en la ubicación
-//   const filtered = store.propiedades.filter(x => store.filters.localidad.map(item => item === x.ubicacion));
-//   // La lógica de filtrado debe ser completada y ajustada según las necesidades
-// };
-
-// const applyFilters = () => {
-//   // Filtrado de propiedades basado en la ubicación
-//   const filtered = store.propiedades.filter(property => store.filters.localidad.includes(property.ubicacion)
-//   );
-
-//   // Actualizar los estados con los resultados filtrados y el número de resultados
-//   setResults(filtered);
-//   setNumOfResults(filtered.length);
-// };
-
-
-// filtro = {
-//   nombre: "sebastian",
-//   edad: "17",
-//   apellido:"cuneo"
-// }
-
-
-
-// 1 Tenemos que ver que valores tenesmo en filtro
-//   Pasamos el objeto a un array de keys
-//   recorremos ese array y verificamos sus valores en el objeto
-
-
-//   keys = [nombre, edad, apellido]
-
 const applyFilters = () => {
+  // Filtrado de propiedades basado en la ubicación
+  //const filtered = store.propiedades.filter(x => store.filters.localidad.map(item => item === x.ubicacion));
+  filtered = store.propiedades.filter(x => store.filters.localidad.includes(x.ubicacion));
+
+  // if(filtered==true){
+  //   console.log("es true")
+  // }else{
+  //   console.log("es false")
+  // }
+ 
+
+  // La lógica de filtrado debe ser completada y ajustada según las necesidades
+  setResults(filtered);
+  setNumOfResults(filtered.length);
+
+  console.log(filtered , "caca")
+
+  console.log(store.filters , "cacota")
+};
+
+
+const applyFiltersss = () => {
+  // Filtrado de propiedades basado en la ubicación
+  const filtered = store.propiedades.filter(property => store.filters.localidad.includes(property.ubicacion));
+  
+  
+  // Actualizar los estados con los resultados filtrados y el número de resultados
+  setResults(filtered);
+  setNumOfResults(filtered.length);
+  console.log(filtered + "caca")
+  console.log(results + "caca2")
+};
+
+
+const applyFilterss = () => {
   const keys = Object.keys(filtro)
   
   keys.forEach(item =>{
@@ -120,18 +124,19 @@ const applyFilters = () => {
 
 // Efecto para aplicar los filtros cuando cambian los filtros en el contexto
   useEffect(()=>{
-    //applyFilters()
+    applyFilters()
   },[store.filters])
 
  // Efecto para simular la carga de datos
   useEffect(() => {
-   // applyFilters()
+   applyFilters()
     setTimeout(() => {
       setLoading(false);
     }, 1000);
     setTimeout(() => {}, 1500);
   }, []);
 
+  console.log("resultados: " + results);
   // Renderización del componente
   return (
     <div className="SearchResult">
@@ -207,9 +212,12 @@ const applyFilters = () => {
           { <main className="results">
             {loading && <p>Cargando...</p>}
             {!loading && (
+              
               <div>
                 
                 {results.length > 0 && (
+                  
+   
                   <RenderResults results={results} />
                 )}
               </div>

@@ -12,6 +12,7 @@ import Grid from "@mui/material/Grid";
 // Componente RenderResults para renderizar los resultados de una búsqueda
 const RenderResults = (props) => {
 
+  // Uso de styled para crear un componente de Paper con estilos específicos
   const Item = styled(Paper)(({ theme }) => ({
     backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
     ...theme.typography.body2,
@@ -22,7 +23,7 @@ const RenderResults = (props) => {
   
   // Debes acceder a 'results' a través de 'props'
   const { results } = props;
-
+  console.log(results);
    // Comprobación para verificar si hay resultados. Si no hay, muestra un mensaje.
    if (!results || results.length === 0) {
     return <p>No hay resultados</p>;

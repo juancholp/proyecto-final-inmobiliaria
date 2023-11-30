@@ -30,9 +30,12 @@ function MainPage() {
     // guarda la informacion en filtros
     const filtros ={
       TipoDePublicacion: tipo_propiedad,
-      localidad: localidades,
-      tipo: seleccion
+      localidad: [localidades],
+      tipo: seleccion,
+     
    }
+   console.log("guardado 22",filtros)
+
    // envia la informacion a traves de un dispatch
    dispatch(
      { 
