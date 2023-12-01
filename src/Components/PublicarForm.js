@@ -24,7 +24,7 @@ export default function PublicarForm() {
     tipoMoneda: "",
     precio: "",
     disposicion: "",
-    tipoDePublicacion: "",
+    tipoDePublicacion: [],
     ubicacion: [""],
     comodidades: [],
     descripcion: "",

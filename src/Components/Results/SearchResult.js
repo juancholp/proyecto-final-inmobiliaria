@@ -22,7 +22,7 @@ const SearchResult = () => {
   const propiedades = store.propiedades;
 
   useEffect(() => {
-    if (filtro == null) {
+    if (filtro.length < 0) {
       setResults(propiedades);
     } else {
       const {
@@ -45,12 +45,12 @@ const SearchResult = () => {
       ) {
         dataFiltrada = dataFiltrada.filter((item) =>
           tipoDePublicacion.some((itemTipoDePublicacion) =>
-          item?.tipoDePublicacion?.includes(itemTipoDePublicacion)
+            item?.tipoDePublicacion?.includes(itemTipoDePublicacion)
           )
         );
       } else if (tipoDePublicacion && typeof tipoDePublicacion === "string") {
         dataFiltrada = dataFiltrada.filter((item) =>
-        item?.tipoDePublicacion?.includes(tipoDePublicacion)
+          item?.tipoDePublicacion === tipoDePublicacion
         );
       }
       // anda
@@ -127,7 +127,9 @@ const SearchResult = () => {
       setLoading(false);
     }, 1500);
   }, [filtro, propiedades]);
+
   console.log("resultados", results);
+  console.log("resultados filter", store.filters);
   return (
     <div className="SearchResult">
       <Container maxWidth="xxl">
@@ -140,20 +142,21 @@ const SearchResult = () => {
             justifyContent={"center"}
             marginTop={4}
           >
-            <Typography
-              variant="h6"
-              color="text.primary"
-              alignContent={"center"}
-              textAlign={"center"}
-            >
-              {store.filters
-                ? store.filters.tipoDePublicacion +
-                  " de " +
-                  store.filters.tipoDePropiedad +
-                  " en " +
-                  store.filters.localidad +
-                  "."
-                : "Mostrando todos las publicaciones."}
+            <Typography variant="h6" color="text.primary" align="center">
+              {store.filters &&
+                ((store.filters.tipoDePropiedad
+                  ? store.filters.tipoDePropiedad + "s"
+                  : "") +
+                  (store.filters.tipoDePublicacion
+                    ? (store.filters.tipoDePropiedad ? " en " : "") +
+                      store.filters.tipoDePublicacion
+                    : "") +
+                  (store.filters.localidad && store.filters.tipoDePropiedad
+                    ? " en " + store.filters.localidad
+                    : store.filters.localidad && !store.filters.tipoDePropiedad
+                    ? "Propiedades en " + store.filters.localidad
+                    : "") ||
+                  "Mostrando todas las publicaciones.")}
             </Typography>
             <Typography variant="h6" color="text.primary">
               Mostrando {results.length} resultados.

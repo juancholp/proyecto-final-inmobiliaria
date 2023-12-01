@@ -31,6 +31,8 @@ function MainPage() {
   const handleclick = () => {
     if (filtros.localidad || filtros.tipoDePublicacion || filtros.tipoDePropiedad) {
       dispatch({ type: types.setFilters, payload: filtros });
+    } else {
+      dispatch({ type: types.setFilters, payload: {} });
     }
   };
 
