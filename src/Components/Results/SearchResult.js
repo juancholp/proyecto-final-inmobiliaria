@@ -142,7 +142,7 @@ const SearchResult = () => {
             justifyContent={"center"}
             marginTop={4}
           >
-            <Typography variant="h6" color="text.primary" align="center">
+            <Typography variant="h4" color="text.primary" align="center">
               {store.filters &&
                 ((store.filters.tipoDePropiedad
                   ? store.filters.tipoDePropiedad + "s"
