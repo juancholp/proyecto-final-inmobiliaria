@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
-import "./PublicarForm.css";
 import { Typography } from "@mui/material";
 import FormControl from "@mui/material/FormControl";
 import InputLabel from "@mui/material/InputLabel";
@@ -47,7 +46,6 @@ export default function PublicarForm() {
   const [snackbarOpen, setSnackbarOpen] = useState(false);
   const [snackbarMessage, setSnackbarMessage] = useState("");
 
-
   const handleInputChange = (e, fieldName) => {
     const value = e.target.value;
     setFormData({
@@ -71,54 +69,103 @@ export default function PublicarForm() {
   const handleSave = () => {
     try {
       formData.id = Date.now();
-      formData.imgsrc = Array.isArray(textFieldImagenesData) ? textFieldImagenesData.map((item) => item.value) : "";
-      dispatch({type: types.setProperty, payload: formData });
-      console.log("propiedades", ListadoPropiedades)
+      formData.imgsrc = Array.isArray(textFieldImagenesData)
+        ? textFieldImagenesData.map((item) => item.value)
+        : "";
+      dispatch({ type: types.setProperty, payload: formData });
+      console.log("propiedades", ListadoPropiedades);
       openSnackbar("Datos guardados");
-    } catch(e) {
+    } catch (e) {
       console.log("error", e);
       openSnackbar("No se pudo guardar");
     }
   };
 
-  
   return (
-    <div className="publicarFormContainer">
-      <Typography mb="1rem" variant="h4" fontFamily="Lato">
+    <div
+      className="publicarFormContainer"
+      style={{
+        backgroundColor: "#1976d2",
+        color: "white",
+        padding: "30px",
+        margin: "1rem auto 0 auto",
+        borderRadius: "15px",
+        width: "90%",
+        height: "78vh",
+        border: "3px inset white",
+        boxShadow:
+          "rgba(0, 0, 0, 0.19) 0px 5px 10px, rgba(0, 0, 0, 0.23) 0px 3px 3px",
+        fontSize: "3rem",
+        display: "flex",
+        flexWrap: "wrap",
+        fontSize: "2rem",
+      }}
+    >
+      <Typography
+        padding="1rem"
+        backgroundColor="white"
+        variant="h2"
+        fontFamily="Lato"
+        color="#1976d2"
+        textAlign="center"
+        border="2px inset white"
+        width="25%"
+        height="7%"
+        margin="0 auto 1rem auto"
+        borderRadius="15px"
+        boxShadow="rgba(0, 0, 0, 0.19) 0px 5px 10px, rgba(0, 0, 0, 0.23) 0px 3px 3px"
+      >
         Publicar Propiedad
       </Typography>
       <Box
         component="form"
         sx={{
-          "& .MuiTextField-root": { m: 1, width: "20ch" },
+          display: "flex",
+          flexDirection: "row",
+          flexWrap: "wrap", // Permite envolver en varias líneas
+          alignItems: "center",
+          justifyContent: "flex-start",
+          "& .MuiTextField-root": { m: 1, width: "200px" },
         }}
         noValidate
         autoComplete="off"
+        style={{
+          backgroundColor: "white",
+          padding: "20px",
+          borderRadius: "8px",
+          width: "98%",
+          height: "80%",
+          margin: "0 auto",
+        }}
       >
         <div>
-          <div className="Select">
-            {/* Select List de tipo de publicacion */}
+          <div
+            className="Select"
+            style={{
+              display: "flex",
+              flexDirection: "row",
+            }}
+          >
             <SelectList
               className="selectList"
               tipo={store?.tipoDePublicacion}
               titulo={"Tipo De Publicacion"}
-              onChange={(value) => handleSelectChange(value, "tipoDePublicacion")}
+              onChange={(value) =>
+                handleSelectChange(value, "tipoDePublicacion")
+              }
             />
-            {/* Select List de tipo de propiedad */}
             <SelectList
               className="selectList"
               tipo={store?.tipoDePropiedad}
               titulo={"Tipo De Propiedad"}
               onChange={(value) => handleSelectChange(value, "tipoDePropiedad")}
             />
-            {/* Select List de tipo de moneda */}
             <SelectList
               className="selectList"
               tipo={store?.moneda}
               titulo={"Tipo De Precio"}
               onChange={(value) => handleSelectChange(value, "tipoMoneda")}
             />
-            {/* Select List de tipo de estado de la propiedad */}
             <SelectList
               className="selectList"
               tipo={store?.estado}
@@ -127,14 +174,12 @@ export default function PublicarForm() {
             />
           </div>
           <div className="Select">
-            {/* Select List de baños */}
             <SelectList
               className="selectList"
               tipo={store?.baños}
               titulo={"Cantidad De Baños"}
               onChange={(value) => handleSelectChange(value, "baños")}
             />
-            {/* Select List de Dormitorios */}
             <SelectList
               className="selectList"
               tipo={store?.dormitorios}
@@ -149,7 +194,12 @@ export default function PublicarForm() {
             />
           </div>
           <FormControl sx={{ m: 1 }}>
-            <InputLabel htmlFor="outlined-adornment-amount">Precio</InputLabel>
+            <InputLabel
+              htmlFor="outlined-adornment-amount"
+              style={{ color: "#1976d2" }}
+            >
+              Precio
+            </InputLabel>
             <OutlinedInput
               id="outlined-adornment-amount"
               startAdornment={
@@ -159,7 +209,7 @@ export default function PublicarForm() {
               onChange={(e) => handleInputChange(e, "precio")}
             />
           </FormControl>
-            {store?.atributos.map((item, index) => (
+          {store?.atributos.map((item, index) => (
             <TextField
               id={item}
               key={index}
@@ -169,6 +219,7 @@ export default function PublicarForm() {
               onChange={(e) =>
                 handleInputChange(e, store?.nombreAtributosGuardado[index])
               }
+              style={{ backgroundColor: "white", margin: "8px" }}
             />
           ))}
           <div className="Select">
@@ -180,7 +231,6 @@ export default function PublicarForm() {
                 handleSelectChange(value, "aceptaMascotasOptions")
               }
             />
-
             <SelectList
               className="selectList"
               tipo={store?.opcion}
@@ -190,13 +240,23 @@ export default function PublicarForm() {
           </div>
         </div>
         <div>
-          <Typography mb="1rem" variant="h6" fontFamily="Lato">
+          <Typography
+            mb="1rem"
+            variant="h6"
+            fontFamily="Lato"
+            style={{ color: "#1976d2" }}
+          >
             Comodidades
           </Typography>
           <div>
             <ChipComodides informacion={store?.comodidad} formData={formData} />
           </div>
-          <Typography mb="1rem" variant="h6" fontFamily="Lato">
+          <Typography
+            mb="1rem"
+            variant="h6"
+            fontFamily="Lato"
+            style={{ color: "#1976d2" }}
+          >
             Imagenes
           </Typography>
           <TextFieldImagenes
@@ -204,25 +264,30 @@ export default function PublicarForm() {
             setTextFieldImagenesData={setTextFieldImagenesData}
           />
         </div>
-        <div className="bobyboton">
+        <div>
           <TextField
             id="standard-multiline"
             label="Descripcion"
             multiline
             rows={6}
             variant="standard"
-            sx={{ width: "60%" }}
+            sx={{ width: "80%", display: "flex", flexDirection: "row" }}
             onChange={(e) => handleInputChange(e, "descripcion")}
+            style={{ backgroundColor: "white", margin: "8px" }}
           />
           <Button
             variant="contained"
             className="boton"
             onClick={handleSave}
-            color="success"
+            style={{
+              backgroundColor: "#1976d2",
+              color: "white",
+              margin: "8px",
+              width: "200px",
+            }}
           >
             Guardar
           </Button>
-
         </div>
         <Snackbar
           open={snackbarOpen}

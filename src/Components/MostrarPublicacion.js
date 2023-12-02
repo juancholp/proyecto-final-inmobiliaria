@@ -24,14 +24,14 @@ export default function MostrarPublicacion() {
   return (
     <Box>
       <ThemeProvider theme={defaultTheme}>
-        <Box sx={{ height: "100vh" }}>
+        <Box sx={{ height: "100vh",  }}>
           <CssBaseline />
           <Box container alignItems="center">
             <Box sx={{ m: "3vh auto", width: "100%" }}>
               <Typography
                 textAlign="center"
                 mb={6}
-                fontSize="3rem"
+                fontSize="4rem"
                 color="#1976d2"
                 fontFamily="Lato"
                 fontWeight="400"
@@ -62,17 +62,24 @@ export default function MostrarPublicacion() {
               textAlign: "center",
             }}
           >
-            <Typography variant="h3" component="div">
+            <Typography variant="h3" component="div" fontWeight="300">
               {seleccionado[0].ubicacion}
             </Typography>
             <Box
               item
               sx={{
-                m: "2vh 0",
+                m: "2vh auto",
+                boxShadow:
+                    "rgba(0, 0, 0, 0.19) 0px 5px 10px, rgba(0, 0, 0, 0.23) 0px 3px 3px",
+                maxWidth: 300,
+                height: "5rem",
+                padding: "1rem",
+                border: "2px inset #1976d2",
+                borderRadius: "15px"
               }}
             >
               {seleccionado[0] && (
-                <Typography variant="h4" component="div">
+                <Typography variant="h4" component="div" sx={{color: "#1976d2", fontWeight: "bold"}}>
                   {seleccionado[0].tipoMoneda}{" "}
                   {formatearPrecio(seleccionado[0].precio)}
                 </Typography>
@@ -82,12 +89,16 @@ export default function MostrarPublicacion() {
               sx={{
                 m: "0 auto",
                 width: "100%",
-                maxWidth: 700,
+                maxWidth: 900,
+                boxShadow:
+                    "rgba(0, 0, 0, 0.19) 0px 5px 10px, rgba(0, 0, 0, 0.23) 0px 3px 3px",
+                padding: "3rem",
+                maxHeight: 700,
               }}
             >
-              <Box sx={{ m: 2 }}>
+              <Box>
                 {seleccionado.map((item, index) => (
-                  <Typography key={index} variant="h5">
+                  <Typography key={index} variant="h3">
                     {item.tipoDePublicacion} - {item.estado}
                   </Typography>
                 ))}
@@ -136,7 +147,7 @@ export default function MostrarPublicacion() {
                 <Typography variant="h5" sx={{ textAlign: "left" }}>
                   Codigo de la publicacion: {seleccionado[0].id}
                 </Typography>
-                <Typography sx={{ m: "5vh 0 3vh 0" }} variant="h4">
+                <Typography sx={{ m: "5vh 0 3vh 0" }} variant="h3">
                   Características Destacadas:
                 </Typography>
                 <Stack

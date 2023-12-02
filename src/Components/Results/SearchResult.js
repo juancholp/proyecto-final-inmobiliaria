@@ -3,12 +3,9 @@ import {
   Box,
   Stack,
   Divider,
-  Button,
   Container,
   Typography,
 } from "@mui/material";
-import MapIcon from "@mui/icons-material/Map";
-import { FilterAlt } from "@mui/icons-material";
 import { storeContext } from "../../Store/StoreProvider";
 import Filters from "../Filters";
 import RenderResults from "./RenderResults";
@@ -20,6 +17,7 @@ const SearchResult = () => {
 
   const filtro = store.filters;
   const propiedades = store.propiedades;
+  
 
   useEffect(() => {
     if (filtro.length < 0) {
@@ -136,27 +134,38 @@ const SearchResult = () => {
         <div className="info">
           <Stack
             direction="column"
-            divider={<Divider orientation="horizontal" flexItem />}
             spacing={1}
             textAlign={"center"}
             justifyContent={"center"}
             marginTop={4}
           >
             <Typography variant="h4" color="text.primary" align="center">
-              {store.filters &&
-                ((store.filters.tipoDePropiedad
-                  ? store.filters.tipoDePropiedad + "s"
-                  : "") +
-                  (store.filters.tipoDePublicacion
-                    ? (store.filters.tipoDePropiedad ? " en " : "") +
-                      store.filters.tipoDePublicacion
-                    : "") +
-                  (store.filters.localidad && store.filters.tipoDePropiedad
-                    ? " en " + store.filters.localidad
-                    : store.filters.localidad && !store.filters.tipoDePropiedad
-                    ? "Propiedades en " + store.filters.localidad
-                    : "") ||
-                  "Mostrando todas las publicaciones.")}
+              {(() => {
+                if (store.filters) {
+                  let result = "Mostrando ";
+
+                  if (store.filters.tipoDePublicacion) {
+                    result += store.filters.tipoDePublicacion;
+
+                    if (store.filters.tipoDePropiedad) {
+                      result += " de " + store.filters.tipoDePropiedad + "s";
+                    }
+                  } else if (store.filters.tipoDePropiedad) {
+                    result += store.filters.tipoDePropiedad + "s";
+                  }
+
+                  if (store.filters.localidad) {
+                    result += " en " + store.filters.localidad;
+                  }
+
+                  if (result === "Mostrando ") {
+                    return "Mostrando todas las propiedades";
+                  }
+
+                  return result;
+                }
+                return "Mostrando todas las propiedades";
+              })()}
             </Typography>
             <Typography variant="h6" color="text.primary">
               Mostrando {results.length} resultados.

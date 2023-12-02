@@ -115,10 +115,12 @@ function Filters() {
     setMoneda("");
     setMaxPrice(0);
     setTipoDePublicacion([]);
-
+  
     setFiltro(initFilters);
     dispatch({ type: types.setFilters, payload: initFilters });
+  
   };
+  
 
   return (
     <div>
