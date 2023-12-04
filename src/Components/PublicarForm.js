@@ -249,7 +249,7 @@ export default function PublicarForm() {
               onChange={(value) => handleSelectChange(value, "garaje")}
             />
           </Grid>
-          <Grid item xs={3} >
+          <Grid item xs={6} >
             <Typography
               marginTop="1.4rem"
               variant="h6"
@@ -265,7 +265,7 @@ export default function PublicarForm() {
               />
             </div>
           </Grid>
-          <Grid item xs={3}>
+          <Grid item xs={6}>
             <TextField
               id="standard-multiline"
               label="Descripcion"
@@ -277,7 +277,8 @@ export default function PublicarForm() {
               style={{ backgroundColor: "white", margin: "8px", color: "#1976d2" }}
             />
           </Grid>
-          <Grid container xs={3}>
+        </Grid>
+          <Grid container xs={6}>
             <Typography
               mb="1rem"
               variant="h6"
@@ -291,8 +292,7 @@ export default function PublicarForm() {
               setTextFieldImagenesData={setTextFieldImagenesData}
             />
           </Grid>
-        </Grid>
-        <Grid container direction="row" justifyContent="center" alignItems="center" xs={12}>
+        <Grid container direction="row" justifyContent="center" alignItems="center" xs={6}>
           <Button
             variant="contained"
             className="boton"
@@ -316,7 +316,6 @@ export default function PublicarForm() {
             {snackbarMessage}
           </MuiAlert>
         </Snackbar>
-        {/* </Box> */}
       </Grid>
     </div>
   );

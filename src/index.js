@@ -30,6 +30,7 @@ import {
 } from "./Pages/subPages/PerfilSubPages";
 import PublicarPropiedad from "./Pages/PublicarPropiedad";
 import ResultadoPublicacion from "./Pages/ResultadoPublicacion"
+import PublicarForm from "./Components/PublicarForm";
 
 export default function Router() {
   return (
@@ -60,6 +61,7 @@ export default function Router() {
           <Route path="Consultas" element={<Consultas />} />
           <Route path="Favoritos" element={<FavoritosPerfil />} />
           </Route>
+          <Route path="/Publicar" element={<PublicarForm />} />
           <Route path="/proyectos" element={<Proyectos />} />
           <Route path="/publicarpropiedad" element={<PublicarPropiedad />} />
           <Route path="/venta" element={<Venta />} />
