@@ -4,7 +4,6 @@ import IconButton from "@mui/material/IconButton";
 import Box from "@mui/material/Box";
 import AddIcon from "@mui/icons-material/Add";
 import DeleteIcon from "@mui/icons-material/Delete";
-import { RemoveCircle } from "@mui/icons-material";
 
 export default function TextFieldImagenes({
   textFieldImagenesData,
@@ -70,6 +69,9 @@ export default function TextFieldImagenes({
               value={field.value}
               onChange={(e) => handleTextFieldChange(field.id, e.target.value)}
             />
+            <IconButton color="secondary" onClick={() => removeTextField(field.id)}>
+          <DeleteIcon style={{marginTop:22}}/>
+        </IconButton>
             <IconButton
               color="secondary"
               onClick={() => removeTextField(field.id)}

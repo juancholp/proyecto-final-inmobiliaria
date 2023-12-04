@@ -109,17 +109,18 @@ export default function PublicarForm() {
           padding: "2rem 5rem",
         }}
       >
-        <Grid item md={12} sm={8} xs={4}>
+        <Grid item md={12} sm={12} xs={12}>
           <Typography
             padding="0.2rem 0.2rem 0.5rem 0.2rem"
             backgroundColor="#1976d2"
             fontWeight="300"
-            variant="h4"
+            fontSize="1.5rem"
             fontFamily="Lato"
             color="white"
             textAlign="center"
             border="1px inset white"
-            width="27%"
+            width="250px"
+            minWidth="200px"
             height="4%"
             margin="0 auto 1rem auto"
             borderRadius="10px"
