@@ -62,9 +62,12 @@ const RenderResults = (props) => {
           container
           maxWidth="xxl"
           sx={{
-            margin: "10px",
-
-            width: "100%",
+            margin: "0 auto",
+            display: "grid",
+            gridTemplateColumns: "1fr",
+            gridTemplateRows: "repeat(autofit, 1fr)",
+            width: "70%",
+            height: "fit-content",
           }}
         >
           {results &&
