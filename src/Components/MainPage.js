@@ -29,11 +29,13 @@ function MainPage() {
   };
 
   const handleclick = () => {
-    if (filtros.localidad || filtros.tipoDePublicacion || filtros.tipoDePropiedad) {
-      dispatch({ type: types.setFilters, payload: filtros });
-    } else {
-      dispatch({ type: types.setFilters, payload: {} });
-    }
+    const filtersToSend = {
+      localidad: filtros.localidad || [],
+      tipoDePublicacion: filtros.tipoDePublicacion || [],
+      tipoDePropiedad: filtros.tipoDePropiedad || [],
+    };
+  
+    dispatch({ type: types.setFilters, payload: filtersToSend });
   };
 
   return (

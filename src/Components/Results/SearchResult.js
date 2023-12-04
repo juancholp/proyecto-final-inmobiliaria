@@ -40,7 +40,7 @@ const SearchResult = () => {
     ) {
       dataFiltrada = dataFiltrada.filter((item) =>
         tipoDePublicacion.some((itemTipoDePublicacion) =>
-          item?.tipoDePublicacion?.includes(itemTipoDePublicacion)
+          item?.tipoDePublicacion === itemTipoDePublicacion
         )
       );
     } else if (tipoDePublicacion && typeof tipoDePublicacion === "string") {

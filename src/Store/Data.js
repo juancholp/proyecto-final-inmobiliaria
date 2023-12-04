@@ -44,7 +44,7 @@ export const ListadoPropiedades = [
     baños: 1,
     dormitorios: "2",
     anioConstruccion: 2000,
-    estado: 'Buen estado',
+    estado: 'En Buen estado',
     imgsrc: [
       'https://cdn2.infocasas.com.uy/repo/img/th.outside500x1.0b681f1664248bbd6cfd5f6992728b9c7b855d16.jpeg',
       'https://cdn2.infocasas.com.uy/repo/img/th.outside500x1.77001b037aa0d2285bd2dc7ab09a98bff04bcfbe.jpeg',
@@ -71,7 +71,7 @@ export const ListadoPropiedades = [
     baños: 2,
     dormitorios: "3",
     anioConstruccion: 1990,
-    estado: 'Muy buen estado',
+    estado: 'Nuevo',
     imgsrc: [
       'https://cdn2.infocasas.com.uy/repo/img/th.outside500x1.e19d690e3722610e2e6908507e62e2bb521f77b4.jpg',
       'https://cdn2.infocasas.com.uy/repo/img/th.outside500x1.6bb326564735cc812b593623b5d1fe33092733fa.jpg',
@@ -80,24 +80,24 @@ export const ListadoPropiedades = [
   },
   {
     id: 4,
-    title: 'Piso en el centro histórico',
+    title: 'Apartamento en el centro histórico',
     tipoMoneda: 'U$D',
     precio: 1100,
     disposicion: 'Exterior',
     tipoDePublicacion: 'Alquiler',
     ubicacion: ['Ciudad Vieja, ', 'Montevideo '],
     comodidades: ['Vista al casco antiguo', 'Terraza', 'Cocina moderna'],
-    descripcion: 'Elegante piso con vistas en el corazón de la Ciudad Vieja',
+    descripcion: 'Elegante Apartamento con vistas en el corazón de la Ciudad Vieja',
     aceptaMascotasOptions: 'No',
     zona: 'Ciudad Vieja',
     garaje: 'No',
     m2Edificados: 120,
     m2Terreno: "0",
-    tipoDePropiedad: 'Piso',
+    tipoDePropiedad: 'Apartamento',
     baños: 2,
     dormitorios: "2",
     anioConstruccion: 2012,
-    estado: 'Excelente estado',
+    estado: 'Nuevo',
     imgsrc: [
       'https://cdn2.infocasas.com.uy/repo/img/th.outside654x400.c0901d12831fe2b92638bcbeac69dbb591c0a8bb.jpg',
       'https://cdn2.infocasas.com.uy/repo/img/th.outside213x210.ab734190f8835f2f3eec1999a5a6f20e6587d15a.jpg',
@@ -123,7 +123,7 @@ export const ListadoPropiedades = [
     baños: null,
     dormitorios: null,
     anioConstruccion: null,
-    estado: 'Sin construcción',
+    estado: 'Terreneo vacio',
     imgsrc: [
       'https://cdn2.infocasas.com.uy/repo/img/th.outside500x1.148805_PBI-2979-TRA_327.jpg',
       'https://cdn2.infocasas.com.uy/repo/img/th.outside500x1.148805_PBI-2979-TRA_769.jpg',
@@ -153,7 +153,7 @@ export const ListadoPropiedades = [
     baños: 1,
     dormitorios: "2",
     anioConstruccion: 2005,
-    estado: 'Buen estado',
+    estado: 'En buen estado',
     imgsrc: [
       'https://cdn2.infocasas.com.uy/repo/img/th.outside654x400.d68df1eab758e790a8540133dbe67c0ec834afc4.jpeg',
       'https://cdn2.infocasas.com.uy/repo/img/th.outside500x1.806c65c309b88ea6bf61f0a4aba6c86933cf423e.jpeg',
@@ -179,7 +179,7 @@ export const ListadoPropiedades = [
     baños: 2,
     dormitorios: "3",
     anioConstruccion: 1995,
-    estado: 'Buen estado',
+    estado: 'En buen estado',
     imgsrc: [
       'https://cdn2.infocasas.com.uy/repo/img/th.outside654x400.37_CBR-CBR-863_353.jpg',
       'https://cdn2.infocasas.com.uy/repo/img/th.outside500x1.37_CBR-CBR-863_149.jpg',
@@ -205,7 +205,7 @@ export const ListadoPropiedades = [
     baños: 2,
     dormitorios: "3",
     anioConstruccion: 2008,
-    estado: 'Excelente estado',
+    estado: 'Nuevo',
     imgsrc: [
       'https://cdn2.infocasas.com.uy/repo/img/th.outside654x400.29cc696813c5080938b51fa11289a7b8af140471.jpeg#HASTH',
       'https://cdn2.infocasas.com.uy/repo/img/th.outside500x1.832e1c9851819d306fd43e6f968a2a07d90c17ca.jpeg',
@@ -231,7 +231,7 @@ export const ListadoPropiedades = [
     baños: 3,
     dormitorios: "4",
     anioConstruccion: 2013,
-    estado: 'Excelente estado',
+    estado: 'Nuevo',
     imgsrc: [
       'https://cdn2.infocasas.com.uy/repo/img/th.outside654x400.62f0ea87cfc8ca0be0bc0bab4c758645eb535903.jpg',
       'https://cdn2.infocasas.com.uy/repo/img/th.outside500x1.1d6f5c6e48852dd57546d8d77760d6f7b2376c99.jpg',
@@ -261,7 +261,7 @@ export const ListadoPropiedades = [
     baños: 2,
     dormitorios: "3",
     anioConstruccion: 2017,
-    estado: 'Excelente estado',
+    estado: 'En buen estado',
     imgsrc: [
       'https://cdn2.infocasas.com.uy/repo/img/th.outside500x1.89056_CW206866_266.jpg',
       'https://cdn2.infocasas.com.uy/repo/img/th.outside500x1.89056_CW206866_769.jpg',
@@ -292,7 +292,7 @@ export const ListadoPropiedades = [
     baños: 2,
     dormitorios: "2",
     anioConstruccion: 2005,
-    estado: 'Buen estado',
+    estado: 'En buen estado',
     imgsrc: [
       'https://cdn2.infocasas.com.uy/repo/img/th.outside654x400.122103_CW204827_364.jpg',
       'https://cdn2.infocasas.com.uy/repo/img/th.outside500x1.122103_CW204827_189.jpg',
@@ -301,7 +301,7 @@ export const ListadoPropiedades = [
   },
   {
     id: 12,
-    title: 'Piso en el Prado',
+    title: 'Apartamento en el Prado',
     tipoMoneda: 'U$D',
     precio: 850,
     disposicion: 'Frente al parque',
@@ -312,17 +312,17 @@ export const ListadoPropiedades = [
       'Cocina Equipada',
       'Aire Acondicionado',
     ],
-    descripcion: 'Amplio piso con vistas al Prado, junto al parque',
+    descripcion: 'Amplio apartamento con vistas al Prado, junto al parque',
     aceptaMascotasOptions: 'Sí',
     zona: 'Prado',
     garaje: 'Sí',
     m2Edificados: 100,
     m2Terreno: "0",
-    tipoDePropiedad: 'Piso',
+    tipoDePropiedad: 'Apartamento',
     baños: 2,
     dormitorios: "3",
     anioConstruccion: 2010,
-    estado: 'Excelente estado',
+    estado: 'Nuevo',
     imgsrc: [
       'https://cdn2.infocasas.com.uy/repo/img/th.outside654x400.173160210_9248_19.jpg',
       'https://cdn2.infocasas.com.uy/repo/img/th.outside500x1.173160210_9248_188.jpg',
@@ -348,7 +348,7 @@ export const ListadoPropiedades = [
     baños: 3,
     dormitorios: "4",
     anioConstruccion: 2014,
-    estado: 'Excelente estado',
+    estado: 'Remodelado',
     imgsrc: [
       'https://cdn2.infocasas.com.uy/repo/img/th.outside500x1.f41a6c00955153cfff2b9c9050f7e788e451e0cd.jpg',
       'https://cdn2.infocasas.com.uy/repo/img/th.outside500x1.017cdef22fad0eb811cd143a2f015755b0727b84.jpg',
@@ -378,7 +378,7 @@ export const ListadoPropiedades = [
     baños: 2,
     dormitorios: "2",
     anioConstruccion: 2011,
-    estado: 'Excelente estado',
+    estado: 'Nuevo',
     imgsrc: [
       'https://cdn2.infocasas.com.uy/repo/img/th.outside671x413.cedc394241e2f346c8a54bedc06a6664e555bf43.jpg',
       'https://cdn2.infocasas.com.uy/repo/img/th.outside500x1.ba32d1bfe6aa02b7f0a6978c7199f74c31cb04f9.jpg',
@@ -405,7 +405,7 @@ export const ListadoPropiedades = [
     baños: 2,
     dormitorios: "3",
     anioConstruccion: 2007,
-    estado: 'Excelente estado',
+    estado: 'Para remodelar',
     imgsrc: [
       'https://cdn2.infocasas.com.uy/repo/img/th.outside500x1.37_CBR-CBR-1009_41.jpg',
       'https://cdn2.infocasas.com.uy/repo/img/th.outside500x1.37_CBR-CBR-1009_141.jpg',
@@ -435,7 +435,7 @@ export const ListadoPropiedades = [
     baños: 2,
     dormitorios: "2",
     anioConstruccion: 2018,
-    estado: 'Excelente estado',
+    estado: 'En buen estado',
     imgsrc: [
       'https://cdn2.infocasas.com.uy/repo/img/th.outside500x1.e4224723df4cee089e6a86b41f3137883f8233a2.jpg',
       'https://cdn2.infocasas.com.uy/repo/img/th.outside500x1.6dc31347a986adf799b1535bc6a91b1471073dbc.jpg',
@@ -462,7 +462,7 @@ export const ListadoPropiedades = [
     baños: 3,
     dormitorios: "4",
     anioConstruccion: 2015,
-    estado: 'Excelente estado',
+    estado: 'En buen estado',
     imgsrc: [
       'https://cdn2.infocasas.com.uy/repo/img/th.outside500x1.ca33ce8343c7ae26fad657fde78eb344f8bf552f.jpg',
       'https://cdn2.infocasas.com.uy/repo/img/th.outside500x1.7c8d08037304ea7ac323ddc161e03803ec06b032.jpg',
@@ -492,7 +492,7 @@ export const ListadoPropiedades = [
     baños: 2,
     dormitorios: "2",
     anioConstruccion: 2010,
-    estado: 'Excelente estado',
+    estado: 'Nuevo',
     imgsrc: [
       'https://cdn2.infocasas.com.uy/repo/img/th.outside654x400.c30657c4f71f8178298caf41e55037b714767b99.jpg',
       'https://cdn2.infocasas.com.uy/repo/img/th.outside2487x1161.655eb6a99f706ddcced0ea336f48bb0fdeb3d635.jpg',
@@ -519,7 +519,7 @@ export const ListadoPropiedades = [
     baños: 3,
     dormitorios: "4",
     anioConstruccion: 2013,
-    estado: 'Excelente estado',
+    estado: 'Remodelado',
     imgsrc: [
       'https://cdn2.infocasas.com.uy/repo/img/th.outside654x400.b0df65e98b7c75737eac873192f00b0cc4acc38e.jpg',
       'https://cdn2.infocasas.com.uy/repo/img/th.outside500x1.4940d47bb35a3ebcdddbcc3661aff27b1bd64937.jpg',
@@ -549,7 +549,7 @@ export const ListadoPropiedades = [
     baños: 2,
     dormitorios: "3",
     anioConstruccion: 2017,
-    estado: 'Excelente estado',
+    estado: 'Para remodelar',
     imgsrc: [
       'https://cdn2.infocasas.com.uy/repo/img/th.outside500x1.cdc1eb71c8e02f0c9301d92f0c3909294771f887.jpg',
       'https://cdn2.infocasas.com.uy/repo/img/th.outside500x1.72cfc7551dac430758cf38c168e08c7b811fd5aa.jpg',
@@ -579,7 +579,7 @@ export const ListadoPropiedades = [
     baños: 2,
     dormitorios: "3",
     anioConstruccion: 2017,
-    estado: 'Excelente estado',
+    estado: 'En buen estado',
     imgsrc: [
       'https://cdn2.infocasas.com.uy/repo/img/th.outside500x1.cdc1eb71c8e02f0c9301d92f0c3909294771f887.jpg',
       'https://cdn2.infocasas.com.uy/repo/img/th.outside500x1.72cfc7551dac430758cf38c168e08c7b811fd5aa.jpg',
@@ -609,7 +609,7 @@ export const ListadoPropiedades = [
     baños: 2,
     dormitorios: "3",
     anioConstruccion: 2015,
-    estado: 'Excelente estado',
+    estado: 'Nuevo',
     imgsrc: [
       'https://cdn2.infocasas.com.uy/repo/img/th.outside2528x1143.203121_SIP-7605-TRA_794.jpg',
       'https://cdn2.infocasas.com.uy/repo/img/th.outside2528x1143.203121_SIP-7605-TRA_346.jpg',
@@ -639,7 +639,7 @@ export const ListadoPropiedades = [
     baños: 2,
     dormitorios: "2",
     anioConstruccion: 2015,
-    estado: 'Buen estado',
+    estado: 'Remodelado',
     imgsrc: [
       'https://cdn2.infocasas.com.uy/repo/img/th.outside2528x1143.859db9856e7480108d8aa5122ae188865e429267.jpg',
       'https://cdn2.infocasas.com.uy/repo/img/th.outside2528x1143.bec4fce7ce3fd879f81a4c91c141fdb69b1ffe47.jpg',
@@ -669,7 +669,7 @@ export const ListadoPropiedades = [
     baños: 2,
     dormitorios: "3",
     anioConstruccion: 2008,
-    estado: 'Buen estado',
+    estado: 'Nuevo',
     imgsrc: [
       'https://cdn2.infocasas.com.uy/repo/img/th.outside2528x1143.173266105_GSL-464-TRA_772.jpg',
       'https://cdn2.infocasas.com.uy/repo/img/th.outside2528x1143.173266105_GSL-464-TRA_677.jpg',
@@ -699,7 +699,7 @@ export const ListadoPropiedades = [
     baños: 1,
     dormitorios: "1",
     anioConstruccion: 2012,
-    estado: 'Excelente estado',
+    estado: 'En buen estado',
     imgsrc: [
       'https://cdn2.infocasas.com.uy/repo/img/th.outside2528x1143.173266105_GSL-3926-TRA_132.jpg',
       'https://cdn2.infocasas.com.uy/repo/img/th.outside2528x1143.173266105_GSL-3926-TRA_879.jpg',
@@ -729,7 +729,7 @@ export const ListadoPropiedades = [
     baños: 2,
     dormitorios: "2",
     anioConstruccion: 2016,
-    estado: 'Buen estado',
+    estado: 'Para remodelar',
     imgsrc: [
       'https://cdn2.infocasas.com.uy/repo/img/th.outside2528x1143.203121_SIP-5893-TRA_449.jpg',
       'https://cdn2.infocasas.com.uy/repo/img/th.outside2528x1143.203121_SIP-5893-TRA_698.jpg',
@@ -759,7 +759,7 @@ export const ListadoPropiedades = [
     baños: 2,
     dormitorios: "2",
     anioConstruccion: 2014,
-    estado: 'Excelente estado',
+    estado: 'En buen estado',
     imgsrc: [
       'https://cdn2.infocasas.com.uy/repo/img/th.outside2528x1143.173266105_GSL-4102-TRA_52.jpg',
       'https://cdn2.infocasas.com.uy/repo/img/th.outside2528x1143.173266105_GSL-4102-TRA_649.jpg',
@@ -789,7 +789,7 @@ export const ListadoPropiedades = [
     baños: 3,
     dormitorios: "3",
     anioConstruccion: 2013,
-    estado: 'Buen estado',
+    estado: 'En buen estado',
     imgsrc: [
       'https://cdn2.infocasas.com.uy/repo/img/th.outside2528x1143.203121_SIP-1919-TRA_820.jpg',
       'https://cdn2.infocasas.com.uy/repo/img/th.outside2528x1143.203121_SIP-1919-TRA_988.jpg',
@@ -819,7 +819,7 @@ export const ListadoPropiedades = [
     baños: 1,
     dormitorios: "0",
     anioConstruccion: 2011,
-    estado: 'Excelente estado',
+    estado: 'Nuevo',
     imgsrc: [
       'https://cdn2.infocasas.com.uy/repo/img/th.outside2528x1143.203121_SIP-6591-TRA_971.jpg',
       'https://cdn2.infocasas.com.uy/repo/img/th.outside2528x1143.203121_SIP-6591-TRA_249.jpg',
@@ -849,7 +849,7 @@ export const ListadoPropiedades = [
     baños: 2,
     dormitorios: "3",
     anioConstruccion: 2009,
-    estado: 'Buen estado',
+    estado: 'En buen estado',
     imgsrc: [
       'https://cdn2.infocasas.com.uy/repo/img/th.outside2528x1143.203121_SIP-327-TRA_173.jpg',
       'https://cdn2.infocasas.com.uy/repo/img/th.outside2528x1143.203121_SIP-327-TRA_815.jpg',
@@ -879,7 +879,7 @@ export const ListadoPropiedades = [
     baños: 2,
     dormitorios: "2",
     anioConstruccion: 2016,
-    estado: 'Excelente estado',
+    estado: 'Nuevo',
     imgsrc: [
       'https://cdn2.infocasas.com.uy/repo/img/th.outside2528x1143.203121_SIP-7287-TRA_24.jpg',
       'https://cdn2.infocasas.com.uy/repo/img/th.outside2528x1143.203121_SIP-7287-TRA_569.jpg',
@@ -909,7 +909,7 @@ export const ListadoPropiedades = [
     baños: 2,
     dormitorios: "3",
     anioConstruccion: 2014,
-    estado: 'Buen estado',
+    estado: 'En buen estado',
     imgsrc: [
       'https://cdn2.infocasas.com.uy/repo/img/th.outside2528x1143.173266105_GSL-189-TRA_316.jpg',
       'https://cdn2.infocasas.com.uy/repo/img/th.outside2528x1143.173266105_GSL-189-TRA_77.jpg',
@@ -996,14 +996,11 @@ export const ListadoTipoDePublicacion = [
 export const ListadoMoneda = ['Pesos', 'Dolares']
 export const ListadoDeEstado = [
   'Nuevo',
-  'Usado',
   'En construccion',
   'Remodelado',
-  'A estrenar',
   'En buen estado',
   'Para remodelar',
-  'Para demoler',
-  'Otros',
+  'Terreno vacio',
 ]
 export const ListadoComodidades = [
   'Piscina',
