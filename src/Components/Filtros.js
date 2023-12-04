@@ -57,7 +57,15 @@ export default function Filtros() {
   };
 
   return (
-    <Container>
+    <Container
+      sx={{
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        flexWrap: "wrap",
+        gap: "10px",
+      }}
+    >
       <FormControl sx={{ m: 1, minWidth: 100, width: "fit-content" }}>
         <InputLabel id="departamento">Departamento</InputLabel>
         <Select

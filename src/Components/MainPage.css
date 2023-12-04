@@ -8,6 +8,15 @@
   gap: 20px;
 }
 
+@media (max-width: 768px) {
+  .contenedorBusqueda {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  
+}
+
 .carrousel-container {
   display: flex;
   flex-direction: row;

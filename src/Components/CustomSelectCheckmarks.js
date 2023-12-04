@@ -22,46 +22,25 @@ const MenuProps = {
 
 export default function CustomSelectCheckmarks(props) {
   const [optionName, setOptionName] = React.useState([]);
-  const [store, dispatch] = useContext(storeContext);
-  const [filtros, setFiltros] = useState({});
-  useEffect(() => {
-    const filter = store.filters;
-    setFiltros(filter);
-  }, [store.filters]);
-  const dispatchFilters = () => {
-    dispatch({
-      type: "setFilters",
-      payload: filtros,
-    });
-  };
-  useEffect(() => {
-    dispatchFilters();
-  }, [filtros]);
+
   const handleChange = (event) => {
-    const {
-      target: { value },
-    } = event;
-    setOptionName(
-      // On autofill we get a stringified value.
-      typeof value === "string" ? value.split(",") : value
-    );
-    setFiltros({
-      ...filtros,
-      tipo: value,
+    props.setSeleccion({
+      ...props.seleccion,
+      tipoPropiedad: event.target.value,
     });
   };
 
   return (
     <div>
       <FormControl sx={{ m: 1, width: 300 }}>
-        <InputLabel id="checkmarks">Selección</InputLabel>
+        <InputLabel id="checkmarks">Tipo De Propiedad</InputLabel>
         <Select
           labelId="checkmarks"
           id="checkmarks"
           multiple
           value={optionName}
           onChange={handleChange}
-          input={<OutlinedInput label="Selección" />}
+          input={<OutlinedInput label="Tipo De Propiedad" />}
           renderValue={(selected) => selected.join(", ")}
           MenuProps={MenuProps}
         >

@@ -8,7 +8,7 @@ const useFilter = (results, filters) => {
         if (result[key] === undefined) {
           return true;
         }
-        if (filters[key].length === 0) {
+        if (filters[key] === "") {
           return true;
         }
         return result[key].includes(filters[key]);

@@ -85,27 +85,24 @@ const SearchResult = () => {
         </Box>
       </Container>
       <Filtros />
-      <Container className="resultados" maxWidth="lg">
-        <Box
-          boxShadow={2}
-          padding={2}
-          sx={{
-            width: "70%",
-            height: "fit-content",
-            margin: "auto",
-            padding: "10px",
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            justifyContent: "center",
-          }}
-        >
-          <main className="results">
-            {loading && <p>Cargando...</p>}
-            {!loading && <RenderResults results={filteredResults} />}
-          </main>
-        </Box>
-      </Container>{" "}
+      <Container
+        sx={{
+          mt: 4,
+          mb: 4,
+          p: 2,
+          width: "100%",
+          height: "100%",
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+        }}
+        maxWidth="xxl"
+      >
+        <main className="results">
+          {loading && <p>Cargando...</p>}
+          {!loading && <RenderResults results={filteredResults} />}
+        </main>
+      </Container>
     </div>
   );
 };

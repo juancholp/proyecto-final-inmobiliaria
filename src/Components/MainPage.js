@@ -6,18 +6,25 @@ import CustomSelectCheckmarks from "./CustomSelectCheckmarks";
 import Carrousel from "./Carrousel";
 import Button from "@mui/material/Button";
 import "./MainPage.css";
-import Autocomp from "./Autocomp";
+
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { storeContext } from "../Store/StoreProvider";
 import Footer from "./Footer";
 import { useEffect, useContext } from "react";
-import Filtros from "./Filtros";
+
+import FormControl from "@mui/material/FormControl";
+import InputLabel from "@mui/material/InputLabel";
+import MenuItem from "@mui/material/MenuItem";
+import Select from "@mui/material/Select";
 
 function MainPage() {
   const [seleccion, setSeleccion] = useState({
     TipoDePublicacion: "Venta",
+    localidad: "",
+    tipoPropiedad: [""],
   });
+
   const [store, dispatch] = useContext(storeContext);
   const options_default = [
     "Casa",
@@ -29,11 +36,28 @@ function MainPage() {
     "Garage o Cochera",
   ];
 
+  useEffect(() => {
+    document.title = "Blue Paradise | Bienvenidos";
+  });
+
   const handleChange = (event, value) => {
-    setSeleccion({ TipoDePublicacion: value });
+    setSeleccion({ ...seleccion, TipoDePublicacion: value });
   };
+
+  const handleChangeDepartamento = (event) => {
+    setSeleccion({ ...seleccion, localidad: event.target.value });
+  };
+
   const saveFilters = () => {
-    dispatch({ type: "setFilters", payload: seleccion });
+    dispatch({
+      type: "setFilters",
+      payload: {
+        ...store.filters,
+        tipoDePropiedad: seleccion.tipoPropiedad,
+        ubicacion: seleccion.localidad,
+        tipoVenta: seleccion.TipoDePublicacion,
+      },
+    });
   };
   useEffect(() => {
     saveFilters();
@@ -42,10 +66,10 @@ function MainPage() {
     <div className="App">
       <div className="SearchBackground">
         <div className="Search">
-          <Box>
+          <Box sx={{}}>
             <ToggleButtonGroup
               color="primary"
-              value={seleccion}
+              value={seleccion.TipoDePublicacion}
               exclusive
               onChange={handleChange}
               aria-label="Platform"
@@ -59,8 +83,38 @@ function MainPage() {
             </ToggleButtonGroup>
 
             <div className="contenedorBusqueda">
-              <CustomSelectCheckmarks options={options_default} />
-              <Filtros />
+              <CustomSelectCheckmarks
+                setSeleccion={setSeleccion}
+                options={options_default}
+                seleccion={seleccion.tipoPropiedad}
+              />
+              <FormControl
+                variant="contained"
+                sx={{
+                  m: 1,
+                  minWidth: 150,
+                  width: "fit-content",
+                  bgcolor: "white",
+                  borderRadius: "10px",
+                }}
+              >
+                <InputLabel id="departamento">Departamento</InputLabel>
+                <Select
+                  variant="filled"
+                  labelId="departamento"
+                  id="departamento"
+                  value={seleccion.localidad}
+                  label="Departamento"
+                  onChange={handleChangeDepartamento}
+                >
+                  <MenuItem value="">
+                    <em>Todos</em>
+                  </MenuItem>
+                  {store.localidades.map((localidad) => (
+                    <MenuItem value={localidad}>{localidad}</MenuItem>
+                  ))}
+                </Select>
+              </FormControl>
               <Link to={"/resultados"}>
                 <Button type="submit" variant="contained">
                   Buscar

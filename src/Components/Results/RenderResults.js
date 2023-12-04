@@ -92,7 +92,7 @@ const RenderResults = (props) => {
                 <CardMedia
                   component="img"
                   sx={{ width: 151, height: 151 }}
-                  image={result.imgsrc[0]}
+                  image={result.imgsrc ? result.imgsrc[0] : ""}
                   alt="Inmueble"
                 />
                 <Box
@@ -112,7 +112,8 @@ const RenderResults = (props) => {
                       color="text.secondary"
                       component="div"
                     >
-                      {result.ubicacion[0] + ", " + result.ubicacion[1]}
+                      {result.ubicacion &&
+                        result.ubicacion[0] + ", " + result.ubicacion[1]}
                     </Typography>
                     <Typography variant="body2" color="text.secondary">
                       {result.disposicion} - {result.dormitorio} -{" "}

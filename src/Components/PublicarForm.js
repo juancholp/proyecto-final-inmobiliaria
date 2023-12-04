@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import "./PublicarForm.css";
@@ -16,36 +16,71 @@ import { storeContext } from "../Store/StoreProvider";
 import OutlinedInput from "@mui/material/OutlinedInput";
 
 export default function PublicarForm() {
+  const [nextId, setNextId] = useState(21);
   const [formData, setFormData] = useState({
-    id: 1,
+    id: nextId,
     title: "",
-    tipoMoneda: "",
-    precio: "",
+    tipoMoneda: "U$D",
+    precio: 1100,
     disposicion: "",
     tipoVenta: "",
     ubicacion: [""],
-    comodidad: [],
+    comodidades: [""],
     descripcion: "",
     aceptaMascotasOptions: "",
     zona: "",
     garaje: "",
-    m2Edificados: "",
-    m2Terreno: "",
+    m2Edificados: 120,
+    m2Terreno: 0,
     tipoDePropiedad: "",
     banos: "",
     dormitorio: "",
-    anioConstruccion: "",
+    anioConstruccion: 2012,
     estado: "",
-    gastoscomunes: "",
     imgsrc: [""],
   });
-  const [store] = React.useContext(storeContext);
-
+  const [store, dispatch] = React.useContext(storeContext);
   const [textFieldImagenesData, setTextFieldImagenesData] = useState([]);
-
   const [snackbarOpen, setSnackbarOpen] = useState(false);
   const [snackbarMessage, setSnackbarMessage] = useState("");
 
+  useEffect(() => {
+    document.title = "Blue Paradiese | Publicar Propiedad";
+  }, []);
+  useEffect(() => {
+    setNextId(store.propiedades.length + 1);
+    console.log(nextId);
+  }, [store.propiedades]);
+
+  const dispatchForm = () => {
+    dispatch({
+      type: "setProperty",
+      payload: {
+        id: formData.id,
+        title: formData.title,
+        tipoMoneda: formData.tipoMoneda,
+        precio: formData.precio,
+        disposicion: formData.disposicion,
+        tipoVenta: formData.tipoVenta,
+        ubicacion: formData.ubicacion,
+        comodidades: formData.comodidades,
+        descripcion: formData.descripcion,
+        aceptaMascotasOptions: formData.aceptaMascotasOptions,
+        zona: formData.zona,
+        garaje: formData.garaje,
+        m2Edificados: formData.m2Edificados,
+        m2Terreno: formData.m2Terreno,
+        tipoDePropiedad: formData.tipoDePropiedad,
+        banos: formData.banos,
+        dormitorio: formData.dormitorio,
+        anioConstruccion: formData.anioConstruccion,
+        estado: formData.estado,
+        imgsrc: formData.imgsrc,
+      },
+    });
+    openSnackbar("Propiedad Publicada");
+    console.log(store.propiedades);
+  };
   const handleInputChange = (e, fieldName) => {
     const value = e.target.value;
     setFormData({
@@ -162,14 +197,13 @@ export default function PublicarForm() {
                 <InputAdornment position="start">$</InputAdornment>
               }
               label="Amount"
-              onChange={(e) => handleInputChange(e, "gastoscomunes")}
             />
           </FormControl>
           {store?.atributos.map((item, index) => (
             <TextField
               id={item}
               key={index}
-              type={store.typesAtributos[index]}
+              type="text"
               label={item}
               variant="standard"
               onChange={(e) =>
@@ -224,10 +258,10 @@ export default function PublicarForm() {
           <Button
             variant="contained"
             className="boton"
-            onClick={handleSave}
+            onClick={() => dispatchForm()}
             color="success"
           >
-            Guardar
+            Publicar
           </Button>
         </div>
         <Snackbar

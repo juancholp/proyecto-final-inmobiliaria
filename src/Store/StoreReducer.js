@@ -52,8 +52,9 @@ const storeReducer = (state, action) => {
     case types.setProperty:
       return {
         ...state,
-        propiedades: state.propiedades.push(...action.payload),
-      }
+        // propiedades: state.propiedades.push({ ...action.payload }),
+        propiedades: [...state.propiedades, { ...action.payload }],
+      };
     case types.setFilters:
       return {
         ...state,
