@@ -93,7 +93,7 @@ export default function PublicarForm() {
         backgroundColor: "#1976d2",
         margin: "0",
         padding: "2rem",
-        height: "100%",
+        height: "80vh",
       }}
     >
       <Grid container
