@@ -15,7 +15,7 @@ import "../App.css";
 import "../index.css";
 
 const Perfil = () => {
-  const [userName, setUserName] = useState("Guille");
+  const [userName, setUserName] = useState("Usuario");
   const [isEditing, setIsEditing] = useState(false);
 
   return (
@@ -133,16 +133,7 @@ const Perfil = () => {
                   </Typography>
                 </Link>
               </Grid>
-              <Grid item paddingTop={3} width={"fit-content"} xs={8}>
-                <Button width={"fit-content"} variant="contained">
-                  <Link
-                    style={{ textDecoration: "none", color: "white" }}
-                    to="/PublicarPropiedad"
-                  >
-                    Publicar propiedad
-                  </Link>
-                </Button>
-              </Grid>
+              
             </Grid>
           </Box>
         </Grid>

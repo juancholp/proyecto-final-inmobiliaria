@@ -19,8 +19,8 @@ const Dato = [
     m2Edificados: 288,
     m2Terreno: 267,
     tipoDePropiedad: "casa",
-    banos: 3,
-    dormitorio: 1,
+    baños: 3,
+    dormitorios: 1,
     anioConstruccion: 2002,
     estado: "Requiere mantenimiento",
     imgsrc: [

@@ -1,4 +1,15 @@
-body {
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+
+input[type=number] { -moz-appearance:textfield; }
+
+* {
+  font-family: 'Lato', sans-serif!important;
+}
+body { 
   margin: auto;
   padding: auto;
   background-color: white;
@@ -28,9 +39,10 @@ a {
 }
 
 .SearchBackground {
-  background-image: url("https://source.unsplash.com/random");
-  background-repeat: round;
-  background-size: 100%;
+  background-image: url("https://source.unsplash.com/random/?real-state");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
   image-rendering: optimizeQuality;
   width: auto;
   height: auto;

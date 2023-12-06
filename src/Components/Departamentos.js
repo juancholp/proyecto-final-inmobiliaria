@@ -1,18 +1,33 @@
 import * as React from "react";
 import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete";
+import { useContext } from "react";
+import { storeContext } from "../Store/StoreProvider";
 
-export default function AutoComplete() {
+
+
+export default function CustomAutoComplete(props) {
+  const [selectedDepartment, setSelectedDepartment] = React.useState(null);
+  const [store, dispatch] = useContext(storeContext);
+
+  const handleDepartmentChange = (value) => {
+    props.actionOnClick(value)
+  };
+
   return (
     <Autocomplete
       disablePortal
-      id="combo-box-demo"
+      
       options={Departamentos}
-      sx={{ width: 300 }}
-      renderInput={(params) => <TextField {...params} label="Departamento" />}
+      sx={{ width: "15vw", borderRadius:"5px", overflow: "hidden", backgroundColor: "white" }}
+      value={selectedDepartment}
+      onChange={(e) => handleDepartmentChange(e.target.textContent)}
+      getOptionLabel={(option) => option.label}
+      renderInput={(params) => <TextField {...params} label="Departamento"/>}
     />
   );
 }
+
 
 const Departamentos = [
   { label: "Maldonado" },

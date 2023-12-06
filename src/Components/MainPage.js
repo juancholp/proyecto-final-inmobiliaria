@@ -2,31 +2,40 @@ import * as React from "react";
 import Box from "@mui/material/Box";
 import ToggleButton from "@mui/material/ToggleButton";
 import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
-import CustomSelectCheckmarks from "./CustomSelectCheckmarks";
+import TipoDePropiedad from "./TipoDePropiedad";
 import Carrousel from "./Carrousel";
 import Button from "@mui/material/Button";
-import "./MainPage.css";
-import Autocomp from "./Autocomp";
 import { useState } from "react";
+import Departamentos from "./Departamentos";
+import { storeContext } from "../Store/StoreProvider";
 import { Link } from "react-router-dom";
-import { filterParams } from "../Store/StoreProvider";
-import Footer from "./Footer";
+import { Typography } from "@mui/material";
+import "./MainPage.css";
+import { types } from "../Store/StoreReducer";
 
 function MainPage() {
-  const [seleccion, setSeleccion] = React.useState("venta");
-  const options_default = [
-    "Casa",
-    "Apartamento",
-    "Terreno",
-    "Local Comercial",
-    "Oficina",
-    "Chacra o Campo",
-    "Garage o Cochera",
-  ];
+  const [store, dispatch] = React.useContext(storeContext);
+  const [localidades, setLocalidades] = useState();
+  const [tipoDePublicacion, setTipoDePublicacion] = useState();
+  const [tipoDePropiedad, setTipoDePropiedad] = useState();
+  const filtros = {
+    localidad: localidades,
+    tipoDePublicacion: tipoDePublicacion,
+    tipoDePropiedad: tipoDePropiedad,
+  };
 
   const handleChange = (event, value) => {
-    setSeleccion(value);
-    filterParams.tipodeventa = value;
+    setTipoDePublicacion(value);
+  };
+
+  const handleclick = () => {
+    const filtersToSend = {
+      localidad: filtros.localidad || [],
+      tipoDePublicacion: filtros.tipoDePublicacion || [],
+      tipoDePropiedad: filtros.tipoDePropiedad || [],
+    };
+  
+    dispatch({ type: types.setFilters, payload: filtersToSend });
   };
 
   return (
@@ -36,38 +45,95 @@ function MainPage() {
           <Box>
             <ToggleButtonGroup
               color="primary"
-              value={seleccion}
+              value={tipoDePublicacion}
               exclusive
               onChange={handleChange}
               aria-label="Platform"
               id="opciones"
+              sx={{
+                borderRadius: "5px",
+                overflow: "hidden",
+                margin: 0,
+                "& .MuiToggleButton-root": {
+                  padding: "0.7rem 1.5rem",
+                  minWidth: 0,
+                  width: "auto",
+                  "& .MuiButton-label": {
+                    width: "100%",
+                  },
+                },
+              }}
             >
-              <ToggleButton value="Venta">Venta</ToggleButton>
-              <ToggleButton value="Alquiler">Alquiler</ToggleButton>
-              <ToggleButton value="Alquiler temporal">
+              <ToggleButton
+                value="Venta"
+                sx={{ fontFamily: "Lato", fontSize: "1rem" }}
+              >
+                Venta
+              </ToggleButton>
+              <ToggleButton
+                value="Alquiler"
+                sx={{ fontFamily: "Lato", fontSize: "1rem" }}
+              >
+                Alquiler
+              </ToggleButton>
+              <ToggleButton
+                value="Alquiler Temporal"
+                sx={{ fontFamily: "Lato", fontSize: "1rem" }}
+              >
                 Alquiler Temporal
               </ToggleButton>
             </ToggleButtonGroup>
 
             <div className="contenedorBusqueda">
-              <CustomSelectCheckmarks options={options_default} />
-              <Autocomp />
-              <Link to={"/resultados"}>
-                <Button type="submit" variant="contained">
-                  Buscar
+              <TipoDePropiedad actionOnClick={setTipoDePropiedad} />
+              <Departamentos actionOnClick={setLocalidades} />
+              <Link to={"/resultados"} padding="5px">
+                <Button
+                  type="submit"
+                  variant="contained"
+                  onClick={handleclick}
+                  sx={{
+                    width: "6vw",
+                    height: "4vh",
+                    fontFamily: "Lato",
+                    fontSize: "1.2rem",
+                    borderRadius: "10px",
+                  }}
+                >
+                  <Typography>Buscar</Typography>
                 </Button>
               </Link>
             </div>
           </Box>
         </div>
       </div>
+      <div className="contenedorSecundario">
+      <Box
+        sx={{
+          backgroundColor: "rgba(25,118,210, 1)",
+          borderRadius: "25px",
+          width: "30vw",
+          margin: "8vh 35vw",
+          textAlign: "center",
+          boxShadow:
+            "rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px",
+        }}
+      >
+        <Typography
+          sx={{ fontSize: "2vw", fontFamily: "Lato", color: "white" }}
+        >
+          Propiedades Destacadas
+        </Typography>
+      </Box>
       <div className="carrousel-container">
         <Carrousel />
       </div>
-      <div>
-        <Footer />
       </div>
+      <Typography mt={15}>
+          -
+      </Typography>
     </div>
+    
   );
 }
 

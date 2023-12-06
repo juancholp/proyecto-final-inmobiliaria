@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
-import "./PublicarForm.css";
-import { Typography } from "@mui/material";
+import { Typography, Grid } from "@mui/material";
 import FormControl from "@mui/material/FormControl";
 import InputLabel from "@mui/material/InputLabel";
 import InputAdornment from "@mui/material/InputAdornment";
@@ -14,6 +13,9 @@ import MuiAlert from "@mui/material/Alert";
 import ChipComodides from "./Elemetos_De_Formulario/ChipComodides";
 import { storeContext } from "../Store/StoreProvider";
 import OutlinedInput from "@mui/material/OutlinedInput";
+import { types } from "../Store/StoreReducer";
+import { ListadoPropiedades } from "../Store/Data";
+import "./PublicarForm.css"
 
 export default function PublicarForm() {
   const [formData, setFormData] = useState({
@@ -22,9 +24,9 @@ export default function PublicarForm() {
     tipoMoneda: "",
     precio: "",
     disposicion: "",
-    tipoVenta: "",
+    tipoDePublicacion: [],
     ubicacion: [""],
-    comodidad: [],
+    comodidades: [],
     descripcion: "",
     aceptaMascotasOptions: "",
     zona: "",
@@ -32,14 +34,13 @@ export default function PublicarForm() {
     m2Edificados: "",
     m2Terreno: "",
     tipoDePropiedad: "",
-    banos: "",
-    dormitorio: "",
+    baños: "",
+    dormitorios: "",
     anioConstruccion: "",
     estado: "",
-    gastoscomunes: "",
     imgsrc: [""],
   });
-  const [store] = React.useContext(storeContext);
+  const [store, dispatch] = React.useContext(storeContext);
 
   const [textFieldImagenesData, setTextFieldImagenesData] = useState([]);
 
@@ -67,169 +68,251 @@ export default function PublicarForm() {
   };
 
   const handleSave = () => {
-    const combinedData = {
-      ...formData,
-      imgsrc: textFieldImagenesData.map((item) => item.value),
-    };
-    console.log(combinedData);
-    openSnackbar("Datos guardados");
+    try {
+      formData.id = Date.now();
+      formData.imgsrc = Array.isArray(textFieldImagenesData)
+        ? textFieldImagenesData.map((item) => item.value)
+        : "";
+      dispatch({ type: types.setProperty, payload: formData });
+      console.log("propiedades", ListadoPropiedades);
+      openSnackbar("Datos guardados");
+    } catch (e) {
+      console.log("error", e);
+      openSnackbar("No se pudo guardar");
+    }
+  };
+
+  const styles = {
+    selectList: {
+      margin: "0 10px",
+    }
   };
 
   return (
-    <div className="publicarFormContainer">
-      <Typography mb="1rem" variant="h4" fontFamily="Lato">
-        Publicar Propiedad
-      </Typography>
-      <Box
-        component="form"
-        sx={{
-          "& .MuiTextField-root": { m: 1, width: "20ch" },
+    <div
+      className="contenedorAzul"
+      style={{
+        backgroundColor: "#1976d2",
+        margin: "0",
+        padding: "2rem",
+        height: "100%",
+      }}
+    >
+      <Grid 
+        className="whiteContainer"
+        container
+        direction="row"
+        justifyContent="center"
+        alignItems="center"
+        style={{
+          backgroundColor: "white",
+          border: "2px inset #1976d2",
+          borderRadius: "10px",
+          width: "98%",
+          margin: "0 auto 2.78rem auto",
+          padding: "2rem 5rem",
+          minHeight: "85vh"
         }}
-        noValidate
-        autoComplete="off"
       >
-        <div>
-          <div className="Select">
-            {/* Select List de tipo de publicacion */}
+        <Grid  item md={12} sm={12} xs={12}>
+          <Typography
+            className="cartelPublicar"
+            backgroundColor="#1976d2"
+            fontWeight="300"
+            fontSize="1.5rem"
+            fontFamily="Lato"
+            color="white"
+            textAlign="center"
+            border="1px inset white"
+            width="250px"
+            minWidth="200px"
+            height="4%"
+            margin="0 auto 1rem auto"
+            borderRadius="10px"
+            boxShadow="rgba(0, 0, 0, 0.19) 0px 5px 10px, rgba(0, 0, 0, 0.23) 0px 3px 3px"
+          >
+            Publicar Propiedad
+          </Typography>
+        </Grid>
+        <Grid container itemspacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }}>
+          <Grid item xs={3}>
             <SelectList
               className="selectList"
-              tipo={store?.publicacion}
+              style={styles.selectList}
+              tipo={store?.tipoDePublicacion}
               titulo={"Tipo De Publicacion"}
-              onChange={(value) => handleSelectChange(value, "tipoVenta")}
+              onChange={(value) =>
+                handleSelectChange(value, "tipoDePublicacion")
+              }
             />
-            {/* Select List de tipo de propiedad */}
+          </Grid>
+          <Grid item xs={3}>
             <SelectList
               className="selectList"
-              tipo={store?.tipoPropiedad}
+              style={styles.selectList}
+              tipo={store?.tipoDePropiedad}
               titulo={"Tipo De Propiedad"}
-              onChange={(value) => handleSelectChange(value, "tipoDePropiedad")}
+              onChange={(value) =>
+                handleSelectChange(value, "tipoDePropiedad")
+              }
             />
-            {/* Select List de tipo de moneda */}
+          </Grid>
+          <Grid item xs={3}>
             <SelectList
               className="selectList"
+              style={styles.selectList}
               tipo={store?.moneda}
               titulo={"Tipo De Precio"}
               onChange={(value) => handleSelectChange(value, "tipoMoneda")}
             />
-            {/* Select List de tipo de estado de la propiedad */}
+          </Grid>
+          <Grid item xs={3}>
             <SelectList
               className="selectList"
+              style={styles.selectList}
               tipo={store?.estado}
               titulo={"Estados de Propiedad"}
               onChange={(value) => handleSelectChange(value, "estado")}
             />
-          </div>
-          <div className="Select">
-            {/* Select List de baños */}
+          </Grid>
+          <Grid item xs={3}>
             <SelectList
               className="selectList"
+              style={styles.selectList}
               tipo={store?.baños}
               titulo={"Cantidad De Baños"}
-              onChange={(value) => handleSelectChange(value, "banos")}
+              onChange={(value) => handleSelectChange(value, "baños")}
             />
-            {/* Select List de Dormitorio */}
+          </Grid>
+          <Grid item xs={3}>
             <SelectList
               className="selectList"
+              style={styles.selectList}
               tipo={store?.dormitorios}
-              titulo={"Cantidad De Dormitorio"}
-              onChange={(value) => handleSelectChange(value, "dormitorio")}
+              titulo={"Cantidad De Dormitorios"}
+              onChange={(value) => handleSelectChange(value, "dormitorios")}
             />
+          </Grid>
+          <Grid item xs={3}>
             <SelectList
               className="selectList"
+              style={styles.selectList}
               tipo={store?.localidades}
               titulo={"Localidad"}
               onChange={(value) => handleSelectChange(value, "zona")}
             />
-          </div>
-          <FormControl sx={{ m: 1 }}>
-            <InputLabel htmlFor="outlined-adornment-amount">Precio</InputLabel>
-            <OutlinedInput
-              id="outlined-adornment-amount"
-              startAdornment={
-                <InputAdornment position="start">$</InputAdornment>
-              }
-              label="Amount"
-              onChange={(e) => handleInputChange(e, "precio")}
-            />
-          </FormControl>
-          <FormControl sx={{ m: 1 }}>
-            <InputLabel htmlFor="outlined-adornment-amount">
-              Gastos Comunes
-            </InputLabel>
-            <OutlinedInput
-              id="outlined-adornment-amount"
-              startAdornment={
-                <InputAdornment position="start">$</InputAdornment>
-              }
-              label="Amount"
-              onChange={(e) => handleInputChange(e, "gastoscomunes")}
-            />
-          </FormControl>
+          </Grid>
+          <Grid item xs={3}>
+            <FormControl sx={{ m: 1 }}>
+              <InputLabel
+                htmlFor="outlined-adornment-amount"
+                style={{ color: "#1976d2" }}
+              >
+                Precio
+              </InputLabel>
+              <OutlinedInput
+                id="outlined-adornment-amount"
+                startAdornment={
+                  <InputAdornment position="start">$</InputAdornment>
+                }
+                label="Amount"
+                onChange={(e) => handleInputChange(e, "precio")}
+              />
+            </FormControl>
+          </Grid>
           {store?.atributos.map((item, index) => (
-            <TextField
-              id={item}
-              key={index}
-              type={store.typesAtributos[index]}
-              label={item}
-              variant="standard"
-              onChange={(e) =>
-                handleInputChange(e, store?.nombreAtributosGuardado[index])
-              }
-            />
+            <Grid item xs={3}>
+              <TextField
+                id={item}
+                key={index}
+                type={store.atributos[index]}
+                label={item}
+                variant="standard"
+                onChange={(e) =>
+                  handleInputChange(e, store?.nombreAtributosGuardado[index])
+                }
+                style={{ backgroundColor: "white", margin: "8px" }}
+              />
+            </Grid>
           ))}
-          <div className="Select">
+          <Grid item xs={3}>
             <SelectList
               className="selectList"
+              style={styles.selectList}
               tipo={store?.opcion}
               titulo={"Acepta Mascotas"}
               onChange={(value) =>
                 handleSelectChange(value, "aceptaMascotasOptions")
               }
             />
-
+          </Grid>
+          <Grid item xs={3}>
             <SelectList
               className="selectList"
+              style={styles.selectList}
               tipo={store?.opcion}
               titulo={"Garage"}
               onChange={(value) => handleSelectChange(value, "garaje")}
             />
-          </div>
-        </div>
-
-        <div>
-          <Typography mb="1rem" variant="h6" fontFamily="Lato">
-            Comodidades
-          </Typography>
-          <div>
-            <ChipComodides informacion={store?.comodidad} formData={formData} />
-          </div>
-          <Typography mb="1rem" variant="h6" fontFamily="Lato">
-            Imagenes
-          </Typography>
-          <TextFieldImagenes
-            textFieldImagenesData={textFieldImagenesData}
-            setTextFieldImagenesData={setTextFieldImagenesData}
-          />
-        </div>
-        <div className="bobyboton">
-          <TextField
-            id="standard-multiline"
-            label="Descripcion"
-            multiline
-            rows={6}
-            variant="standard"
-            sx={{ width: "60%" }}
-            onChange={(e) => handleInputChange(e, "descripcion")}
-          />
+          </Grid>
+          <Grid item xs={6} >
+            <Typography
+              marginTop="1.4rem"
+              variant="h6"
+              fontFamily="Lato"
+              style={{ color: "gray" }}
+            >
+              Comodidades
+            </Typography>
+            <div>
+              <ChipComodides
+                informacion={store?.comodidad}
+                formData={formData}
+              />
+            </div>
+          </Grid>
+          <Grid item xs={6}>
+            <TextField
+              id="standard-multiline"
+              label="Descripcion"
+              multiline
+              rows={6}
+              variant="standard"
+              sx={{ '& > :not(style)': { width: '30ch' } }}
+              onChange={(e) => handleInputChange(e, "descripcion")}
+              style={{ backgroundColor: "white", margin: "8px", color: "#1976d2" }}
+            />
+          </Grid>
+        </Grid>
+          <Grid container xs={6}>
+            <Typography
+              mb="1rem"
+              variant="h6"
+              fontFamily="Lato"
+              style={{ color: "gray" }}
+            >
+              Imagenes
+            </Typography>
+            <TextFieldImagenes
+              textFieldImagenesData={textFieldImagenesData}
+              setTextFieldImagenesData={setTextFieldImagenesData}
+            />
+          </Grid>
+        <Grid container direction="row" justifyContent="center" alignItems="center" xs={6}>
           <Button
             variant="contained"
             className="boton"
             onClick={handleSave}
-            color="success"
+            style={{
+              backgroundColor: "#1976d2",
+              color: "white",
+              margin: "8px",
+              width: "200px",
+            }}
           >
             Guardar
           </Button>
-        </div>
+        </Grid>
         <Snackbar
           open={snackbarOpen}
           autoHideDuration={3000}
@@ -239,7 +322,7 @@ export default function PublicarForm() {
             {snackbarMessage}
           </MuiAlert>
         </Snackbar>
-      </Box>
+      </Grid>
     </div>
   );
 }

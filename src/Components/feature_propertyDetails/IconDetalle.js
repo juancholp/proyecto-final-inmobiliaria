@@ -4,12 +4,12 @@ import BathtubIcon from "@mui/icons-material/Bathtub";
 import SquareFootIcon from "@mui/icons-material/SquareFoot";
 import "./Styles/DestalleDePropiedad.css";
 
-const IconDetalle = ({ bano, dormitorio, m2Terreno }) => {
+const IconDetalle = ({ bano, dormitorios, m2Terreno }) => {
   return (
     <div className="iconDetalle">
       <div className="iconTextContainer">
         <HotelIcon />
-        <p>ㅤ{dormitorio} Dorm</p>
+        <p>ㅤ{dormitorios} Dorm</p>
       </div>
       <div className="iconTextContainer">
         <BathtubIcon />

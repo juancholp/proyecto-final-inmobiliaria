@@ -4,10 +4,8 @@ import { styled } from "@mui/material/styles";
 import Dialog from "@mui/material/Dialog";
 import DialogTitle from "@mui/material/DialogTitle";
 import DialogContent from "@mui/material/DialogContent";
-// import DialogActions from "@mui/material/DialogActions";
 import IconButton from "@mui/material/IconButton";
 import CloseIcon from "@mui/icons-material/Close";
-// import Typography from "@mui/material/Typography";
 import TextField from "@material-ui/core/TextField";
 import Box from "@mui/material/Box";
 import Stack from "@mui/material/Stack";
@@ -15,6 +13,7 @@ import { TextareaAutosize } from "@mui/base/TextareaAutosize";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import PersonPinIcon from "@mui/icons-material/PersonPin";
+
 const blue = {
   100: "#DAECFF",
   200: "#b6daff",
@@ -91,7 +90,21 @@ export default function FormMessage() {
   return (
     <>
       <div>
-        <Button variant="outlined" onClick={handleClickOpen}>
+        <Button
+          variant="outlined"
+          onClick={handleClickOpen}
+          sx={{
+            minWidth: "10vw",
+            backgroundColor: "#1976d2",
+            color: "white",
+            boxShadow:
+              "rgba(0, 0, 0, 0.19) 0px 5px 10px, rgba(0, 0, 0, 0.23) 0px 3px 3px",
+            "&:hover": {
+              backgroundColor: "white",
+              color: "#1976d2",
+            },
+          }}
+        >
           Consultar
         </Button>
         <BootstrapDialog
@@ -100,7 +113,7 @@ export default function FormMessage() {
           open={open}
         >
           <DialogTitle sx={{ m: 0, p: 2 }} id="customized-dialog-title">
-            Consulta al anunciante
+            Consultar
           </DialogTitle>
           <IconButton
             aria-label="close"
@@ -114,13 +127,7 @@ export default function FormMessage() {
           >
             <CloseIcon />
           </IconButton>
-          <Tabs value="Consultar" aria-label="disabled tabs example">
-            <Tab
-              icon={<PersonPinIcon />}
-              iconPosition="start"
-              label="Consultar"
-            />
-          </Tabs>
+          
           <DialogContent dividers>
             <Box
               component="form"
@@ -153,13 +160,17 @@ export default function FormMessage() {
 
                 <Stack direction="row">
                   <StyledTextarea
-                    style={{ width: "100%" }}
+                    style={{
+                      width: "100%",
+                      fontSize: "1.3rem",
+                      fontFamily: "Lato",
+                    }}
                     variant="outlined"
                     id="outlined-multiline-flexible"
                     label="Mensaje"
-                    defaultValue="Hola, vi esta propiedad en la web y quiero que me contacten. Gracias."
+                    placeholder="Ingrese su consulta y sera respuesta a la brevedad."
                     aria-label="minimum height"
-                    minRows={8}
+                    minRows={5}
                   />
                 </Stack>
 
@@ -169,16 +180,11 @@ export default function FormMessage() {
                   fullWidth
                   onClick={handleClose}
                 >
-                  Enviar Consulta
+                  Enviar
                 </Button>
               </Stack>
             </Box>
           </DialogContent>
-          {/* <DialogActions>
-            <Button id="fullWidth" autoFocus onClick={handleClose}>
-              Enviar Consulta
-            </Button>
-          </DialogActions> */}
         </BootstrapDialog>
       </div>
     </>

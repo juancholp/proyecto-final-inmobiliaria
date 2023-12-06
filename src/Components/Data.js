@@ -22,7 +22,7 @@ const localidades = [
 
 const estado = ["Alquiler", "Venta", "Alquiler Temporal"];
 
-const tipo = [
+const tipoDePropiedad = [
   "Casa",
   "Apartamento",
   "Terreno",
@@ -38,18 +38,18 @@ const tipo = [
 ];
 
 const dormitorios = [
-  "Monoambiente",
-  "1 dormitorio",
-  "2 dormitorios",
-  "3 dormitorios",
-  "4 dormitorios",
-  "5+ dormitorios",
+  "0",
+  "1",
+  "2",
+  "3",
+  "4",
+  "5+",
 ];
 
 const precio = ["Pesos", "Dólares"];
 
 const extraFilters = [];
 
-const Data = { localidades, estado, tipo, dormitorios, precio, extraFilters };
+const Data = { localidades, estado, tipoDePropiedad, dormitorios, precio, extraFilters };
 
 export default Data;

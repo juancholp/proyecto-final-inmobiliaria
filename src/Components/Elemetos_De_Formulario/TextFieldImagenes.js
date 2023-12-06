@@ -31,12 +31,15 @@ export default function TextFieldImagenes({
   };
 
   const handleTextFieldChange = (id, value) => {
+    console.log("textfieldimage", textFieldImagenesData, "value", value)
     const updatedTextFields = textFieldImagenesData.map((field) => {
       if (field.id === id) {
+        console.log("wawawa", textFieldImagenesData)
         return { ...field, value };
       }
       return field;
     });
+    console.log("updated", updatedTextFields)
     setTextFieldImagenesData(updatedTextFields);
 
     const updatedImgsrc = [...imgsrc];
@@ -46,27 +49,37 @@ export default function TextFieldImagenes({
 
   return (
     <div>
-      {textFieldImagenesData.map((field) => (
-        <div key={field.id}>
-          <TextField
-            id={`outlined-basic-${field.id}`}
-            label="Imagenes"
-            variant="standard"
-            placeholder="URL"
-            value={field.value}
-            onChange={(e) => handleTextFieldChange(field.id, e.target.value)}
-          />
-          <IconButton
-            color="secondary"
-            onClick={() => removeTextField(field.id)}
-          ></IconButton>
-        </div>
-      ))}
       <Box>
         <IconButton color="primary" onClick={addTextField}>
           <AddIcon />
         </IconButton>
       </Box>
+      <div style={{display: "flex",
+        'flex-direction': "row",
+        'justify-content': "space-between",
+        gap: "10px",
+        'flex-wrap': "wrap"}}>
+        {textFieldImagenesData.map((field) => (
+          <div key={field.id}>
+            <TextField
+              id={`outlined-basic-${field.id}`}
+              label="Imagenes"
+              variant="standard"
+              placeholder="URL"
+              value={field.value}
+              onChange={(e) => handleTextFieldChange(field.id, e.target.value)}
+            />
+            <IconButton color="secondary" onClick={() => removeTextField(field.id)}>
+          <DeleteIcon style={{marginTop:22}}/>
+        </IconButton>
+            <IconButton
+              color="secondary"
+              onClick={() => removeTextField(field.id)}
+            >
+            </IconButton>
+          </div>
+        ))}
+      </div>
     </div>
   );
 }

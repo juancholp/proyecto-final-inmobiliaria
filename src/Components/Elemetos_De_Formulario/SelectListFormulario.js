@@ -10,7 +10,6 @@ export default function SelectTextFields(props) {
   useEffect(() => {
     setSelectedValue("");
   }, [props.tipo]);
-
   const handleSelectChange = (event) => {
     setSelectedValue(event.target.value);
     if (props.onChange) {
@@ -22,7 +21,7 @@ export default function SelectTextFields(props) {
     <Box
       component="form"
       sx={{
-        "& .MuiTextField-root": { m: 1, width: "25ch" },
+        "& .MuiTextField-root": { m: 1, width: "90%" },
       }}
       noValidate
       autoComplete="off"

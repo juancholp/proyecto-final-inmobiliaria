@@ -1,7 +1,7 @@
 import {
   ListadoPropiedades,
   ListadoLocalidades,
-  ListadoTipoPropiedad,
+  ListadoTipoDePropiedad,
   ListadoCantidadDormitorios,
   ListadoBaños,
   ListadoTipoDePublicacion,
@@ -12,59 +12,59 @@ import {
   ListadoAtributos,
   ListadotypesDeAtributos,
   nombreDeGuardadoDeLosAtributos,
-} from './Data.js'
+} from "./Data.js";
 
 const initialStore = () => {
   const store = {
     propiedades: ListadoPropiedades,
     localidades: ListadoLocalidades,
-    tipoPropiedad: ListadoTipoPropiedad,
+    tipoDePropiedad: ListadoTipoDePropiedad,
     dormitorios: ListadoCantidadDormitorios,
     baños: ListadoBaños,
     opcion: ListadoOpciones,
-    publicacion: ListadoTipoDePublicacion,
+    tipoDePublicacion: ListadoTipoDePublicacion,
     moneda: ListadoMoneda,
     estado: ListadoDeEstado,
     comodidad: ListadoComodidades,
     atributos: ListadoAtributos,
     nombreAtributosGuardado: nombreDeGuardadoDeLosAtributos,
-    filters: {
+    filters:{
       localidad: [],
       estado: [],
-      tipo: [],
+      tipoDePropiedad: [],
       dormitorios: [],
       moneda: [],
       maxPrice: 0,
       comodidad: [],
       TipoDePublicacion: [],
     },
-  }
-  return store
-}
+  };
+  return store;
+};
 
 const types = {
-  setProperty: 'setProperty',
-  setFilters: 'setFilters',
-}
+  setProperty: "setProperty",
+  setFilters: "setFilters",
+};
 
 const storeReducer = (state, action) => {
   switch (action.type) {
     case types.setProperty:
       return {
         ...state,
-        propiedades: state.propiedades.push(...action.payload),
-      }
+        propiedades: state.propiedades.concat(action.payload),
+      };
     case types.setFilters:
       return {
         ...state,
-        filters: { ...state.filters, ...action.payload },
-      }
+        filters: {  ...action.payload },
+      };
 
     default:
-      return state
+      return state;
   }
-}
+};
 
-export { types }
-export { initialStore }
-export default storeReducer
+export { types };
+export { initialStore };
+export default storeReducer;

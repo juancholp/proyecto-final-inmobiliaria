@@ -1,18 +1,28 @@
-.publicarFormContainer {
-  width: 80%;
-  margin: 2rem auto 0 2rem;
+@media (min-width: 1080px) {
+    .whiteContainer {
+      min-height: 100%;
+      font-size: 6rem;
+    }
+    .cartelPublicar {
+      min-width: 400px ;
+      min-height: 50px ;
+
+      font-size: 2.5rem ;
+    }
+    .contenedorAzul {
+      min-height: 85vh;
+    }
+  }
+
+@media (min-width: 720px) {
+.whiteContainer {
+    min-height: 70vh;
+    font-size: 6rem;
 }
-.Select {
-  display: flex;
-  flex-direction: row;
+.cartelPublicar {
+    min-width: 400px ;
+    min-height: 50px ;
+
+    font-size: 2.5rem;
 }
-.descripcion {
-  width: 4rem;
-}
-.bobyboton {
-  display: flex;
-  flex-direction: column;
-}
-.boton {
-  width: 200px;
 }

@@ -1,5 +1,4 @@
 import Dato from "./Database/Data.js";
-import Breadcrumb from "./Breadcrumbs.js";
 import { useEffect, useState } from "react";
 import IconDetalle from "./IconDetalle.js";
 import MapView from "./MapView.js";
@@ -14,20 +13,13 @@ import PropertyDetails from "./Database/DataTablaDePropiedades.js";
 
 function DetallePropiedad(props) {
   const [casa, setCasa] = useState([]);
-  const hilos = [
-    "MarcketPlace inmobiliario",
-    "Alquiler",
-    "Maldonado",
-    "Punta Del Este",
-    "Arquiler de monoambiente",
-  ];
+  
   useEffect(() => {
     setCasa(Dato[0]);
   }, []);
   return (
     <div className="DetallePropiedad">
       <header className="main">
-        <Breadcrumb Seguimiento={hilos} />
 
         <div className="DetallePropiedadImagen">
           <Carrousel />
@@ -35,11 +27,11 @@ function DetallePropiedad(props) {
         <div className="carta">
           <div className="subCarta">
             <div className="encabezado">
-              <h1 className="ttitle">{casa.title}</h1>
+              <h1 className="title">{casa.title}</h1>
               <IconDetalle
                 className="icono"
-                bano={casa.banos}
-                dormitorio={casa.dormitorio}
+                bano={casa.baños}
+                dormitorios={casa.dormitorios}
                 m2Terreno={casa.m2Terreno}
               />
             </div>
@@ -50,7 +42,7 @@ function DetallePropiedad(props) {
                   {casa.precio}
                 </strong>
               </p>
-              <p className="precio">Precio de {casa.tipoVenta}</p>
+              <p className="precio">Precio de {casa.tipoDePublicacion}</p>
             </div>
           </div>
           <MapView />

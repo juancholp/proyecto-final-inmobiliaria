@@ -7,21 +7,15 @@ import Typography from "@mui/material/Typography";
 import Menu from "@mui/material/Menu";
 import MenuIcon from "@mui/icons-material/Menu";
 import Container from "@mui/material/Container";
-import Avatar from "@mui/material/Avatar";
+import ListRoundedIcon from '@mui/icons-material/ListRounded';
 import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
-import AdbIcon from "@mui/icons-material/Adb";
+import ApartmentIcon from '@mui/icons-material/Apartment';
 import { Link } from "react-router-dom";
 
-const pages = ["Venta", "Alquiler", "Proyectos", "Inmobiliarias", "Noticias"];
-const settings = [
-  "Ingresar",
-  "Perfil",
-  "Configuracion",
-  "Favoritos",
-  "Log out",
-];
+const pages = ["Venta", "Alquiler", "Temporal", "Publicar Propiedad"];
+const settings = ["Perfil", "Favoritos"];
 
 function Navbar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -44,9 +38,11 @@ function Navbar() {
 
   return (
     <AppBar position="sticky">
-      <Container maxWidth="xl">
-        <Toolbar disableGutters>
-          <AdbIcon sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} />
+      <Container maxWidth="xxl">
+        <Toolbar disableGutters sx={{ margin: "0 2rem" }}>
+          <ApartmentIcon sx={{ display: { xs: "none", md: "flex" }, mr: 1 }}>
+            <Link></Link>
+          </ApartmentIcon>
           <Typography
             variant="h6"
             noWrap
@@ -57,14 +53,14 @@ function Navbar() {
               display: { xs: "none", md: "flex" },
               fontFamily: "Lato",
               fontWeight: 300,
-              letterSpacing: ".3rem",
+              letterSpacing: ".2rem",
               color: "inherit",
               textDecoration: "none",
             }}
           >
-            LOGO
+            Blue Paradise
           </Typography>
-
+          <Typography sx={{ fontSize: "3rem", fontWeight: "100" }}>|</Typography>
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
             <IconButton
               size="large"
@@ -101,46 +97,43 @@ function Navbar() {
               ))}
             </Menu>
           </Box>
-          <AdbIcon sx={{ display: { xs: "flex", md: "none" }, mr: 1 }} />
-          <Typography
-            variant="h5"
-            noWrap
-            component="a"
-            href="#app-bar-with-responsive-menu"
-            sx={{
-              mr: 2,
-              display: { xs: "flex", md: "none" },
-              flexGrow: 1,
-              fontFamily: "Lato",
-              fontWeight: 300,
-              letterSpacing: ".3rem",
-              color: "inherit",
-              textDecoration: "none",
-            }}
-          >
-            LOGO
-          </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
-            {pages.map((page) => (
-              <Button
-                key={page}
-                onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: "white", display: "block" }}
-              >
-                <Link
-                  to={`/` + page}
-                  style={{ color: "white", textDecoration: "none" }}
+            {pages.map((page) => {
+              const firstWord = page.split(' ')[0]; // Obtén la primera palabra
+
+              return (
+                <Button
+                  href={"/" + firstWord}
+                  key={firstWord}
+                  onClick={handleCloseNavMenu}
+                  sx={{
+                    my: 2,
+                    color: "white",
+                    display: "block",
+                    fontFamily: "Lato",
+                    fontWeight: "300",
+                    position: "relative",
+                    top: "0.06rem",
+                    fontSize: ".9rem",
+                    letterSpacing: ".1rem",
+                    left: "1rem"
+                  }}
                 >
-                  {page}
-                </Link>
-              </Button>
-            ))}
+                  <Link
+                    to={"/" + firstWord}
+                    style={{ color: "white", textDecoration: "none" }}
+                  >
+                    {firstWord + " |"}
+                  </Link>
+                </Button>
+              );
+            })}
           </Box>
 
           <Box sx={{ flexGrow: 0, mr: "35px" }}>
-            <Tooltip title="Open settings">
+            <Tooltip title="Usuario">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+                <ListRoundedIcon sx={{ fontSize: "3rem", color: "white" }} />
               </IconButton>
             </Tooltip>
             <Menu
@@ -160,13 +153,19 @@ function Navbar() {
               onClose={handleCloseUserMenu}
             >
               {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Link
-                    to={`/` + setting}
-                    style={{ color: "black", textDecoration: "none" }}
-                  >
-                    {setting}
-                  </Link>
+                <MenuItem sx={{ margin: 0, padding: 0 }} key={setting} onClick={handleCloseUserMenu}>
+                  <Button href={"/" + setting} key={setting}
+                    sx={{
+                      width: "100%",
+                      padding: "0.5rem 1rem"
+                    }}>
+                    <Link
+                      to={"/" + setting}
+                      style={{ color: "black", textDecoration: "none" }}
+                    >
+                      {setting}
+                    </Link>
+                  </Button>
                 </MenuItem>
               ))}
             </Menu>
@@ -176,4 +175,5 @@ function Navbar() {
     </AppBar>
   );
 }
+
 export default Navbar;

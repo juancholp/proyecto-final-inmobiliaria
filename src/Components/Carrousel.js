@@ -1,17 +1,15 @@
-import React, { useState } from "react";
+import React from "react";
 import { useTheme } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import MobileStepper from "@mui/material/MobileStepper";
-import Paper from "@mui/material/Paper";
-import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
-import KeyboardArrowLeft from "@mui/icons-material/KeyboardArrowLeft";
 import KeyboardArrowRight from "@mui/icons-material/KeyboardArrowRight";
 import SwipeableViews from "react-swipeable-views";
 import { autoPlay } from "react-swipeable-views-utils";
 import { storeContext } from "../Store/StoreProvider";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
+import { Link } from "react-router-dom";
 
 const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
 
@@ -48,8 +46,11 @@ function Carrousel() {
     setActiveStep(step);
   };
 
+  function formatearPrecio(precio) {
+    return precio.toLocaleString('es-ES');
+  }
   return (
-    <Box sx={{ maxWidth: 800, flexGrow: 1, position: "relative" }}>
+    <Box sx={{ maxHeight: "40vh", maxWidth: "50vw", flexGrow: 1, position: "relative", margin: "0 20vw 25vh 20vw" }}>
       <AutoPlaySwipeableViews
         axis={theme.direction === "rtl" ? "x-reverse" : "x"}
         index={activeStep}
@@ -68,9 +69,9 @@ function Carrousel() {
               >
                 <div
                   style={{
-                    height: 600,
+                    height: "60vh",
                     display: "block",
-                    maxWidth: 800,
+                    maxWidth: "50vw",
                     width: "100%",
                     position: "relative",
                     zIndex: 0,
@@ -85,9 +86,8 @@ function Carrousel() {
                     justifyContent: "flex-end",
                     flexDirection: "column",
                     alignItems: "flex-start",
-                    top: 0,
-                    left: 0,
-                    right: 0,
+                    height: "15vh",
+                    width: "99%",
                     bottom: 0,
                     backgroundColor: "rgba(0, 0, 0, 0.4)",
                     color: "#fff",
@@ -95,40 +95,56 @@ function Carrousel() {
                     zIndex: 1,
                   }}
                 >
+                  <div 
+                    style={{
+                      display: "flex",
+                      justifyContent: "flex-start",
+                      flexDirection: "column",
+                      alignItems: "flex-start",
+                      height: "15vh",
+                      marginBottom: "10px"
+                    }}
+                  >
+                  <p 
+                    style={{
+                      fontSize: "1rem",
+                      margin: 0,
+                    }}>
+                    {step.tipoVenta}
+                  </p>
                   <p
                     style={{
-                      fontSize: "50px",
+                      fontSize: "2rem",
                       marginTop: "0px",
                       marginBottom: "10px",
                     }}
                   >
-                    Precio: {step.precio}
+                    {step.tipoMoneda} {formatearPrecio(step.precio)}
                   </p>
                   <p
                     style={{
-                      fontSize: "18px",
+                      fontSize: "1.2rem",
                       marginBottom: "0px",
                       marginTop: "0px",
                     }}
                   >
-                    Descripción: {step.descripcion}
+                    {step.descripcion}
                   </p>
-                  <p style={{ fontSize: "18px" }}>Dep: {step.ubicacion}</p>
-                  <a
-                    href={step.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
+                  <p style={{ fontSize: "1.2rem", margin: "0.5rem 0"}}>{step.ubicacion} </p>
+                  <Link
+                    to={`/ResultadoPublicacion/${step.id}`}
                     style={{
-                      fontSize: "18px",
+                      fontSize: "1.5rem",
                       position: "absolute",
-                      right: "10px",
-                      bottom: "10px",
+                      right: "20px",
+                      bottom: "14px",
                       color: "white",
                       textDecoration: "none",
                     }}
                   >
                     Más información
-                  </a>
+                  </Link>
+                  </div>
                 </div>
               </div>
             ) : null}
@@ -143,7 +159,7 @@ function Carrousel() {
         activeStep={activeStep}
         nextButton={
           <Button
-            size="small"
+            size="large"
             onClick={handleNext}
             disabled={activeStep === maxSteps - 1}
             style={{
@@ -151,18 +167,19 @@ function Carrousel() {
               top: "50%",
               right: "10px",
               zIndex: 2,
+              
             }}
           >
             {theme.direction === "rtl" ? (
-              <ArrowBackIosIcon />
+              <ArrowBackIosIcon style={{ fontSize: 50 }} />
             ) : (
-              <ArrowForwardIosIcon />
+              <ArrowForwardIosIcon style={{ fontSize: 50 }} />
             )}
           </Button>
         }
         backButton={
           <Button
-            size="small"
+            size="large"
             onClick={handleBack}
             disabled={activeStep === 0}
             style={{
@@ -173,9 +190,9 @@ function Carrousel() {
             }}
           >
             {theme.direction === "rtl" ? (
-              <KeyboardArrowRight />
+              <KeyboardArrowRight style={{ fontSize: 50 }} />
             ) : (
-              <ArrowBackIosIcon />
+              <ArrowBackIosIcon style={{ fontSize: 50 }} />
             )}
           </Button>
         }

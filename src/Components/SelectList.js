@@ -71,8 +71,6 @@ export default function CustomSelectList(props) {
           onChange={handleChange}
           input={<OutlinedInput id="select-multiple-chip" label="Selección" />}
           renderValue={(selected) => (
-            console.log(selected),
-            console.log(selected.length),
             (
               <Box sx={{ display: "flex", flexWrap: "wrap", gap: 0.5 }}>
                 {selected.map((value) => (
