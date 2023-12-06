@@ -33,7 +33,6 @@ const RenderResults = (props) => {
   const [store] = React.useContext(storeContext);
   const [results, setResults] = React.useState([]);
   useEffect(() => {
-    console.log("results", props.results)
     setResults(props.results);
   }, [props.results]);
 

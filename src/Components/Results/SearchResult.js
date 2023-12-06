@@ -19,7 +19,6 @@ const SearchResult = () => {
   const propiedades = store.propiedades;
 
   useEffect(() => {
-    console.log("Estoy aplicando filtros");
     const {
       localidad,
       estado,
@@ -32,7 +31,6 @@ const SearchResult = () => {
 
     let dataFiltrada = propiedades;
 
-    // anda
     if (
       tipoDePublicacion &&
       Array.isArray(tipoDePublicacion) &&
@@ -48,7 +46,7 @@ const SearchResult = () => {
         item?.tipoDePublicacion === tipoDePublicacion
       );
     }
-    // anda
+
     if (localidad && Array.isArray(localidad) && localidad.length > 0) {
       dataFiltrada = dataFiltrada.filter((item) =>
         localidad.some((itemLocalidad) =>
@@ -60,7 +58,7 @@ const SearchResult = () => {
         item?.ubicacion?.includes(localidad)
       );
     }
-    // anda
+
     if (estado && Array.isArray(estado) && estado.length > 0) {
       dataFiltrada = dataFiltrada.filter((item) =>
         estado.some((itemEstado) => item?.estado?.includes(itemEstado))
@@ -70,7 +68,7 @@ const SearchResult = () => {
         item?.estado?.includes(estado)
       );
     }
-    // anda
+
     if (
       tipoDePropiedad &&
       Array.isArray(tipoDePropiedad) &&
@@ -86,7 +84,7 @@ const SearchResult = () => {
         item?.tipoDePropiedad?.includes(tipoDePropiedad)
       );
     }
-    // anda
+
     if (dormitorios && dormitorios.length > 0) {
       dataFiltrada = dataFiltrada.filter((item) =>
         dormitorios.includes(item?.dormitorios)
@@ -96,7 +94,7 @@ const SearchResult = () => {
         (item) => item?.dormitorios === dormitorios
       );
     }
-    // anda
+
     if (moneda && moneda.length > 0) {
       dataFiltrada = dataFiltrada.filter((item) => {
         if (moneda === "Pesos") {
@@ -106,9 +104,8 @@ const SearchResult = () => {
         }
       });
     }
-    // anda
+
     if (maxPrice > 0) {
-      console.log("precio maximo", maxPrice);
       dataFiltrada = dataFiltrada.filter(
         (item) => parseFloat(item?.precio) <= parseFloat(maxPrice)
       );
@@ -116,14 +113,11 @@ const SearchResult = () => {
 
     setResults(dataFiltrada);
 
-    console.log("filtro aplicado", filtro);
     setTimeout(() => {
       setLoading(false);
     }, 1500);
   }, [filtro, propiedades]);
 
-  console.log("resultados", results);
-  console.log("resultados filter", store.filters);
   return (
     <div className="SearchResult">
       <Container maxWidth="xxl">
@@ -147,7 +141,6 @@ const SearchResult = () => {
                       result += " de " + store.filters.tipoDePropiedad + "s";
                     }
                   } else if (store.filters.tipoDePropiedad.length > 0) {
-                    console.log("Tipo de propiedad", store.filters.tipoDePropiedad);
                     result += store.filters.tipoDePropiedad + "s";
                   }
 
