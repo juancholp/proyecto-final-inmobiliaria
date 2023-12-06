@@ -5,23 +5,36 @@ import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
 import TipoDePropiedad from "./TipoDePropiedad";
 import Carrousel from "./Carrousel";
 import Button from "@mui/material/Button";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Departamentos from "./Departamentos";
 import { storeContext } from "../Store/StoreProvider";
 import { Link } from "react-router-dom";
 import { Typography } from "@mui/material";
 import "./MainPage.css";
 import { types } from "../Store/StoreReducer";
+import Dialog from "@mui/material/Dialog";
+import DialogTitle from "@mui/material/DialogTitle";
+import Divider from '@mui/material/Divider';
+import Backdrop from '@mui/material/Backdrop';
+
 
 function MainPage() {
   const [store, dispatch] = React.useContext(storeContext);
   const [localidades, setLocalidades] = useState();
   const [tipoDePublicacion, setTipoDePublicacion] = useState();
   const [tipoDePropiedad, setTipoDePropiedad] = useState();
+  const [open, setOpen] = useState(true);
+  const [isBlurred, setIsBlurred] = useState(true);
+
   const filtros = {
     localidad: localidades,
     tipoDePublicacion: tipoDePublicacion,
     tipoDePropiedad: tipoDePropiedad,
+  };
+
+  const handleClose = () => {
+    setOpen(false)
+    setIsBlurred(false)
   };
 
   const handleChange = (event, value) => {
@@ -39,7 +52,15 @@ function MainPage() {
   };
 
   return (
-    <div className="App">
+    <div className={`App ${isBlurred ? 'blurred' : ''}`}>
+      <Dialog open={open} onClose={handleClose} BackdropComponent={Backdrop} sx={{textAlign: "center"}}>
+        <DialogTitle sx={{fontSize:"2.3rem", color: "white", backgroundColor: "#1976d2", marginBottom: "1.7rem"}}>Bienvenidos!</DialogTitle>
+        <p style={{fontSize:"1.1rem", marginTop:"0"}}>Nuestro horario de atencion es</p>
+        <p style={{fontSize:"1.1rem", margin: 0, marginBottom: "1rem"}}>de Lunes a Viernes de 10:00 a 18:00</p>
+        <p style={{fontSize:"1.1rem", margin: 0, marginBottom: "1.7rem"}}>y Sabados de 10:00 a 14:00</p>
+        <Divider orientation="horizontal" variant="middle" />
+        <p style={{marginTop:"1rem", fontSize: "1.3rem", fontWeight: "bold", color: "#1976d2"}}>Por cualquier consulta contactanos!</p>
+      </Dialog>
       <div className="SearchBackground">
         <div className="Search">
           <Box>
