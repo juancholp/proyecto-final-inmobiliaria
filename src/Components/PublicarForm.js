@@ -15,6 +15,7 @@ import { storeContext } from "../Store/StoreProvider";
 import OutlinedInput from "@mui/material/OutlinedInput";
 import { types } from "../Store/StoreReducer";
 import { ListadoPropiedades } from "../Store/Data";
+import "./PublicarForm.css"
 
 export default function PublicarForm() {
   const [formData, setFormData] = useState({
@@ -89,14 +90,17 @@ export default function PublicarForm() {
 
   return (
     <div
+      className="contenedorAzul"
       style={{
         backgroundColor: "#1976d2",
         margin: "0",
         padding: "2rem",
-        height: "80vh",
+        height: "100%",
       }}
     >
-      <Grid container
+      <Grid 
+        className="whiteContainer"
+        container
         direction="row"
         justifyContent="center"
         alignItems="center"
@@ -107,11 +111,12 @@ export default function PublicarForm() {
           width: "98%",
           margin: "0 auto 2.78rem auto",
           padding: "2rem 5rem",
+          minHeight: "85vh"
         }}
       >
-        <Grid item md={12} sm={12} xs={12}>
+        <Grid  item md={12} sm={12} xs={12}>
           <Typography
-            padding="0.2rem 0.2rem 0.5rem 0.2rem"
+            className="cartelPublicar"
             backgroundColor="#1976d2"
             fontWeight="300"
             fontSize="1.5rem"

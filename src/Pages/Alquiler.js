@@ -42,13 +42,16 @@ const Alquiler = () => {
       <Container maxWidth="xxl">
         <Box m={2} pt={3}>
           <ThemeProvider theme={theme}>
-            <Typography textAlign="center" mb={6} fontSize={"3rem"} color="#1976d2" fontFamily={"Lato"} fontWeight={"400"}>
+            <Typography textAlign="center" mb={8} fontSize={"3rem"} color="#1976d2" fontFamily={"Lato"} fontWeight={"400"}>
               Alquiler de Propiedades
             </Typography>
 
             <RenderResults results={filteredResults} />
           </ThemeProvider>
         </Box>
+        <Typography mt={15}>
+          -
+        </Typography>
       </Container>
     </>
   );

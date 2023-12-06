@@ -50,6 +50,9 @@ const Alquiler = () => {
           </ThemeProvider>
         </Box>
       </Container>
+      <Typography mt={15}>
+          -
+      </Typography>
     </>
   );
 };

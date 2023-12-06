@@ -22,7 +22,7 @@ const RenderResults = (props) => {
     padding: theme.spacing(2),
     textAlign: "center",
     color: theme.palette.text.secondary,
-    margin: 20,
+    margin: "0 auto 2rem auto",
     minWidth: 300,
     border: "1px solid #ccc",
     boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",

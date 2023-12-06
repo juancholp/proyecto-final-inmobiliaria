@@ -129,7 +129,11 @@ function MainPage() {
         <Carrousel />
       </div>
       </div>
+      <Typography mt={15}>
+          -
+      </Typography>
     </div>
+    
   );
 }
 
