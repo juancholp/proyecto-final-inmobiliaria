@@ -7,6 +7,7 @@ import { useContext } from "react";
 import { storeContext } from "../Store/StoreProvider";
 import { useParams } from "react-router-dom";
 import Chip from "@mui/material/Chip";
+import Divider from "@mui/material/Divider";
 
 import Stack from "@mui/material/Stack";
 
@@ -99,9 +100,10 @@ export default function MostrarPublicacion() {
               <Box>
                 {seleccionado.map((item, index) => (
                   <Typography key={index} variant="h3">
-                    {item.tipoDePublicacion} - {item.estado}
+                    {item.tipoDePublicacion}
                   </Typography>
                 ))}
+                <Divider orientation="horizontal" variant="middle"/>
                 {seleccionado[0].descripcion && (
                   <Typography variant="h5" sx={{ textAlign: "left", mt: 2 }}>
                     {seleccionado[0].descripcion}
@@ -137,6 +139,11 @@ export default function MostrarPublicacion() {
                 {seleccionado[0].garaje && (
                   <Typography variant="h5" sx={{ textAlign: "left" }}>
                     Garage: {seleccionado[0].garaje}
+                  </Typography>
+                )}
+                {seleccionado[0].estado && (
+                  <Typography variant="h5" sx={{ textAlign: "left" }}>
+                    Estado: {seleccionado[0].estado}
                   </Typography>
                 )}
                 {seleccionado[0].aceptaMascotasOptions && (

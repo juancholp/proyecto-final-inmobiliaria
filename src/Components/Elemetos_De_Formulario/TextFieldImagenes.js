@@ -31,15 +31,12 @@ export default function TextFieldImagenes({
   };
 
   const handleTextFieldChange = (id, value) => {
-    console.log("textfieldimage", textFieldImagenesData, "value", value)
     const updatedTextFields = textFieldImagenesData.map((field) => {
       if (field.id === id) {
-        console.log("wawawa", textFieldImagenesData)
         return { ...field, value };
       }
       return field;
     });
-    console.log("updated", updatedTextFields)
     setTextFieldImagenesData(updatedTextFields);
 
     const updatedImgsrc = [...imgsrc];

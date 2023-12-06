@@ -74,10 +74,8 @@ export default function PublicarForm() {
         ? textFieldImagenesData.map((item) => item.value)
         : "";
       dispatch({ type: types.setProperty, payload: formData });
-      console.log("propiedades", ListadoPropiedades);
       openSnackbar("Datos guardados");
     } catch (e) {
-      console.log("error", e);
       openSnackbar("No se pudo guardar");
     }
   };

@@ -102,8 +102,6 @@ function Filters() {
   };
 
   const saveFilters = () => {
-    console.log("filtro", filtro);
-
     dispatch({ type: types.setFilters, payload: filtro });
   };
 

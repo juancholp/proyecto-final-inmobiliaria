@@ -14,7 +14,6 @@ const Dato = [
       "Jardín",
     ],
     descripcion: "",
-    //Detalles de la Propiedad
     zona: "Capurro",
     m2Edificados: 288,
     m2Terreno: 267,

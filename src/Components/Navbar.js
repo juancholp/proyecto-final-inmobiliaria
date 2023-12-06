@@ -99,7 +99,7 @@ function Navbar() {
           </Box>
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
             {pages.map((page) => {
-              const firstWord = page.split(' ')[0]; // Obtén la primera palabra
+              const firstWord = page.split(' ')[0];
 
               return (
                 <Button
